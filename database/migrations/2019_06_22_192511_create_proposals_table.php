@@ -15,6 +15,10 @@ class CreateProposalsTable extends Migration
     {
         Schema::create('proposals', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
+            $table->mediumText('body');
+            $table->unsignedInteger('user_id');
+            
             $table->timestamps();
         });
     }
