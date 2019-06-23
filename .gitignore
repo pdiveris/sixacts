@@ -12,3 +12,5 @@ yarn-error.log
 docs/notes.txt
 server.php
 storage
+database/seeds/UsersTableSeeder.php
+
