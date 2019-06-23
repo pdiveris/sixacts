@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class   CreateProposalsTable extends Migration
+class AlterProposalsAddConstraints extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class   CreateProposalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('proposals', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title');
-            $table->mediumText('body');
-            $table->unsignedBigInteger('user_id');
-            
-            $table->timestamps();
+        Schema::table('proposals', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -30,6 +25,8 @@ class   CreateProposalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('proposals');
+        Schema::table('proposals', function (Blueprint $table) {
+            $table->dropForeign('user_id');
+        });
     }
 }
