@@ -16,3 +16,8 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('proposals', 'ProposalController@index');
+Route::post('proposals', 'ProposalController@store');
+Route::get('proposals/{id}', 'ProposalController@show');
+// Route::put('proposals/{project}', 'ProposalController@markAsCompleted');

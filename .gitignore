@@ -13,4 +13,6 @@ docs/notes.txt
 server.php
 storage
 database/seeds/UsersTableSeeder.php
+tmp/
+cd ..
 
