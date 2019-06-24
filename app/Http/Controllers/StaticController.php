@@ -6,9 +6,15 @@ use Illuminate\Http\Request;
 
 class StaticController extends Controller
 {
-    public function content()
+    public function content(Request $request)
     {
-        return View::make('static.terms', []);
+        $view = $request->path();
+        return \View::make('static.'.$view, []);
     }
-
+    
+    public function gladdys()
+    {
+        return \View::make('static.gladdys', []);
+    }
+    
 }

@@ -1,1 +1,1 @@
-<h1>TERMS</h1>
+<h1>GLADDYS</h1>

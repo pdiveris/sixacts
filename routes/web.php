@@ -19,9 +19,9 @@ Route::get('/test', function () {
     phpinfo();
     return '';
 });
-// ['as' => 'admin.editIndustry', 'uses' => 'Industries@edit']
-Route::get('gladdys', ['as'=>'gladdys', 'uses'=>'StaticController@content']);
 
-Route::get('terms', ['as'=>'terms', 'uses'=>'StaticController@content']);
-Route::get('privacy', ['as'=>'privacy', 'uses'=>'StaticController@content']);
-Route::get('gdpr', ['as'=>'gdpr', 'uses'=>'StaticController@content']);
+Route::get('terms', 'StaticController@content');
+Route::get('privacy', 'StaticController@content');
+Route::get('gdpr', 'StaticController@content');
+
+Route::get('gladdys', 'StaticController@gladdys');
