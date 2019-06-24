@@ -63,11 +63,16 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallbackTwitter()
+    public function handleProviderCallback(Request $request)
     {
-        $user = \Socialite::driver('twitter')->user();
+        $provider = str_replace('login/', '', $request->path());
+        $provider = str_replace('/callback', '', $provider);
+        
+        $user = \Socialite::driver($provider)->user();
+        
         $store = new AuthData();
-
+        dump($user);
+        
         $store->token = $user->token;
         $store->tokenSecret = $user->tokenSecret;
         $store->theirId = $user->getId();
@@ -76,7 +81,11 @@ class LoginController extends Controller
         $store->email = $user->getEmail();
         $store->avatar = $user->getAvatar();
         
-        $store->provider = 'twitter';
+        if (method_exists($user, 'getUser') && null!== $user->getUser()) {
+            $store->user = json_encode($user->getUser());
+        }
+        
+        $store->provider = $provider;
         $store->scheme = 'OAuth 1';
         
         // Exception handler to be added..
@@ -86,8 +95,8 @@ class LoginController extends Controller
         if (env('APP_ENV') == 'local' && env('APP_DEBUG') != false) {
             dump($user);
         }
-        
-        return redirect('/');
+        return '';
+        // return redirect('/');
     }
     
     public function handleProviderCallbackGoogle()

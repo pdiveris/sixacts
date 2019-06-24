@@ -18,7 +18,6 @@ class AllterAuthAllowNulls extends Migration
             $table->string('avatar')->nullable()->change();
             $table->string('user')->nullable()->change();
         });
-
     }
 
     /**
