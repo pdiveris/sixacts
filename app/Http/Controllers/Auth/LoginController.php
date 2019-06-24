@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\AuthData;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+
 
 class LoginController extends Controller
 {
@@ -41,11 +43,13 @@ class LoginController extends Controller
     /**
      * Redirect the user to the GitHub authentication page.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToProvider(Request $request)
     {
-        return \Socialite::driver('twitter')->redirect();
+        $provider = str_replace('login/', '', $request->path());
+        return \Socialite::driver($provider)->redirect();
     }
     
     /**
@@ -59,7 +63,7 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallbackTwitter()
     {
         $user = \Socialite::driver('twitter')->user();
     
@@ -77,7 +81,15 @@ class LoginController extends Controller
         if ($this->app->environment() !== 'production' && env('APP_DEBUG') != false) {
             dump($user);
         }
+        
+        // Exception handler to be added..
+        $store->save();
+        
         // add Bulma balloon
         return \Response::redirectTo('/');
+    }
+    
+    public function handleProviderCallbackGoogle()
+    {
     }
 }

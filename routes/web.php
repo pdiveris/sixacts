@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('static.welcome');
 });
 
 Route::get('/test', function () {
@@ -20,12 +20,17 @@ Route::get('/test', function () {
     return '';
 });
 
-Route::get('terms', 'StaticController@content');
-Route::get('privacy', 'StaticController@content');
-Route::get('gdpr', 'StaticController@content');
+Route::get('terms', 'StaticController@content')->name('terms');
+Route::get('privacy', 'StaticController@content')->name('privacy');
+Route::get('gdpr', 'StaticController@content')->name('gdpr');
+Route::get('register', 'StaticController@userRegistration')->name('register');
 
-Route::get('login/twitter', 'Auth\LoginController@redirectToProvider');
+Route::get('signin', 'StaticController@signin')->name('signin');
+Route::get('login/twitter', 'Auth\LoginController@redirectToProvider')->name('signin_twitter');
 Route::get('login/twitter/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('signin_google');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('twitter', function () {
 

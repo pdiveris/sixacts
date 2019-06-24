@@ -13,10 +13,10 @@
         <div class="column is-5">
             <div class="content">
                 <div class="title m-b-md">
-                    TERMS & CONDITIONS
+                    Welcome
                 </div>
+
                 <div class="links">
-                    <a class="button is-info" href="{{url('')}}">HOME</a>
                     <a class="button is-info" href="{{route('signin')}}">SIGN IN</a>
                     <a class="button is-info" href="{{route('register')}}">REGISTER</a>
                     <a class="button is-info" href="{{route('terms')}}">TERMS</a>
