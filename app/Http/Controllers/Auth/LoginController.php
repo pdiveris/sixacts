@@ -66,9 +66,8 @@ class LoginController extends Controller
     public function handleProviderCallbackTwitter()
     {
         $user = \Socialite::driver('twitter')->user();
-    
         $store = new AuthData();
-        
+
         $store->token = $user->token;
         $store->tokenSecret = $user->tokenSecret;
         $store->theirId = $user->getId();
@@ -77,19 +76,23 @@ class LoginController extends Controller
         $store->email = $user->getEmail();
         $store->avatar = $user->getAvatar();
         
-        // Symfony console debugger ON please
-        if ($this->app->environment() !== 'production' && env('APP_DEBUG') != false) {
-            dump($user);
-        }
+        $store->provider = 'twitter';
+        $store->scheme = 'OAuth 1';
         
         // Exception handler to be added..
         $store->save();
+
+        // Symfony console debugger ON please
+        if (env('APP_ENV') == 'local' && env('APP_DEBUG') != false) {
+            dump($user);
+        }
         
-        // add Bulma balloon
-        return \Response::redirectTo('/');
+        return redirect('/');
     }
     
     public function handleProviderCallbackGoogle()
     {
+        $user = \Socialite::driver('google')->user();
+        dd($user);
     }
 }
