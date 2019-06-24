@@ -74,7 +74,10 @@ class LoginController extends Controller
         $store->avatar = $user->getAvatar();
         
         // Symfony console debugger ON please
-        dd($user);
+        if ($this->app->environment() !== 'production' && env('APP_DEBUG') != false) {
+            dump($user);
+        }
+        // add Bulma balloon
         return \Response::redirectTo('/');
     }
 }
