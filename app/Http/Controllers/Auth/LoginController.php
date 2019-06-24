@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\AuthData;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -48,7 +49,13 @@ class LoginController extends Controller
     }
     
     /**
-     * Obtain the user information from GitHub.
+     * Obtain the user information from Auth provider e.g. GitHub.
+     * Redirect to home page with some pop up, possibly Bulma
+     *
+     * OAuth Two Providers
+     *  $token = $user->token;
+     *  $refreshToken = $user->refreshToken; // not always provided
+     *  $expiresIn = $user->expiresIn;
      *
      * @return \Illuminate\Http\Response
      */
@@ -56,35 +63,18 @@ class LoginController extends Controller
     {
         $user = \Socialite::driver('twitter')->user();
     
-        var_dump($user);
-    
-        // OAuth Two Providers
-        // $token = $user->token;
-        // $refreshToken = $user->refreshToken; // not always provided
-        // $expiresIn = $user->expiresIn;
-    
-        // OAuth One Providers                                                                                                                                                                                         // OAuth One Providers
-        $token = $user->token;
-        var_dump($token);
-    
-        $tokenSecret = $user->tokenSecret;
-        var_dump($tokenSecret);
-    
-        echo '<h3>AllProviders</h3>';
-        // All Providers
-        echo $user->getId();
-        echo '<br/>';
-    
-        echo $user->getNickname();
-        echo '<br/>';
-    
-        echo $user->getName();
-        echo '<br/>';
-    
-        echo $user->getEmail();
-        echo '<br/>';
-    
-        echo $user->getAvatar();
-        echo '<br/>';
+        $store = new AuthData();
+        
+        $store->token = $user->token;
+        $store->tokenSecret = $user->tokenSecret;
+        $store->theirId = $user->getId();
+        $store->nickname = $user->getNickname();
+        $store->name = $user->getName();
+        $store->email = $user->getEmail();
+        $store->avatar = $user->getAvatar();
+        
+        // Symfony console debugger ON please
+        dd($user);
+        return \Response::redirectTo('/');
     }
 }
