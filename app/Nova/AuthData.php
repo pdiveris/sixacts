@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Proposal extends Resource
+class AuthData extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Proposal';
+    public static $model = 'App\AuthData';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -24,13 +24,28 @@ class Proposal extends Resource
     public static $title = 'id';
     
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'System';
+    
+    /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
         'id',
-        'title',
+        'provider',
+        'scheme',
+        'their_id',
+        'token',
+        'token_secret',
+        'refresh_token',
+        'nickname',
+        'name',
+        'email',
     ];
     
     /**
@@ -43,11 +58,20 @@ class Proposal extends Resource
     ];
     
     /**
-     * The logical group associated with the resource.
-     *
-     * @var string
+     * @return array|string|null
      */
-    public static $group = 'Core';
+    public static function singularLabel()
+    {
+        return __('Auth Data');
+    }
+    
+    /**
+     * @return array|string|null
+     */
+    public static function label()
+    {
+        return __('Auth Data');
+    }
     
     /**
      * Build an "index" query for the given resource.
@@ -75,7 +99,15 @@ class Proposal extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make(__('Title'), 'title')->rules('required')->sortable(),
+            Text::make(__('Provider'), 'provider')->hideFromIndex(),
+            Text::make(__('Scheme'), 'scheme'),
+            Text::make(__('Their ID'), 'their_id'),
+            Text::make(__('Token'), 'token')->hideFromIndex(),
+            Text::make(__('Token Secret'), 'token_secret')->hideFromIndex(),
+            Text::make(__('Refresh Token'), 'refresh_token')->hideFromIndex(),
+            Text::make(__('Nickname'), 'nickname')->hideFromIndex(),
+            Text::make(__('Name'), 'name'),
+            Text::make(__('Email'), 'email'),
         ];
     }
 

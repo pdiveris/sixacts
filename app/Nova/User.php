@@ -2,11 +2,11 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Text;
 
 class User extends Resource
 {
@@ -16,7 +16,14 @@ class User extends Resource
      * @var string
      */
     public static $model = 'App\\User';
-
+    
+    /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'System';
+    
     /**
      * The single value that should be used to represent the resource when being displayed.
      *

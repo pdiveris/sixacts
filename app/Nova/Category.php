@@ -24,6 +24,13 @@ class Category extends Resource
     public static $title = 'id';
     
     /**
+     * The logical group associated with the resource.
+     *
+     * @var string
+     */
+    public static $group = 'Core';
+    
+    /**
      * The columns that should be searched.
      *
      * @var array
