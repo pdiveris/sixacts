@@ -8,11 +8,16 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }} {{ app()->version() }}</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <style>
+            .termslist {
+                margin-left: 2em;
+            }
+        </style>
     </head>
     <body>
         <div id="app">
