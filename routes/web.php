@@ -32,7 +32,7 @@ Route::get('login/twitter/callback', 'Auth\LoginController@handleProviderCallbac
 Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('signin_google');
 Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('signin_google');
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('signin_facebook');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('login/deauthorize/facebook', 'Auth\LoginController@handleProviderDeauthorize')

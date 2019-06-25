@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $provider
  * @property string $scheme
  * @property string $meta
- * @property string $theirId
+ * @property string $their_id
  * @property string $token
  * @property string|null $token_secret
  * @property string|null $refresh_token
@@ -50,13 +50,13 @@ class AuthData extends Model
     /**
      * @var array
      * e.g.
-     *  twitter: 'theirId'=>'851049513880104960', 'nickname'=>'thongita', 'name'=>'Thongita Kapoor'
+     *  twitter: 'their_id'=>'851049513880104960', 'nickname'=>'thongita', 'name'=>'Thongita Kapoor'
      *  facebook:
      *  google:
      */
     protected $fillable = [
         'id',
-        'theirId',
+        'their_id',
         'token',
         'token_secret',
         'refresh_token',

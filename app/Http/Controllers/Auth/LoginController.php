@@ -73,7 +73,6 @@ class LoginController extends Controller
         
         $store = new AuthData();
         $store->scheme = 'NOAuth';
-        dump($user);
         
         $store->token = $user->token;
         $store->theirId = $user->getId();
@@ -106,11 +105,10 @@ class LoginController extends Controller
         $store->save();
 
         // Symfony console debugger ON please
-        if (env('APP_ENV') == 'local' && env('APP_DEBUG') != false) {
+        if (env('APP_DEBUG') === true) {
             dump($user);
         }
-        return '';
-        // return redirect('/');
+        return redirect('/');
     }
     
     /**
