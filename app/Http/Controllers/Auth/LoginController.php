@@ -75,7 +75,7 @@ class LoginController extends Controller
         $store->scheme = 'NOAuth';
         
         $store->token = $user->token;
-        $store->theirId = $user->getId();
+        $store->their_id = $user->getId();
         $store->nickname = $user->getNickname();
         $store->name = $user->getName();
         $store->email = $user->getEmail();
