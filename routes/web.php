@@ -32,6 +32,17 @@ Route::get('login/twitter/callback', 'Auth\LoginController@handleProviderCallbac
 Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('signin_google');
 Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('signin_google');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
+Route::get('login/deauthorize/facebook', 'Auth\LoginController@handleProviderDeauthorize')
+    ->name('defacebook')
+;
+
+Route::get('login/delete/faceboook', 'Auth\LoginController@handleProviderDelete')
+    ->name('deletefacebook')
+;
+
 Route::get('twitter', function () {
     $token = '253052843-Pjd6WsvNs8xaPStSu6LwcaouPjW0c2y8H2IjFIdX';
     $secret = 'q13oYTMLTGGMCBnOi2aDbDbTluaX8gxs1vwJmd3r0znR6';

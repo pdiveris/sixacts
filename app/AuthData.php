@@ -13,7 +13,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $meta
  * @property string $theirId
  * @property string $token
- * @property string $tokenSecret
+ * @property string|null $token_secret
+ * @property string|null $refresh_token
+ * @property string|null $expires_in
  * @property string $nickname
  * @property string $name
  * @property string $email
@@ -39,6 +41,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\AuthData whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\AuthData whereUser($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AuthData whereExpiresIn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AuthData whereRefreshToken($value)
  */
 class AuthData extends Model
 {
@@ -54,7 +58,9 @@ class AuthData extends Model
         'id',
         'theirId',
         'token',
-        'tokenSecret',
+        'token_secret',
+        'refresh_token',
+        'expires_in',
         'nickname',
         'name',
         'email',

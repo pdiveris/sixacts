@@ -56,11 +56,12 @@ class LoginController extends Controller
      * Obtain the user information from Auth provider e.g. GitHub.
      * Redirect to home page with some pop up, possibly Bulma
      *
-     * OAuth Two Providers
-     *  $token = $user->token;
-     *  $refreshToken = $user->refreshToken; // not always provided
-     *  $expiresIn = $user->expiresIn;
+     * OAuth 1 and OAuth2 handle, tries to guess based om the existence of
+     *      tokenSecret, expiresIm
+     * in the response data.
+     * Google's response typically doesn't provide refreshToken
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function handleProviderCallback(Request $request)
@@ -71,22 +72,35 @@ class LoginController extends Controller
         $user = \Socialite::driver($provider)->user();
         
         $store = new AuthData();
+        $store->scheme = 'NOAuth';
         dump($user);
         
         $store->token = $user->token;
-        $store->tokenSecret = $user->tokenSecret;
         $store->theirId = $user->getId();
         $store->nickname = $user->getNickname();
         $store->name = $user->getName();
         $store->email = $user->getEmail();
         $store->avatar = $user->getAvatar();
         
+        if (property_exists($user, 'tokenSecret')) {
+            $store->scheme = 'OAuth 1';
+            $store->token_secret = $user->tokenSecret;
+        }
+    
+        if (property_exists($user, 'refreshToken')) {
+            $store->refresh_token = $user->refreshToken;
+        }
+    
+        if (property_exists($user, 'expiresIn')) {
+            $store->expires_in = $user->expiresIn;
+            $store->scheme = 'OAuth2';
+        }
+    
         if (method_exists($user, 'getUser') && null!== $user->getUser()) {
             $store->user = json_encode($user->getUser());
         }
         
         $store->provider = $provider;
-        $store->scheme = 'OAuth 1';
         
         // Exception handler to be added..
         $store->save();
@@ -99,9 +113,33 @@ class LoginController extends Controller
         // return redirect('/');
     }
     
-    public function handleProviderCallbackGoogle()
+    /**
+     * Delete scheme (initiated at the provider end)
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderDeauthorize(Request $request)
     {
-        $user = \Socialite::driver('google')->user();
-        dd($user);
+        $provider = str_replace('login/', '', $request->path());
+        $provider = str_replace('/deauthorize', '', $provider);
+        
+        $user = \Socialite::driver($provider)->user();
+        return redirect('/');
+    }
+
+    /**
+     * Data Deletion request (initiated at the provider end)
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderDelete(Request $request)
+    {
+        $provider = str_replace('login/', '', $request->path());
+        $provider = str_replace('/deauthorize', '', $provider);
+        
+        $user = \Socialite::driver($provider)->user();
+        return redirect('/');
     }
 }
