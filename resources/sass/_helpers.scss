@@ -1,0 +1,31 @@
+$sizes: (0,1,5, 10,15,20,25,30,50);
+$positions: ('top','left','bottom','righ');
+
+@each $size in $sizes {
+    .u-m-#{$size} {
+        margin: $size + px;
+    }
+    .u-p-#{$size} {
+        padding: $size + px;
+    }
+}
+
+@each $pos in $positions {
+    @each $size in $sizes {
+        .u-m#{$pos}-#{$size} {
+            margin-#{$pos}: $size + px;
+        }
+        .u-p#{$pos}-#{$size} {
+            padding-bottom: $size + px;
+        }
+    }
+}
+
+@each $size in $sizes {
+    .u-mb-#{$size} {
+        margin-bottom: $size + px;
+    }
+    .u-pb-#{$size} {
+        padding-bottom: $size + px;
+    }
+}

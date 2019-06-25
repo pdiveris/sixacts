@@ -1,6 +1,7 @@
 
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import "fonts";
 
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/brands';
@@ -9,3 +10,5 @@
 
 // Variables
 @import "bulma";
+
+@import "helpers";

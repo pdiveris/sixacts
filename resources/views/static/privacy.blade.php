@@ -9,16 +9,15 @@
             </div>
         </div>
     </section>
-
     <section class="section">
-        <div class="container">
+        <div class="container static">
             <h1 class="title">Privacy Policy Template</h1>
             <p>
                 The Six Acts project empowers people to take the initiative for designing a more effective democracy.
                 Our Privacy Policy outlines how we obtain information from you and what we do with it.
                 It also explains the choices you can make to control your privacy when you use The Six Acts.
             </p>
-            <h2 class="subtitle">Table of contents</h2>
+            <h2 class="title is-4">Table of contents</h2>
             <p>
             <ol class="termslist">
                 <li>Information we collect</li>
@@ -31,7 +30,7 @@
                 <li>Policy updates & contacting us</li>
             </ol>
             </p>
-            <h2 class="subtitle">1. Information we collect</h2>
+            <h2 class="title is-4">1. Information we collect</h2>
             <p>
                 When you sign or create a petition via our SixActs.org platform, an account is created for you; all of
                 your activities on SixActs.org are then tied to this account. In the chart below, we’ve detailed
@@ -166,7 +165,7 @@
                     collect personal information from them.
                 </strong>
             </p>
-            <h2 class="subtitle">2. How we use your information</h2>
+            <h2 class="title is-4">2. How we use your information</h2>
             <p>
                 Here are the ways we might use your information to run our platform, and compile better content.
             </p>
@@ -254,12 +253,12 @@
                 </tr>
                 </thead>
             </table>
-            <h2 class="subtitle">3. Who may receive your information</h2>
+            <h2 class="title is-4">3. Who may receive your information</h2>
             <p>
                 Here we outline who may receive your information when it is shared either by you via the platform,
                 or by us.
             </p>
-            <h2 class="subtitle">a. The Six Acts community</h2>
+            <h2 class="title is-4">a. The Six Acts community</h2>
             <p>
             •	All information you post on our platform in the form of reform proposals and comments will
             be visible to other users. If you choose to send messages or connect with others through our
@@ -284,7 +283,7 @@
                 questions about your submission if necessary. <strong>If you do not wish to have this information
                 shared with site administrators and moderators please do not participate in the poll.</strong>
             </p>
-            <h2 class="subtitle">Your connected social media platforms</h2>
+            <h2 class="title is-4">Your connected social media platforms</h2>
             <p>
                 •	You may share your activities on Six Acts with friends on other social media sites, for example,
                 sharing a petition you signed on Facebook. To do so, you must connect your Six Acts account with your
@@ -306,7 +305,7 @@
                 please see our
                 <a href="{{route('terms')}}">Terms of Service.</a>
             </p>
-            <h2 class="subtitle">Legal &amp; administrative obligations</h2>
+            <h2 class="title is-4">Legal &amp; administrative obligations</h2>
             <p>
                 We may use and disclose your personal information as necessary or appropriate, especially when we have
                 a legal obligation or legitimate interest to do so:
@@ -323,7 +322,7 @@
                 about our users. We also may use and disclose information collected about you in order to exercise
                 or protect legal rights or defend against legal claims.
             </p>
-            <h2 class="subtitle">a. Account & email settings</h2>
+            <h2 class="title is-4">a. Account & email settings</h2>
             <p>
                 When you vote or submit a reform proposal via our Six Acts platform, an account is created for you.
                 Your account will not be visible to the public. Your name or user ID will appear publicly on any reform
@@ -331,7 +330,7 @@
                 any proposal once. We may still send you important administrative messages (such as questions or alerts
                 about your reform submission).
             </p>
-            <h2 class="subtitle">b. Accessing or deleting your information</h2>
+            <h2 class="title is-4">b. Accessing or deleting your information</h2>
             <p>
                 If you would like to request to review, correct, update, suppress, or delete personal information that
                 has been previously provided to us by you, you may contact us directly by email thesixacts@gmail.com
@@ -348,19 +347,19 @@
                 to delete any reform proposals you have submitted or voted on, along with any votes corresponding to a
                 reform proposal that you have submitted.
             </p>
-            <h2 class="subtitle">c. Social media</h2>
+            <h2 class="title is-4">c. Social media</h2>
             <p>
                 You can edit or remove the permissions you have granted to Six Acts to use information from your social
                 media accounts by using your application privacy settings on your social media account If you have
                 signed in to Six Acts through Facebook connect, you are likely to have been cookied by Facebook.
                 You can modify or change those cookies through the settings on your Facebook account.
             </p>
-            <h2 class="subtitle">d. Third-party analytics companies & Cookies</h2>
+            <h2 class="title is-4">d. Third-party analytics companies & Cookies</h2>
             <p>
                 We have provided details on the cookies we use and instructions for how you can opt out of these in our
                 Cookies policy.
             </p>
-            <h2 class="subtitle">5. Data retention & security</h2>
+            <h2 class="title is-4">5. Data retention & security</h2>
             <p>
                 We take a lot of measures to protect your personal information. If you suspect someone else is using
                 your account, let us know by contacting thesixacts@gmail.com
@@ -378,7 +377,7 @@
                 or whether retention is advisable in light of our legal position (such as in regard to applicable
                 statutes of limitations, litigation or regulatory investigations).
             </p>
-            <h2 class="subtitle">6. Cross-border transfers</h2>
+            <h2 class="title is-4">6. Cross-border transfers</h2>
             <p>
                 Six Acts is a UK-based initiative, so if you are not a UK resident your information may be transferred
                 across borders when you use the Platform. We have put in place measures to comply with laws regulating
@@ -388,7 +387,7 @@
                 law enforcement agencies, regulatory agencies, or security authorities in the UK  may be entitled to
                 access your personal information.
             </p>
-            <h2 class="subtitle">7. Third-Party Services</h2>
+            <h2 class="title is-4">7. Third-Party Services</h2>
             <p>
                 We’re not responsible for the privacy practices of third parties linked to from our Platform.
                 This Privacy Policy does not address, and we are not responsible for, the privacy, information,
@@ -396,7 +395,7 @@
                 to which our services link.  Our inclusion of a link on our services does not imply our endorsement
                 of the linked site or service.
             </p>
-            <h2 class="subtitle">8. Policy updates & contacting us</h2>
+            <h2 class="title is-4">8. Policy updates & contacting us</h2>
             <p>
                 This policy may change over time. We’ve included here our contact information, but the best way to get
                 in touch with us is via our email
@@ -412,13 +411,13 @@
                 feel free to let us know by contacting us via our email
                 <a href="mailto: thesixacts@gmail.com">thesixacts@gmail.com</a>
             </p>
-            <P>
+            <p>
                 You can also write to the following address:<br/>
                 Six Acts<br/>
                 Flat 408, 41 Old Birley Street<br/>
                 Manchester M15 5RE<br/>
                 United Kingdom<br/>
-            </P>
+            </p>
         </div>
     </section>
 

@@ -17,6 +17,9 @@
             .termslist {
                 margin-left: 2em;
             }
+            .static h2 {
+                margin-top: 1.2em;
+            }
         </style>
     </head>
     <body>
@@ -42,6 +45,10 @@
                                 <a class="navbar-item " href="{{ route('register') }}">Register</a>
                             @else
                                 <div class="navbar-item has-dropdown is-hoverable">
+
+                                    <img src="https://secure.gravatar.com/avatar/8c1ab06a25a46d33acb224ccf9aac873?size=512"
+                                         class="rounded-full w-8 h-8 mr-3" style="outline: rgba(0, 0, 255, 0.3) solid 1px;">
+
                                     <a class="navbar-link" href="#">{{ Auth::user()->name }}</a>
 
                                     <div class="navbar-dropdown">
