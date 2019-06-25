@@ -33,8 +33,8 @@
             </p>
             <h2 class="subtitle">1. Information we collect</h2>
             <p>
-                When you sign or create a petition via our Change.org platform, an account is created for you; all of
-                your activities on Change.org are then tied to this account. In the chart below, we’ve detailed
+                When you sign or create a petition via our SixActs.org platform, an account is created for you; all of
+                your activities on SixActs.org are then tied to this account. In the chart below, we’ve detailed
                 the information we may collect about you, depending on your activities on the platform, and how
                 we obtain this information.
             </p>
@@ -116,9 +116,9 @@
                         Certain information is collected by most browsers or automatically through your device,
                         such as your Media Access Control (MAC) address, computer type (Windows PC or Mac),
                         screen resolution, operating system name and version, device manufacturer and model,
-                        language, Internet browser type and version, and the name and version of the Change.org
+                        language, Internet browser type and version, and the name and version of the SixActs.org
                         platform you are using. Collecting this information helps us build and deliver the best
-                        possible version of Change.org to you.
+                        possible version of SixActs.org to you.
                     </td>
                 </tr>
                 <tr>
@@ -214,7 +214,7 @@
                         </li>
                         <li class="list-item">
                             •	To facilitate the social sharing functionality that you choose to use, such as sharing
-                            content and petitions through the Change.org platform and other social media platforms
+                            content and petitions through the SixActs.org platform and other social media platforms
                             like Facebook and Twitter.
                         </li>
                     </td>
@@ -270,7 +270,7 @@
             </p>
             <p>
                 •	We consider an online voting platform to be a public expression of support for an issue.
-                Therefore, your name, general geographic location (postcode, country), and a link to your Change.org
+                Therefore, your name, general geographic location (postcode, country), and a link to your SixActs.org
                 user profile may be displayed on the landing page for any reform proposal you submit, and on related
                 areas of our platform. This information will be viewable to any visitor, including the media,
                 search engines, and other organisations that provide archival internet activities. If you do not wish
