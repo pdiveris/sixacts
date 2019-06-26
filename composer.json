@@ -10,6 +10,8 @@
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
+        "hackzilla/password-generator": "^1.4",
+        "ircop/passworder": "^0.1.3",
         "laravel-frontend-presets/bulma": "^2.0",
         "laravel/framework": "5.8.*",
         "laravel/nova": "*",

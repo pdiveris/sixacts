@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\AuthData;
+use App\Helpers\Utils;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-
 
 class LoginController extends Controller
 {
@@ -108,7 +109,45 @@ class LoginController extends Controller
         if (env('APP_DEBUG') === true) {
             dump($user);
         }
+        
+        // sync OAuth user with local repository
+        $this->synUser($store);
+        
         return redirect('/');
+    }
+    
+    /**
+     * Sync local user with the OAuth user they are authenticating as
+     * If user doesn't exist create it
+     * @TODO: queue the standard emails to be sent regarding new account
+     *
+     * Login the user
+     *
+     * @param \App\AuthData $authData
+     * @return bool
+     */
+    public function synUser(AuthData $authData)
+    {
+        $ret = false;
+        $recs = User::where('email', '=',$authData->email)->get();
+        
+        // check if the user exists
+        // if not, create user with random password
+        if ( count( $recs ) < 1 ) {
+            $ourUser= new User();
+            $ourUser->email = $authData->email;
+            $ourUser->name = $authData->name;
+            
+            $password = Utils::generatePassword();
+            $ourUser->password = bcrypt($password);
+            $ourUser->save();
+        } else {
+            $ourUser = $recs[0];
+        }
+        // authenticate user
+        \Auth::login($ourUser);
+        
+        return $ret;
     }
     
     /**

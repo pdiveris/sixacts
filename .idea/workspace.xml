@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/_fonts.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/sass/_helpers.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/Utils.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/StorageController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/passworder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_06_26_002227_create_jobs_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/emails/response_to_become_an_editor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/emails/response_to_join_mailinglist.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/emails/response_to_suggest_term.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/emails/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sixactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sixactions.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/privacy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/privacy.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/terms.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/terms.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,19 +34,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/signin.blade.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EmailController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+            <state relative-caret-position="140">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1440">
-              <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+            <state relative-caret-position="283">
+              <caret line="122" column="7" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
               <folding>
                 <element signature="e#45#62#0#PHP" expanded="true" />
               </folding>
@@ -46,14 +54,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Jobs/SendEmailJob.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="49" column="62" lean-forward="true" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
+            <state relative-caret-position="580">
+              <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#44#73#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Mail/SendMailable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="34" selection-start-line="1" selection-end-line="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Helpers/Utils.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="840">
+              <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -61,17 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/static/terms.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="361" column="11" lean-forward="true" selection-start-line="361" selection-start-column="11" selection-end-line="361" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="7220">
+              <caret line="361" column="11" selection-start-line="361" selection-start-column="11" selection-end-line="361" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -107,6 +124,9 @@
       <find>8,</find>
       <find>7.</find>
       <find>more le</find>
+      <find>passworder</find>
+      <find>list</find>
+      <find>SendMailJ</find>
     </findStrings>
     <replaceStrings>
       <replace>a</replace>
@@ -118,8 +138,8 @@
       <replace>&lt;h2 class=&quot;title is-4&quot;&gt;</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/app</dir>
+      <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -128,17 +148,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_22_192522_create_votes_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_23_011710_alter_proposals_add_constraints.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_23_012126_create_categories_table.php" />
-        <option value="$PROJECT_DIR$/database/seeds/CategoryTableSeeder.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_22_192511_create_proposals_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/ProposalTableSeeder.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
-        <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/nova/config/nova.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_23_012906_alter_proposals_add_category.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_23_140111_alter_categories_add_colour.php" />
@@ -146,7 +160,6 @@
         <option value="$PROJECT_DIR$/resources/views/static/gladdys.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_24_093741_create_auth_data_table.php" />
         <option value="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
@@ -160,8 +173,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_06_24_224037_alter_auth_add_oauth2.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_24_225841_alter_auth_allow_null_tokens.php" />
         <option value="$PROJECT_DIR$/docs/notes.txt" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/services.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_24_223550_alter_auth_token_secret.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_25_082533_alter_auth_rename_their_id.php" />
@@ -175,10 +186,19 @@
         <option value="$PROJECT_DIR$/app/Nova/User.php" />
         <option value="$PROJECT_DIR$/resources/sass/_helpers.scss" />
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
         <option value="$PROJECT_DIR$/resources/views/static/privacy.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/static/terms.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/vendor/ircop/passworder/src/PassworderServiceProvider.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/app/Helpers/Utils.php" />
+        <option value="$PROJECT_DIR$/app/Mail/SendMailable.php" />
+        <option value="$PROJECT_DIR$/app/Jobs/SendEmailJob.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/EmailController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
       </list>
     </option>
   </component>
@@ -286,6 +306,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/laravel-frontend-presets/bulma" />
+      <path value="$PROJECT_DIR$/vendor/ircop/passworder" />
+      <path value="$PROJECT_DIR$/vendor/hackzilla/password-generator" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
@@ -300,6 +322,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -311,7 +334,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -380,7 +402,8 @@
       <workItem from="1561409822915" duration="17941000" />
       <workItem from="1561430722496" duration="2895000" />
       <workItem from="1561444360721" duration="17659000" />
-      <workItem from="1561476195129" duration="2019000" />
+      <workItem from="1561476195129" duration="13890000" />
+      <workItem from="1561539491291" duration="1622000" />
     </task>
     <task id="LOCAL-00001" summary="Added migrations with the fillable columns for Proposals and Votes. To include timestamps.&#10;Wll turn into soft deletes.">
       <created>1561249111240</created>
@@ -480,11 +503,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561473321055</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added final static texts from Eva's email&#10;Styling headings&#10;Work on avatar">
+      <created>1561484444744</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1561484444744</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83306000" />
+    <option name="totallyTimeSpent" value="96799000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -497,8 +527,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1737" y="30" width="1830" height="963" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1799775" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26602924" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -512,7 +543,7 @@
       <window_info anchor="bottom" id="Tail" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="File Transfer" order="10" visible="true" weight="0.22769953" />
+      <window_info anchor="bottom" id="File Transfer" order="10" visible="true" weight="0.2746479" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Terminal" order="12" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
@@ -542,56 +573,15 @@
     <MESSAGE value="Group the resources in the sidebar (push Auth data down a the bottom)" />
     <MESSAGE value="Changed references of Change.org to SixActs.org" />
     <MESSAGE value="Refactored forgotten reference to old &quot;theirId.&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored forgotten reference to old &quot;theirId.&quot;" />
+    <MESSAGE value="Added final static texts from Eva's email&#10;Styling headings&#10;Work on avatar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added final static texts from Eva's email&#10;Styling headings&#10;Work on avatar" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Proposal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/artisan">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_24_093741_create_auth_data_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="11" selection-start-line="9" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/public/mix-manifest.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1198">
-          <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
@@ -633,13 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="220" column="17" selection-start-line="220" selection-start-column="17" selection-end-line="220" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -711,24 +694,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/notes.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1040">
-          <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -813,16 +782,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1440">
-          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
-          <folding>
-            <element signature="e#45#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/AuthData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1280">
@@ -851,13 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/static/terms.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="361" column="11" lean-forward="true" selection-start-line="361" selection-start-column="11" selection-end-line="361" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nova/public/app.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -876,6 +828,89 @@
           <caret line="49" column="62" lean-forward="true" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/ircop/passworder/src/PassworderServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="36" selection-start-line="32" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="177" selection-start-line="177" selection-end-line="177" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="56" column="388" selection-start-line="56" selection-start-column="388" selection-end-line="56" selection-end-column="388" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EmailController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Jobs/SendEmailJob.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="35" column="1" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+          <folding>
+            <element signature="e#44#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Mail/SendMailable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="34" selection-start-line="1" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Helpers/Utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="47" column="6" selection-start-line="47" selection-start-column="6" selection-end-line="47" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/static/terms.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7220">
+          <caret line="361" column="11" selection-start-line="361" selection-start-column="11" selection-end-line="361" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="122" column="7" selection-start-line="122" selection-start-column="7" selection-end-line="122" selection-end-column="7" />
+          <folding>
+            <element signature="e#45#62#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
