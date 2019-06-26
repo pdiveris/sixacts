@@ -43,13 +43,21 @@ Route::get('login/delete/faceboook', 'Auth\LoginController@handleProviderDelete'
     ->name('deletefacebook')
 ;
 
-Route::get('twitter', function () {
-    $token = '253052843-Pjd6WsvNs8xaPStSu6LwcaouPjW0c2y8H2IjFIdX';
-    $secret = 'q13oYTMLTGGMCBnOi2aDbDbTluaX8gxs1vwJmd3r0znR6';
-    $user = \Socialite::driver('twitter')
-        ->userFromTokenAndSecret($token, $secret);
-    dd($user);
+Route::get(/**
+ * @return string
+ */ 'twitter', function () {
+    $token = '851049513880104960-lhnmSQ4AqCjAucTxEM67MYMacEgxLe5';
+    $secret = 'ShzD5LYihdxzTmWBzSlBlt6ggDXhEN4mS3MIAd4IakX10';
     
+/*    $user = \Socialite::driver('twitter')
+        ->userFromTokenAndSecret($token, $secret);*/
+
+    // $credentials = ['email'=>'petros@diveris.org', 'password'=>'yellowbrix!!'];
+    $ourUser = \App\User::find(1);
+    dump('Becoming Eva...');
+    \Auth::login($ourUser, true);
+    return redirect('/');
+    // return '';
 });
 Auth::routes();
 

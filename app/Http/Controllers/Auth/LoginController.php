@@ -29,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -118,7 +118,7 @@ class LoginController extends Controller
     
     /**
      * Sync local user with the OAuth user they are authenticating as
-     * If user doesn't exist create it
+     * If user doesn't exist create them
      * @TODO: queue the standard emails to be sent regarding new account
      *
      * Login the user
@@ -144,9 +144,8 @@ class LoginController extends Controller
         } else {
             $ourUser = $recs[0];
         }
-        // authenticate user
         \Auth::login($ourUser);
-        
+
         return $ret;
     }
     
