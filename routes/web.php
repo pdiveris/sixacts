@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('static.welcome');
 });
 
-Route::get('/test', function () {
+Route::get('email', 'EmailController@sendEmail');
 
+Route::get('/test', function () {
+    $kango = new \App\Kango(['title'=>'peqinois']);
+    $kango->save();
+    print_r($kango);
     return '';
 });
 
@@ -45,13 +49,8 @@ Route::get('login/delete/faceboook', 'Auth\LoginController@handleProviderDelete'
 
 Route::get(/**
  * @return string
- */ 'twitter', function () {
-    $token = '851049513880104960-lhnmSQ4AqCjAucTxEM67MYMacEgxLe5';
-    $secret = 'ShzD5LYihdxzTmWBzSlBlt6ggDXhEN4mS3MIAd4IakX10';
-    
-/*    $user = \Socialite::driver('twitter')
-        ->userFromTokenAndSecret($token, $secret);*/
-
+ */ 'twitter', function ()
+{
     // $credentials = ['email'=>'petros@diveris.org', 'password'=>'yellowbrix!!'];
     $ourUser = \App\User::find(1);
     dump('Becoming Eva...');
@@ -59,6 +58,7 @@ Route::get(/**
     return redirect('/');
     // return '';
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMailable;
 use App\Jobs\SendEmailJob;
 use Carbon\Carbon;
 
 class EmailController extends Controller
 {
+    /**
+     * Queue an Email job
+     * https://appdividend.com/2017/12/21/laravel-queues-tutorial-example-scratch/#Laravel_Queue_Send_Email_Example
+     * @see QUEUE_CONNECTION=database in dotEnv
+     */
     public function sendEmail()
     {
-        // Mail::to('mail@appdividend.com')->send(new SendMailable());
-        // dispatch(new SendEmailJob());
-        $emailJob = (new SendEmailJob())->delay(Carbon::now()->addSeconds(3));
-        dispatch($emailJob);
+    
+        SendEmailJob::dispatch()->delay(Carbon::now()->addSeconds(2));
         echo 'email sent';
+        
     }
 }

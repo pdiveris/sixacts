@@ -31,6 +31,6 @@
          */
         public function handle()
         {
-            Mail::to('mail@appdividend.com')->send(new SendMailable());
+            Mail::to('petros@diveris.org')->send(new SendMailable());
         }
 }

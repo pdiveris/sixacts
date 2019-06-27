@@ -134,18 +134,16 @@ class LoginController extends Controller
         // check if the user exists
         // if not, create user with random password
         if ( count( $recs ) < 1 ) {
-            $ourUser= new User();
-            $ourUser->email = $authData->email;
-            $ourUser->name = $authData->name;
-            
             $password = Utils::generatePassword();
-            $ourUser->password = bcrypt($password);
+            $ourUser= new User(
+                ['email'=>$authData->email, 'name'=> $authData->name, 'password'=>bcrypt($password)]
+            );
             $ourUser->save();
         } else {
             $ourUser = $recs[0];
         }
+        // authenticate user
         \Auth::login($ourUser);
-
         return $ret;
     }
     
