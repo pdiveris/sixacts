@@ -26,6 +26,5 @@ class UserCreated
      */
     public function handle($event)
     {
-        dump('Listener: User Created');
     }
 }

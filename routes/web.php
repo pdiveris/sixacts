@@ -10,17 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+    
+    use App\Jobs\SendEmailJob;
+    use Carbon\Carbon;
+    
+    Route::get('/', function () {
     return view('static.welcome');
 });
 
 Route::get('email', 'EmailController@sendEmail');
 
 Route::get('/test', function () {
-    $kango = new \App\Kango(['title'=>'peqinois']);
-    $kango->save();
-    print_r($kango);
+    $user = \App\User::find(3);
+    $mailShot = new \App\Mail\UserCreated($user);
+    
+    SendEmailJob::dispatch($user, $mailShot)->delay(Carbon::now()->addSeconds(3));
+
     return '';
 });
 

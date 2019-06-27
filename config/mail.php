@@ -59,7 +59,18 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
-
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Global "Reply to" Address
+    |--------------------------------------------------------------------------
+    |
+    | What it says.
+    |
+    */
+    'reply_to' => ['address' => 'eva@sixacts.org', 'name' => 'Eva Schlunke'],
+    
+    
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

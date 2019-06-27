@@ -16,8 +16,8 @@ class UserObserver
      */
     public function created(\App\User $user)
     {
-        dump('User created...');
-        SendEmailJob::dispatch()->delay(Carbon::now()->addSeconds(2));
+        $mailShot = new \App\Mail\UserCreated($user);
+        SendEmailJob::dispatch($user, $mailShot)->delay(Carbon::now()->addSeconds(3));
     }
 
     /**
