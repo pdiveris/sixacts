@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendEmailJob;
-use Carbon\Carbon;
 
 class EmailController extends Controller
 {
@@ -15,7 +13,6 @@ class EmailController extends Controller
     public function sendEmail()
     {
     
-        SendEmailJob::dispatch()->delay(Carbon::now()->addSeconds(2));
         echo 'email sent';
         
     }

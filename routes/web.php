@@ -10,22 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-    
-    use App\Jobs\SendEmailJob;
-    use Carbon\Carbon;
-    
-    Route::get('/', function () {
+
+Route::get('/', function () {
     return view('static.welcome');
 });
 
-Route::get('email', 'EmailController@sendEmail');
-
 Route::get('/test', function () {
-    $user = \App\User::find(3);
-    $mailShot = new \App\Mail\UserCreated($user);
+    // $user = \App\User::find(3);
     
-    SendEmailJob::dispatch($user, $mailShot)->delay(Carbon::now()->addSeconds(3));
-
+    $email = new App\Mail\SendEmailTest();
+    dump('route: test ['.get_class($email).']');
+    dispatch(new App\Jobs\SendEmailJob($email));
     return '';
 });
 

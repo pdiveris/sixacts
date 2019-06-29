@@ -2,9 +2,9 @@
 
 namespace App\Observers;
 
-use App\User;
 use App\Jobs\SendEmailJob;
-use Carbon\Carbon;
+use App\Mail\SendUserEmail as UserEmail;
+use App\User;
 
 class UserObserver
 {
@@ -16,8 +16,15 @@ class UserObserver
      */
     public function created(\App\User $user)
     {
-        $mailShot = new \App\Mail\UserCreated($user);
-        SendEmailJob::dispatch($user, $mailShot)->delay(Carbon::now()->addSeconds(3));
+        // dispatch(new App\Jobs\SendEmailJob());
+        dump('UserObserver: created');
+        
+        $email = new UserEmail($user, 'user_welcome');
+        $x = new SendEmailJob($email);
+        dump(get_class($email));
+        dump($x);
+        dispatch($x);
+        
     }
 
     /**

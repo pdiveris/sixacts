@@ -4,9 +4,9 @@ namespace App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Events\UserCreated as UserCreatedEvent;
+use App\Events\UserCreatedEvent as UserCreatedEvent;
 
-class UserCreated
+class UserCreatedListener
 {
     /**
      * Create the event listener.
@@ -16,6 +16,7 @@ class UserCreated
     public function __construct()
     {
         //
+        dump('UserCreatedListener constructor...');
     }
 
     /**
@@ -26,5 +27,6 @@ class UserCreated
      */
     public function handle($event)
     {
+        dump('UserCreatedListener handle...');
     }
 }
