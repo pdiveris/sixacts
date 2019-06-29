@@ -13,8 +13,11 @@
 
 Route::get('/', function () {
     $proposals = \App\Proposal::all();
-    
     return view('static.welcome', ['proposals'=>$proposals]);
+});
+
+Route::get('forum', function() {
+    return view('forum.home', []);
 });
 
 Route::get('/test', function () {

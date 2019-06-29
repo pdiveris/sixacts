@@ -73,5 +73,9 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
+        <div class="container">
+            Laravel {{app()->version()}}<br/>
+            BentleyWorks v0.1
+        </div>
     </body>
 </html>
