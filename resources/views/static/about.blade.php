@@ -1,29 +1,26 @@
-@extends('layouts.app')
+@extends('layouts.forum')
 @section('content')
-    <section class="hero is-primary">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    6 Acts
-                </h1>
-            </div>
-        </div>
-    </section>
-    <div class="columns is-marginless is-centered">
-        <div class="column is-5">
-            <div class="content">
-                <div class="title m-b-md">
-                    GDPR
+    <div class="columns">
+        {{--
+                <div class="column is-3">
+                    @include('partials.sidebar')
                 </div>
-                <div class="links">
-                    <a class="button is-info" href="{{url('')}}">HOME</a>
-                    <a class="button is-info" href="{{route('signin')}}">SIGN IN</a>
-                    <a class="button is-info" href="{{route('register')}}">REGISTER</a>
-                    <a class="button is-info" href="{{route('terms')}}">TERMS</a>
-                    <a class="button is-info" href="{{route('privacy')}}">PRIVACY</a>
-                </div>
+        --}}
+        <div class="column is-9">
+            <div class="box content" style="min-height: 400px;">
+                <h1>About Six Acts</h1>
+                One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a
+                horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his
+                brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to
+                cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size
+                of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't
+                a dream. His room, a proper human room although a little too small, lay peacefully between its four
+                familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling
+                salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and
+                housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright,
+                raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned
+                to look out the window at the dull weather. Drops
             </div>
         </div>
     </div>
-
 @stop

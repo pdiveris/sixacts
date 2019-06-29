@@ -31,7 +31,6 @@ Route::get('privacy', 'StaticController@content')->name('privacy');
 Route::get('gdpr', 'StaticController@content')->name('gdpr');
 Route::get('about', 'StaticController@content')->name('about');
 
-Route::get('register', 'StaticController@userRegistration')->name('register');
 
 Route::get('signin', 'StaticController@signin')->name('signin');
 Route::get('login/twitter', 'Auth\LoginController@redirectToProvider')->name('signin_twitter');

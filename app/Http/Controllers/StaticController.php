@@ -12,8 +12,11 @@ class StaticController extends Controller
      */
     public function content(Request $request)
     {
+        $proposals = \App\Proposal::all();
+        $categories = \App\Category::all();
+        
         $view = $request->path();
-        return \View::make('static.'.$view, []);
+        return \View::make('static.'.$view, ['proposals'=>$proposals, 'categories'=>$categories]);
     }
     
     /**
