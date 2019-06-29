@@ -16,7 +16,6 @@ class UserCreatedListener
     public function __construct()
     {
         //
-        dump('UserCreatedListener constructor...');
     }
 
     /**
@@ -27,6 +26,6 @@ class UserCreatedListener
      */
     public function handle($event)
     {
-        dump('UserCreatedListener handle...');
+        //
     }
 }

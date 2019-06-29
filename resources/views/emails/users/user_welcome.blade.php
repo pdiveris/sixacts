@@ -24,7 +24,7 @@
         <tr>
             <td>
                 <p class="twelvepoint">
-                    <strong>Hi {{$name}}</strong>
+                    <strong>Hi {{$name}},</strong>
                 </p>
             </td>
         </tr>

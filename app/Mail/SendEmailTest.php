@@ -28,7 +28,6 @@ class SendEmailTest extends Mailable
      */
     public function build()
     {
-        dump('SendEmailTest.build...');
         return $this->view('emails.welcome');
     }
 

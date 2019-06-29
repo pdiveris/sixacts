@@ -33,10 +33,6 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        //
-        // $email = new SendEmailTest();
-        dump('SendEmailJob [handle]');
-        dump(get_class($this->mailShot));
         Mail::to('q@diveris.org')->send($this->mailShot);
     }
 }

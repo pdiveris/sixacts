@@ -17,11 +17,14 @@ class SendUserEmail extends Mailable
     private $template;
     
     /**
+     * SendUserEmail constructor.
      * Create a new message instance.
      *
+     * @param \App\User $user
+     * @param string $template
      * @return void
      */
-    public function __construct(User $user,string $template)
+    public function __construct(User $user, string $template)
     {
         $this->user = $user;
         $this->template = $template;    // e.g. user_welcome
@@ -34,15 +37,14 @@ class SendUserEmail extends Mailable
      */
     public function build()
     {
-        dump('SendUserEmail.build');
-        // return $this->view('view.name');
         return $this->to($this->user->email)
-//            ->text('emails.users.'.$this->template.'_plain')
-//            ->view('emails.users.'.$this->template)
-            ->view('emails.users.user_welcome')
+            ->text('emails.users.'.$this->template.'_plain')
+            ->view('emails.users.'.$this->template)
+//            ->view('emails.users.user_welcome')
             ->with([
                 'name' => $this->user->name,
                 'email' => $this->user->email,
+                'var' => 'Blurb..',
             ]);
     }
 }

@@ -16,15 +16,9 @@ class UserObserver
      */
     public function created(\App\User $user)
     {
-        // dispatch(new App\Jobs\SendEmailJob());
-        dump('UserObserver: created');
-        
         $email = new UserEmail($user, 'user_welcome');
         $x = new SendEmailJob($email);
-        dump(get_class($email));
-        dump($x);
         dispatch($x);
-        
     }
 
     /**

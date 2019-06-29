@@ -22,7 +22,6 @@ class UserCreatedEvent
     public function __construct()
     {
         //
-        dump('UserCreated Event(constructor)..');
     }
 
     /**
@@ -32,7 +31,6 @@ class UserCreatedEvent
      */
     public function broadcastOn()
     {
-        dump('UserCreated Event (broadcastOn)..');
         return new PrivateChannel('channel-name');
     }
 }
