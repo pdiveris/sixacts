@@ -11,17 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    $proposals = \App\Proposal::all();
-    return view('static.welcome', ['proposals'=>$proposals]);
-});
-
 Route::get('login/verify', function () {
     return view('static.registration_thanks');
-});
-
-Route::get('forum', function() {
-    return view('forum.home', []);
 });
 
 Route::get('/test', function () {
@@ -33,9 +24,13 @@ Route::get('/test', function () {
     return '';
 });
 
+Route::get('/', 'StaticController@home')->name('home');
+Route::get('forum', 'StaticController@forum')->name('forum');
 Route::get('terms', 'StaticController@content')->name('terms');
 Route::get('privacy', 'StaticController@content')->name('privacy');
 Route::get('gdpr', 'StaticController@content')->name('gdpr');
+Route::get('about', 'StaticController@content')->name('about');
+
 Route::get('register', 'StaticController@userRegistration')->name('register');
 
 Route::get('signin', 'StaticController@signin')->name('signin');

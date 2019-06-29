@@ -19,9 +19,20 @@ class StaticController extends Controller
     /**
      * @return \Illuminate\Contracts\View\View
      */
-    public function gladdys()
+    public function home()
     {
-        return \View::make('static.gladdys', []);
+        $proposals = \App\Proposal::all();
+        return view('static.welcome', ['proposals'=>$proposals]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function forum()
+    {
+        $proposals = \App\Proposal::all();
+        $categories = \App\Category::all();
+        return view('forum.home', ['proposals'=>$proposals, 'categories'=>$categories]);
     }
     
     /**

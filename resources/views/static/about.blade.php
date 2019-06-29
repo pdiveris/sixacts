@@ -13,7 +13,7 @@
         <div class="column is-5">
             <div class="content">
                 <div class="title m-b-md">
-                    About
+                    GDPR
                 </div>
                 <div class="links">
                     <a class="button is-info" href="{{url('')}}">HOME</a>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterCategoriesAddColour extends Migration
+class AlterCategoriesAddShortTitle extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class AlterCategoriesAddColour extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('colour', 120)->after('title');
+            $table->string('short_title', 200)->after('title');
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -25,9 +25,9 @@ class AlterCategoriesAddColour extends Migration
      */
     public function down()
     {
-        if (Schema::hasColumn('categories', 'colour')) {
+        if (Schema::hasColumn('categories', 'short_title')) {
             Schema::table('categories', function (Blueprint $table) {
-                $table->dropColumn('colour');
+                $table->dropColumn('short_title');
             });
         }
     }
