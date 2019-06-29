@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Gravatar;
 
 class StaticController extends Controller
 {
