@@ -1,3 +1,3 @@
-@extends('layouts.app')
+@extends('layouts.forum')
 @section('content')
 @stop

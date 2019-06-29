@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <!-- Bulma Version 0.7.5-->
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/forum.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/sixacts.css')}}">
 </head>
 <body>
 <nav class="navbar is-white topNav">

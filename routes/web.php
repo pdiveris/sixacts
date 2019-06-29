@@ -16,6 +16,10 @@ Route::get('/', function () {
     return view('static.welcome', ['proposals'=>$proposals]);
 });
 
+Route::get('login/verify', function () {
+    return view('static.registration_thanks');
+});
+
 Route::get('forum', function() {
     return view('forum.home', []);
 });

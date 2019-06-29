@@ -20,7 +20,6 @@ _ide_helper.php
 public/mix-manifest.json
 public/css/app.css
 database/migrations/2019_06_25_082533_alter_auth_rename_their_id.php
-public/css/
 public/fonts/
 docs/emails/
 public/norman/
