@@ -8,6 +8,12 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Class SendUserEmail
+ * @package App\Mail
+ *
+ * @see https://itsolutionstuff.com/post/how-to-send-mail-using-queue-in-laravel-57example.html
+ */
 class SendUserEmail extends Mailable
 {
     use Queueable, SerializesModels;

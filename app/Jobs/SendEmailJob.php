@@ -9,6 +9,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Mail;
 
+/**
+ * Class SendEmailJob
+ * @package App\Jobs
+ *
+ * @see https://itsolutionstuff.com/post/how-to-send-mail-using-queue-in-laravel-57example.html
+ */
 class SendEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;

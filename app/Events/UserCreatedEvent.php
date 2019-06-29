@@ -10,6 +10,12 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
+/**
+ * Class UserCreatedEvent
+ * @package App\Events
+ *
+ * @see https://laravel-news.com/laravel-model-events-getting-started
+ */
 class UserCreatedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;

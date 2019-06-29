@@ -6,6 +6,12 @@ use App\Jobs\SendEmailJob;
 use App\Mail\SendUserEmail as UserEmail;
 use App\User;
 
+/**
+ * Class UserObserver
+ * @package App\Observers
+ *
+ * @see https://laravel-news.com/laravel-model-events-getting-started
+ */
 class UserObserver
 {
     /**
