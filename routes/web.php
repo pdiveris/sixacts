@@ -12,7 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('static.welcome');
+    $proposals = \App\Proposal::all();
+    
+    return view('static.welcome', ['proposals'=>$proposals]);
 });
 
 Route::get('/test', function () {

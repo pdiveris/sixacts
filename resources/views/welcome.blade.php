@@ -99,7 +99,6 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    6 Acts
                     <p class="versioninfo">Version {{ app()->version() }}</p>
                 </div>
 

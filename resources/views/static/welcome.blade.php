@@ -15,7 +15,13 @@
                 <div class="title m-b-md">
                     Welcome
                 </div>
-
+            </div>
+            <div class="content">
+                @foreach($proposals as $proposal)
+                    <h4>{{$proposal->title}}</h4>
+                @endforeach
+            </div>
+            <div class="container">
                 <div class="links">
                     <a class="button is-info" href="{{route('signin')}}">SIGN IN</a>
                     <a class="button is-info" href="{{route('register')}}">REGISTER</a>
