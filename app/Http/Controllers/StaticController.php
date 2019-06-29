@@ -22,7 +22,8 @@ class StaticController extends Controller
     public function home()
     {
         $proposals = \App\Proposal::all();
-        return view('static.welcome', ['proposals'=>$proposals]);
+        $categories = \App\Category::all();
+        return view('static.welcome', ['proposals'=>$proposals, 'categories'=>$categories]);
     }
 
     /**

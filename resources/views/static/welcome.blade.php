@@ -1,36 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.forum')
 @section('content')
-    <section class="hero is-primary">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    6 Acts
-                </h1>
-            </div>
+    <div class="columns">
+        <div class="column is-3">
+            @include('partials.sidebar')
         </div>
-    </section>
-    <div class="columns is-marginless is-centered">
-        <div class="column is-5">
-            <div class="content">
-                <div class="title m-b-md">
-                    Welcome
-                </div>
-            </div>
-            <div class="content">
+        <div class="column is-9">
+            <div class="box content">
                 @foreach($proposals as $proposal)
-                    <h4>{{$proposal->title}}</h4>
+                    <article class="post">
+                        <h4>{{$proposal->title}}</h4>
+                        <div class="media">
+                            <div class="media-left">
+                                <p class="image is-32x32">
+                                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                                </p>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <a href="#">@jsmith</a> replied 34 minutes ago &nbsp;
+                                        <span class="tag">TAG</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="media-right">
+                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+                            </div>
+                        </div>
+                    </article>
                 @endforeach
-            </div>
-            <div class="container">
-                <div class="links">
-                    <a class="button is-info" href="{{route('signin')}}">SIGN IN</a>
-                    <a class="button is-info" href="{{route('register')}}">REGISTER</a>
-                    <a class="button is-info" href="{{route('terms')}}">TERMS</a>
-                    <a class="button is-info" href="{{route('privacy')}}">PRIVACY</a>
-                </div>
-
             </div>
         </div>
     </div>
-
 @stop
