@@ -17,7 +17,8 @@
         "laravel/nova": "*",
         "laravel/socialite": "^4.1",
         "thomaswelton/laravel-gravatar": "~1.0",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "bentleyworks/metafield": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",
@@ -38,6 +39,10 @@
         {
             "type": "path",
             "url": "./nova"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Metafield"
         }
     ],
     "extra": {

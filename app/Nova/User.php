@@ -2,10 +2,12 @@
 
 namespace App\Nova;
 
+use App\Http\Controllers\StaticController;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 
@@ -77,9 +79,6 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make()
-                ->onlyOnIndex(),
-
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -94,11 +93,21 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
-
-            Avatar::make('Avatar')
+    
+            Image::make('avatar')
                 ->disk('public')
                 ->path('avatars')
-
+                ->thumbnail(function ($value, $path) {
+                    return $value
+                        ? \Storage::disk('public')->url($value)
+                        : StaticController::makeGravatar($this->email);
+                })->onlyOnIndex(),
+    
+            Avatar::make('Avatar')
+                ->hideFromIndex()
+                ->disk('public')
+                ->path('avatars'),
+            
         ];
     }
 

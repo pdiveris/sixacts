@@ -24,4 +24,4 @@ public/fonts/
 docs/emails/
 public/norman/
 *.bak*
-
+nova-components/Metafield/*
