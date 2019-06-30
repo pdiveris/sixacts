@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereUserId($value)
  * @mixin \Eloquent
+ * @property-read \App\User $user
  */
 class Proposal extends Model
 {

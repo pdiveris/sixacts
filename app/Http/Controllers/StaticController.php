@@ -54,6 +54,8 @@ class StaticController extends Controller
      * @param bool $img True to return a complete IMG tag False for just the URL
      * @param array $atts Optional, additional key/value attributes to include in the IMG tag
      * @return string String containing either just a URL or a complete image tag
+     *
+     * @see https://en.gravatar.com/site/implement/images/php/
      */
     public static function makeGravatar(string $email, $s = 80, $d = 'mp', $r = 'g', $img = false,  $atts = []): string
     {

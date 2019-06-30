@@ -19,6 +19,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $short_title
+ * @property string $class
+ * @property string $sub_class
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereClass($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereShortTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereSubClass($value)
  */
 class Category extends Model
 {

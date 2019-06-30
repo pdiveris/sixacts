@@ -1,5 +1,27 @@
 <?php
-
+/**
+ * Login Controller
+ *
+ * Handles aspects of the login process,
+ * including syncing with OAuth data from external providers
+ *
+ * PHP version 7.2
+ *
+ * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * that is available through the world-wide-web at the following URI:
+ * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
+ * the PHP License and are unable to obtain it through the web, please
+ * send a note to license@php.net so we can mail you a copy immediately.
+ *
+ * @category  Controller
+ * @package   Auth
+ * @author    Petros Diveris <petros@diveris.org>
+ * @copyright 2019 Bentleyworks
+ * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version   GIT: $Id$
+ * @link      https://github.com/pdiveris/sixproposals/blob/master/app/Http/Controllers/Auth/LoginController.php
+ * @see       Six Acts
+ */
 namespace App\Http\Controllers\Auth;
 
 use App\AuthData;
@@ -9,6 +31,15 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
+/**
+ * Class LoginController
+ *
+ * @category Controller
+ * @package  App\Http\Controllers\Auth
+ * @author   Petros Diveris <petros@diveris.org>
+ * @license  http://www.diveris.org MIT
+ * @link     http://www.diveris.org
+ */
 class LoginController extends Controller
 {
     /*
@@ -44,7 +75,8 @@ class LoginController extends Controller
     /**
      * Redirect the user to the GitHub authentication page.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request The Request
+     *
      * @return \Illuminate\Http\Response
      */
     public function redirectToProvider(Request $request)
@@ -62,7 +94,8 @@ class LoginController extends Controller
      * in the response data.
      * Google's response typically doesn't provide refreshToken
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request The request
+     *
      * @return \Illuminate\Http\Response
      */
     public function handleProviderCallback(Request $request)
@@ -107,7 +140,7 @@ class LoginController extends Controller
 
         // Symfony console debugger ON please
         if (env('APP_DEBUG') === true) {
-            // dump($user);
+            dump($user);
         }
         
         // sync OAuth user with local repository
@@ -115,28 +148,36 @@ class LoginController extends Controller
         
         return redirect('/');
     }
-    
+
     /**
      * Sync local user with the OAuth user they are authenticating as
      * If user doesn't exist create them
+     *
+     * @param \App\AuthData $authData Authentication data
+     *
+     * @return bool
+     *
      * @TODO: queue the standard emails to be sent regarding new account
      *
      * Login the user
-     *
-     * @param \App\AuthData $authData
-     * @return bool
      */
     public function synUser(AuthData $authData)
     {
         $ret = false;
-        $recs = User::where('email', '=',$authData->email)->get();
+        $recs = User::where('email', '=', $authData->email)->get();
         
         // check if the user exists
         // if not, create user with random password
-        if ( count( $recs ) < 1 ) {
+        if (count($recs) < 1 ) {
             $password = Utils::generatePassword();
             $ourUser= new User(
-                ['email'=>$authData->email, 'name'=> $authData->name, 'password'=>bcrypt($password)]
+                [
+                    'email'=>$authData->email,
+                    'name'=> $authData->name,
+                    'password'=>bcrypt($password),
+                    'social_avatar'=>$authData->avatar,
+                    'social_avatar_large'=>$authData->avatar_original,
+                ]
             );
             $ourUser->save();
         } else {
@@ -150,7 +191,8 @@ class LoginController extends Controller
     /**
      * Delete scheme (initiated at the provider end)
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
     public function handleProviderDeauthorize(Request $request)
@@ -165,7 +207,8 @@ class LoginController extends Controller
     /**
      * Data Deletion request (initiated at the provider end)
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
     public function handleProviderDelete(Request $request)
