@@ -37,11 +37,28 @@ class StaticController extends Controller
         }
         $names = explode(' ',$proposal->user->name);
         if (count($names) >= 2 ) {
-            return '@'.strtolower(substr($names[0],0,1)).strtolower(substr($names[1],1));
+            return '@'.strtolower(substr($names[0],0,1)).strtolower(substr($names[1],0));
         } else {
             return '@'.strtolower($proposal->user->name);
         }
         
+    }
+    
+    /**
+     * Try local avatar, social avatar, gravatar
+     *
+     * @param \App\User $user
+     * @return string
+     */
+    public static function makeAvatar(\App\User $user): string
+    {
+        if (null !== $user->avatar && '' !== $user->avatar) {
+            return url($user->avatar);
+        } elseif (null !== $user->social_avatar && '' !== $user->social_avatar) {
+            return $user->social_avatar;
+        } else {
+            return self::makeGravatar($user->email);
+        }
     }
     
     /**
