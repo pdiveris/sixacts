@@ -107,7 +107,7 @@ class LoginController extends Controller
 
         // Symfony console debugger ON please
         if (env('APP_DEBUG') === true) {
-            dump($user);
+            // dump($user);
         }
         
         // sync OAuth user with local repository

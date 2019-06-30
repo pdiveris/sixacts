@@ -65,5 +65,13 @@ class User extends Authenticatable
     protected $dispatchesEvents = [
         'created' => Events\UserCreatedEvent::class,
     ];
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function proposals()
+    {
+        return $this->hasMany('App\Proposal');
+    }
 }
 

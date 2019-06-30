@@ -30,6 +30,21 @@ class StaticController extends Controller
         return view('static.welcome', ['proposals'=>$proposals, 'categories'=>$categories]);
     }
 
+    public static function authorLink(\App\Proposal $proposal)
+    {
+        if (null !== $proposal->user->display_name && '' !== $proposal->user->display_name) {
+            return '@'.$proposal->user->display_name;
+        }
+        
+        $names = explode(' ',$proposal->user->name);
+        if (count($names) >= 2 ) {
+            return '@'.strtolower(substr($names[0],0,1)).strtolower(substr($names[1],1));
+        } else {
+            return '@'.strtolower($proposal->user->name);
+        }
+        
+    }
+    
     /**
      * @return \Illuminate\Contracts\View\View
      */

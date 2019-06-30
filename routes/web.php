@@ -24,6 +24,11 @@ Route::get('/test', function () {
     return '';
 });
 
+Route::get(('i'), function () {
+    phpinfo();
+    return '';
+});
+
 Route::get('/', 'StaticController@home')->name('home');
 Route::get('forum', 'StaticController@forum')->name('forum');
 Route::get('terms', 'StaticController@content')->name('terms');

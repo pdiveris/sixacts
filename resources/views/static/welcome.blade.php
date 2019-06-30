@@ -18,7 +18,10 @@
                             <div class="media-content">
                                 <div class="content">
                                     <p>
-                                        <a href="#">@jsmith</a> replied 34 minutes ago &nbsp;
+                                        <a href="#">
+                                            {{\App\Http\Controllers\StaticController::authorLink($proposal)}}
+                                        </a>
+                                        replied 34 minutes ago &nbsp;
                                         <span class="tag">TAG</span>
                                     </p>
                                 </div>

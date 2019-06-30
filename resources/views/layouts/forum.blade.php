@@ -49,12 +49,29 @@
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <p class="control">
-                            <a class="button is-small is-info is-outlined">
+                            @if(Auth::guest())
+                            <a class="button is-small is-info is-outlined" href="{{'login'}}">
                                 <span class="icon">
                                     <i class="fa fa-user"></i>
                                 </span>
                                 <span>Sign in</span>
                             </a>
+                            @else
+                                <figure class="image is-32x32 ">
+                                <!-- Show image with default dimensions -->
+                                    <img class="is-rounded  is-inline"  src="{{ Gravatar::src(\Auth::user()->email) }}">
+                                </figure>
+                                <a class="is-inline"
+                                   href="{{'logout'}}"
+                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();
+                                ">
+                                    <span>Sign out</span>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            @endif
                         </p>
                     </div>
                 </div>
@@ -62,7 +79,6 @@
         </div>
     </div>
 </nav>
-
 <section class="container">
 @yield('content')
 </section>

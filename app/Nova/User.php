@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Avatar;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -30,7 +31,16 @@ class User extends Resource
      * @var string
      */
     public static $title = 'name';
-
+    
+    /**
+     * Default ordering for index query.
+     *
+     * @var array
+     */
+    public static $indexDefaultOrder = [
+        'id' => 'asc'
+    ];
+    
     /**
      * The columns that should be searched.
      *
@@ -39,7 +49,23 @@ class User extends Resource
     public static $search = [
         'id', 'name', 'email',
     ];
-
+    
+    /**
+     * Build an "index" query for the given resource.
+     *
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function indexQuery(\Laravel\Nova\Http\Requests\NovaRequest $request, $query)
+    {
+        if (empty($request->get('orderBy'))) {
+            $query->getQuery()->orders = [];
+            return $query->orderBy(key(static::$indexDefaultOrder), reset(static::$indexDefaultOrder));
+        }
+        return $query;
+    }
+    
     /**
      * Get the fields displayed by the resource.
      *
@@ -51,7 +77,8 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Gravatar::make(),
+            Gravatar::make()
+                ->onlyOnIndex(),
 
             Text::make('Name')
                 ->sortable()
@@ -67,6 +94,11 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
+
+            Avatar::make('Avatar')
+                ->disk('public')
+                ->path('avatars')
+
         ];
     }
 

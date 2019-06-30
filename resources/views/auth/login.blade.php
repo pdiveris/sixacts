@@ -1,19 +1,12 @@
-@extends('layouts.app')
-
+@extends('layouts.forum')
 @section('content')
-
-    <section class="hero is-primary">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Login
-                </h1>
-            </div>
-        </div>
-    </section>
-
-    <div class="columns is-marginless is-centered">
-        <div class="column is-5">
+    <div class="columns">
+        {{--
+                <div class="column is-3">
+                    @include('partials.sidebar')
+                </div>
+        --}}
+        <div class="column is-9">
             <div class="card">
                 <header class="card-header">
                     <p class="card-header-title">Login</p>
@@ -78,10 +71,8 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="field is-horizontal">
                             <div class="field-label"></div>
-
                             <div class="field-body">
                                 <div class="field is-grouped">
                                     <div class="control">
@@ -101,4 +92,4 @@
             </div>
         </div>
     </div>
-@endsection
+@stop
