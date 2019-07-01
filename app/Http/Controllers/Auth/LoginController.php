@@ -7,11 +7,9 @@
  *
  * PHP version 7.2
  *
- * LICENSE: This source file is subject to version 3.01 of the PHP license
+ * LICENSE: This source file is subject to version 2.0 of the Apache License
  * that is available through the world-wide-web at the following URI:
- * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
- * the PHP License and are unable to obtain it through the web, please
- * send a note to license@php.net so we can mail you a copy immediately.
+ * https://www.apache.org/licenses/LICENSE-2.0.
  *
  * @category  Controller
  * @package   Auth
@@ -30,6 +28,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Jobs\SendEmailJob;
+use App\Mail\VariableUserEmail as UserEmail;
 
 /**
  * Class LoginController
@@ -177,9 +177,14 @@ class LoginController extends Controller
                     'password'=>bcrypt($password),
                     'social_avatar'=>$authData->avatar,
                     'social_avatar_large'=>$authData->avatar_original,
+                    'verified' => 1, // as agreed, set to 1
                 ]
             );
             $ourUser->save();
+            $email = new UserEmail($ourUser, 'user_welcome');
+            $x = new SendEmailJob($email);
+            dispatch($x);
+            
         } else {
             $ourUser = $recs[0];
         }
@@ -218,5 +223,25 @@ class LoginController extends Controller
         
         $user = \Socialite::driver($provider)->user();
         return redirect('/');
+    }
+    
+    /**
+     * The user has been authenticated.
+     * Part of the custom verification email infrastructure as per:
+     * @link https://laracasts.com/discuss/channels/laravel/modify-authenticated-method-inside-authenticatesusersphp-class
+     * @link https://codebriefly.com/custom-user-email-verification-activation-laravel/
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if (!$user->verified) {
+            $msg = 'You need to confirm your account. We have sent you an activation code, please check your email.';
+            auth()->logout();
+            return back()->with('warning', $msg);
+        }
+        return redirect()->intended($this->redirectPath());
     }
 }

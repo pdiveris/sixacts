@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -39,8 +38,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Proposal[] $proposals
  * @mixin \Eloquent
+ * @property int $verified
+ * @property-read \App\VerifyUser $verifyUser
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereVerified($value)
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
 
@@ -82,5 +84,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Proposal');
     }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function verifyUser()
+    {
+        return $this->hasOne('App\VerifyUser');
+    }
+    
 }
 

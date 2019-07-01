@@ -11,7 +11,18 @@
                 <header class="card-header">
                     <p class="card-header-title">Login</p>
                 </header>
-
+                <div>
+                    @if (session('status'))
+                        <div class="is-info alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    @if (session('warning'))
+                        <div class="is-warning alert-warning">
+                            {{ session('warning') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="card-content">
                     <form class="login-form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}

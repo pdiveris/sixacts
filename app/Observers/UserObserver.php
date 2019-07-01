@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Jobs\SendEmailJob;
-use App\Mail\SendUserEmail as UserEmail;
+use App\Mail\VariableUserEmail as UserEmail;
 use App\User;
 
 /**
@@ -22,9 +22,9 @@ class UserObserver
      */
     public function created(\App\User $user)
     {
-        $email = new UserEmail($user, 'user_welcome');
+/*        $email = new UserEmail($user, 'user_welcome');
         $x = new SendEmailJob($email);
-        dispatch($x);
+        dispatch($x);*/
     }
 
     /**
