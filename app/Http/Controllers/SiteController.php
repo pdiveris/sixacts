@@ -53,4 +53,14 @@ class SiteController extends Controller
     {
         return view('home');
     }
+    
+    /**
+     * Show the User's profile page/form
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function userProfile()
+    {
+        return view('user_profile');
+    }
 }

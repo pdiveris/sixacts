@@ -11,12 +11,15 @@
 */
 
 // Pay attention below, check for verified
-Route::get('user/profile', function () {
-    // Only verified users may enter...
-    return "Pako pako";
-})->middleware('verified');
+use App\User;
 
 Route::get('/', 'StaticController@home')->name('home');
+
+Route::get(
+    'user/profile',
+    'SiteController@userProfile'
+)->name('profile')->middleware('verified');
+
 Route::get('forum', 'StaticController@forum')->name('forum');
 Route::get('terms', 'StaticController@content')->name('terms');
 Route::get('privacy', 'StaticController@content')->name('privacy');
@@ -35,48 +38,61 @@ Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('s
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('login/deauthorize/facebook', 'Auth\LoginController@handleProviderDeauthorize')
-    ->name('defacebook')
-;
+    ->name('defacebook');
 
 Route::get('login/delete/faceboook', 'Auth\LoginController@handleProviderDelete')
-    ->name('deletefacebook')
-;
+    ->name('deletefacebook');
 
-Route::get(/**
- * @return string
- */ 'twitter', function ()
-{
-    // $credentials = ['email'=>'petros@diveris.org', 'password'=>'yellowbrix!!'];
-    $ourUser = \App\User::find(1);
-    dump('Becoming Eva...');
-    \Auth::login($ourUser, true);
-    return redirect('/');
-    // return '';
-});
+Route::get(
+    'twitter',
+    function () {
+        // $credentials = ['email'=>'petros@diveris.org', 'password'=>'yellowbrix!!'];
+        $ourUser = User::find(1);
+        dump('Becoming Eva...');
+        Auth::login($ourUser, true);
+        return redirect('/');
+        // return '';
+    }
+);
+
 Route::get('/home', 'SiteController@index')->name('home');
 
 Auth::routes();
 Route::get('user/verify/{token}', 'Auth\RegisterController@verifyUser');
-Route::get('login/verify', function () {
-    return view('static.registration_thanks');
-});
 
-Route::get('/test', function () {
-    // $user = \App\User::find(3);
-    $email = new App\Mail\SendEmailTest();
-    dump('route: test ['.get_class($email).']');
-    dispatch(new App\Jobs\SendEmailJob($email));
-    return '';
-});
+Route::get(
+    'login/verify',
+    function () {
+        return view('static.registration_thanks');
+    }
+);
 
-Route::get(('i'), function () {
-    phpinfo();
-    return '';
-});
+Route::get(
+    '/test',
+    function () {
+        // $user = \App\User::find(3);
+        $email = new App\Mail\SendEmailTest();
+        dump('route: test ['.get_class($email).']');
+        dispatch(new App\Jobs\SendEmailJob($email));
+        return '';
+    }
+);
 
-Route::get('l/{email?}', function ($email) {
-    $user = \App\User::where('email','=',$email)->first();
-    Auth::login($user);
-    return redirect('/');
-});
-                                                                                                                                                                                                                                                                                                                                                                                                    Route::get('email', 'EmailController@sendEmail');
+Route::get(
+    ('i'),
+    function () {
+        phpinfo();
+        return '';
+    }
+);
+
+Route::get(
+    'l/{email?}',
+    function ($email) {
+        $user = User::where('email', '=', $email)->first();
+        Auth::login($user);
+        return redirect('/');
+    }
+);
+
+Route::get('email', 'EmailController@sendEmail');
