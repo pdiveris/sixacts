@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Jobs\SendEmailJob;
+use App\Mail\VariableUserEmail as UserEmail;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\VerifyUser;
@@ -112,15 +113,31 @@ class RegisterController extends Controller
         return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
     }
     
+    /**
+     * Verify the user.
+     *
+     * Send an email upon successful verification.
+     *
+     * @author Petros Diveris <petros@bentleysoft.com>
+     * @param $token
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function verifyUser($token)
     {
         $verifyUser = VerifyUser::where('token', $token)->first();
         if(isset($verifyUser) ){
             $user = $verifyUser->user;
             if(!$user->verified) {
-                $verifyUser->user->verified = 1;
-                $verifyUser->user->save();
+                $user->verified = 1;
+                $user->save();
+                
                 $status = "Your e-mail is verified. You can now login.";
+    
+                $profileUrl = url('user/profile');
+                $email = new UserEmail($user, 'user_welcome', ['profileUrl'=>$profileUrl]);
+    
+                $dispatchJob = new SendEmailJob($email);
+                dispatch($dispatchJob);
             } else {
                 $status = "Your e-mail is already verified. You can now login.";
             }

@@ -67,8 +67,6 @@ class VerifyMail extends Mailable
             'name'=>$this->user->name,
             'token' => $this->token,
         ];
-        
-        dump(['VerifyEmail'=>'build']);
         return $this->view('emails.users.user_verify', $data);
     }
 }

@@ -15,10 +15,11 @@ Route::get('login/verify', function () {
 });
 
 Route::get('/test', function () {
+    echo url('user/profile');
     // $user = \App\User::find(3);
-    $email = new App\Mail\SendEmailTest();
+/*    $email = new App\Mail\SendEmailTest();
     dump('route: test ['.get_class($email).']');
-    dispatch(new App\Jobs\SendEmailJob($email));
+    dispatch(new App\Jobs\SendEmailJob($email));*/
     return '';
 });
 

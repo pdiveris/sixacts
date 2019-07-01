@@ -11,7 +11,7 @@
                 <header class="card-header">
                     <p class="card-header-title">Login</p>
                 </header>
-                <div>
+                <div class="u-m-15">
                     @if (session('status'))
                         <div class="is-info alert-success">
                             {{ session('status') }}

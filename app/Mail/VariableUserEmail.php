@@ -25,17 +25,21 @@ class VariableUserEmail extends Mailable
     
     private $template;
     
+    private $extraData = [];
+    
     /**
      * VariableUserEmail constructor.
      * Create a new message instance.
      *
      * @param \App\User $user
      * @param string $template
+     * @param array $extraData
      * @return void
      */
-    public function __construct(User $user, string $template)
+    public function __construct(User $user, string $template, array $extraData = [])
     {
         $this->user = $user;
+        $this->extraData = $extraData;
         $this->template = $template;    // e.g. user_welcome
     }
 
@@ -46,13 +50,13 @@ class VariableUserEmail extends Mailable
      */
     public function build()
     {
+        $data = $this->extraData;
+        $data['email'] = $this->user->email;
+        $data['name'] = $this->user->name;
+        
         return $this->to($this->user->email)
             ->text('emails.users.'.$this->template.'_plain')
             ->view('emails.users.'.$this->template)
-            ->with([
-                'name' => $this->user->name,
-                'email' => $this->user->email,
-                'var' => 'Blurb..',
-            ]);
+            ->with($data);
     }
 }

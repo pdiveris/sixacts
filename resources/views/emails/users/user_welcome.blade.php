@@ -49,14 +49,14 @@
         <tr>
             <td>
                 <p class="twelvepoint">
-                    You can access your profile using this link: {{url('user/profile')}}
+                    You can access your profile using this link: <a href="{{$profileUrl}}">{{$profileUrl}}</a>
                 </p>
                 <p>
-                    From there you can change your password and update your setting, including your avatar.
+                    From there you can change your password and update your settings, including your avatar.
                     Just so you know, if you are logging in using a social media account (e.g. Twitter) or Google
                     the system will automatically use the avatar of that service when you add a proposal.
-                    If you don't want that then you can either upload a new avatar specifially for the Six Acts
-                    or disable the functionality altogether from your profile page.<br/>
+                    If you don't want that then you can either upload a new avatar specifically for the Six Acts,
+                    or disable avatars altogether from your profile page.<br/>
                 </p>
             </td>
         </tr>

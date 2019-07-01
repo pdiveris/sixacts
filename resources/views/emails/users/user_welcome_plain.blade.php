@@ -11,7 +11,7 @@ logged in as you are.  We've generated this password for you: {{$password}}.
 You can use your profile to change it - see the link below.
 @endisset
 
-You can access your profile here {{url('user/profile')}}
+You can access your profile here {{$profileUrl}}
 
 In your profile page you can change a few settings, including your password and avatar.
 

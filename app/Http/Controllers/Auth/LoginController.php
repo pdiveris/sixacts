@@ -181,10 +181,12 @@ class LoginController extends Controller
                 ]
             );
             $ourUser->save();
-            $email = new UserEmail($ourUser, 'user_welcome');
-            $x = new SendEmailJob($email);
-            dispatch($x);
             
+            $profileUrl = url('user/profile');
+            $email = new UserEmail($ourUser, 'user_welcome', ['password'=>$password, 'profileUrl'=>$profileUrl]);
+
+            $dispatchJob = new SendEmailJob($email);
+            dispatch($dispatchJob);
         } else {
             $ourUser = $recs[0];
         }
