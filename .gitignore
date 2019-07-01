@@ -20,6 +20,7 @@ _ide_helper.php
 public/mix-manifest.json
 public/css/app.css
 public/fonts/
+public/js/app.js
 docs/emails/
 public/norman/
 *.bak*

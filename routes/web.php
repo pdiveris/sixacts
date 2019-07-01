@@ -10,34 +10,11 @@
 |
 */
 
-Route::get('login/verify', function () {
-    return view('static.registration_thanks');
-});
-
-Route::get('/test', function () {
-    echo url('user/profile');
-    // $user = \App\User::find(3);
-/*    $email = new App\Mail\SendEmailTest();
-    dump('route: test ['.get_class($email).']');
-    dispatch(new App\Jobs\SendEmailJob($email));*/
-    return '';
-});
-
-Route::get(('i'), function () {
-    phpinfo();
-    return '';
-});
-
 // Pay attention below, check for verified
-Route::get('profile', function () {
+Route::get('user/profile', function () {
     // Only verified users may enter...
+    return "Pako pako";
 })->middleware('verified');
-
-Route::get('l/{email?}', function ($email) {
-    $user = \App\User::where('email','=',$email)->first();
-    Auth::login($user);
-    return redirect('/');
-});
 
 Route::get('/', 'StaticController@home')->name('home');
 Route::get('forum', 'StaticController@forum')->name('forum');
@@ -76,9 +53,30 @@ Route::get(/**
     return redirect('/');
     // return '';
 });
+Route::get('/home', 'SiteController@index')->name('home');
 
 Auth::routes();
 Route::get('user/verify/{token}', 'Auth\RegisterController@verifyUser');
+Route::get('login/verify', function () {
+    return view('static.registration_thanks');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/test', function () {
+    // $user = \App\User::find(3);
+    $email = new App\Mail\SendEmailTest();
+    dump('route: test ['.get_class($email).']');
+    dispatch(new App\Jobs\SendEmailJob($email));
+    return '';
+});
+
+Route::get(('i'), function () {
+    phpinfo();
+    return '';
+});
+
+Route::get('l/{email?}', function ($email) {
+    $user = \App\User::where('email','=',$email)->first();
+    Auth::login($user);
+    return redirect('/');
+});
                                                                                                                                                                                                                                                                                                                                                                                                     Route::get('email', 'EmailController@sendEmail');
