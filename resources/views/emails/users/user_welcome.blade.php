@@ -31,33 +31,39 @@
         <tr>
             <td>
                 <p class="twelvepoint">
-                    Thank you for joining <strong>6 Acts to save Democracy.</strong><br />
-                    Just one more step is required, please click on the link below to confirm your account:
+                    Thank you for joining <strong>6 Acts to save Democracy.</strong>
                 </p>
+                <p>
+                    Your login id is your email address: <strong>{{$email}}</strong>
+                </p>
+                    @isset($password)
+                        <p>
+                        As you've logged in Six Acts using your social media account or Google, we've automatically
+                        created an account for you. You don't need to anything as you can keep using the site
+                        logged in as you are.  We've generated this password for you: {{$password}}.
+                        You can use your profile to change it - see the link below.
+                        </p>
+                    @endisset
             </td>
         </tr>
         <tr>
             <td>
                 <p class="twelvepoint">
-                    <a href="https://beta.sixacts.org/login/verify?token=YjMtEoP8GvHdr8qGSauB">
-                        https://beta.sixacts.org/login/verify?token=YjMtEoP8GvHdr8qGSauB
-                    </a>
+                    You can access your profile using this link: {{url('user/profile')}}
+                </p>
+                <p>
+                    From there you can change your password and update your setting, including your avatar.
+                    Just so you know, if you are logging in using a social media account (e.g. Twitter) or Google
+                    the system will automatically use the avatar of that service when you add a proposal.
+                    If you don't want that then you can either upload a new avatar specifially for the Six Acts
+                    or disable the functionality altogether from your profile page.<br/>
                 </p>
             </td>
         </tr>
         <tr>
             <td>
-                <p class="twelvepoint">
-                    Your Username is: {{$email}}<br />
-                    If you haven't set your password yet, you may do by so by clicking “reset my password” in the
-                    login page and following the instructions.
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Thank you,<br />
-                The 6 Acts team<br />
+                Thank you,<br /><br/>
+                <strong>The 6 Acts team</strong><br />
                 <br />
                 Six Acts<br/>
                 Flat 408, 41 Old Birley Street<br/>
