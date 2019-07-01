@@ -12,17 +12,14 @@
                     <header class="card-header">
                         <p class="card-header-title">Register</p>
                     </header>
-
                     <div class="card-content">
+
                         <form class="register-form" method="POST" action="{{ route('register') }}">
-
                             {{ csrf_field() }}
-
                             <div class="field is-horizontal">
                                 <div class="field-label">
                                     <label class="label">Name</label>
                                 </div>
-
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control">

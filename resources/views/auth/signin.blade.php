@@ -15,13 +15,13 @@
                     <div class="card-content">
                         <form class="login-form" method="POST" action="{{ route('login') }}">
                             {{ csrf_field() }}
-                            <div class="field is-horizontal">
-                                <div class="field-label"></div>
+                            <div class="field is-horizontal box">
+                                <div class="field-label u-m-10">Login with one of the following</div>
                                 <div class="field-body">
                                     <div class="field is-grouped">
                                         <div class="control is-inline">
                                             <!-- twitter button -->
-                                            <a class="button is-medium" href="{{route('signin_twitter')}}">
+                                            <a class="button is-size-5" href="{{route('signin_twitter')}}">
                                             <span>
                                                 <i class="fab fa-facebook-f"></i> twitter
                                             </span>
@@ -53,6 +53,27 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="field is-horizontal box">
+                                <div class="field-label u-m-10">
+                                    <p>Or login with your 6 Acts account.
+                                        Click <a href="{{route('register')}}">here</a> if you want to create one.
+                                    </p>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field is-grouped">
+                                        <div class="control is-inline">
+                                            <!-- twitter button -->
+                                            <a class="button is-size-5" href="{{route('login')}}">
+                                            <span>
+                                                <i class="fa fa-sign-in-alt"></i> login
+                                            </span>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>

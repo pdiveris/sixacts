@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +16,6 @@ Route::get('login/verify', function () {
 
 Route::get('/test', function () {
     // $user = \App\User::find(3);
-    
     $email = new App\Mail\SendEmailTest();
     dump('route: test ['.get_class($email).']');
     dispatch(new App\Jobs\SendEmailJob($email));
@@ -28,6 +26,11 @@ Route::get(('i'), function () {
     phpinfo();
     return '';
 });
+
+// Pay attention below, check for verified
+Route::get('profile', function () {
+    // Only verified users may enter...
+})->middleware('verified');
 
 Route::get('l/{email?}', function ($email) {
     $user = \App\User::where('email','=',$email)->first();
@@ -73,7 +76,7 @@ Route::get(/**
     // return '';
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
                                                                                                                                                                                                                                                                                                                                                                                                     Route::get('email', 'EmailController@sendEmail');

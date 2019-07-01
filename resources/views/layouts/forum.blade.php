@@ -48,31 +48,40 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="field is-grouped">
-                        <p class="control">
+                        <div class="control" >
                             @if(Auth::guest())
-                            <a class="button is-small is-info is-outlined" href="{{'login'}}">
+                            <a class="button is-size-6 is-outlined" href="{{'login'}}">
                                 <span class="icon">
-                                    <i class="fa fa-user"></i>
+                                    <i class="fa fa-sign-in-alt"></i>
                                 </span>
-                                <span>Sign in</span>
+                                <span>Login</span>
                             </a>
                             @else
-                                <figure class="image is-32x32 ">
-                                <!-- Show image with default dimensions -->
-                                    <img class="is-rounded  is-inline"  src="{{ Gravatar::src(\Auth::user()->email) }}">
-                                </figure>
-                                <a class="is-inline"
-                                   href="{{'logout'}}"
-                                   onclick="event.preventDefault();document.getElementById('logout-form').submit();
-                                ">
-                                    <span>Sign out</span>
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
+{{--
+                                <h3>{{Auth::user()->email}}</h3>
+--}}
+                                <div class="rows">
+                                    <div class="column" style="display: inline; ">
+                                            <!-- Show image with default dimensions -->
+                                            <img class="navatar"
+                                                 src="{{ \App\Http\Controllers\StaticController::makeAvatar(Auth::user())}}"
+                                            >
+                                    </div>
+                                    <div class="column" style="display: inline; ">
+                                        <a href="{{'logout'}}"
+                                           onclick="event.preventDefault();document.getElementById('logout-form').submit();
+                                          ">
+                                            <span>Sign out</span>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+
+                                    </div>
+                                </div>
                             @endif
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>
