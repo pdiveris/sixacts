@@ -144,7 +144,7 @@ class LoginController extends Controller
         }
         
         // sync OAuth user with local repository
-        $this->synUser($store);
+        $this->syncUser($store);
         
         return redirect('/');
     }
@@ -161,7 +161,7 @@ class LoginController extends Controller
      *
      * Login the user
      */
-    public function synUser(AuthData $authData)
+    public function syncUser(AuthData $authData)
     {
         $ret = false;
         $recs = User::where('email', '=', $authData->email)->get();
