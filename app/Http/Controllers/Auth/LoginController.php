@@ -168,7 +168,7 @@ class LoginController extends Controller
         
         // check if the user exists
         // if not, create user with random password
-        if (count($recs) < 1 ) {
+        if (count($recs) < 1) {
             $password = Utils::generatePassword();
             $ourUser= new User(
                 [
@@ -183,7 +183,11 @@ class LoginController extends Controller
             $ourUser->save();
             
             $profileUrl = url('user/profile');
-            $email = new UserEmail($ourUser, 'user_welcome', ['password'=>$password, 'profileUrl'=>$profileUrl]);
+            $email = new UserEmail(
+                $ourUser,
+                'user_welcome',
+                ['password'=>$password, 'profileUrl'=>$profileUrl]
+            );
 
             $dispatchJob = new SendEmailJob($email);
             dispatch($dispatchJob);
@@ -224,23 +228,29 @@ class LoginController extends Controller
         $provider = str_replace('/deauthorize', '', $provider);
         
         $user = \Socialite::driver($provider)->user();
+        // Do something with the user
+        // return..
         return redirect('/');
     }
     
     /**
      * The user has been authenticated.
      * Part of the custom verification email infrastructure as per:
+     *
+     * @param \Illuminate\Http\Request $request request
+     * @param mixed                    $user    comment
+     *
      * @link https://laracasts.com/discuss/channels/laravel/modify-authenticated-method-inside-authenticatesusersphp-class
      * @link https://codebriefly.com/custom-user-email-verification-activation-laravel/
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  mixed  $user
      * @return mixed
      */
     protected function authenticated(Request $request, $user)
     {
         if (!$user->verified) {
-            $msg = 'You need to confirm your account. We have sent you an activation code, please check your email.';
+            $msg = 'You need to confirm your account.';
+            $msg .= 'We have sent you an activation';
+            $msg .= 'code, please check your email.';
             auth()->logout();
             return back()->with('warning', $msg);
         }
