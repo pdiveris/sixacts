@@ -1,9 +1,10 @@
 <?php
-/*
+/**
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
+| PHP version 7.2
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
@@ -11,7 +12,10 @@
 */
 
 // Pay attention below, check for verified
+use App\Jobs\SendEmailJob;
+use App\Mail\VariableUserEmail as UserEmail;
 use App\User;
+
 
 Route::get('/', 'StaticController@home')->name('home');
 
@@ -70,10 +74,17 @@ Route::get(
 Route::get(
     '/test',
     function () {
-        // $user = \App\User::find(3);
-        $email = new App\Mail\SendEmailTest();
-        dump('route: test ['.get_class($email).']');
-        dispatch(new App\Jobs\SendEmailJob($email));
+        $user = \App\User::find(3);
+        $profileUrl = url('user/profile');
+        $email = new UserEmail(
+            $user,
+            'user_welcome',
+            ['password'=>'kanga', 'profileUrl'=>$profileUrl]
+        );
+    
+        $dispatchJob = new SendEmailJob($email);
+        dispatch($dispatchJob);
+
         return '';
     }
 );

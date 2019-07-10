@@ -52,8 +52,9 @@ class Proposal extends Resource
     /**
      * Build an "index" query for the given resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request request
+     * @param \Illuminate\Database\Eloquent\Builder   $query   query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public static function indexQuery(\Laravel\Nova\Http\Requests\NovaRequest $request, $query)
