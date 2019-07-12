@@ -22,23 +22,32 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Builder as Builder;
 
 /**
  * Class VerifyUser
  *
- * @package App
+ * @category Model
+ * @package  App
+ * @author   Petros Diveris <petros@diveris.org>
+ * @license  Apache 2.0
+ * @link     https://www.diveris.org
+ *
  * @property int $user_id
  * @property string $token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ *
  * @property-read \App\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VerifyUser newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VerifyUser newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VerifyUser query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VerifyUser whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VerifyUser whereToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VerifyUser whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\VerifyUser whereUserId($value)
+ *
+ * @method static Builder|VerifyUser newModelQuery()
+ * @method static Builder|VerifyUser newQuery()
+ * @method static Builder|VerifyUser query()
+ * @method static Builder|VerifyUser whereCreatedAt($value)
+ * @method static Builder|VerifyUser whereToken($value)
+ * @method static Builder|VerifyUser whereUpdatedAt($value)
+ * @method static Builder|VerifyUser whereUserId($value)
+ *
  * @mixin \Eloquent
  */
 class VerifyUser extends Model

@@ -3,9 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Builder as Builder;
 
 /**
  * App\Proposal
+ *
+ * @category Model
+ * @package  App
+ * @author   Petros Diveris <petros@diveris.org>
+ * @license  Apache 2.0
+ * @link     https://www.diveris.org
  *
  * @property int $id
  * @property string $title
@@ -15,18 +22,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $category_id
  * @property string $colour
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereColour($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Proposal whereUserId($value)
+ *
+ * @method static Builder|Proposal newModelQuery()
+ * @method static Builder|Proposal newQuery()
+ * @method static Builder|Proposal query()
+ * @method static Builder|Proposal whereBody($value)
+ * @method static Builder|Proposal whereCategoryId($value)
+ * @method static Builder|Proposal whereColour($value)
+ * @method static Builder|Proposal whereCreatedAt($value)
+ * @method static Builder|Proposal whereId($value)
+ * @method static Builder|Proposal whereTitle($value)
+ * @method static Builder|Proposal whereUpdatedAt($value)
+ * @method static Builder|Proposal whereUserId($value)
+ *
  * @mixin \Eloquent
+ *
  * @property-read \App\User $user
  */
 class Proposal extends Model
@@ -34,6 +44,8 @@ class Proposal extends Model
     protected $fillable = ['title', 'body', 'user_id', 'category'];
     
     /**
+     * Return the user associated with the Proposal
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()

@@ -8,7 +8,12 @@ use App\Events\UserCreatedEvent as UserCreatedEvent;
 
 /**
  * Class UserCreatedListener
- * @package App\Listeners
+ *
+ * @category Listener
+ * @package  App\Listeners
+ * @author   Petros Diveris <petros@diveris.org>
+ * @license  Apache 2.0
+ * @link     https://www.diveris.org
  *
  * @see https://laravel-news.com/laravel-model-events-getting-started
  */
@@ -27,7 +32,8 @@ class UserCreatedListener
     /**
      * Handle the event.
      *
-     * @param  UserCreatedEvent $event
+     * @param UserCreatedEvent $event event
+     *
      * @return void
      */
     public function handle($event)
