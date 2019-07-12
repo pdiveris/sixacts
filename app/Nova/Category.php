@@ -21,7 +21,7 @@ class Category extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'title';
     
     /**
      * The logical group associated with the resource.
@@ -77,7 +77,14 @@ class Category extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make(__('Title'), 'title')->rules('required')->sortable(),
+            
+            Text::make(__('Title'), 'title')->rules('required')
+                ->hideFromIndex()
+                ->sortable(),
+            
+            Text::make(__('Short title'), 'short_title')->rules('required')->sortable(),
+            Text::make(__('Class'), 'class')->sortable(),
+            Text::make(__('Sub class'), 'sub_class')->sortable(),
         ];
     }
 

@@ -7,7 +7,6 @@ use App\Mail\VariableUserEmail as UserEmail;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\VerifyUser;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\VerifyMail;
@@ -89,7 +88,7 @@ class RegisterController extends Controller
             [
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => $data['password'],
             ]
         );
         

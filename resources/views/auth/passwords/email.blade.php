@@ -15,7 +15,7 @@
                 @endif
             </div>
             <div class="card-content">
-                <form class="login-form" method="POST" action="action="{{ route('password.email') }}">
+                <form class="login-form" method="POST" action="{{ route('password.email') }}">
                     {{ csrf_field() }}
                     <div class="field is-horizontal">
                         <div class="field-label">

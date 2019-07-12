@@ -17,7 +17,6 @@ class AlterProposalsAddCategory extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
         });
-
     }
 
     /**
@@ -31,6 +30,6 @@ class AlterProposalsAddCategory extends Migration
             Schema::table('proposals', function (Blueprint $table) {
                 $table->dropColumn('category_id');
             });
-         }
+        }
     }
 }

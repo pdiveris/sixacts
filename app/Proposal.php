@@ -52,4 +52,27 @@ class Proposal extends Model
     {
         return $this->belongsTo('App\User');
     }
+    
+    /**
+     * Get category it belongs to
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+    
+    /**
+     * Populate use for inserts
+     *
+     */
+    public static function boot()
+    {
+        parent::boot();
+        
+        static::creating(function ($post) {
+            $post->user_id = auth()->user()->id;
+        });
+    }
 }

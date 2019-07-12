@@ -65,11 +65,50 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
+     * @param \Illuminate\Http\Request $request
+     *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    /**
+     * Do the login
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function login(Request $request)
+    {
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'email'    => 'required|email',
+            'password' => 'required|min:3'
+        );
+
+        $validator = \Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect('login')
+                ->withErrors($validator)
+                ->withInput($request->except('password'));
+        } else {
+            $userdata = array(
+                'email' => $request->get('email'),
+                'password' => $request->get('password')
+            );
+
+
+            // attempt to do the login
+            if (\Auth::attempt($userdata, true)) {
+                return redirect('/');
+            } else {
+                return redirect('login');
+            }
+        }
     }
     
     /**
@@ -137,11 +176,6 @@ class LoginController extends Controller
         
         // Exception handler to be added..
         $store->save();
-
-        // Symfony console debugger ON please
-        if (env('APP_DEBUG') === true) {
-            dump($user);
-        }
         
         // sync OAuth user with local repository
         $this->syncUser($store);

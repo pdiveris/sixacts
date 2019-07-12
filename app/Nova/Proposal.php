@@ -2,9 +2,11 @@
 
 namespace App\Nova;
 
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Proposal extends Resource
@@ -76,10 +78,23 @@ class Proposal extends Resource
     {
         return [
             ID::make()->sortable(),
+            
             Text::make(__('Title'), 'title')->rules('required')->sortable(),
             
+            Text::make(__('Category'), function () {
+                return $this->category->title ?? '';
+            })->onlyOnIndex()
+                ->sortable(),
+            
+            BelongsTo::make('Category', 'category', 'App\Nova\Category')
+                ->nullable()
+                ->onlyOnForms(),
+            
+            Textarea::make(__('Body'), 'body')
+            ->hideFromIndex(),
+            
             Text::make(__('Proposed by'), function () {
-                return $this->user->name;
+                return $this->user->name ?? '';
             })->onlyOnIndex()->sortable(),
         ];
     }

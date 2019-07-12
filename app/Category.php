@@ -38,4 +38,15 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
 class Category extends Model
 {
     protected $fillable = ['id', 'title'];
+    
+    /**
+     * Return proposals
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function proposals()
+    {
+        return $this->hasMany('App\Proposal');
+    }
+    
 }
