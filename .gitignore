@@ -25,3 +25,4 @@ docs/emails/
 public/norman/
 *.bak*
 nova-components/Metafield/*
+.php_cs.cache
