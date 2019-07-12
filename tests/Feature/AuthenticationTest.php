@@ -25,11 +25,13 @@ namespace Tests\Feature;
 
 use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
 {
-    use DatabaseMigrations;
+    // use DatabaseMigrations;
+    use DatabaseTransactions;
     
     /**
      * @return void
@@ -39,17 +41,18 @@ class AuthenticationTest extends TestCase
         parent::setUp();
         $user = new User([
             'email'    => 'test@email.com',
-            'password' => '123456'
+            'password' => '123456',
+            'name'     => 'Pako Lucia'
         ]);
         $user->save();
     }
     
-    /** @test */
-    public function itWillRegisterAUser()
+    public function testItWillRegisterAUser()
     {
         $response = $this->post('api/register', [
             'email'    => 'test2@email.com',
-            'password' => '123456'
+            'password' => '123456',
+            'name'     => 'Mario Putzo',
         ]);
         $response->assertJsonStructure([
             'access_token',
@@ -58,7 +61,6 @@ class AuthenticationTest extends TestCase
         ]);
     }
     
-    /** @test */
     public function itWillLogAUserIn()
     {
         $response = $this->post('api/login', [
@@ -72,7 +74,6 @@ class AuthenticationTest extends TestCase
         ]);
     }
     
-    /** @test */
     public function itWillNotLogAnAnvalidUserIn()
     {
         $response = $this->post('api/login', [
@@ -83,4 +84,5 @@ class AuthenticationTest extends TestCase
             'error',
         ]);
     }
+    
 }
