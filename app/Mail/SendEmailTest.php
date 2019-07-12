@@ -36,5 +36,4 @@ class SendEmailTest extends Mailable
     {
         return $this->view('emails.welcome');
     }
-
 }

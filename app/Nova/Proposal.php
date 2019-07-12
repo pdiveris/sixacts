@@ -78,7 +78,9 @@ class Proposal extends Resource
             ID::make()->sortable(),
             Text::make(__('Title'), 'title')->rules('required')->sortable(),
             
-            Text::make(__('Proposed by'), function () { return $this->user->name; })->onlyOnIndex()->sortable(),
+            Text::make(__('Proposed by'), function () {
+                return $this->user->name;
+            })->onlyOnIndex()->sortable(),
         ];
     }
 

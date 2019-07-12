@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
-
+/**
+ * Class EmailController
+ *
+ * @category Email
+ * @package  App\Http\Controllers
+ * @author   Petros Diveris <petros@diveris.org>
+ * @license  Apache 2.0
+ * @link     https://www.diveris.org
+ */
 class EmailController extends Controller
 {
     /**
      * Queue an Email job
-     * https://appdividend.com/2017/12/21/laravel-queues-tutorial-example-scratch/#Laravel_Queue_Send_Email_Example
-     * @see QUEUE_CONNECTION=database in dotEnv
+     *
+     * @link http://tiny.cc/o89l9y
+     * @see  QUEUE_CONNECTION=database in dotEnv
+     *
+     * @return void
      */
     public function sendEmail()
     {
-    
         echo 'email sent';
-        
     }
 }

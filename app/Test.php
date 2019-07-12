@@ -22,9 +22,8 @@
      */
     
     namespace App;
+
+class Test
+{
     
-    
-    class Test
-    {
-    
-    }
+}

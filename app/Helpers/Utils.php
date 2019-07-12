@@ -1,24 +1,42 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pedro
- * Date: 2019-01-26
- * Time: 16:47
- */
-
+    /**
+     * Parses and verifies the doc comments for files.
+     *
+     * PHP version 7.2
+     *
+     * @category  Utilities
+     * @package   App\Helpers
+     * @author    Petros Diveris <petros@diveris.org>
+     * @copyright 2017 Bentleyworks, Ltd
+     * @license   https://github.com/pdiveris/websites/blob/master/licence.txt BSD Licence
+     * @link      https://www.bentleysoft.com/websites.txt
+     */
+    
 namespace App\Helpers;
 
 use Hackzilla\PasswordGenerator\Generator\ComputerPasswordGenerator;
 
 /**
  * Class Utils
- * @package App\Helpers
+ *
+ * @category Utilities
+ * @package  App\Helpers
+ * @author   Petros Diveris <petros@diveris.org>
+ * @license  https://github.com/pdiveris/websites/blob/master/licence.txt BSD Licence
+ * @link     https://www.bentleysoft.com/websites.txt
  */
 class Utils
 {
-    private static $mediaTypes = ['pdf', 'png', 'jpg', 'jpeg'];
+    protected static $mediaTypes = ['pdf', 'png', 'jpg', 'jpeg'];
     
-    public static function isMedia($format)
+    /**
+     * Is it media?
+     *
+     * @param string $format format
+     *
+     * @return bool
+     */
+    public static function isMedia(string $format)
     {
         return in_array($format, self::$mediaTypes);
     }
@@ -26,7 +44,8 @@ class Utils
     /**
      * Resolve a URI to controller/action
      *
-     * @param string $uri
+     * @param string $uri uri
+     *
      * @return array
      *
      * @author pdiveris
@@ -36,8 +55,15 @@ class Utils
         foreach (\Route::getRoutes() as $route) {
             if ($route->uri == str_replace('/', '', $uri)) {
                 $action = $route->getAction();
-                $controller = substr($action['controller'], 0, strpos($action['controller'], '@'));
-                $method = substr($action['controller'], strpos($action['controller'], '@') + 1);
+                $controller = substr(
+                    $action['controller'],
+                    0,
+                    strpos($action['controller'], '@')
+                );
+                $method = substr(
+                    $action['controller'],
+                    strpos($action['controller'], '@') + 1
+                );
                 return ['controller' => $controller, 'action' => $method];
             }
         }
@@ -52,29 +78,33 @@ class Utils
     {
         $generator = new ComputerPasswordGenerator();
         
-        $generator->setOptionValue(ComputerPasswordGenerator::OPTION_UPPER_CASE, true)
+        $generator
+            ->setOptionValue(ComputerPasswordGenerator::OPTION_UPPER_CASE, true)
             ->setOptionValue(ComputerPasswordGenerator::OPTION_LOWER_CASE, true)
             ->setOptionValue(ComputerPasswordGenerator::OPTION_NUMBERS, true)
-            ->setOptionValue(ComputerPasswordGenerator::OPTION_SYMBOLS, false)
-        ;
+            ->setOptionValue(ComputerPasswordGenerator::OPTION_SYMBOLS, false);
         
         $password = $generator->generatePassword();
         return $password;
     }
     
     /**
-     * Get an avatar either from our local avatar store or, in the absence of one Gravatar
+     * Get an avatar either from our local avatar store
+     * or in the absence of one get a Gravatar
      * Update: sftp driver added
      *
-     * @param string $email
-     * @param int $size
+     * @param string $email email
+     * @param int    $size  size
+     *
      * @return string
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws Exception
      */
     public static function gravata($email = '', $size = 64)
     {
         try {
-            $fileFromId = \Storage::disk('s3')->get(str_replace('@', '-at-', $email) . '.jpg');
+            $fileFromId = \Storage::disk('s3')
+                ->get(str_replace('@', '-at-', $email) . '.jpg');
+            
             if (null !== $fileFromId) {
                 $avatar = route('avatars/get') . "/$email.jpg";
                 return $avatar;
@@ -84,5 +114,4 @@ class Utils
         }
         return '';
     }
-    
 }

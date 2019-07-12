@@ -67,5 +67,4 @@ class AuthData extends Model
         'avatar',
         'user'
     ];
-
 }

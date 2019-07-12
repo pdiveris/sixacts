@@ -69,7 +69,7 @@ class AuthController extends Controller
     /**
      * The respondWithToken method
      *
-     * @param $token zakoula
+     * @param string $token token
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -84,4 +84,3 @@ class AuthController extends Controller
         );
     }
 }
-

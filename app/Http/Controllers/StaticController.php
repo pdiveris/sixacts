@@ -95,7 +95,7 @@ class StaticController extends Controller
      */
     public static function makeGravatar(
         string $email,
-        $s=80,
+        $s = 80,
         $d = 'mp',
         $r = 'g',
         $img = false,

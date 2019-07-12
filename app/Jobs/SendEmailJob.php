@@ -11,9 +11,13 @@ use Mail;
 
 /**
  * Class SendEmailJob
- * @package App\Jobs
  *
- * @see https://itsolutionstuff.com/post/how-to-send-mail-using-queue-in-laravel-57example.html
+ * @category Job
+ * @package  App\Jobs
+ * @author   Petros Diveris <petros@diveris.org>
+ * @license  Apache 2.0
+ * @link     https://www.diveris.org *
+ * @see      https://itsolutionstuff.com/post/how-to-send-mail-using-queue-in-laravel-57example.html
  */
 class SendEmailJob implements ShouldQueue
 {

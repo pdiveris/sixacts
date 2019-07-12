@@ -13,6 +13,15 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\VerifyMail;
 use Illuminate\Http\Request as Request;
 
+/**
+ * Class RegisterController
+ *
+ * @category API
+ * @package  App\Http\Controllers\Auth
+ * @author   Petros Diveris <petros@diveris.org>
+ * @license  Apache 2.0
+ * @link     https://www.diveris.org
+ */
 class RegisterController extends Controller
 {
     /*
@@ -48,37 +57,48 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return Validator::make(
+            $data,
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => [
+                    'required', 'string', 'email', 'max:255', 'unique:users'
+                ],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]
+        );
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data data
+     *
      * @return \App\User
      */
     protected function create(array $data)
     {
         $token = sha1(time());
-        $user = User::create([
+        $user = User::create(
+            [
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+            ]
+        );
         
-        $verifyUser = VerifyUser::create([
+        $verifyUser = VerifyUser::create(
+            [
             'user_id' => $user->id,
             'token' => $token
-        ]);
+            ]
+        );
         
         $email = new VerifyMail($user, $token);
         $dispatcher = new SendEmailJob($email);
@@ -101,16 +121,22 @@ class RegisterController extends Controller
      * Should be called upon registration completion
      * Part of custom verification email infrastructure
      *
+     * @param \Illuminate\Http\Request $request request
+     * @param \App\User                $user    user
+     *
      * @see https://codebriefly.com/custom-user-email-verification-activation-laravel/
      *
-     * @param \Illuminate\Http\Request $request
-     * @param $user
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     protected function registered(Request $request, $user)
     {
         $this->guard()->logout();
-        return redirect('/login')->with('status', 'We sent you an activation code. Check your email and click on the link to verify.');
+        return redirect('/login')
+            ->with(
+                'status',
+                'We sent you an activation code. '.
+                'Check your email and click on the link to verify.'
+            );
     }
     
     /**
@@ -118,23 +144,29 @@ class RegisterController extends Controller
      *
      * Send an email upon successful verification.
      *
-     * @author Petros Diveris <petros@bentleysoft.com>
-     * @param $token
+     * @param string $token token
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function verifyUser($token)
     {
         $verifyUser = VerifyUser::where('token', $token)->first();
-        if(isset($verifyUser) ){
+        if (isset($verifyUser)) {
             $user = $verifyUser->user;
-            if(!$user->verified) {
+            if (!$user->verified) {
                 $user->verified = 1;
                 $user->save();
                 
                 $status = "Your e-mail is verified. You can now login.";
     
                 $profileUrl = url('user/profile');
-                $email = new UserEmail($user, 'user_welcome', ['profileUrl'=>$profileUrl]);
+                $email = new UserEmail(
+                    $user,
+                    'user_welcome',
+                    [
+                        'profileUrl'=>$profileUrl
+                    ]
+                );
     
                 $dispatchJob = new SendEmailJob($email);
                 dispatch($dispatchJob);
@@ -142,8 +174,10 @@ class RegisterController extends Controller
                 $status = "Your e-mail is already verified. You can now login.";
             }
         } else {
-            return redirect('/login')->with('warning', "Sorry your email cannot be identified.");
+            return redirect('/login')
+                ->with('warning', "Sorry your email cannot be identified.");
         }
-        return redirect('/login')->with('status', $status);
+        return redirect('/login')
+            ->with('status', $status);
     }
 }

@@ -18,6 +18,7 @@ use App\User;
 
 
 Route::get('/', 'StaticController@home')->name('home');
+Route::get('kanga', 'StaticController@kanga')->name('kanga');
 
 Route::get(
     'user/profile',
