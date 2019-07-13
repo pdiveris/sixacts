@@ -63,7 +63,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'social_avatar', 'social_avatar_large'
+        'name', 'email', 'password', 'verified', 'avatar', 'social_avatar', 'social_avatar_large'
     ];
     
     /**
@@ -115,7 +115,6 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTIdentifier()
     {
-        
         return $this->getKey();
     }
     
@@ -138,9 +137,8 @@ class User extends Authenticatable implements JWTSubject
      */
     public function setPasswordAttribute($password)
     {
-        
         if (!empty($password)) {
-            $this->attributes['password'] = bcrypt($password);
+            $this->attributes['password'] = $password;
         }
     }
 }

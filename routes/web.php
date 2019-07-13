@@ -16,8 +16,8 @@ use App\Jobs\SendEmailJob;
 use App\Mail\VariableUserEmail as UserEmail;
 use App\User;
 
-
 Route::get('/', 'StaticController@home')->name('home');
+Route::get('react', 'StaticController@react')->name('react');
 
 Route::get(
     'user/profile',

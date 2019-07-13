@@ -40,9 +40,17 @@ class AuthenticationTest extends TestCase
     {
         parent::setUp();
         $user = new User([
-            'email'    => 'test@email.com',
-            'password' => '123456',
+            'email'    => 'unverified@supermail.com',
+            'password' => \Hash::make('123456'),
             'name'     => 'Pako Lucia'
+        ]);
+        $user->save();
+
+        $user = new User([
+            'email'    => 'verified@supermail.com',
+            'password' => \Hash::make('123456'),
+            'name'     => 'Al Di Meola',
+            'verified' => 1,
         ]);
         $user->save();
     }
@@ -61,12 +69,25 @@ class AuthenticationTest extends TestCase
         ]);
     }
     
-    public function itWillLogAUserIn()
+    public function testDenyAccessToUnverifiedUser()
     {
         $response = $this->post('api/login', [
-            'email'    => 'test@email.com',
+            'email'    => 'unverified@supermail.com',
             'password' => '123456'
         ]);
+        
+        $response->assertJsonStructure([
+            'error',
+        ]);
+    }
+    
+    public function testAllowAccessToVerifiedUser()
+    {
+        $response = $this->post('api/login', [
+            'email'    => 'verified@supermail.com',
+            'password' => '123456'
+        ]);
+    
         $response->assertJsonStructure([
             'access_token',
             'token_type',
@@ -74,7 +95,7 @@ class AuthenticationTest extends TestCase
         ]);
     }
     
-    public function itWillNotLogAnAnvalidUserIn()
+    public function testItWillNotLogAnInvalidUserIn()
     {
         $response = $this->post('api/login', [
             'email'    => 'test@email.com',

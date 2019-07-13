@@ -47,9 +47,7 @@ class ResetPasswordController extends Controller
      */
     protected function resetPassword($user, $password)
     {
-        // Don't hash the password. It seems that a global
-        // setting is taking care of it so we end up double hashing and failing
-        $user->password = $password; // Hash::make($password);
+        $user->password = Hash::make($password);
         
         $user->setRememberToken(\Str::random(60));
         

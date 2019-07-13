@@ -39,6 +39,21 @@ class StaticController extends Controller
     }
     
     /**
+     * Render the home view
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function react()
+    {
+        $proposals = \App\Proposal::all();
+        $categories = \App\Category::all();
+        return view(
+            'static.react',
+            ['proposals'=>$proposals, 'categories'=>$categories]
+        );
+    }
+    
+    /**
      * Compose the link to the author
      *
      * @param \App\Proposal $proposal proposal

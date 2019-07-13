@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\AuthData;
 use App\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
 /**
@@ -16,6 +18,8 @@ use Illuminate\Http\Request;
  */
 class AuthController extends Controller
 {
+    use AuthenticatesUsers;
+    
     /**
      * Register method
      *
@@ -28,7 +32,7 @@ class AuthController extends Controller
         $user = User::create(
             [
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => \Hash::make($request->password),
             'name'     => $request->name,
             ]
         );
@@ -45,8 +49,8 @@ class AuthController extends Controller
      */
     public function login()
     {
-        $credentials = request(['email', 'password']);
         
+        $credentials = request(['email', 'password']);
         $user = auth()->attempt($credentials);
         if (null !== $user && $user) {
             if (auth()->user()->verified) {
@@ -56,6 +60,19 @@ class AuthController extends Controller
                 }
             } else {
                 return response()->json(['error' => 'User unverified'], 401);
+            }
+        } else {
+            $oAuth = AuthData::where('email', '=', request(['email']))
+                ->first();
+            if (null!==$oAuth) {
+                $user = \App\User::where('email', '=', $oAuth->email)->first();
+                \Auth::login($user);
+
+                if (auth()->user()->verified) {
+                    return $this->respondWithToken($oAuth->token);
+                } else {
+                    return response()->json(['error' => 'User unverified'], 401);
+                }
             }
         }
         return response()->json(['error' => 'Unauthorized'], 401);
