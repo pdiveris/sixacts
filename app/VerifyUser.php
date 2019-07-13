@@ -28,18 +28,15 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * Class VerifyUser
  *
  * @category Model
- * @package  App
- * @author   Petros Diveris <petros@diveris.org>
- * @license  Apache 2.0
- * @link     https://www.diveris.org
- *
+ * @package App
+ * @author Petros Diveris <petros@diveris.org>
+ * @license Apache 2.0
+ * @link https://www.diveris.org
  * @property int $user_id
  * @property string $token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @property-read \App\User $user
- *
  * @method static Builder|VerifyUser newModelQuery()
  * @method static Builder|VerifyUser newQuery()
  * @method static Builder|VerifyUser query()
@@ -47,7 +44,6 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static Builder|VerifyUser whereToken($value)
  * @method static Builder|VerifyUser whereUpdatedAt($value)
  * @method static Builder|VerifyUser whereUserId($value)
- *
  * @mixin \Eloquent
  */
 class VerifyUser extends Model

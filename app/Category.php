@@ -9,11 +9,10 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * App\Category
  *
  * @category Model
- * @package  App
- * @author   Petros Diveris <petros@diveris.org>
- * @license  Apache 2.0
- * @link     https://www.diveris.org
- *
+ * @package App
+ * @author Petros Diveris <petros@diveris.org>
+ * @license Apache 2.0
+ * @link https://www.diveris.org
  * @property int $id
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -21,7 +20,6 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @property string $short_title
  * @property string $class
  * @property string $sub_class
- *
  * @method static Builder|\App\Category newModelQuery()
  * @method static Builder|\App\Category newQuery()
  * @method static Builder|\App\Category query()
@@ -32,8 +30,8 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static Builder|\App\Category whereClass($value)
  * @method static Builder|\App\Category whereShortTitle($value)
  * @method static Builder|\App\Category whereSubClass($value)
- *
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Proposal[] $proposals
  */
 class Category extends Model
 {

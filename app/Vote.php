@@ -9,17 +9,15 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * App\Vote
  *
  * @category Model
- * @package  App
- * @author   Petros Diveris <petros@diveris.org>
- * @license  Apache 2.0
- * @link     https://www.diveris.org
- *
+ * @package App
+ * @author Petros Diveris <petros@diveris.org>
+ * @license Apache 2.0
+ * @link https://www.diveris.org
  * @property int $id
  * @property int $user_id
  * @property int $proposal_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
  * @method static Builder|Vote newModelQuery()
  * @method static Builder|Vote newQuery()
  * @method static Builder|Vote query()
@@ -28,8 +26,11 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static Builder|Vote whereProposalId($value)
  * @method static Builder|Vote whereUpdatedAt($value)
  * @method static Builder|Vote whereUserId($value)
- *
  * @mixin \Eloquent
+ * @property int $up
+ * @property int $down
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereDown($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereUp($value)
  */
 class Vote extends Model
 {

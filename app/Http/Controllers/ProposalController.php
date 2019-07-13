@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Proposal;
 use Illuminate\Http\Request;
 
 /**
@@ -45,5 +46,21 @@ class ProposalController extends Controller
     public function voteDown()
     {
         $this->vote(-1);
+    }
+    
+    /**
+     * Get all proposals with their aggregations (if they have any..)
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index()
+    {
+        $props = Proposal::all();
+        foreach ($props as $prop) {
+            if (count($prop->aggs)>0) {
+                $prop->hasAggs = true;
+            }
+        }
+        return response()->json($props);
     }
 }

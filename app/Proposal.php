@@ -9,11 +9,10 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * App\Proposal
  *
  * @category Model
- * @package  App
- * @author   Petros Diveris <petros@diveris.org>
- * @license  Apache 2.0
- * @link     https://www.diveris.org
- *
+ * @package App
+ * @author Petros Diveris <petros@diveris.org>
+ * @license Apache 2.0
+ * @link https://www.diveris.org
  * @property int $id
  * @property string $title
  * @property string $body
@@ -22,7 +21,6 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $category_id
  * @property string $colour
- *
  * @method static Builder|Proposal newModelQuery()
  * @method static Builder|Proposal newQuery()
  * @method static Builder|Proposal query()
@@ -34,10 +32,9 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static Builder|Proposal whereTitle($value)
  * @method static Builder|Proposal whereUpdatedAt($value)
  * @method static Builder|Proposal whereUserId($value)
- *
  * @mixin \Eloquent
- *
  * @property-read \App\User $user
+ * @property-read \App\Category $category
  */
 class Proposal extends Model
 {
@@ -61,6 +58,17 @@ class Proposal extends Model
     public function category()
     {
         return $this->belongsTo('App\Category');
+    }
+    
+    /**
+     * Get the aggregations attached to the proposal
+     * (number of votes etc)
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function aggs()
+    {
+        return $this->hasMany('App\VoteAgg');
     }
     
     /**

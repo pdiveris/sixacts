@@ -11,47 +11,49 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * App\User
  *
  * @category Model
- * @package  App
- * @author   Petros Diveris <petros@diveris.org>
- * @license  Apache 2.0
- * @link     https://www.diveris.org *
- *
- * @property      int $id
- * @property      string $name
- * @property      string $email
- * @property      string|null $display_name
- * @property      string|null $avatar
- * @property      string|null $social_avatar
- * @property      string|null $social_avatar_large
- * @property      \Illuminate\Support\Carbon|null $email_verified_at
- * @property      string $password
- * @property      string|null $remember_token
- * @property      \Illuminate\Support\Carbon|null $created_at
- * @property      \Illuminate\Support\Carbon|null $updated_at
- * @property      int $verified
- * @method        static Builder|\App\User newModelQuery()
- * @method        static Builder|\App\User newQuery()
- * @method        static Builder|\App\User query()
- * @method        static Builder|\App\User whereCreatedAt($value)
- * @method        static Builder|\App\User whereEmail($value)
- * @method        static Builder|\App\User whereEmailVerifiedAt($value)
- * @method        static Builder|\App\User whereId($value)
- * @method        static Builder|\App\User whereName($value)
- * @method        static Builder|\App\User wherePassword($value)
- * @method        static Builder|\App\User whereRememberToken($value)
- * @method        static Builder|\App\User whereUpdatedAt($value)
- * @method        static Builder|\App\User whereAvatar($value)
- * @method        static Builder|\App\User whereDisplayName($value)
- * @method        static Builder|\App\User whereSocialAvatar($value)
- * @method        static Builder|\App\User whereSocialAvatarLarge($value)
- * @method        static \Illuminate\Database\Eloquent\Builder|
+ * @package App
+ * @author Petros Diveris <petros@diveris.org>
+ * @license Apache 2.0
+ * @link https://www.diveris.org *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string|null $display_name
+ * @property string|null $avatar
+ * @property string|null $social_avatar
+ * @property string|null $social_avatar_large
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $verified
+ * @method static Builder|\App\User newModelQuery()
+ * @method static Builder|\App\User newQuery()
+ * @method static Builder|\App\User query()
+ * @method static Builder|\App\User whereCreatedAt($value)
+ * @method static Builder|\App\User whereEmail($value)
+ * @method static Builder|\App\User whereEmailVerifiedAt($value)
+ * @method static Builder|\App\User whereId($value)
+ * @method static Builder|\App\User whereName($value)
+ * @method static Builder|\App\User wherePassword($value)
+ * @method static Builder|\App\User whereRememberToken($value)
+ * @method static Builder|\App\User whereUpdatedAt($value)
+ * @method static Builder|\App\User whereAvatar($value)
+ * @method static Builder|\App\User whereDisplayName($value)
+ * @method static Builder|\App\User whereSocialAvatar($value)
+ * @method static Builder|\App\User whereSocialAvatarLarge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|
  * \App\User whereVerified($value)
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|
  * \Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|
  * \App\Proposal[] $proposals
  * @property-read \App\VerifyUser $verifyUser
- * @mixin         \Eloquent
+ * @mixin \Eloquent
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Proposal[] $proposals
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereVerified($value)
  */
 class User extends Authenticatable implements JWTSubject
 {
