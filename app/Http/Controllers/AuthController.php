@@ -29,6 +29,7 @@ class AuthController extends Controller
             [
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'name'     => $request->name,
             ]
         );
         
@@ -45,13 +46,19 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-        $token = auth('api')->attempt($credentials);
         
-        if (!$token) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        $user = auth()->attempt($credentials);
+        if (null !== $user && $user) {
+            if (auth()->user()->verified) {
+                $token = auth('api')->attempt($credentials);
+                if ($token) {
+                    return $this->respondWithToken($token);
+                }
+            } else {
+                return response()->json(['error' => 'User unverified'], 401);
+            }
         }
-        
-        return $this->respondWithToken($token);
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
     
     /**
