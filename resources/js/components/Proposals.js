@@ -21,7 +21,7 @@ export default class Proposals extends Component {
             <ul>
                 {this.state.items.map(function (item, index) {
                     return (
-                        <div key={index}>
+                        <div key={index} className="u-mtop-10">
                             <h1 className="subtitle">{item.title}</h1>
                             <p>{item.body}</p>
                         </div>

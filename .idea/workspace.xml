@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+            <state relative-caret-position="356">
+              <caret line="23" column="61" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -485,14 +485,7 @@
       <workItem from="1562926886958" duration="10000" />
       <workItem from="1562926931592" duration="39000" />
       <workItem from="1562927629573" duration="45976000" />
-      <workItem from="1563142277998" duration="8841000" />
-    </task>
-    <task id="LOCAL-00001" summary="Added migrations with the fillable columns for Proposals and Votes. To include timestamps.&#10;Wll turn into soft deletes.">
-      <created>1561249111240</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1561249111240</updated>
+      <workItem from="1563142277998" duration="9855000" />
     </task>
     <task id="LOCAL-00002" summary="Fix issue with FKs - need be all same type, big fat unsigned int">
       <created>1561252784508</created>
@@ -830,7 +823,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563150069951</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Peoposal list React component drafted, implemented and wired To Laravel's&#10;magix as per documentation and this young programmer's tutorial:&#10;&#10;https://www.youtube.com/watch?v=3UtvN8EBGpg&#10;&#10;To be considered &quot;version&quot; 0.20&#10;&#10;Additional fields need adding, including linked tables.">
+      <created>1563156733696</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1563156733696</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -857,7 +857,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306812000" />
+    <option name="totallyTimeSpent" value="307826000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -912,7 +912,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added  sixactss application wide CSS - taken from Bulma based forum by Anton Alexeev (orangeShadow)&#10;&#10;https://github.com/BulmaTemplates/bulma-templates" />
     <MESSAGE value="Don't redirect to /home bit to / upon login or if verified logged in." />
     <MESSAGE value="Bypassed the local/remote avatar issue with a quirk of the Image field - create a custom thumbnail which returns the image's URL if that's not null ('locally', i.e. it exists in the system's store which in this case is storage/public/avatars) or swap it on the view level with a Gravatar URL made up on the fly. Similarly I will tackle the end-user facing component (forum view.) Anything more complicated than that calls for a custom field.A custom field has indeed been added (id Metafield) - it seems that Otwell recommends a separate Git repo for each of these and perhaps the idea is that they become portable. It is not worth making a custom field for avatars but it will most definitely come in handy in the future." />
     <MESSAGE value="Fixed mangled author's name&#10;Added makeGravatar method (avatar-&gt;social avatar-&gt;gravatar)" />
@@ -937,7 +936,8 @@
     <MESSAGE value="Add support for up and down voting.&#10;Create VIEW vote aggregations." />
     <MESSAGE value="Add down method to the migration (not that it's needed by anyhow..)" />
     <MESSAGE value="Start work on the main component - the proposals list, the .&#10;Swap all references to Example with Proposals." />
-    <option name="LAST_COMMIT_MESSAGE" value="Start work on the main component - the proposals list, the .&#10;Swap all references to Example with Proposals." />
+    <MESSAGE value="Peoposal list React component drafted, implemented and wired To Laravel's&#10;magix as per documentation and this young programmer's tutorial:&#10;&#10;https://www.youtube.com/watch?v=3UtvN8EBGpg&#10;&#10;To be considered &quot;version&quot; 0.20&#10;&#10;Additional fields need adding, including linked tables." />
+    <option name="LAST_COMMIT_MESSAGE" value="Peoposal list React component drafted, implemented and wired To Laravel's&#10;magix as per documentation and this young programmer's tutorial:&#10;&#10;https://www.youtube.com/watch?v=3UtvN8EBGpg&#10;&#10;To be considered &quot;version&quot; 0.20&#10;&#10;Additional fields need adding, including linked tables." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/nova/src/Http/Controllers/ForgotPasswordController.php">
@@ -1299,8 +1299,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+        <state relative-caret-position="356">
+          <caret line="23" column="61" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
