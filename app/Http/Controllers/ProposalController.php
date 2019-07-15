@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Proposal;
-use Illuminate\Http\Request;
 
 /**
  * Class ProposalController
@@ -59,6 +58,11 @@ class ProposalController extends Controller
         foreach ($props as $prop) {
             if (count($prop->aggs)>0) {
                 $prop->hasAggs = true;
+            }
+        }
+        foreach ($props as $prop) {
+            if ($prop->category) {
+                $prop->hasCategory = true;
             }
         }
         return response()->json($props);
