@@ -56,13 +56,14 @@ class ProposalController extends Controller
     {
         $props = Proposal::all();
         foreach ($props as $prop) {
+            if ($prop->category) {
+                $prop->hasCategory = true;
+            }
             if (count($prop->aggs)>0) {
                 $prop->hasAggs = true;
             }
-        }
-        foreach ($props as $prop) {
-            if ($prop->category) {
-                $prop->hasCategory = true;
+            if ($prop->user) {
+                $prop->hasUser = true;
             }
         }
         return response()->json($props);
