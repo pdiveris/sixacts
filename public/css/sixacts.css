@@ -72,5 +72,13 @@ div .collapsed {
 
 div .author {
     float: left;
-    display: inline;
+    width: 100%;
+}
+
+.numVotes {
+    color: #fa001d;
+}
+
+.proposal-form textarea {
+    min-height: 400px !important;
 }

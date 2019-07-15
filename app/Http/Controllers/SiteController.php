@@ -1,5 +1,5 @@
 <?php
-    /**
+/**
      * Home Controller
      *
      * Handles aspects of the login process,
@@ -20,7 +20,9 @@
      * @link      https://github.com/pdiveris/sixproposals/blob/master/app/Http/Controllers/Auth/LoginController.php
      * @see       Six Acts
      */
-    namespace App\Http\Controllers;
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request as Request;
 
 /**
  * Class SiteController
@@ -35,13 +37,21 @@
 class SiteController extends Controller
 {
     /**
+     * @var \Request request
+     */
+    protected $request;
+    
+    /**
      * Create a new controller instance.
+     *
+     * @param \Request $request
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->middleware('auth');
+        $this->request = $request;
     }
     
     /**
@@ -62,5 +72,34 @@ class SiteController extends Controller
     public function userProfile()
     {
         return view('user_profile');
+    }
+    
+    /**
+     * Display a form to colect the proposed action
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getProposal()
+    {
+        return view('proposal_form');
+    }
+    
+    public function postProposal()
+    {
+        // validate the info, create rules for the inputs
+        $rules = array(
+            'title'    => 'required|string',
+            'body' => 'required|min:3'
+        );
+    
+        $validator = \Validator::make($this->request->all(), $rules);
+    
+        if ($validator->fails()) {
+            return redirect('propose')
+                ->withErrors($validator)
+                ->withInput($this->request->all());
+        } else {
+            dd('KOOL!');
+        }
     }
 }

@@ -68,4 +68,5 @@ class ProposalController extends Controller
         }
         return response()->json($props);
     }
+    
 }

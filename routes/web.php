@@ -18,6 +18,8 @@ use App\User;
 
 Route::get('/', 'StaticController@home')->name('home');
 Route::get('react', 'StaticController@react')->name('react');
+Route::get('propose', 'SiteController@getProposal')->name('propose');
+Route::post('propose', 'SiteController@postProposal')->name('propose');
 
 Route::get(
     'user/profile',

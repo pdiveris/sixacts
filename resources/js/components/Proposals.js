@@ -11,6 +11,7 @@ export default class Proposals extends Component {
 
     componentDidMount() {
         this.getProposals();
+
     }
 
     getProposals() {
@@ -47,15 +48,19 @@ export default class Proposals extends Component {
                             <div className="expandable collapsed">
                                 {letsTango(item.body)}
                             </div>
-                            <div className="author controls u-mbottom-20 u-mtop-10 u-mright-10">
+                            <div className="author controls u-mtop-10 u-mright-10">
+                                <i>Posted by</i>:&nbsp;
+                                <b>
                                 {item.user.display_name != ''
                                     ? item.user.display_name
                                     : item.user.name
-                                }
+                                }</b>
                                 &nbsp;
                             </div>
-                            <div className="aggs controls u-mbottom-20 u-mtop-10">
-                                {item.aggs.length > 0 ? item.aggs[0].total_votes : '0 '} VOTES
+                            <div className="aggs controls u-mbottom-20">
+                                <span className="numVotes">
+                                {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span>     votes
+
                                 <span className="icon u-mleft-20">
                                     <i className="fa fa-arrow-alt-circle-up"></i>
                                 </span>
