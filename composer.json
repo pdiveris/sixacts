@@ -19,6 +19,7 @@
         "laravel/nova": "*",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
+        "predis/predis": "^1.1",
         "thomaswelton/laravel-gravatar": "~1.0",
         "tymon/jwt-auth": "1.0.*"
     },
