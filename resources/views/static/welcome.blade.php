@@ -22,8 +22,15 @@
                                             {{\App\Http\Controllers\StaticController::authorLink($proposal)}}
                                         </a>
                                         replied 34 minutes ago &nbsp;
-                                        <span class="tag">TAG</span>
+                                        <span class="tag">TAG
+                                        </span>
+                                        <span>
+                                            @if(count($proposal->aggs))
+                                                KOKO
+                                            @endif
+                                        </span>
                                     </p>
+
                                 </div>
                             </div>
                             <div class="media-right">

@@ -47,6 +47,7 @@ class StaticController extends Controller
     {
         $proposals = \App\Proposal::all();
         $categories = \App\Category::all();
+        dump($categories);
         return view(
             'static.react',
             ['proposals'=>$proposals, 'categories'=>$categories]

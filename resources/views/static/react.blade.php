@@ -5,7 +5,7 @@
             @include('partials.sidebar')
         </div>
         <div class="column is-9">
-            <div id="example"></div>
+            <div id="proposals"></div>
 {{--            <div class="box content">
                 @foreach($proposals as $proposal)
                     <article class="post">
