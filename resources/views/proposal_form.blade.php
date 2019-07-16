@@ -27,6 +27,7 @@
                     <form class="proposal-form" method="POST" action="{{route('propose')}}">
                         {{ csrf_field() }}
                         <div class="field is-horizontal">
+                            <input type="hidden" name="category_id" id="category_id"  value="3" />
                             <div class="field-label">
                                 <label class="label">Category</label>
                             </div>

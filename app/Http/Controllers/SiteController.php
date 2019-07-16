@@ -90,12 +90,19 @@ class SiteController extends Controller
         );
     }
     
+    /**
+     * Handld the form/
+     * Validate to save, that's our mission.
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function postProposal()
     {
         // validate the info, create rules for the inputs
         $rules = array(
             'title'    => 'required|string',
-            'body' => 'required|min:3'
+            'body' => 'required|min:3',
+            'category_id' => 'required|integer|between:1,10',
         );
     
         $validator = \Validator::make($this->request->all(), $rules);
@@ -107,7 +114,13 @@ class SiteController extends Controller
         } else {
             $proposal = new Proposal();
             $proposal->user_id = auth()->user()->id;
-            dump($proposal);
+            $proposal->title = $this->request->get('title');
+            $proposal->category_id = $this->request->get('category_id');
+            $proposal->body = $this->request->get('body');
+            $proposal->save();
+            
+            return redirect('propose')
+                ->with(['status'=>'all good']);
         }
     }
 }
