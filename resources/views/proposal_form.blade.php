@@ -28,6 +28,22 @@
                         {{ csrf_field() }}
                         <div class="field is-horizontal">
                             <div class="field-label">
+                                <label class="label">Category</label>
+                            </div>
+
+                            <div class="field-body">
+                                <div class="field">
+                                    <div class="buttons">
+                                    @foreach($categories as $c)
+                                    <a href="#"
+                                        class="tag k{{$c->id}}  u-m-5">{{$c->short_title}}</a>
+                                    @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
                                 <label class="label">Summary title</label>
                             </div>
 

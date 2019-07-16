@@ -12,7 +12,6 @@ var bulmaSteps = require('bulma-extensions/bulma-steps/dist/js/bulma-steps');
 */
 var bulmaTagsinput = require('bulma-extensions/bulma-tagsinput/dist/js/bulma-tagsinput');
 
-
 // Instantiate
 /*
 bulmaAccordion.attach();

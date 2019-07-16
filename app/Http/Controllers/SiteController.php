@@ -22,6 +22,8 @@
      */
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Proposal;
 use Illuminate\Http\Request as Request;
 
 /**
@@ -81,7 +83,11 @@ class SiteController extends Controller
      */
     public function getProposal()
     {
-        return view('proposal_form');
+        $categories = Category::all();
+        return view(
+            'proposal_form',
+            ['categories'=>$categories]
+        );
     }
     
     public function postProposal()
@@ -99,7 +105,9 @@ class SiteController extends Controller
                 ->withErrors($validator)
                 ->withInput($this->request->all());
         } else {
-            dd('KOOL!');
+            $proposal = new Proposal();
+            $proposal->user_id = auth()->user()->id;
+            dump($proposal);
         }
     }
 }
