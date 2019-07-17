@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use \Illuminate\Database\Eloquent\Builder as Builder;
+use \Illuminate\Notifications\DatabaseNotificationCollection as DatabaseNotificationCollection;
 
 /**
  * App\User
@@ -51,7 +52,7 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * \App\Proposal[] $proposals
  * @property-read \App\VerifyUser $verifyUser
  * @mixin \Eloquent
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read  DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Proposal[] $proposals
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereVerified($value)
  */

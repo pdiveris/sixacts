@@ -55,6 +55,7 @@
                                             class="input"
                                             id="title"
                                             type="title"
+                                            placeholder="Summary title"
                                             name="title"
                                             value="{{ old('title') }}" required autofocus>
                                     </p>
@@ -73,7 +74,9 @@
                             </div>
                             <div class="field-body">
                                 <div class="field">
-                                    <textarea class="textarea" placeholder="Action" name="body"></textarea>
+                                    <textarea class="textarea"
+                                       placeholder="Action details (up to 200 words)"
+                                       name="body"></textarea>
                                 </div>
                             </div>
                         </div>

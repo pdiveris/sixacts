@@ -58,9 +58,11 @@ article.post:last-child {
     padding: 5px;
 }
 
+/*
 .navbar-item img {
     max-height: 2.75rem !important;
 }
+*/
 .navatar {
     border-radius: 50%;
     width: 32px;
@@ -114,3 +116,9 @@ div .author {
     font-size: 1.0em !important;
 }
 
+.logo_diaroia {
+    height: 70px !important;
+}
+.navbar-item img {
+    max-height: unset !important;
+}

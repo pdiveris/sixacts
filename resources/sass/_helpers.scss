@@ -1,5 +1,5 @@
 $sizes: (0,1,5, 10,15,20,25,30,50);
-$positions: ('top','left','bottom','righ');
+$positions: ('top','left','bottom','right');
 
 @each $size in $sizes {
     .u-m-#{$size} {

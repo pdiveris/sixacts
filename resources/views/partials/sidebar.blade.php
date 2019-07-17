@@ -2,7 +2,7 @@
 Sidebar snippet
 Author Petros Diveris <petros@diveris.org>
 --}}
-<a class="button is-primary is-block is-alt is-large" href="{{route('propose')}}">
+<a class="button is-primary is-block is-alt is-medoi" href="{{route('propose')}}">
     Propose Act
 </a>
 <aside class="menu">
@@ -12,7 +12,7 @@ Author Petros Diveris <petros@diveris.org>
     <ul class="menu-list">
         @foreach($categories as $category)
             <li>
-                <span class="tag {{$category->class}} is-medium {{$category->sub_class}}">
+                <span class="tag {{$category->class}} is-small {{$category->sub_class}}">
                     {{$category->short_title}}
                 </span>
             </li>

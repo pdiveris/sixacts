@@ -109,3 +109,6 @@ Route::get(
 );
 
 Route::get('email', 'EmailController@sendEmail');
+
+Route::get('sse/server/{token?}', 'ServerSideEventsController@server');
+Route::get('sse/client/{token?}', 'ServerSideEventsController@client');

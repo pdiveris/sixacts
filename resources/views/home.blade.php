@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="columns is-marginless is-centered">
@@ -19,3 +18,4 @@
         </div>
     </div>
 @endsection
+s

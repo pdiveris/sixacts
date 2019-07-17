@@ -22,7 +22,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{url('')}}">
-                <img src="{{asset('images/sixacts_logo.png')}}" width="112" height="28">
+                <img src="{{asset('images/6_acts_logo.png')}}" class="logo_diaroia">
             </a>
             <div class="navbar-burger burger" data-target="topNav">
                 <span></span>
@@ -34,15 +34,10 @@
             <div class="navbar-start">
                 <a class="navbar-item" href="{{url('')}}">Home</a>
                 <a class="navbar-item" href="{{url('about')}}">About</a>
-                {{--
-                                <a class="navbar-item" href="{{url('blog')}}">Blog</a>
-                                <a class="navbar-item" href="{{url('search')}}">Search</a>
-                --}}
                 <a class="navbar-item" href="{{url('signin')}}">Sign in</a>
                 <a class="navbar-item" href="{{url('register')}}">Register</a>
                 <a class="navbar-item" href="{{url('terms')}}">Terms</a>
                 <a class="navbar-item" href="{{url('privacy')}}">Privacy</a>
-
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
