@@ -122,12 +122,14 @@ div .author {
 .navbar-item img {
     max-height: unset !important;
 }
+#hide-when-you-know {
+    border: 1px black dotted !important;
+}
 
-/*
+
 @media screen and (min-width: 1000px) {
     #hide-when-you-know {
         border: 1px black dotted !important;
-
     }
 }
-*/
+

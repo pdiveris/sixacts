@@ -22,7 +22,7 @@
     <div class="container">
         <div class="navbar-brand">
             <a class="navbar-item" href="{{url('')}}">
-                <img src="{{asset('images/6_acts_logo.png')}}" class="logo_diaroia">
+                <img src="{{asset('images/6_acts_logo.jpg')}}" class="logo_diaroia">
             </a>
             <div class="navbar-burger burger" data-target="topNav">
                 <span></span>

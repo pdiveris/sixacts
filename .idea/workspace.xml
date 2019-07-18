@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/static/sse.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/VotelController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/sixacts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sixacts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/_helpers.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/_helpers.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/initial-variables.sass" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/initial-variables.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/proposal_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/proposal_form.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/static/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,14 +41,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.30486357">
+    <splitter split-orientation="vertical" split-proportion="0.47685835">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/routes/web.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="95">
-                  <caret line="112" column="22" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="22" />
+                <state relative-caret-position="200">
+                  <caret line="20" selection-start-line="20" selection-end-line="20" />
                   <folding>
                     <element signature="e#452#478#0#PHP" expanded="true" />
                   </folding>
@@ -66,8 +59,71 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/views/static/react.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="220">
-                  <caret line="11" selection-start-line="11" selection-end-line="11" />
+                <state relative-caret-position="-1">
+                  <caret column="19" selection-start-column="19" selection-end-column="19" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/views/layouts/forum.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="62">
+                  <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/partials/sidebar.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="380">
+                  <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/routes/api.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="276">
+                  <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Vote.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="508">
+                  <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/static/welcome.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="222">
+                  <caret line="30" selection-start-line="30" selection-end-line="30" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VotelController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="356">
+                  <caret line="62" column="5" lean-forward="true" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -75,8 +131,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StaticController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="6">
-                  <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+                <state relative-caret-position="149">
+                  <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
                   <folding>
                     <element signature="e#40#68#0#PHP" expanded="true" />
                   </folding>
@@ -88,13 +144,22 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/static/welcome.blade.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="427">
-                  <caret line="112" column="22" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="22" />
+                <state relative-caret-position="72">
+                  <caret line="4" column="40" lean-forward="true" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="203">
+                  <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
                   <folding>
-                    <element signature="e#452#478#0#PHP" expanded="true" />
+                    <element signature="e#0#39#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -106,12 +171,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>lodash</find>
-      <find>refresh</find>
-      <find>auth()</find>
-      <find>access_</find>
-      <find>attempt</find>
-      <find>User::</find>
       <find>password</find>
       <find>web.ma</find>
       <find>site.we</find>
@@ -136,6 +195,12 @@
       <find>navbar-item img</find>
       <find>max-h</find>
       <find>sideba]</find>
+      <find>server</find>
+      <find>not found</find>
+      <find>Proposal</find>
+      <find>props</find>
+      <find>prop</find>
+      <find>kaka</find>
     </findStrings>
     <replaceStrings>
       <replace>a</replace>
@@ -153,17 +218,21 @@
       <replace>SiteController</replace>
       <replace>Builder</replace>
       <replace>HomePage</replace>
+      <replace>V</replace>
+      <replace>Vote</replace>
+      <replace>votes</replace>
+      <replace>vote</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/vendor</dir>
       <dir>$PROJECT_DIR$/app/Http/Controllers</dir>
-      <dir>$PROJECT_DIR$/app/Http</dir>
       <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/public/js</dir>
       <dir>$PROJECT_DIR$/node_modules/bulma-extensions</dir>
       <dir>$PROJECT_DIR$/nova</dir>
-      <dir>$PROJECT_DIR$/resources</dir>
       <dir>$PROJECT_DIR$/app</dir>
+      <dir>$PROJECT_DIR$/app/Http</dir>
+      <dir>$PROJECT_DIR$/resources</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -172,7 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_07_12_171233_alter_proposals_add_body.php" />
         <option value="$PROJECT_DIR$/app/Nova/Category.php" />
         <option value="$PROJECT_DIR$/app/Nova/Proposal.php" />
         <option value="$PROJECT_DIR$/.env" />
@@ -191,7 +259,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/public/site.webmanifest" />
         <option value="$PROJECT_DIR$/node_modules/bulma-extensions/bulma-slider/dist/js/bulma-slider.js" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_06_22_192522_create_votes_table.php" />
         <option value="$PROJECT_DIR$/app/Proposal.php" />
         <option value="$PROJECT_DIR$/app/VoteAgg.php" />
@@ -201,28 +268,30 @@
         <option value="$PROJECT_DIR$/node_modules/lodash/lodash.js" />
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_13_083952_view_create_vote_aggs.php" />
-        <option value="$PROJECT_DIR$/resources/views/static/react.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/signin.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/bulma-extensions.js" />
         <option value="$PROJECT_DIR$/resources/js/components/Proposals.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ServerSideEventsController.php" />
         <option value="$PROJECT_DIR$/resources/views/proposal_form.blade.php" />
         <option value="$PROJECT_DIR$/resources/sass/initial-variables.sass" />
         <option value="$PROJECT_DIR$/node_modules/bulma/sass/components/navbar.sass" />
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
-        <option value="$PROJECT_DIR$/public/css/sixacts.css" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/sass/_helpers.scss" />
+        <option value="$PROJECT_DIR$/resources/views/static/sse.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/static/react.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/public/css/sixacts.css" />
+        <option value="$PROJECT_DIR$/resources/views/static/welcome.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/VotelController.php" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" />
-        <option value="$PROJECT_DIR$/resources/sass/_helpers.scss" />
-        <option value="$PROJECT_DIR$/resources/views/static/welcome.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/static/sse.blade.php" />
       </list>
     </option>
   </component>
@@ -367,7 +436,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1690" />
+    <option name="x" value="1688" />
     <option name="y" value="68" />
     <option name="width" value="1848" />
     <option name="height" value="954" />
@@ -389,31 +458,33 @@
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
@@ -421,6 +492,11 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -439,27 +515,27 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/static" />
-      <recent name="$PROJECT_DIR$/resources/views/emails/users" />
-      <recent name="$PROJECT_DIR$/public/images" />
-      <recent name="$PROJECT_DIR$/app/Mail" />
-      <recent name="$PROJECT_DIR$/app/Observers" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$/docs" />
       <recent name="$PROJECT_DIR$/app/Jobs" />
       <recent name="$PROJECT_DIR$/resources/views/emails/users" />
       <recent name="$PROJECT_DIR$/resources/views" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Controllers" />
+      <recent name="$PROJECT_DIR$/resources/views/static" />
+      <recent name="$PROJECT_DIR$/resources/views/emails/users" />
+      <recent name="$PROJECT_DIR$/public/images" />
+      <recent name="$PROJECT_DIR$/app/Mail" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -538,21 +614,7 @@
       <workItem from="1562926931592" duration="39000" />
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
-      <workItem from="1563314954101" duration="301000" />
-    </task>
-    <task id="LOCAL-00005" summary="twitter OAuth 1 working&#10;&#10;Needs tweaking: reduce the amount of data request&#10;Request: email address">
-      <created>1561344127735</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1561344127735</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added table to handle Auth data. Ready for facebook and google.">
-      <created>1561372652179</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1561372652179</updated>
+      <workItem from="1563314954101" duration="8895000" />
     </task>
     <task id="LOCAL-00007" summary="Argh, Git! Add/commit/push AuthData.">
       <created>1561373118040</created>
@@ -883,7 +945,21 @@
       <option name="project" value="LOCAL" />
       <updated>1563241858659</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Introduced code in templates (a simple column) to give breathing space&#10;to categories, the aim being to be readable in all configurations.&#10;At the sam time, a media query was added as to make show them only when&#10;the area is crowded, i.e. below 1200 pixels width (media query.)">
+      <created>1563416396536</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1563416396537</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Fix the size of &quot;Quality of political information&quot; buttom/link in the&#10;front page (also the &quot;invisible&quot; React page).&#10;&#10;This closes issue #15">
+      <created>1563442587608</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1563442587608</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -910,7 +986,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="358898000" />
+    <option name="totallyTimeSpent" value="367492000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -922,7 +998,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1690" y="68" width="1848" height="954" extended-state="0" />
+    <frame x="1689" y="68" width="1848" height="954" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19376393" />
@@ -939,7 +1015,7 @@
       <window_info anchor="bottom" id="Tail" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49913144" weight="0.19217081" />
-      <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" weight="0.28113878" />
+      <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" visible="true" weight="0.15421115" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" weight="0.32858837" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5014476" side_tool="true" weight="0.27995256" />
@@ -966,8 +1042,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Monday &quot;morning&quot; commit. Reflecting on the automated EMail Verification dilemma." />
-    <MESSAGE value="Verified use migrations added" />
     <MESSAGE value="Ixed type - synUser-&gt;syncUser" />
     <MESSAGE value="Fixed the text in the email templates. Added conditional for password so that email can be used for both synced and &quot;native&quot; registrations (needs testing.)" />
     <MESSAGE value="User registration, syncing and appropriate emails more or less working. &#10;Some of this work needs migrating to forgot/rest password." />
@@ -991,21 +1065,11 @@
     <MESSAGE value="&quot;Tricking&quot; Eloquent - return full category attached to the proposal.&#10;Or more to the point, category to which the proposal is attached," />
     <MESSAGE value="0.2 this should be called as all's there now, albeit not all joints joined." />
     <MESSAGE value="Correctly set the icons on the &quot;social&quot; media login buttons in `signin.blade.php`. This closes #9." />
-    <option name="LAST_COMMIT_MESSAGE" value="Correctly set the icons on the &quot;social&quot; media login buttons in `signin.blade.php`. This closes #9." />
+    <MESSAGE value="Introduced code in templates (a simple column) to give breathing space&#10;to categories, the aim being to be readable in all configurations.&#10;At the sam time, a media query was added as to make show them only when&#10;the area is crowded, i.e. below 1200 pixels width (media query.)" />
+    <MESSAGE value="Fix the size of &quot;Quality of political information&quot; buttom/link in the&#10;front page (also the &quot;invisible&quot; React page).&#10;&#10;This closes issue #15" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix the size of &quot;Quality of political information&quot; buttom/link in the&#10;front page (also the &quot;invisible&quot; React page).&#10;&#10;This closes issue #15" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/js/bulma.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/bulma-extensions/bulma-accordion/dist/js/bulma-accordion.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/bulma-extensions/bulma-slider/dist/js/bulma-slider.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -1017,13 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="34" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -1116,13 +1173,6 @@
           <folding>
             <element signature="e#23#62#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
@@ -1251,46 +1301,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/forum.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/sass/initial-variables.sass">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="628">
           <caret line="70" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/sixacts.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="93" column="30" lean-forward="true" selection-start-line="93" selection-start-column="30" selection-end-line="93" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -1328,37 +1342,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/static/welcome.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Vote.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="508">
+          <caret line="34" column="6" selection-start-line="34" selection-start-column="6" selection-end-line="34" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/static/react.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/css/sixacts.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="463">
+          <caret line="127" selection-start-line="127" selection-end-line="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#452#478#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VotelController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="62" column="5" lean-forward="true" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StaticController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+        <state relative-caret-position="149">
+          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
           <folding>
             <element signature="e#40#68#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="112" column="22" selection-start-line="112" selection-start-column="16" selection-end-line="112" selection-end-column="22" />
+        <state relative-caret-position="276">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/static/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
           <folding>
-            <element signature="e#452#478#0#PHP" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/static/react.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/forum.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="24" column="57" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
         </state>
       </provider>
     </entry>
