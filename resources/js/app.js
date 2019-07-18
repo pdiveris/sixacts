@@ -6,7 +6,8 @@
  */
 
 require('./bootstrap');
-import Example from './components/Proposals';
+import Proposals from './components/Proposals';
+import Tablets from './components/Tablets';
 
 /*
 window.Vue = require('vue');

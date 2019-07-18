@@ -39,7 +39,9 @@ class StaticController extends Controller
     }
     
     /**
-     * Render the home view
+     * Render the React view
+     * It's the same as the home view usually but it serves as a testbed
+     * for new features/fixes before they make their way to their actual place
      *
      * @return \Illuminate\Contracts\View\View
      */

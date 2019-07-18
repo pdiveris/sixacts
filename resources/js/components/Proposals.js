@@ -15,7 +15,9 @@ export default class Proposals extends Component {
     }
 
     getProposals() {
-        fetch('https://sixacts.div/api/proposals', {
+        let proto = window.location.protocol+'//';
+        let hostName = window.location.hostname;
+        fetch(proto+hostName+'/api/proposals', {
                 crossDomain: true,
             }
         )
