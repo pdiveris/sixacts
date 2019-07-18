@@ -12,7 +12,7 @@ Author Petros Diveris <petros@diveris.org>
     <ul class="menu-list">
         @foreach($categories as $category)
             <li>
-                <span class="tag {{$category->class}} is-small {{$category->sub_class}}">
+                <span class="tag {{$category->class}} {{$category->sub_class}}">
                     {{$category->short_title}}
                 </span>
             </li>
