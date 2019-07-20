@@ -35,6 +35,7 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @mixin \Eloquent
  * @property-read \App\User $user
  * @property-read \App\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\VoteAgg[] $aggs
  */
 class Proposal extends Model
 {

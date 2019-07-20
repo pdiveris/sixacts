@@ -49,9 +49,14 @@ class StaticController extends Controller
     {
         $proposals = \App\Proposal::all();
         $categories = \App\Category::all();
+        $listData = json_encode(['Koko', 'Taylor', 'Tash', 'Μιχαλάκης', 'Lucia']);
         return view(
             'static.react',
-            ['proposals'=>$proposals, 'categories'=>$categories]
+            [
+                'proposals'=>$proposals,
+                'categories'=>$categories,
+                'listData'=>$listData,
+            ]
         );
     }
     

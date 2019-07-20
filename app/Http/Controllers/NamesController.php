@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Proposal;
+use App\Name;
 
 /**
- * Class ProposalController
+ * Class NameController
  *
  * @category Auth
  * @package  App\Http\Controllers
@@ -13,20 +13,8 @@ use App\Proposal;
  * @license  Apache 2.0
  * @link     https://www.diveris.org
  */
-class ProposalController extends Controller
+class NamesController extends Controller
 {
-    /**
-     * Vote action
-     *
-     * @param int $direction direction (up/down)
-     *
-     * @return void
-     */
-    public function vote($direction = 1)
-    {
-        //
-        dump("I am voting $direction");
-    }
     
     /**
      * Get all proposals with their aggregations (if they have any..)
@@ -35,18 +23,10 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $props = Proposal::all();
-        foreach ($props as $prop) {
-            if ($prop->category) {
-                $prop->hasCategory = true;
-            }
-            if (count($prop->aggs)>0) {
-                $prop->hasAggs = true;
-            }
-            if ($prop->user) {
-                $prop->hasUser = true;
-            }
-        }
+        $props = Name::where('id', '>', 1)
+                        ->limit(15)
+                        ->get();
+
         return response()->json($props);
     }
     
@@ -59,7 +39,7 @@ class ProposalController extends Controller
      */
     public function show($proposalId = 0)
     {
-        $prop = Proposal::find(\intval($proposalId));
+        $prop = Name::find(\intval($proposalId));
         if (null===$prop) {
             return response()->json(['message' => 'Not Found.'], 404);
         }
@@ -75,5 +55,4 @@ class ProposalController extends Controller
         }
         return response()->json($prop);
     }
-    
 }

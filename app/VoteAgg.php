@@ -18,6 +18,9 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static Builder|\App\VoteAgg whereSumDown($value)
  * @method static Builder|\App\VoteAgg whereSumUp($value)
  * @mixin \Eloquent
+ * @property float|null $total_votes
+ * @property-read \App\Proposal $proposal
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VoteAgg whereTotalVotes($value)
  */
 class VoteAgg extends Model
 {

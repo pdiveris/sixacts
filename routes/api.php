@@ -21,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('proposals', 'ProposalController@index');
+Route::get('names', 'NamesController@index');
 Route::post('proposals', 'ProposalController@store');
+Route::get('proposals/vote/{id}/{direction}', 'ProposalController@vote');
 Route::get('proposals/{id}', 'ProposalController@show');
 // Route::put('proposals/{project}', 'ProposalController@markAsCompleted');

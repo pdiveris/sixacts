@@ -16,22 +16,27 @@ export default class Tablets extends Component {
 
     getProposals() {
         console.log("getProposals()");
-        let results = [
-                {'title': 'Pako was here'},
-                {'title': 'So was Mary'},
-                {'title': 'Tash was away, he was having a nap'},
-                {'title': 'Perdo was at the abattoir, programming'},
+/*        let results = [
+                {'title': 'Gai-Jin: The Epic Novel of the Birth of Modern Japan'},
+                {'title': 'Welcome to Lagos'},
+                {'title': 'Berlin Alexanderplatz'},
+                {'title': 'The Book Smugglers of Timbuktu'},
+                {'title': 'District 13: The Drama of the Armed Conflict in Medellin, Colombia'},
+                {'title': 'Paradise Lost: The Destruction of Islams City of Tolerance: Smyrna 1922'},
+                {'title': 'Dear Los Angeles: The City in Diaries and Letters, 1542 to 2018'},
+                {'title': 'Trieste and the Meaning of Nowhere'},
+                {'title': 'The Alhambra and the Kremlin : travels in the South and the North of Europe'},
+                {'title': 'Algiers, Third World Capital: Freedom Fighters, Revolutionaries, Black Panthers'}
         ];
-        this.setState({'items': results})
-/*
+        this.setState({'items': results})*/
 
-        fetch('https://sixacts.div/api/proposals', {
+        fetch('https://sixacts.div/api/names', {
                 crossDomain: true,
             }
         )
             .then(results => results.json())
             .then(results => this.setState({'items': results}))
-*/
+
     }
 
     render() {
@@ -40,7 +45,7 @@ export default class Tablets extends Component {
                 {this.state.items.map(function (item, index) {
                     return (
                         <div key={index} className="u-mtop-2">
-                            <span className="subtitle has-text-weight-bold">{item.title}</span>
+                            <span className="subtitle has-text-weight-bold">{item.name}</span>
                         </div>
                     )
                 }
