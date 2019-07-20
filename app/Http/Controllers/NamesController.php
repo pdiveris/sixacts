@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Name;
+use App\RandomNames;
 
 /**
  * Class NameController
@@ -27,6 +28,20 @@ class NamesController extends Controller
                         ->limit(15)
                         ->get();
 
+        return response()->json($props);
+    }
+    
+    /**
+     * Get all proposals with their aggregations (if they have any..)
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function random()
+    {
+        $props = RandomNames::where('id', '>', 1)
+            ->limit(15)
+            ->get();
+        
         return response()->json($props);
     }
     
