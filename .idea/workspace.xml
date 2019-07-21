@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/MessagePosted.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/MessagePosted.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/votind.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/votind.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel-echo-server.lock" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-echo-server.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/messages/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="80">
-              <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -69,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/Tablets.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="51" selection-start-line="51" selection-end-line="51" />
+            <state relative-caret-position="424">
+              <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -78,11 +81,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/channels.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+            <state relative-caret-position="434">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
         </entry>
@@ -91,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
-              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+              <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
               <folding>
                 <element signature="e#48#77#0#PHP" expanded="true" />
               </folding>
@@ -112,9 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Example</find>
-      <find>a</find>
-      <find>fa-</find>
       <find>we</find>
       <find>validato</find>
       <find>validator</find>
@@ -142,6 +151,9 @@
       <find>channels.</find>
       <find>signin</find>
       <find>redirect</find>
+      <find>letsDisco</find>
+      <find>NewMessage</find>
+      <find>newMessage</find>
     </findStrings>
     <replaceStrings>
       <replace>a</replace>
@@ -172,9 +184,9 @@
       <dir>$PROJECT_DIR$/node_modules/bulma-extensions</dir>
       <dir>$PROJECT_DIR$/nova</dir>
       <dir>$PROJECT_DIR$/app/Http</dir>
-      <dir>$PROJECT_DIR$/resources</dir>
       <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/app</dir>
+      <dir>$PROJECT_DIR$/resources</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -228,11 +240,11 @@
         <option value="$PROJECT_DIR$/app/Events/PublicMessage.php" />
         <option value="$PROJECT_DIR$/routes/channels.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/Tablets.js" />
         <option value="$PROJECT_DIR$/resources/views/messsages/create.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/messages/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/Tablets.js" />
         <option value="$PROJECT_DIR$/app/Events/MessagePosted.php" />
       </list>
     </option>
@@ -400,32 +412,7 @@
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="messages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -543,7 +530,7 @@
       <workItem from="1562926931592" duration="39000" />
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
-      <workItem from="1563314954101" duration="73863000" />
+      <workItem from="1563314954101" duration="79123000" />
     </task>
     <task id="LOCAL-00013" summary="Changed references of Change.org to SixActs.org">
       <created>1561462672492</created>
@@ -915,7 +902,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="432460000" />
+    <option name="totallyTimeSpent" value="437720000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -946,7 +933,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49913144" weight="0.19217081" />
       <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" weight="0.21511628" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" weight="0.26626506" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" weight="0.38795182" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5014476" side_tool="true" weight="0.27995256" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.19810201" />
       <window_info anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49916804" weight="0.32858837" />
@@ -999,23 +986,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VoteController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/partials/sidebar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -1236,13 +1206,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/channels.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="13" column="54" lean-forward="true" selection-start-line="13" selection-start-column="54" selection-end-line="13" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/forum.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-438">
@@ -1289,16 +1252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Tablets.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1356,24 +1309,51 @@
     <entry file="file://$PROJECT_DIR$/resources/views/messages/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
-          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/channels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
-          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
             <element signature="e#48#77#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/broadcasting.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-159" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/queue.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1087" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Tablets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        <state relative-caret-position="434">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>

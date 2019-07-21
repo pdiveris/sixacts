@@ -27,7 +27,7 @@ class MessagePosted implements ShouldBroadcast
     public function __construct(User $user, $message)
     {
         dump('MessagePosted constructor');
-        dump($user);
+        dump($message);
         $this->user = $user;
         $this->message = $message;
     }
@@ -50,7 +50,7 @@ class MessagePosted implements ShouldBroadcast
     
     public function broadcastAs()
     {
-        return 'newMessage';
+        return 'NewMessage';
     }
 
     /**

@@ -31,23 +31,21 @@ export default class Tablets extends Component {
 
     setupSocket() {
         console.log('Setting up socket.io');
-        /*
-        axios.get('/messages').then(response => {
-            this.setState({
-                messages: response.data
-            });
-        });
-*/
+        console.log('Hostname set to '+ window.location.hostname + ':6001');
         let echo = new Echo({
             broadcaster: 'socket.io',
             client: Socketio,
-            host: window.location.hostname + ':6001'
+            host: 'https://'+window.location.hostname + ':6001/'
         });
-        console.log('KANGA');
 
-        echo.channel('messages')
-            .listen('newMessage', (e) => {
+        console.log('About to set to listening to "messages" for "NewMessage"');
+        echo.channel(   '6_acts_database_messages')
+            .listen('.NewMessage', (e) => {
                 console.log('Message received');
+                console.log(e);
+                if (e.message == 'refresh') {
+                    this.getProposals();
+                }
             });
 
 /*
@@ -109,12 +107,12 @@ export default class Tablets extends Component {
                 </div>
                 <ul>
                     {this.state.items.map(function (item, index) {
-                        return (
-                            <div key={index} className="u-mtop-2">
-                                <span className="subtitle">{item.name}</span>
-                            </div>
-                        )
-                    }
+                            return (
+                                <div key={index} className="u-mtop-2">
+                                    <span className="subtitle">{item.name}</span>
+                                </div>
+                            )
+                        }
                     )}
                 </ul>
             </div>
@@ -125,14 +123,4 @@ export default class Tablets extends Component {
 if (document.getElementById('tablets')) {
     ReactDOM.render(<Tablets/>, document.getElementById('tablets'));
 }
-
-function letsDisco(theText, theSize) {
-    let ret = theText.replace(/^(.{222}[^\s]*).*/, "$1");
-    return ret;
-};
-
-function letsTango(theText, theSize) {
-    let promptLine = theText.replace(/^(.{82}[^\s]*).*/, "$1");
-    return _.replace(theText, promptLine, '');
-};
 
