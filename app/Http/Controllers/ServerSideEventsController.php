@@ -31,7 +31,6 @@ class ServerSideEventsController extends Controller
         return $randmoms;
     }
     
-    
     /**
      * SSE "server" implementation.
      *
@@ -56,6 +55,59 @@ class ServerSideEventsController extends Controller
         $response->headers->set('X-Accel-Buffering', 'no');
         $response->headers->set('Cach-Control', 'no-cache');
         
+        return $response;
+    }
+    
+    public function test()
+    {
+        echo 'Setting keys..';
+        \Cache::put('broadcast', 1, 1800);
+
+        \Cache::rememberForever('broadcast_king', function () {
+                return 1;
+        });
+        
+        return '';
+    }
+
+    /**
+     * SSE "server" implementation.
+     *
+     * @return string
+     */
+    public function semaphore()
+    {
+        $request = $this->request;
+        
+        
+        $response = new StreamedResponse(function () use ($request) {
+            while (true) {
+                $data = '';
+                $broadcast = \Cache::get('broadcast', null);
+                if (1 == $broadcast) {
+                    $randoms = RandomNames::where('id', '>', 0)
+                        ->limit(15)
+                        ->get()
+                    ;
+    
+                    \Cache::forget('broadcast');
+                    if (1===2) {
+                        $data = json_encode($randoms);
+                    }
+                }
+                echo 'data: ' . $data . "\n\n";
+                dump('Falling asleep - broadcast: '. $broadcast. ' | flushed '.strlen($data) . ' bytes');
+
+                ob_flush();
+                flush();
+
+                usleep(9000000);
+            }
+        });
+        $response->headers->set('Content-Type', 'text/event-stream');
+        $response->headers->set('X-Accel-Buffering', 'no');
+        $response->headers->set('Cache-Control', 'no-cache');
+        dump('Writing headers?');
         return $response;
     }
     

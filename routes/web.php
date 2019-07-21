@@ -26,6 +26,9 @@ Route::get(
     'SiteController@userProfile'
 )->name('profile')->middleware('verified');
 
+Route::get('message', 'MessageController@showMessageForm');
+Route::post('message', 'MessageController@post')->name('postmessage');
+
 Route::get('forum', 'StaticController@forum')->name('forum');
 Route::get('terms', 'StaticController@content')->name('terms');
 Route::get('privacy', 'StaticController@content')->name('privacy');
@@ -110,5 +113,7 @@ Route::get(
 
 Route::get('email', 'EmailController@sendEmail');
 
+Route::get('sse/test', 'ServerSideEventsController@test');
 Route::get('sse/server/{token?}', 'ServerSideEventsController@server');
+Route::get('sse/semaphore/{token?}', 'ServerSideEventsController@semaphore');
 Route::get('sse/client/{token?}', 'ServerSideEventsController@client');

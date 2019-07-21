@@ -114,4 +114,9 @@ class Utils
         }
         return '';
     }
+    
+    public static function getRevisionString()
+    {
+        return '0.2';
+    }
 }

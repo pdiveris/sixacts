@@ -16,6 +16,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/sixacts.css')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>
+        window.Laravel = {!! json_encode([
+        'user' => auth()->check() ? auth()->user()->id : null,
+    ]) !!};
+    </script>
 </head>
 <body>
 <nav class="navbar is-white topNav">
