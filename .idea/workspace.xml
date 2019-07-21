@@ -6,22 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Helpers/Utils.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Helpers/Utils.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServerSideEventsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ServerSideEventsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/votind.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/votind.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/react.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/react.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/messages/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="23" selection-start-column="23" selection-end-column="23" />
+            <state relative-caret-position="80">
+              <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -93,11 +78,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+            <state relative-caret-position="317">
+              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -105,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+            <state relative-caret-position="396">
+              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
               <folding>
                 <element signature="e#48#77#0#PHP" expanded="true" />
               </folding>
@@ -127,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>protected $middlewareGroups</find>
       <find>Example</find>
       <find>a</find>
       <find>fa-</find>
@@ -157,6 +141,7 @@
       <find>forum</find>
       <find>channels.</find>
       <find>signin</find>
+      <find>redirect</find>
     </findStrings>
     <replaceStrings>
       <replace>a</replace>
@@ -188,8 +173,8 @@
       <dir>$PROJECT_DIR$/nova</dir>
       <dir>$PROJECT_DIR$/app/Http</dir>
       <dir>$PROJECT_DIR$/resources</dir>
-      <dir>$PROJECT_DIR$/app</dir>
       <dir>$PROJECT_DIR$</dir>
+      <dir>$PROJECT_DIR$/app</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -242,13 +227,13 @@
         <option value="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" />
         <option value="$PROJECT_DIR$/app/Events/PublicMessage.php" />
         <option value="$PROJECT_DIR$/routes/channels.php" />
-        <option value="$PROJECT_DIR$/app/Events/MessagePosted.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
         <option value="$PROJECT_DIR$/resources/js/components/Tablets.js" />
         <option value="$PROJECT_DIR$/resources/views/messsages/create.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/messages/create.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
+        <option value="$PROJECT_DIR$/app/Events/MessagePosted.php" />
       </list>
     </option>
   </component>
@@ -558,14 +543,7 @@
       <workItem from="1562926931592" duration="39000" />
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
-      <workItem from="1563314954101" duration="72921000" />
-    </task>
-    <task id="LOCAL-00012" summary="Group the resources in the sidebar (push Auth data down a the bottom)">
-      <created>1561461864314</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1561461864314</updated>
+      <workItem from="1563314954101" duration="73863000" />
     </task>
     <task id="LOCAL-00013" summary="Changed references of Change.org to SixActs.org">
       <created>1561462672492</created>
@@ -903,7 +881,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563624838437</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes.">
+      <created>1563738751616</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1563738751616</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -930,7 +915,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="431518000" />
+    <option name="totallyTimeSpent" value="432460000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -986,7 +971,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Swapped Laravel-Bulma preset for npm vanilla install which immediately &#10;sorted out all the form issues. I will also enable me to customise the&#10;colour scheme as requested by client." />
     <MESSAGE value="Changed HomeController to SiteController to bypass code sniffer's complains.&#10;It's better this way anyway, as it leaves the AppController for the app." />
     <MESSAGE value="phpcs stuff.." />
     <MESSAGE value="ibid" />
@@ -1011,7 +995,8 @@
     <MESSAGE value="Replace the sidebar [cats column, gap column, main column] layout &#10;with [cats column, main column] where the cats column gets the space &#10;it needs, not a gap after it (badly) ad hoc when space's needed." />
     <MESSAGE value="A with the previous commit, increased size of column 1 in sidebar, &#10;thus eliminating the need for a gap column (as originally requested &#10;by the ticket.)&#10;&#10;Closed #14." />
     <MESSAGE value="Added api/names/random endpoint to accommodate the building the voting &#10;async updates scaffolding and implementation. &#10;&#10;See docs/voting.md&#10;&#10;Closed #19" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added api/names/random endpoint to accommodate the building the voting &#10;async updates scaffolding and implementation. &#10;&#10;See docs/voting.md&#10;&#10;Closed #19" />
+    <MESSAGE value="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VoteController.php">
@@ -1317,13 +1302,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="26" column="20" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SiteController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
@@ -1365,16 +1343,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-          <folding>
-            <element signature="e#48#77#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -1387,8 +1355,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/messages/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
+        <state relative-caret-position="80">
+          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding>
+            <element signature="e#48#77#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
         </state>
       </provider>
     </entry>

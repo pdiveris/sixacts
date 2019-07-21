@@ -10,23 +10,25 @@
   * Pub/Sub
   * Redis
 * Socket.io
-* SSE
-* Messaging hub
 * Laravel broadcasts
 * Laravel Echo
-* Pusher.io
 
 Laravel Echo server
 laravel-echo-server.json
 
 ~/sixacts/
 
-Howto AUTH https://medium.com/@dennissmink/laravel-echo-server-private-channels-267a9e57bae9
+HOWTO
+
+ * AUTH [Laravel Echo Server — Private Channels](https://medium.com/@dennissmink/laravel-echo-server-private-channels-267a9e57bae9)
+ * [Starting with Laravel Echo and PusherJS](https://petericebear.github.io/starting-laravel-echo-20170303/)
+
 
 currently queues are using the database backend:
 QUEUE_CONNECTION=database
 
-It's OK at the moment s it allowes me to sse wjat's happening. This will eventually have to change to **redis**
+It's OK at the moment as it allowes me to sse what's happening. 
+This will eventually have to change to **redis**
 
         'sftp' => [
             'driver'    => 'sftp',
