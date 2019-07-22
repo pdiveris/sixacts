@@ -7,11 +7,11 @@ import Socketio from 'socket.io-client';
 export default class Tablets extends Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             'items': [],
             'country': 'Kongo'
         }
+        this.echo = null;
         this.onClick = this.handleClick.bind(this);
         this.refresh = this.handleRefresh.bind(this);
         this.stream = this.setupStream.bind(this);
@@ -19,27 +19,26 @@ export default class Tablets extends Component {
 
     handleClick(event) {
         const {id} = event.target;
-        console.log(id);
         this.getProposals();
     }
 
     handleRefresh(event) {
         const {id} = event.target;
-        console.log('refresh()', id);
         this.getProposals();
     }
 
     setupSocket() {
         console.log('Setting up socket.io');
+
         console.log('Hostname set to '+ window.location.hostname + ':6001');
-        let echo = new Echo({
+        this.echo = new Echo({
             broadcaster: 'socket.io',
             client: Socketio,
             host: 'https://'+window.location.hostname + ':6001/'
         });
 
         console.log('About to set to listening to "messages" for "NewMessage"');
-        echo.channel(   '6_acts_database_messages')
+        this.echo.channel('6_acts_database_messages')
             .listen('.NewMessage', (e) => {
                 console.log('Message received');
                 console.log(e);
@@ -80,8 +79,13 @@ export default class Tablets extends Component {
 
     componentDidMount() {
         this.getProposals();
-        // this.setupStream();
         this.setupSocket();
+        // this.setupStream();
+
+    }
+
+    componentWillUnmount() {
+        this.echo.disconnect();
     }
 
     getProposals() {

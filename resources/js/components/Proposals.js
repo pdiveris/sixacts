@@ -1,17 +1,67 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import Echo from "laravel-echo";
+import Socketio from "socket.io-client";
+
+const globalEcho = null;
 
 export default class Proposals extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             'items': []
         }
+        this.echo = null;
+    }
+
+    handleVote(item, ctx) {
+        // this.setState({item:item})
+        console.log('handleVote', ctx, item.id, window.Laravel);
+        fetch('/api/vote/', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            contentType: "application/json; charset=utf-8",
+            body: JSON.stringify({
+                "proposal_id": item.id,
+                "direction": ctx,
+                "user": window.Laravel
+            })
+        }).catch(err => console.log(err))
     }
 
     componentDidMount() {
         this.getProposals();
+        this.setupSocket();
+    }
 
+    componentWillUnmount() {
+        this.echo.disconnect();
+    }
+
+    setupSocket() {
+        console.log('Setting up socket.io');
+
+        console.log('Hostname set to '+ window.location.hostname + ':6001');
+        this.echo = new Echo({
+            broadcaster: 'socket.io',
+            client: Socketio,
+            host: 'https://'+window.location.hostname + ':6001/'
+        });
+
+        console.log('About to set to listening to "messages" for "NewMessage"');
+        this.echo.channel('6_acts_database_messages')
+            .listen('.NewMessage', (e) => {
+                console.log('Message received');
+                console.log(e);
+/*
+
+                if (e.message == 'refresh') {
+                    this.getProposals();
+                } else {
+                    console.log("No idea what "+e.message+" means")
+                }
+*/
+            });
     }
 
     getProposals() {
@@ -25,10 +75,11 @@ export default class Proposals extends Component {
             .then(results => this.setState({'items': results}))
     }
 
+
     render() {
         return (
             <ul>
-                {this.state.items.map(function (item, index) {
+                {this.state.items.map( (item, index) => {
                     return (
                         <div key={index} className="u-mtop-2">
                             <span className="subtitle has-text-weight-bold">{item.title}</span>
@@ -53,25 +104,30 @@ export default class Proposals extends Component {
                             <div className="author controls u-mtop-10 u-mright-10">
                                 <i>Posted by</i>:&nbsp;
                                 <b>
-                                {item.user.display_name != ''
-                                    ? item.user.display_name
-                                    : item.user.name
-                                }</b>
+                                    {item.user.display_name != ''
+                                        ? item.user.display_name
+                                        : item.user.name
+                                    }</b>
                                 &nbsp;
                             </div>
                             <div className="aggs controls u-mbottom-20">
                                 <span className="numVotes">
-                                {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span>     votes
-
+                                {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
                                 <span className="icon u-mleft-20">
-                                    <i className="fa fa-arrow-alt-circle-up"></i>
+                                    <a onClick={() => this.handleVote(item, 'up')}>
+                                        <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                    </a>
                                 </span>
                                 <span className="icon">
-                                    <i className="fa fa-arrow-alt-circle-down"></i>
+                                    <a onClick={() => this.handleVote(item, 'down')}>
+                                        <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
+                                    </a>
                                 </span>
-                            </div></div>
+                            </div>
+
+                        </div>
                     )
-                }
+                    }
                 )}
             </ul>
         );
