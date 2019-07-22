@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MessagePosted;
 use App\Proposal;
+use App\User;
+use App\Vote;
+use Illuminate\Http\Request;
 
 /**
  * Class ProposalController
@@ -22,10 +26,64 @@ class ProposalController extends Controller
      *
      * @return void
      */
-    public function vote($direction = 1)
+    public function vote(Request $request)
     {
-        //
-        // dump("I am voting $direction");
+        $params = $request->all();
+        $response = [];
+        dump($params);
+        if (!array_key_exists('proposal_id', $params) ||
+            !array_key_exists('direction', $params) ||
+            !array_key_exists('user', $params)
+        ) {
+            return response()->json(['error'=>'Bad request (missing data)']);
+        }
+        if (!$params['direction'] == 'up' || !$params['direction'] == 'down') {
+            return response()->json(['error'=>'Bad request (vote)']);
+        }
+        
+        $vote = Vote::where('user_id', '=', $params['user']['user'])
+                        ->where('proposal_id', '=', $params['proposal_id'])
+                        ->first();
+        
+        $user = User::find($params['user']['user']);
+        // if not user etc..
+        
+        if (null !== $vote) {
+            if ($params['direction'] == 'up') {
+                if ($vote->up > 0) {
+                    return response()->json(['warning' => 'You have already voted up this proposal']);
+                }
+                $vote->down = 0;
+                $vote->up = 1;
+                $response = ['success'=>'from 0 to 1'];
+            }
+            if ($params['direction'] == 'down') {
+                if ($vote->down > 0) {
+                    return response()->json(['warning' => 'You have already voted down this proposal']);
+                }
+                $vote->down = 1;
+                $vote->up = 0;
+                $response = ['success'=>'from 0 to 1'];
+            }
+        } else {
+            $vote = new \App\Vote();
+            $vote->user_id = $params['user']['user'];
+            $vote->proposal_id = $params['proposal_id'];
+            if ($params['direction']=='down') {
+                $vote->down = 1;
+                $vote->up = 0;
+            } else {
+                $vote->up = 1;
+                $vote->down = 0;
+            }
+            $response = ['success'=>[$vote->getAttributes()]];
+        }
+        $ret = $vote->save();
+        if ($ret) {
+            event(new MessagePosted($user, 'refresh'));
+            return response()->json($response);
+        }
+        return response()->json(['fatal'=>"Can't persist vote"]);
     }
     
     /**

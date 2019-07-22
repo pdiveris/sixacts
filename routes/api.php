@@ -24,6 +24,6 @@ Route::get('proposals', 'ProposalController@index');
 Route::get('names', 'NamesController@index');
 Route::get('names/random', 'NamesController@random');
 Route::post('proposals', 'ProposalController@store');
-Route::get('proposals/vote/{id}/{direction}', 'ProposalController@vote');
+Route::post('vote', 'ProposalController@vote');
 Route::get('proposals/{id}', 'ProposalController@show');
 // Route::put('proposals/{project}', 'ProposalController@markAsCompleted');

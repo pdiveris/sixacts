@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
 
-const globalEcho = null;
-
 export default class Proposals extends Component {
     constructor(props) {
         super(props);
@@ -26,7 +24,14 @@ export default class Proposals extends Component {
                 "direction": ctx,
                 "user": window.Laravel
             })
-        }).catch(err => console.log(err))
+        }).then(results => results.json())
+          .then(results => this.doSomething(results))
+          .catch(err => console.log(err));
+    }
+
+    doSomething(results) {
+        this.getProposals();
+        console.log(results);
     }
 
     componentDidMount() {
@@ -53,14 +58,11 @@ export default class Proposals extends Component {
             .listen('.NewMessage', (e) => {
                 console.log('Message received');
                 console.log(e);
-/*
-
                 if (e.message == 'refresh') {
                     this.getProposals();
                 } else {
-                    console.log("No idea what "+e.message+" means")
+                    console.log("Unexpected message: "+e.message)
                 }
-*/
             });
     }
 

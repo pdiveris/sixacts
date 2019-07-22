@@ -48,7 +48,7 @@ class MessagePosted implements ShouldBroadcast
     
     /**
      * The event name.
-     * Prefix with a fot on the client
+     * Prefix with a dot on the client
      * i.e. .NewMessage
      *
      * @return string

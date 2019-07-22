@@ -45,7 +45,7 @@ export default class Tablets extends Component {
                 if (e.message == 'refresh') {
                     this.getProposals();
                 } else {
-                    console.log("No idea what "+e.message+" means")
+                    console.log("Unexpected message: "+e.message)
                 }
             });
 
