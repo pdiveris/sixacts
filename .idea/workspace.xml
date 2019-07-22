@@ -4,11 +4,13 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Events/MessagePosted.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/MessagePosted.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/votind.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/votind.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel-echo-server.json" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-echo-server.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel-echo-server.lock" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-echo-server.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,61 +42,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+        <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
-              <folding>
-                <element signature="e#452#478#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/messages/create.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/auth.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Tablets.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/channels.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="102">
+              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <entry file="file://$PROJECT_DIR$/docs/votind.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="122">
+                <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -111,21 +74,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="99" column="10" selection-start-line="2" selection-end-line="99" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>we</find>
-      <find>validato</find>
       <find>validator</find>
       <find>$navbar-height: 3.25rem !default</find>
       <find>side</find>
@@ -154,6 +106,8 @@
       <find>letsDisco</find>
       <find>NewMessage</find>
       <find>newMessage</find>
+      <find>echo</find>
+      <find>dump(</find>
     </findStrings>
     <replaceStrings>
       <replace>a</replace>
@@ -185,8 +139,8 @@
       <dir>$PROJECT_DIR$/nova</dir>
       <dir>$PROJECT_DIR$/app/Http</dir>
       <dir>$PROJECT_DIR$</dir>
-      <dir>$PROJECT_DIR$/app</dir>
       <dir>$PROJECT_DIR$/resources</dir>
+      <dir>$PROJECT_DIR$/app</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -221,7 +175,6 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_07_19_230645_view_create_random_names.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/NamesController.php" />
-        <option value="$PROJECT_DIR$/docs/votind.md" />
         <option value="$PROJECT_DIR$/app/Helpers/Utils.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/footer.blade.php" />
         <option value="$PROJECT_DIR$/public/css/sixacts.css" />
@@ -233,7 +186,6 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/filesystems.php" />
         <option value="$PROJECT_DIR$/resources/js/echo-service.jsx" />
-        <option value="$PROJECT_DIR$/resources/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/app/Events/MessagePushed.php" />
         <option value="$PROJECT_DIR$/app/Events/MessageSent.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" />
@@ -244,8 +196,10 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/messages/create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/Tablets.js" />
         <option value="$PROJECT_DIR$/app/Events/MessagePosted.php" />
+        <option value="$PROJECT_DIR$/resources/js/bootstrap.js" />
+        <option value="$PROJECT_DIR$/resources/js/components/Tablets.js" />
+        <option value="$PROJECT_DIR$/docs/votind.md" />
       </list>
     </option>
   </component>
@@ -393,7 +347,7 @@
     <option name="x" value="1680" />
     <option name="y" value="25" />
     <option name="width" value="1680" />
-    <option name="height" value="941" />
+    <option name="height" value="911" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -412,7 +366,25 @@
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -530,14 +502,7 @@
       <workItem from="1562926931592" duration="39000" />
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
-      <workItem from="1563314954101" duration="79123000" />
-    </task>
-    <task id="LOCAL-00013" summary="Changed references of Change.org to SixActs.org">
-      <created>1561462672492</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1561462672492</updated>
+      <workItem from="1563314954101" duration="83698000" />
     </task>
     <task id="LOCAL-00014" summary="Refactored forgotten reference to old &quot;theirId.&quot;">
       <created>1561473321055</created>
@@ -875,7 +840,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563738751616</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction.">
+      <created>1563750813815</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1563750813815</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -902,7 +874,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="437720000" />
+    <option name="totallyTimeSpent" value="442295000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -914,7 +886,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1680" y="25" width="1680" height="941" extended-state="0" />
+    <frame x="1680" y="25" width="1680" height="911" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25307125" />
@@ -933,7 +905,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49913144" weight="0.19217081" />
       <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" weight="0.21511628" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" weight="0.38795182" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.275" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5014476" side_tool="true" weight="0.27995256" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.19810201" />
       <window_info anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49916804" weight="0.32858837" />
@@ -958,7 +930,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed HomeController to SiteController to bypass code sniffer's complains.&#10;It's better this way anyway, as it leaves the AppController for the app." />
     <MESSAGE value="phpcs stuff.." />
     <MESSAGE value="ibid" />
     <MESSAGE value="Satisfying phpcs" />
@@ -983,16 +954,10 @@
     <MESSAGE value="A with the previous commit, increased size of column 1 in sidebar, &#10;thus eliminating the need for a gap column (as originally requested &#10;by the ticket.)&#10;&#10;Closed #14." />
     <MESSAGE value="Added api/names/random endpoint to accommodate the building the voting &#10;async updates scaffolding and implementation. &#10;&#10;See docs/voting.md&#10;&#10;Closed #19" />
     <MESSAGE value="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes." />
+    <MESSAGE value="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction." />
+    <option name="LAST_COMMIT_MESSAGE" value="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/static/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1048,16 +1013,6 @@
     <entry file="file://$PROJECT_DIR$/database/factories/NameFactory.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-305" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/docs/votind.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="140">
-            <caret line="7" selection-start-line="7" selection-end-line="7" />
-          </first_editor>
-          <second_editor />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php">
@@ -1147,13 +1102,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ServerSideEventsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -1178,13 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpack.mix.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1196,13 +1137,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="33" column="42" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/laravel-echo-server.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1296,30 +1230,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
-          <folding>
-            <element signature="e#452#478#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/messages/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/channels.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -1340,20 +1250,82 @@
         <state relative-caret-position="-1087" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/laravel-echo-server.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="6" column="52" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Tablets.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
+        <state relative-caret-position="127">
+          <caret line="42" column="35" lean-forward="true" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/messages/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="29" column="67" selection-start-line="29" selection-start-column="67" selection-end-line="29" selection-end-column="67" />
+          <folding>
+            <element signature="e#452#478#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/channels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
+        <state relative-caret-position="102">
+          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/votind.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="122">
+            <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

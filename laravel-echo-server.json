@@ -1,7 +1,12 @@
 {
 	"authHost": "https://sixacts.div",
 	"authEndpoint": "/broadcasting/auth",
-	"clients": [],
+	"clients": [
+		{
+			"appId": "sixacts",
+			"key": "5188e3fd7acc10e45a19e1015a6b6ce4"
+		}
+	],
 	"database": "redis",
 	"databaseConfig": {
 		"redis": {},

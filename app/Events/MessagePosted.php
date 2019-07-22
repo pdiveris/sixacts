@@ -26,8 +26,6 @@ class MessagePosted implements ShouldBroadcast
      */
     public function __construct(User $user, $message)
     {
-        dump('MessagePosted constructor');
-        dump($message);
         $this->user = $user;
         $this->message = $message;
     }
@@ -48,6 +46,13 @@ class MessagePosted implements ShouldBroadcast
         ];
     }
     
+    /**
+     * The event name.
+     * Prefix with a fot on the client
+     * i.e. .NewMessage
+     *
+     * @return string
+     */
     public function broadcastAs()
     {
         return 'NewMessage';
@@ -55,6 +60,9 @@ class MessagePosted implements ShouldBroadcast
 
     /**
      * Get the channels the event should broadcast on.
+     * Its not respected.
+     *
+     * @see (https://stackoverflow.com/questions/43066633/laravel-echo-does-not-listen-to-channel-and-events
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
