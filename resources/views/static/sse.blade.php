@@ -1,11 +1,11 @@
 @extends('layouts.forum')
 @section('content')
     <div class="columns">
-        <div class="column is-3 u-mright-20">
-            @include('partials.sidebar')
-        </div>
-        <div class="column is-9">
-            <h2 class="subtitle">SSE</h2>
+        {{--        <div class="column">
+                    <div id="lista" data='{{ $listData }}'></div>
+                </div>--}}
+        <div class="column is-8 is-offset-one-fifth">
+            <div id="sse"></div>
         </div>
     </div>
 @stop
