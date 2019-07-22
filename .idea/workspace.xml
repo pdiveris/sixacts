@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/MessagePosted.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/MessagePosted.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/votind.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/votind.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/voting.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/voting.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/laravel-echo-server.json" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-echo-server.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel-echo-server.lock" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-echo-server.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,13 +47,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/docs/votind.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="122">
-                <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-              </first_editor>
-              <second_editor />
+        <entry file="file://$PROJECT_DIR$/laravel-echo-server.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
@@ -149,7 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_07_13_083952_view_create_vote_aggs.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/signin.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/bulma-extensions.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" />
@@ -182,7 +183,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ServerSideEventsController.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/laravel-echo-server.json" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/filesystems.php" />
         <option value="$PROJECT_DIR$/resources/js/echo-service.jsx" />
@@ -200,6 +200,8 @@
         <option value="$PROJECT_DIR$/resources/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/resources/js/components/Tablets.js" />
         <option value="$PROJECT_DIR$/docs/votind.md" />
+        <option value="$PROJECT_DIR$/docs/voting.md" />
+        <option value="$PROJECT_DIR$/laravel-echo-server.json" />
       </list>
     </option>
   </component>
@@ -363,29 +365,6 @@
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="docs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -502,14 +481,7 @@
       <workItem from="1562926931592" duration="39000" />
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
-      <workItem from="1563314954101" duration="83698000" />
-    </task>
-    <task id="LOCAL-00014" summary="Refactored forgotten reference to old &quot;theirId.&quot;">
-      <created>1561473321055</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1561473321055</updated>
+      <workItem from="1563314954101" duration="84711000" />
     </task>
     <task id="LOCAL-00015" summary="Added final static texts from Eva's email&#10;Styling headings&#10;Work on avatar">
       <created>1561484444744</created>
@@ -847,7 +819,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563750813815</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Notes to voting. At the moment just links and things. &#10;A detailed description of the flow, architecture and implementation&#10;should emerge here, stay tuned.">
+      <created>1563779411541</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1563779411541</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -874,7 +853,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="442295000" />
+    <option name="totallyTimeSpent" value="443308000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -905,7 +884,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49913144" weight="0.19217081" />
       <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" weight="0.21511628" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.275" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.15" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5014476" side_tool="true" weight="0.27995256" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.19810201" />
       <window_info anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49916804" weight="0.32858837" />
@@ -930,7 +909,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="phpcs stuff.." />
     <MESSAGE value="ibid" />
     <MESSAGE value="Satisfying phpcs" />
     <MESSAGE value="Fixed a gazillion code style related &quot;issues&quot;" />
@@ -955,7 +933,8 @@
     <MESSAGE value="Added api/names/random endpoint to accommodate the building the voting &#10;async updates scaffolding and implementation. &#10;&#10;See docs/voting.md&#10;&#10;Closed #19" />
     <MESSAGE value="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes." />
     <MESSAGE value="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction." />
-    <option name="LAST_COMMIT_MESSAGE" value="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction." />
+    <MESSAGE value="Notes to voting. At the moment just links and things. &#10;A detailed description of the flow, architecture and implementation&#10;should emerge here, stay tuned." />
+    <option name="LAST_COMMIT_MESSAGE" value="Notes to voting. At the moment just links and things. &#10;A detailed description of the flow, architecture and implementation&#10;should emerge here, stay tuned." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/resources/views/static/welcome.blade.php">
@@ -1092,13 +1071,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1460">
           <caret line="73" column="36" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
         </state>
       </provider>
     </entry>
@@ -1257,13 +1229,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/laravel-echo-server.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="6" column="52" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1312,6 +1277,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/voting.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="181">
+            <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1319,13 +1301,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/votind.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="122">
-            <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/laravel-echo-server.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
         </state>
       </provider>
     </entry>
