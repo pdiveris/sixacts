@@ -16,7 +16,7 @@
 
 ##### Socket.io
 
-##### Laravel Echo server
+##### Laravel broadcasts with Echo server
 
 The Laravel Echo server is a "chat" type of server. It has connectors for and receives message from Redis, over HTTP, over HTTP using the Pusher protocol.
 
@@ -35,27 +35,31 @@ appId: sixacts
 key: 
 ```
 
-##### HOWTO
-
  * AUTH [Laravel Echo Server — Private Channels](https://medium.com/@dennissmink/laravel-echo-server-private-channels-267a9e57bae9)
  * [Starting with Laravel Echo and PusherJS](https://petericebear.github.io/starting-laravel-echo-20170303/)
- * dot Prefox issue: [https://github.com/tlaverdure/laravel-echo-server/issues/116](https://github.com/tlaverdure/laravel-echo-server/issues/116)
- * Jesus fucking Christ, this has been worjing since at least four hours ago. But the broadcastAs() setting of the channel name is not respected by Laravel. So this:
+ * **Dot prefix issue**: [https://github.com/tlaverdure/laravel-echo-server/issues/116](https://github.com/tlaverdure/laravel-echo-server/issues/116). Essentially, the channel name isn't set to what one expects it to be. The place where that gets set is the `broadcastOn()` in the Event class so the following should broadcast to a channel called 'messages' 
 
 ```
 class MessagePosted implements ShouldBroadcast
 {
-    public function broadcastAs()
+    public function broadcastOn()
     {
-        return 'NewMessage';
+        return new Channel('messages');
     }
     
 }    
 ```    
  
-never the less ends up in broadcasting to `Channel: 6_acts_database_messages`
+never the less ends up in broadcasting to `Channel: 6_acts_database_messages`.
+
+
 
 * Read about it [here](https://stackoverflow.com/questions/43066633/laravel-echo-does-not-listen-to-channel-and-events), thanks to the French guy whom no one clapped,
+
+
+#### An attempt with SSE
+
+
 
 currently queues are using the database backend:
 QUEUE_CONNECTION=database
