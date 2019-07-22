@@ -2,10 +2,6 @@
 	"authHost": "https://sixacts.div",
 	"authEndpoint": "/broadcasting/auth",
 	"clients": [
-		{
-			"appId": "sixacts",
-			"key": "5188e3fd7acc10e45a19e1015a6b6ce4"
-		}
 	],
 	"database": "redis",
 	"databaseConfig": {
@@ -19,8 +15,8 @@
 	"port": "6001",
 	"protocol": "https",
 	"socketio": {},
-	"sslCertPath": "/Users/pedro/.config/valet/Certificates/sixacts.div.crt",
-	"sslKeyPath": "/Users/pedro/.config/valet/Certificates/sixacts.div.key",
+	"sslCertPath": "path_to_cert",
+	"sslKeyPath": "path_to_key",
 	"sslCertChainPath": "",
 	"sslPassphrase": "",
 	"subscribers": {
