@@ -30,7 +30,6 @@ class ProposalController extends Controller
     {
         $params = $request->all();
         $response = [];
-        dump($params);
         if (!array_key_exists('proposal_id', $params) ||
             !array_key_exists('direction', $params) ||
             !array_key_exists('user', $params)
