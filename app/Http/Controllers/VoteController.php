@@ -25,7 +25,6 @@ class VoteController extends Controller
     public function vote($direction = 1)
     {
         //
-        dump("I am voting $direction");
     }
     
     /**

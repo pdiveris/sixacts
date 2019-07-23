@@ -22,8 +22,7 @@ class ProposalController extends Controller
     /**
      * Vote action
      *
-     * @param int $direction direction (up/down)
-     *
+     * @param \Illuminate\Http\Request $request
      * @return void
      */
     public function vote(Request $request)
@@ -52,17 +51,28 @@ class ProposalController extends Controller
                 if ($vote->up > 0) {
                     return response()->json(['warning' => 'You have already voted up this proposal']);
                 }
-                $vote->down = 0;
-                $vote->up = 1;
-                $response = ['success'=>'from 0 to 1'];
+                if ($vote->down == 1) {     // correct
+                    $vote->down = 0;
+                    $vote->up = 0;
+                    $response = ['success'=>'from 0 to 1'];
+                } else {                    // correct
+                    $vote->down = 0;
+                    $vote->up = 1;
+                    $response = ['success'=>'from -1 to 0'];
+                }
             }
             if ($params['direction'] == 'down') {
                 if ($vote->down > 0) {
                     return response()->json(['warning' => 'You have already voted down this proposal']);
                 }
-                $vote->down = 1;
-                $vote->up = 0;
-                $response = ['success'=>'from 0 to 1'];
+                if ($vote->up == 1) {       // correct
+                    $vote->up = 0;
+                    $response = ['success'=>'from 1 to 0'];
+                } else {                    // correct
+                    $vote->up = 0;
+                    $vote->down = 1;
+                    $response = ['success'=>'from 0 to -1'];
+                }
             }
         } else {
             $vote = new \App\Vote();
@@ -120,7 +130,6 @@ class ProposalController extends Controller
         if (null===$prop) {
             return response()->json(['message' => 'Not Found.'], 404);
         }
-        dump($prop);
         if ($prop->category) {
             $prop->hasCategory = true;
         }

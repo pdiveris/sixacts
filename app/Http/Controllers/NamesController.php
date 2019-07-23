@@ -58,7 +58,6 @@ class NamesController extends Controller
         if (null===$prop) {
             return response()->json(['message' => 'Not Found.'], 404);
         }
-        dump($prop);
         if ($prop->category) {
             $prop->hasCategory = true;
         }
