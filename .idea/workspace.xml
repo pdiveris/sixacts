@@ -4,16 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/MessagePosted.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/MessagePosted.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Vote.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Vote.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/voting.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/voting.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="61" column="29" lean-forward="true" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+            <state relative-caret-position="489">
+              <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
               <folding>
                 <element signature="e#40#69#0#PHP" expanded="true" />
               </folding>
@@ -76,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VoteController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="214">
+              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -150,13 +143,13 @@
       <find>NewMessage</find>
       <find>newMessage</find>
       <find>echo</find>
-      <find>dump(</find>
       <find>handleClick</find>
       <find>window.user</find>
       <find>Laravel Var Dump Server</find>
       <find>fetc</find>
       <find>fetch</find>
       <find>MessagePos</find>
+      <find>dump(</find>
     </findStrings>
     <replaceStrings>
       <replace>a</replace>
@@ -187,11 +180,11 @@
       <dir>$PROJECT_DIR$/public/js</dir>
       <dir>$PROJECT_DIR$/node_modules/bulma-extensions</dir>
       <dir>$PROJECT_DIR$/nova</dir>
-      <dir>$PROJECT_DIR$/app/Http</dir>
       <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/resources</dir>
       <dir>$PROJECT_DIR$/resources/js</dir>
       <dir>$PROJECT_DIR$/app</dir>
+      <dir>$PROJECT_DIR$/app/Http</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -254,8 +247,8 @@
         <option value="$PROJECT_DIR$/resources/js/components/Proposals.js" />
         <option value="$PROJECT_DIR$/resources/js/components/Tablets.js" />
         <option value="$PROJECT_DIR$/app/Events/MessagePosted.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
       </list>
     </option>
   </component>
@@ -400,7 +393,7 @@
       <path value="$PROJECT_DIR$/vendor/hhxsv5/php-sse" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="1698" />
     <option name="y" value="23" />
     <option name="width" value="1680" />
@@ -423,20 +416,12 @@
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -556,13 +541,6 @@
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
       <workItem from="1563314954101" duration="84711000" />
-    </task>
-    <task id="LOCAL-00017" summary="Social login and a primitive account sync in place. It seems that a redirect is eddential for Laravel's guard to work.">
-      <created>1561584514824</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1561584514824</updated>
     </task>
     <task id="LOCAL-00018" summary="Cleared the sync method in LoginController. Simply create a user. Added Event creator,listener and observer and hooked them to User created to fire emails to the newly created user The event fore created rather than saving which should guarantee that emails are only dispatched when a user has been created. The tricky bit is the testing now woth Factory and mock deliveries.">
       <created>1561609387617</created>
@@ -900,7 +878,14 @@
       <option name="project" value="LOCAL" />
       <updated>1563833220291</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="&#10;First working version to include (async) voting. &#10;&#10;* It only sends a “refresh” message to the connected clients and, based on my testing using VPNs the updates happen within seconds.&#10;* This current commit doesn't disable voting for a proposal the user has already voted the same way.&#10;* It does, however, ignore the vote and instead returns a message stating “you’ve already up- down voted this proposal.”&#10;* There are more messages sent out and the logic of them seems OK to me, at this time of the night.&#10;•&#9;However, at this point and time I am not showing the messages to the user. That’s because I am looking for a nice lightweight notifying solution for React to use. Bit like the “toast” you get in Vue – perhaps the Vue component was migrated from React anyway. If not sure, I am sure there will be something more than adequate out there.&#10;* We may have to explain to people why a single vote might seem to be &quot;mistakenly&quot; adding or subtracting two. See if we'll manage!&#10;* This version has not been tested against iOS and android devices in terms of usability of its UI (the voting buttons.) This will become an issue in Github shortly.">
+      <created>1563839726850</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1563839726850</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -927,7 +912,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="465404000" />
+    <option name="totallyTimeSpent" value="467110000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -959,7 +944,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49913144" weight="0.19217081" />
       <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" weight="0.21511628" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.30153123" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.204947" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5014476" side_tool="true" weight="0.27995256" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.19810201" />
       <window_info anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49916804" weight="0.32858837" />
@@ -984,7 +969,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed a gazillion code style related &quot;issues&quot;" />
     <MESSAGE value="More phpcs fixes and re-arrangements. Ready to move onto the beef (react, voting)" />
     <MESSAGE value="Change auth() to auth('api') for -&gt;attempt and -&gt;factory() as per https://github.com/tymondesigns/jwt-auth/issues/1484 to get the JWT token working.." />
     <MESSAGE value="re-enabled API routes after getting main logins working again (nothing to do with API routes, see previous three commits..)" />
@@ -1009,16 +993,10 @@
     <MESSAGE value="Notes to voting. At the moment just links and things. &#10;A detailed description of the flow, architecture and implementation&#10;should emerge here, stay tuned." />
     <MESSAGE value="To be worked on later and on a different branch (sse)" />
     <MESSAGE value="Clean up connection on componentWillUnmount()&#10;Closed #20" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean up connection on componentWillUnmount()&#10;Closed #20" />
+    <MESSAGE value="&#10;First working version to include (async) voting. &#10;&#10;* It only sends a “refresh” message to the connected clients and, based on my testing using VPNs the updates happen within seconds.&#10;* This current commit doesn't disable voting for a proposal the user has already voted the same way.&#10;* It does, however, ignore the vote and instead returns a message stating “you’ve already up- down voted this proposal.”&#10;* There are more messages sent out and the logic of them seems OK to me, at this time of the night.&#10;•&#9;However, at this point and time I am not showing the messages to the user. That’s because I am looking for a nice lightweight notifying solution for React to use. Bit like the “toast” you get in Vue – perhaps the Vue component was migrated from React anyway. If not sure, I am sure there will be something more than adequate out there.&#10;* We may have to explain to people why a single vote might seem to be &quot;mistakenly&quot; adding or subtracting two. See if we'll manage!&#10;* This version has not been tested against iOS and android devices in terms of usability of its UI (the voting buttons.) This will become an issue in Github shortly." />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;First working version to include (async) voting. &#10;&#10;* It only sends a “refresh” message to the connected clients and, based on my testing using VPNs the updates happen within seconds.&#10;* This current commit doesn't disable voting for a proposal the user has already voted the same way.&#10;* It does, however, ignore the vote and instead returns a message stating “you’ve already up- down voted this proposal.”&#10;* There are more messages sent out and the logic of them seems OK to me, at this time of the night.&#10;•&#9;However, at this point and time I am not showing the messages to the user. That’s because I am looking for a nice lightweight notifying solution for React to use. Bit like the “toast” you get in Vue – perhaps the Vue component was migrated from React anyway. If not sure, I am sure there will be something more than adequate out there.&#10;* We may have to explain to people why a single vote might seem to be &quot;mistakenly&quot; adding or subtracting two. See if we'll manage!&#10;* This version has not been tested against iOS and android devices in terms of usability of its UI (the voting buttons.) This will become an issue in Github shortly." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/NamesTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
@@ -1356,20 +1334,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="61" column="29" lean-forward="true" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
-          <folding>
-            <element signature="e#40#69#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="298">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VoteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="214">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+          <folding>
+            <element signature="e#40#69#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
