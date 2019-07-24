@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,97 +37,109 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StaticController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="356">
-              <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
-              <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
-              <folding>
-                <element signature="e#40#69#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VoteController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="834">
-              <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/static/welcome.blade.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/Tablets.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.15233786">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/StaticController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="356">
+                  <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#40#68#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="113">
+                  <caret line="100" column="38" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="38" />
+                  <folding>
+                    <element signature="e#40#69#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/js/bootstrap.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="172">
+                  <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="25">
+                  <caret line="57" selection-start-line="57" selection-end-line="57" />
+                  <folding>
+                    <element signature="e#248#295#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/resources/js/components/Tablets.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="114">
+                  <caret line="47" column="65" selection-start-line="47" selection-start-column="65" selection-end-line="47" selection-end-column="65" />
+                  <folding>
+                    <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="50">
+                  <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
+                  <folding>
+                    <element signature="e#40#69#0#PHP" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="256">
+                  <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+                  <folding>
+                    <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>max-h</find>
-      <find>sideba]</find>
-      <find>server</find>
-      <find>not found</find>
-      <find>props</find>
-      <find>prop</find>
       <find>kaka</find>
       <find>servers</find>
       <find>sse/se</find>
@@ -150,6 +164,12 @@
       <find>fetch</find>
       <find>MessagePos</find>
       <find>dump(</find>
+      <find>doSomething</find>
+      <find>noooti</find>
+      <find>ToastContainer</find>
+      <find>messageRe</find>
+      <find>NotificationManager</find>
+      <find>toast</find>
     </findStrings>
     <replaceStrings>
       <replace>a</replace>
@@ -173,6 +193,7 @@
       <replace>vote</replace>
       <replace>Name</replace>
       <replace>handleVote</replace>
+      <replace>handleResponse</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/vendor</dir>
@@ -183,8 +204,8 @@
       <dir>$PROJECT_DIR$</dir>
       <dir>$PROJECT_DIR$/resources</dir>
       <dir>$PROJECT_DIR$/resources/js</dir>
-      <dir>$PROJECT_DIR$/app</dir>
       <dir>$PROJECT_DIR$/app/Http</dir>
+      <dir>$PROJECT_DIR$/app</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -198,7 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/resources/views/proposal_form.blade.php" />
         <option value="$PROJECT_DIR$/resources/sass/initial-variables.sass" />
@@ -209,7 +229,6 @@
         <option value="$PROJECT_DIR$/resources/views/static/sse.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/VotelController.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/views/static/welcome.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_19_212344_create_names_table.php" />
@@ -217,7 +236,6 @@
         <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
         <option value="$PROJECT_DIR$/database/seeds/NamesTableSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_19_230645_view_create_random_names.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/NamesController.php" />
         <option value="$PROJECT_DIR$/app/Helpers/Utils.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/footer.blade.php" />
         <option value="$PROJECT_DIR$/public/css/sixacts.css" />
@@ -240,15 +258,18 @@
         <option value="$PROJECT_DIR$/docs/votind.md" />
         <option value="$PROJECT_DIR$/docs/voting.md" />
         <option value="$PROJECT_DIR$/laravel-echo-server.json" />
-        <option value="$PROJECT_DIR$/resources/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server/src/DumpServerCommand.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Vote.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/Proposals.js" />
         <option value="$PROJECT_DIR$/resources/js/components/Tablets.js" />
         <option value="$PROJECT_DIR$/app/Events/MessagePosted.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/NamesController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/VoteController.php" />
+        <option value="$PROJECT_DIR$/resources/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/js/components/Proposals.js" />
       </list>
     </option>
   </component>
@@ -393,7 +414,7 @@
       <path value="$PROJECT_DIR$/vendor/hhxsv5/php-sse" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1698" />
     <option name="y" value="23" />
     <option name="width" value="1680" />
@@ -416,12 +437,20 @@
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
               <item name="sixacts" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sixacts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sixacts" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -541,27 +570,6 @@
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
       <workItem from="1563314954101" duration="84711000" />
-    </task>
-    <task id="LOCAL-00018" summary="Cleared the sync method in LoginController. Simply create a user. Added Event creator,listener and observer and hooked them to User created to fire emails to the newly created user The event fore created rather than saving which should guarantee that emails are only dispatched when a user has been created. The tricky bit is the testing now woth Factory and mock deliveries.">
-      <created>1561609387617</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1561609387617</updated>
-    </task>
-    <task id="LOCAL-00019" summary="• Set up events in general. &#10;• Implemented a one off event on user creation to handle the firing of welcome email. &#10;• The implementation makes use of the entire bus architecture inryoduced by Taylor - thus, Ovservers, Events and Listeners were introduced in the standard way recommended by the docs. The event bus is currently using DB tables - this will change to REDIS as soon as the need for debugging goes back to normal. &#10;• Added email builder and email templates. Decoupled the email from the data associated with it (user/mailshot)">
-      <created>1561676867191</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1561676867191</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Add some DocBlocks to keep sniffer happy.">
-      <created>1561773799692</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1561773799692</updated>
     </task>
     <task id="LOCAL-00021" summary="Show proposals in home view (the beginning.)">
       <created>1561776424556</created>
@@ -885,7 +893,28 @@
       <option name="project" value="LOCAL" />
       <updated>1563839726850</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Never leave dump($var) statements in. A commit filter needs writing perhaps.">
+      <created>1563843768176</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1563843768176</updated>
+    </task>
+    <task id="LOCAL-00068" summary="This commit essentially &quot;closes&quot; 26.&#10;&#10;It's based on the following a user cast 1 vote with a value of&#10;-1, 0, and 1.&#10;&#10;It's actually nit exactly like that. There is no vote with an explicit value of 0.&#10;&#10;A user can cast one vote only against any give proposal, with a value of 'up' or 'down' which, from the proposal's point of view, should it have one, equals to a 1 or -1.&#10;&#10;If, however, a voter has already cast their vote against the proposal, then this new click simply zeroes all the values in the user's vote record. A consequent vote will count again as the expected 1 or -1. I am assuming that this IS the expected behaviour. I am, leaving this issue open nevertheless with a 'testing awaiting' label attached to it to give us time to confirm that this is what we want, and, after testing, that this what it does.">
+      <created>1563917107017</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1563917107017</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Notifications added in with &#10;https://github.com/minhtranite/react-notifications&#10;&#10;So far the simplest, but they all come out on green. &#10;Investigating..">
+      <created>1563927755975</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1563927755975</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -912,7 +941,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="467110000" />
+    <option name="totallyTimeSpent" value="484349000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -927,7 +956,7 @@
     <frame x="1698" y="23" width="1680" height="960" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25307125" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25307125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -942,9 +971,9 @@
       <window_info anchor="bottom" id="Tail" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49913144" weight="0.19217081" />
-      <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" weight="0.21511628" />
+      <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" weight="0.27090696" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.204947" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.30506477" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5014476" side_tool="true" weight="0.27995256" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.19810201" />
       <window_info anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49916804" weight="0.32858837" />
@@ -969,9 +998,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="More phpcs fixes and re-arrangements. Ready to move onto the beef (react, voting)" />
-    <MESSAGE value="Change auth() to auth('api') for -&gt;attempt and -&gt;factory() as per https://github.com/tymondesigns/jwt-auth/issues/1484 to get the JWT token working.." />
-    <MESSAGE value="re-enabled API routes after getting main logins working again (nothing to do with API routes, see previous three commits..)" />
     <MESSAGE value="Added API tests for registration/login etc." />
     <MESSAGE value="Do not allow API access to unverified users.&#10;Closed issue #1" />
     <MESSAGE value="Add support for up and down voting.&#10;Create VIEW vote aggregations." />
@@ -994,23 +1020,16 @@
     <MESSAGE value="To be worked on later and on a different branch (sse)" />
     <MESSAGE value="Clean up connection on componentWillUnmount()&#10;Closed #20" />
     <MESSAGE value="&#10;First working version to include (async) voting. &#10;&#10;* It only sends a “refresh” message to the connected clients and, based on my testing using VPNs the updates happen within seconds.&#10;* This current commit doesn't disable voting for a proposal the user has already voted the same way.&#10;* It does, however, ignore the vote and instead returns a message stating “you’ve already up- down voted this proposal.”&#10;* There are more messages sent out and the logic of them seems OK to me, at this time of the night.&#10;•&#9;However, at this point and time I am not showing the messages to the user. That’s because I am looking for a nice lightweight notifying solution for React to use. Bit like the “toast” you get in Vue – perhaps the Vue component was migrated from React anyway. If not sure, I am sure there will be something more than adequate out there.&#10;* We may have to explain to people why a single vote might seem to be &quot;mistakenly&quot; adding or subtracting two. See if we'll manage!&#10;* This version has not been tested against iOS and android devices in terms of usability of its UI (the voting buttons.) This will become an issue in Github shortly." />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;First working version to include (async) voting. &#10;&#10;* It only sends a “refresh” message to the connected clients and, based on my testing using VPNs the updates happen within seconds.&#10;* This current commit doesn't disable voting for a proposal the user has already voted the same way.&#10;* It does, however, ignore the vote and instead returns a message stating “you’ve already up- down voted this proposal.”&#10;* There are more messages sent out and the logic of them seems OK to me, at this time of the night.&#10;•&#9;However, at this point and time I am not showing the messages to the user. That’s because I am looking for a nice lightweight notifying solution for React to use. Bit like the “toast” you get in Vue – perhaps the Vue component was migrated from React anyway. If not sure, I am sure there will be something more than adequate out there.&#10;* We may have to explain to people why a single vote might seem to be &quot;mistakenly&quot; adding or subtracting two. See if we'll manage!&#10;* This version has not been tested against iOS and android devices in terms of usability of its UI (the voting buttons.) This will become an issue in Github shortly." />
+    <MESSAGE value="Never leave dump($var) statements in. A commit filter needs writing perhaps." />
+    <MESSAGE value="This commit essentially &quot;closes&quot; 26.&#10;&#10;It's based on the following a user cast 1 vote with a value of&#10;-1, 0, and 1.&#10;&#10;It's actually nit exactly like that. There is no vote with an explicit value of 0.&#10;&#10;A user can cast one vote only against any give proposal, with a value of 'up' or 'down' which, from the proposal's point of view, should it have one, equals to a 1 or -1.&#10;&#10;If, however, a voter has already cast their vote against the proposal, then this new click simply zeroes all the values in the user's vote record. A consequent vote will count again as the expected 1 or -1. I am assuming that this IS the expected behaviour. I am, leaving this issue open nevertheless with a 'testing awaiting' label attached to it to give us time to confirm that this is what we want, and, after testing, that this what it does." />
+    <MESSAGE value="Notifications added in with &#10;https://github.com/minhtranite/react-notifications&#10;&#10;So far the simplest, but they all come out on green. &#10;Investigating.." />
+    <option name="LAST_COMMIT_MESSAGE" value="Notifications added in with &#10;https://github.com/minhtranite/react-notifications&#10;&#10;So far the simplest, but they all come out on green. &#10;Investigating.." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/database/seeds/NamesTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6">
           <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NamesController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1159,16 +1178,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/voting.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="181">
-            <caret line="56" column="23" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/laravel-echo-server.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
@@ -1183,16 +1192,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding>
-            <element signature="e#248#295#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/static/react.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -1202,13 +1201,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/static/welcome.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/bootstrap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server/src/DumpServerCommand.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1296,16 +1288,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Events/MessageSent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -1327,13 +1309,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="834">
-          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -1341,19 +1316,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/docs/voting.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="306">
+            <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VoteController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+        <state relative-caret-position="109">
+          <caret line="8" column="2" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/NamesController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Events/MessagePosted.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="834">
+          <caret line="50" column="24" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+        <state relative-caret-position="50">
+          <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
           <folding>
             <element signature="e#40#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/bootstrap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+          <folding>
+            <element signature="e#248#295#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
-import 'react-notifications/lib/notifications.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+// minified version is also included
+// import 'react-toastify/dist/ReactToastify.min.css';
 
 export default class Proposals extends Component {
     constructor(props) {
@@ -12,6 +14,22 @@ export default class Proposals extends Component {
             'items': []
         }
         this.echo = null;
+    }
+
+    /**
+     * Pop a message box up
+     *
+     * @param msgText string
+     * @param msgType string i.e. infp, success, warning, error
+     * @param ttl
+     */
+    notify(msgText, msgType = 'info', ttl = 2000) {
+        toast(msgText, {
+                type: msgType,
+                hideProgressBar: true,
+                autoClose: ttl
+            }
+        );
     }
 
     handleVote(item, ctx) {
@@ -34,6 +52,8 @@ export default class Proposals extends Component {
     handleResponse(results) {
         this.getProposals();
         console.log(results);
+/*
+
         if(results.hasOwnProperty('warning')) {
             console.log('I am indeed here in the WARNING!');
             NotificationManager.success('Warning message', results.warning);
@@ -42,6 +62,7 @@ export default class Proposals extends Component {
         } else if (results.hasOwnProperty('success')) {
             NotificationManager.success('Success message', results.success);
         }
+*/
     }
 
     componentDidMount() {
@@ -67,7 +88,11 @@ export default class Proposals extends Component {
         this.echo.channel('6_acts_database_messages')
             .listen('.NewMessage', (e) => {
                 console.log('Message received');
+
+                this.notify(e.message, 'info');
+
                 console.log(e);
+
                 if (e.message == 'refresh') {
                     this.getProposals();
                 } else {
@@ -143,7 +168,7 @@ export default class Proposals extends Component {
                         }
                     )}
                 </ul>
-                <NotificationContainer/>
+                <ToastContainer />
             </div>
         );
     }
