@@ -1,6 +1,10 @@
 <footer class="footer">
     <div class="container">
         <div class="content has-text-centered">
+            <a href="{{url('terms')}}">Terms of Service</a> | 
+            <a href="{{url('privacy')}}">Privacy policy</a>
+        </div>
+        <div class="content has-text-centered">
             <div class="has-text-centered">
                 Versions
                 <span class="title-6">

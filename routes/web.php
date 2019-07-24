@@ -29,6 +29,9 @@ Route::get(
 Route::get('message', 'MessageController@showMessageForm');
 Route::post('message', 'MessageController@post')->name('postmessage');
 
+Route::get('categories', 'StaticController@content')->name('categories_explained');
+Route::get('nine_rules', 'StaticController@content')->name('nine_rules');
+
 Route::get('forum', 'StaticController@forum')->name('forum');
 Route::get('terms', 'StaticController@content')->name('terms');
 Route::get('privacy', 'StaticController@content')->name('privacy');

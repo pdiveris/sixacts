@@ -39,10 +39,10 @@
             <div class="navbar-start">
                 <a class="navbar-item" href="{{url('')}}">Home</a>
                 <a class="navbar-item" href="{{url('about')}}">About</a>
-                <a class="navbar-item" href="{{url('signin')}}">Sign in</a>
+                <a class="navbar-item" href="{{url('categories')}}">Categories Explained</a>
+                <a class="navbar-item" href="{{url('nine_rules')}}">9 Rules for the Six Acts</a>
                 <a class="navbar-item" href="{{url('register')}}">Register</a>
-                <a class="navbar-item" href="{{url('terms')}}">Terms</a>
-                <a class="navbar-item" href="{{url('privacy')}}">Privacy</a>
+                <a class="navbar-item" href="{{url('signin')}}">Sign in</a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
