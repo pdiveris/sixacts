@@ -33,10 +33,10 @@ class ProposalController extends Controller
             !array_key_exists('direction', $params) ||
             !array_key_exists('user', $params)
         ) {
-            return response()->json(['error'=>'Bad request (missing data)']);
+            return response()->json(['type'=>'error', 'message'=>'Bad request (missing data)']);
         }
         if (!$params['direction'] == 'up' || !$params['direction'] == 'down') {
-            return response()->json(['error'=>'Bad request (vote)']);
+            return response()->json(['type'=>'error', 'message'=>'Bad request (vote)']);
         }
         
         $vote = Vote::where('user_id', '=', $params['user']['user'])
@@ -49,29 +49,35 @@ class ProposalController extends Controller
         if (null !== $vote) {
             if ($params['direction'] == 'up') {
                 if ($vote->up > 0) {
-                    return response()->json(['warning' => 'You have already voted up this proposal']);
+                    return response()->json([
+                            'type'=>'warning',
+                            'message' => 'You have already voted up this proposal'
+                        ]);
                 }
                 if ($vote->down == 1) {     // correct
                     $vote->down = 0;
                     $vote->up = 0;
-                    $response = ['success'=>'from 0 to 1'];
+                    $response = ['type'=>'success', 'message'=>'You just removed your negative vote'];
                 } else {                    // correct
                     $vote->down = 0;
                     $vote->up = 1;
-                    $response = ['success'=>'from -1 to 0'];
+                    $response = ['type'=>'success', 'message'=>'Vote up added'];
                 }
             }
             if ($params['direction'] == 'down') {
                 if ($vote->down > 0) {
-                    return response()->json(['warning' => 'You have already voted down this proposal']);
+                    return response()->json([
+                        'message' => 'You have already voted down this proposal',
+                        'type'=>'warning',
+                    ]);
                 }
                 if ($vote->up == 1) {       // correct
                     $vote->up = 0;
-                    $response = ['success'=>'from 1 to 0'];
+                    $response = ['type'=>'success', 'message'=>'from 1 to 0'];
                 } else {                    // correct
                     $vote->up = 0;
                     $vote->down = 1;
-                    $response = ['success'=>'from 0 to -1'];
+                    $response = ['type'=>'success', 'message'=>'from 0 to -1'];
                 }
             }
         } else {
@@ -85,14 +91,14 @@ class ProposalController extends Controller
                 $vote->up = 1;
                 $vote->down = 0;
             }
-            $response = ['success'=>[$vote->getAttributes()]];
+            $response = ['type'=>'success', 'message'=>[$vote->getAttributes()]];
         }
         $ret = $vote->save();
         if ($ret) {
             event(new MessagePosted($user, 'refresh'));
             return response()->json($response);
         }
-        return response()->json(['error'=>"Can't persist vote"]);
+        return response()->json(['type'=>'error', 'message'=>"Can't persist vote", 'type'=>'error']);
     }
     
     /**
@@ -128,7 +134,7 @@ class ProposalController extends Controller
     {
         $prop = Proposal::find(\intval($proposalId));
         if (null===$prop) {
-            return response()->json(['message' => 'Not Found.'], 404);
+            return response()->json(['type'=>'error', 'error' => 'Not Found.'], 404);
         }
         if ($prop->category) {
             $prop->hasCategory = true;
