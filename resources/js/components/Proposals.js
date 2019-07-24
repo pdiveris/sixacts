@@ -23,7 +23,7 @@ export default class Proposals extends Component {
      * @param msgType string i.e. infp, success, warning, error
      * @param ttl
      */
-    notify(msgText, msgType = 'info', ttl = 2000) {
+    notify(msgText, msgType = 'info', ttl = 4000) {
         toast(msgText, {
                 type: msgType,
                 hideProgressBar: true,
@@ -52,17 +52,7 @@ export default class Proposals extends Component {
     handleResponse(results) {
         this.getProposals();
         console.log(results);
-/*
-
-        if(results.hasOwnProperty('warning')) {
-            console.log('I am indeed here in the WARNING!');
-            NotificationManager.success('Warning message', results.warning);
-        } else if (results.hasOwnProperty('error')) {
-            NotificationManager.success('Error message', results.error);
-        } else if (results.hasOwnProperty('success')) {
-            NotificationManager.success('Success message', results.success);
-        }
-*/
+        this.notify(results.message, results.type, 2000);
     }
 
     componentDidMount() {
@@ -88,11 +78,10 @@ export default class Proposals extends Component {
         this.echo.channel('6_acts_database_messages')
             .listen('.NewMessage', (e) => {
                 console.log('Message received');
-
-                this.notify(e.message, 'info');
-
+                if(e.hasOwnProperty("politburo")) {
+                    this.notify(e.message, e.type, 1000);
+                }
                 console.log(e);
-
                 if (e.message == 'refresh') {
                     this.getProposals();
                 } else {

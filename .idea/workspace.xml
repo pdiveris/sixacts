@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,7 +35,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.15233786">
+    <splitter split-orientation="vertical" split-proportion="0.24852768">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file pinned="false" current-in-tab="false">
@@ -65,7 +63,7 @@
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="113">
-                  <caret line="100" column="38" selection-start-line="100" selection-start-column="38" selection-end-line="100" selection-end-column="38" />
+                  <caret line="106" column="38" selection-start-line="106" selection-start-column="38" selection-end-line="106" selection-end-column="38" />
                   <folding>
                     <element signature="e#40#69#0#PHP" expanded="true" />
                   </folding>
@@ -85,8 +83,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/resources/js/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="25">
-                  <caret line="57" selection-start-line="57" selection-end-line="57" />
+                <state relative-caret-position="72">
+                  <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
                   <folding>
                     <element signature="e#248#295#0" expanded="true" />
                   </folding>
@@ -110,11 +108,11 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="50">
-                  <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
+                <state relative-caret-position="41">
+                  <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
                   <folding>
                     <element signature="e#40#69#0#PHP" expanded="true" />
                   </folding>
@@ -122,11 +120,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="256">
-                  <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+                <state relative-caret-position="219">
+                  <caret line="54" column="52" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -140,9 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>kaka</find>
-      <find>servers</find>
-      <find>sse/se</find>
       <find>sds</find>
       <find>Proposal</find>
       <find>limit</find>
@@ -170,6 +165,9 @@
       <find>messageRe</find>
       <find>NotificationManager</find>
       <find>toast</find>
+      <find>response()-&gt;json</find>
+      <find>notif</find>
+      <find>notify</find>
     </findStrings>
     <replaceStrings>
       <replace>a</replace>
@@ -267,9 +265,9 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/NamesController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/VoteController.php" />
         <option value="$PROJECT_DIR$/resources/js/bootstrap.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/Proposals.js" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" />
       </list>
     </option>
   </component>
@@ -570,20 +568,6 @@
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
       <workItem from="1563314954101" duration="84711000" />
-    </task>
-    <task id="LOCAL-00021" summary="Show proposals in home view (the beginning.)">
-      <created>1561776424556</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1561776424556</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Added &quot;registration thank you&quot; blade.">
-      <created>1561812028272</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1561812028272</updated>
     </task>
     <task id="LOCAL-00023" summary="Added  sixactss application wide CSS - taken from Bulma based forum by Anton Alexeev (orangeShadow)&#10;&#10;https://github.com/BulmaTemplates/bulma-templates">
       <created>1561813899405</created>
@@ -914,7 +898,21 @@
       <option name="project" value="LOCAL" />
       <updated>1563927755975</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Nice &quot;toast&quot; messages give users feedback when voting, e.g. &quot;You've already voted this down&quot; or &quot;You need to be logged in to vote&quot; etc.&#10;&#10;After hours of looking around ad at very many promising notifiers, and each one of t hem had something uniquely nice about it but.., I finally found this which seems to support all we want, including dragging it out the window with oer's thumb on a mobile or tablet. I have not tested this, will do and report.&#10; This relates to #24 which I am not closing since not all responses have been covered yet.">
+      <created>1563963514046</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1563963514046</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24.">
+      <created>1563966797265</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1563966797265</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -941,7 +939,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="484349000" />
+    <option name="totallyTimeSpent" value="488218000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -954,9 +952,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1698" y="23" width="1680" height="960" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25307125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25307125" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -973,7 +970,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49913144" weight="0.19217081" />
       <window_info anchor="bottom" id="File Transfer" order="10" sideWeight="0.4985524" weight="0.27090696" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.30506477" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.4997227" visible="true" weight="0.24381626" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5014476" side_tool="true" weight="0.27995256" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.19810201" />
       <window_info anchor="bottom" id="Inspection Results" order="15" sideWeight="0.49916804" weight="0.32858837" />
@@ -998,8 +995,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added API tests for registration/login etc." />
-    <MESSAGE value="Do not allow API access to unverified users.&#10;Closed issue #1" />
     <MESSAGE value="Add support for up and down voting.&#10;Create VIEW vote aggregations." />
     <MESSAGE value="Add down method to the migration (not that it's needed by anyhow..)" />
     <MESSAGE value="Start work on the main component - the proposals list, the .&#10;Swap all references to Example with Proposals." />
@@ -1023,7 +1018,9 @@
     <MESSAGE value="Never leave dump($var) statements in. A commit filter needs writing perhaps." />
     <MESSAGE value="This commit essentially &quot;closes&quot; 26.&#10;&#10;It's based on the following a user cast 1 vote with a value of&#10;-1, 0, and 1.&#10;&#10;It's actually nit exactly like that. There is no vote with an explicit value of 0.&#10;&#10;A user can cast one vote only against any give proposal, with a value of 'up' or 'down' which, from the proposal's point of view, should it have one, equals to a 1 or -1.&#10;&#10;If, however, a voter has already cast their vote against the proposal, then this new click simply zeroes all the values in the user's vote record. A consequent vote will count again as the expected 1 or -1. I am assuming that this IS the expected behaviour. I am, leaving this issue open nevertheless with a 'testing awaiting' label attached to it to give us time to confirm that this is what we want, and, after testing, that this what it does." />
     <MESSAGE value="Notifications added in with &#10;https://github.com/minhtranite/react-notifications&#10;&#10;So far the simplest, but they all come out on green. &#10;Investigating.." />
-    <option name="LAST_COMMIT_MESSAGE" value="Notifications added in with &#10;https://github.com/minhtranite/react-notifications&#10;&#10;So far the simplest, but they all come out on green. &#10;Investigating.." />
+    <MESSAGE value="Nice &quot;toast&quot; messages give users feedback when voting, e.g. &quot;You've already voted this down&quot; or &quot;You need to be logged in to vote&quot; etc.&#10;&#10;After hours of looking around ad at very many promising notifiers, and each one of t hem had something uniquely nice about it but.., I finally found this which seems to support all we want, including dragging it out the window with oer's thumb on a mobile or tablet. I have not tested this, will do and report.&#10; This relates to #24 which I am not closing since not all responses have been covered yet." />
+    <MESSAGE value="Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24." />
+    <option name="LAST_COMMIT_MESSAGE" value="Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/database/seeds/NamesTableSeeder.php">
@@ -1350,16 +1347,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
-          <folding>
-            <element signature="e#40#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -1369,8 +1356,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="72">
+          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
           <folding>
             <element signature="e#248#295#0" expanded="true" />
           </folding>
@@ -1379,10 +1366,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/Proposals.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+        <state relative-caret-position="219">
+          <caret line="54" column="52" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProposalController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+          <folding>
+            <element signature="e#40#69#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
