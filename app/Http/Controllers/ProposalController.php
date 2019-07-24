@@ -45,7 +45,6 @@ class ProposalController extends Controller
         
         $user = User::find($params['user']['user']);
         // if not user etc..
-        
         if (null !== $vote) {
             if ($params['direction'] == 'up') {
                 if ($vote->up > 0) {
@@ -97,14 +96,15 @@ class ProposalController extends Controller
                 $vote->up = 1;
                 $vote->down = 0;
             }
-            $response = ['type'=>'success', 'message'=>[$vote->getAttributes()]];
+            $response = ['type'=>'success', 'message'=>"Proposal voted ".$params['direction']];
         }
         $ret = $vote->save();
+        
         if ($ret) {
             event(new MessagePosted($user, 'refresh'));
             return response()->json($response);
         }
-        return response()->json(['type'=>'error', 'message'=>"Can't persist vote", 'type'=>'error']);
+        return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
     }
     
     /**
