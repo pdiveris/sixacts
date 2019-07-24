@@ -32,6 +32,7 @@ class StaticController extends Controller
     {
         $proposals = \App\Proposal::all();
         $categories = \App\Category::all();
+        dump('Patachouna');
         return view(
             'static.welcome',
             ['proposals'=>$proposals, 'categories'=>$categories]

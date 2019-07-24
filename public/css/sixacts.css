@@ -132,4 +132,49 @@ div .author {
         border: 1px black dotted !important;
     }
 }
+.olive {
+    background-color: #b58900 !important;
+    color: #fff !important;
+}
+.purple {
+    background-color: #8A4D76 !important;
+    color: #fff !important;
+}
+.ubuntu-purple {
+    background-color: #772953 !important;
+    color: #fff !important;
+}
+.ubuntu-link {
+    background-color: #17a2b8 !important;
+    color: #fff !important;
+}
+.ubuntu-green {
+    background-color: #38B44A !important;
+    color: #fff !important;
+}
+.orange {
+    background-color: #E95420 !important;
+    color: #fff !important;
+}
 
+
+/*
+.is-link {
+    background-color: #17a2b8 !important;
+}
+.is-primary {
+    background-color: #E95420 !important;
+}
+.is-danger {
+    background-color: #DF382C !important;
+}
+.is-info {
+    background-color: #772953 !important;
+}
+.is-success {
+    background-color: #38B44A !important;
+}
+.is-warning {
+    background-color: #EFB73E !important;
+}
+*/

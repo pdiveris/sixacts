@@ -73,11 +73,17 @@ class ProposalController extends Controller
                 }
                 if ($vote->up == 1) {       // correct
                     $vote->up = 0;
-                    $response = ['type'=>'success', 'message'=>'from 1 to 0'];
+                    $response = [
+                        'type'=>'success',
+                        'message'=>'You just removed your vote for this proposal'
+                    ];
                 } else {                    // correct
                     $vote->up = 0;
                     $vote->down = 1;
-                    $response = ['type'=>'success', 'message'=>'from 0 to -1'];
+                    $response = [
+                        'type'=>'success',
+                        'message'=>'You have now cast a negative vote for this proposal'
+                    ];
                 }
             }
         } else {

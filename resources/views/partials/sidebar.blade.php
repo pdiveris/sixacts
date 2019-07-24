@@ -2,8 +2,8 @@
 Sidebar snippet
 Author Petros Diveris <petros@diveris.org>
 --}}
-<a class="button is-primary is-block is-alt is-medoi" href="{{route('propose')}}">
-    Propose Act
+<a class="button ubuntu-green is-block is-alt" href="{{route('propose')}}">
+    Propose an Act
 </a>
 <aside class="menu">
     <p class="menu-label">
