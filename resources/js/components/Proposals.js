@@ -19,7 +19,7 @@ export default class Proposals extends Component {
     /**
      * Pop a message box up
      *
-     * @param msgText string
+     * @param msgText string 'Koko is rolling on the floor, I wom=nder why.
      * @param msgType string i.e. infp, success, warning, error
      * @param ttl
      */
@@ -57,7 +57,9 @@ export default class Proposals extends Component {
 
     componentDidMount() {
         this.getProposals();
-        this.setupSocket();
+        if (window.keepalive) {
+            this.setupSocket();
+        }
     }
 
     componentWillUnmount() {
