@@ -92,7 +92,7 @@ class ProposalController extends Controller
             event(new MessagePosted($user, 'refresh'));
             return response()->json($response);
         }
-        return response()->json(['fatal'=>"Can't persist vote"]);
+        return response()->json(['error'=>"Can't persist vote"]);
     }
     
     /**

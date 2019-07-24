@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 export default class Proposals extends Component {
     constructor(props) {
@@ -25,13 +27,21 @@ export default class Proposals extends Component {
                 "user": window.Laravel
             })
         }).then(results => results.json())
-          .then(results => this.doSomething(results))
+          .then(results => this.handleResponse(results))
           .catch(err => console.log(err));
     }
 
-    doSomething(results) {
+    handleResponse(results) {
         this.getProposals();
         console.log(results);
+        if(results.hasOwnProperty('warning')) {
+            console.log('I am indeed here in the WARNING!');
+            NotificationManager.success('Warning message', results.warning);
+        } else if (results.hasOwnProperty('error')) {
+            NotificationManager.success('Error message', results.error);
+        } else if (results.hasOwnProperty('success')) {
+            NotificationManager.success('Success message', results.success);
+        }
     }
 
     componentDidMount() {
@@ -80,58 +90,61 @@ export default class Proposals extends Component {
 
     render() {
         return (
-            <ul>
-                {this.state.items.map( (item, index) => {
-                    return (
-                        <div key={index} className="u-mtop-2">
-                            <span className="subtitle has-text-weight-bold">{item.title}</span>
-                            <span
-                                className={
-                                    `tag is-small u-mleft-15
-                                    ${item.category.class}
-                                    ${item.category.sub_class}`
-                                }
-                            >
-                            {item.category.short_title.substr(0, 1)}
-                            </span>
-                            <div className="expander">
-                                {letsDisco(item.body)}&nbsp;&nbsp;
-                                <span className="icon">
-                                    <i className="fa fa-plus"></i>
+            <div>
+                <ul>
+                    {this.state.items.map( (item, index) => {
+                        return (
+                            <div key={index} className="u-mtop-2">
+                                <span className="subtitle has-text-weight-bold">{item.title}</span>
+                                <span
+                                    className={
+                                        `tag is-small u-mleft-15
+                                        ${item.category.class}
+                                        ${item.category.sub_class}`
+                                    }
+                                >
+                                {item.category.short_title.substr(0, 1)}
                                 </span>
-                            </div>
-                            <div className="expandable collapsed">
-                                {letsTango(item.body)}
-                            </div>
-                            <div className="author controls u-mtop-10 u-mright-10">
-                                <i>Posted by</i>:&nbsp;
-                                <b>
-                                    {item.user.display_name != ''
-                                        ? item.user.display_name
-                                        : item.user.name
-                                    }</b>
-                                &nbsp;
-                            </div>
-                            <div className="aggs controls u-mbottom-20">
-                                <span className="numVotes">
-                                {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
-                                <span className="icon u-mleft-20">
-                                    <a onClick={() => this.handleVote(item, 'up')}>
-                                        <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
-                                    </a>
-                                </span>
-                                <span className="icon">
-                                    <a onClick={() => this.handleVote(item, 'down')}>
-                                        <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
-                                    </a>
-                                </span>
-                            </div>
+                                <div className="expander">
+                                    {letsDisco(item.body)}&nbsp;&nbsp;
+                                    <span className="icon">
+                                        <i className="fa fa-plus"></i>
+                                    </span>
+                                </div>
+                                <div className="expandable collapsed">
+                                    {letsTango(item.body)}
+                                </div>
+                                <div className="author controls u-mtop-10 u-mright-10">
+                                    <i>Posted by</i>:&nbsp;
+                                    <b>
+                                        {item.user.display_name != ''
+                                            ? item.user.display_name
+                                            : item.user.name
+                                        }</b>
+                                    &nbsp;
+                                </div>
+                                <div className="aggs controls u-mbottom-20">
+                                    <span className="numVotes">
+                                    {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
+                                    <span className="icon u-mleft-20">
+                                        <a onClick={() => this.handleVote(item, 'up')}>
+                                            <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                        </a>
+                                    </span>
+                                    <span className="icon">
+                                        <a onClick={() => this.handleVote(item, 'down')}>
+                                            <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
+                                        </a>
+                                    </span>
+                                </div>
 
-                        </div>
-                    )
-                    }
-                )}
-            </ul>
+                            </div>
+                        )
+                        }
+                    )}
+                </ul>
+                <NotificationContainer/>
+            </div>
         );
     }
 }
