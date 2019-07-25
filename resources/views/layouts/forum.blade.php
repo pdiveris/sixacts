@@ -20,6 +20,7 @@
         window.Laravel = {!! json_encode([
         'user' => auth()->check() ? auth()->user()->id : null,
     ]) !!};
+        window.keepalive = {!!json_encode(env('KEEP_ALIVE') ?? false)!!}
     </script>
 </head>
 <body>
@@ -92,5 +93,21 @@
 </section>
 @include('partials.footer')
 <script async type="text/javascript" src="{{asset('js/bulma.js')}}"></script>
+<!-- Matomo -->
+<script type="text/javascript">
+    var _paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setCookieDomain", "*.beta.sixacts.org"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//metrics.definitio.org/metrics/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '2']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<!-- End Matomo Code -->
 </body>
 </html>
