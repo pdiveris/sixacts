@@ -56,6 +56,7 @@ export default class Proposals extends Component {
     }
 
     componentDidMount() {
+        document.addEventListener('click', this.handleClickOutside, true);
         this.getProposals();
         if (window.keepalive) {
             this.setupSocket();
@@ -63,7 +64,21 @@ export default class Proposals extends Component {
     }
 
     componentWillUnmount() {
+        document.removeEventListener('click', this.handleClickOutside, true);
         this.echo.disconnect();
+    }
+
+    handleClickOutside = event => {
+        console.log('Pako!');
+/*
+        const domNode = ReactDOM.findDOMNode(this);
+
+        if (!domNode || !domNode.contains(event.target)) {
+            this.setState({
+                visible: false
+            });
+        }
+*/
     }
 
     setupSocket() {
