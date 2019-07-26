@@ -13,6 +13,8 @@ class Portal extends React.Component {
     constructor(props) {
         super(props);
         this.el = document.createElement("div");
+
+        // this.doKanga = this.handleKanga.bind(this);
     }
 
     componentDidMount = () => {
@@ -37,6 +39,11 @@ export default class Proposals extends Component {
             'categories': []
         }
         this.echo = null;
+        this.onClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event) {
+        console.log(event);
     }
 
     /**
@@ -145,7 +152,7 @@ export default class Proposals extends Component {
     getCategories() {
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
-        fetch(proto + hostName + '/api/categories', {
+        fetch(proto + hostName + '/api/categories?addSelected=1', {
                 crossDomain: true,
             }
         )
@@ -162,11 +169,16 @@ export default class Proposals extends Component {
                             {this.state.categories.map((cat, index) => {
                                     return (
                                         <li key={`cat_${cat.id}`}>
-                                            <span
+                                            <span onClick={this.onClick}
                                                 className={`tag ${cat.class} ${cat.sub_class}`}
                                             >
                                                 {cat.short_title}
-                                            </span>
+                                        </span>
+                                            {cat.selected == 0
+                                                ? ''
+                                                : 1
+                                            }
+
                                         </li>
                                     )
                                 }
