@@ -13,5 +13,18 @@ Author Petros Diveris <petros@diveris.org>
     <div class="cats" id="cats">
 
     </div>
+    <p class="menu-label">
+        Six Acts
+    </p>
+    <a class="button is-size-6" href="https://twitter.com/ActsSix" target="sothial">
+        <span>
+            <i class="fab fa-twitter"></i>
+        </span>
+    </a>
+    <a class="button is-size-6" href="https://twitter.com/ActsSix">
+        <span>
+            <i class="fab fa-facebook-f"></i>
+        </span>
+    </a>
 
 </aside>
