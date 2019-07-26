@@ -79,6 +79,16 @@ class AuthController extends Controller
     }
     
     /**
+     * Get an API token for the user currently logged in
+     */
+    public function getUserToken()
+    {
+        $user = \Auth::user();
+        $token = auth('api')->login($user);
+        return view('auth.token', ['token'=>$token]);
+    }
+    
+    /**
      * Logout method
      *
      * @return \Illuminate\Http\JsonResponse

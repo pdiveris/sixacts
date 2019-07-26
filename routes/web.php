@@ -26,6 +26,8 @@ Route::get(
     'SiteController@userProfile'
 )->name('profile')->middleware('verified');
 
+Route::get('user/token', 'AuthController@getUserToken')->name('user_token');
+
 Route::get('message', 'MessageController@showMessageForm');
 Route::post('message', 'MessageController@post')->name('postmessage');
 

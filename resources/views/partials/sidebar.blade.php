@@ -9,13 +9,9 @@ Author Petros Diveris <petros@diveris.org>
     <p class="menu-label">
         Tags
     </p>
-    <ul class="menu-list">
-        @foreach($categories as $category)
-            <li>
-                <span class="tag {{$category->class}} {{$category->sub_class}}">
-                    {{$category->short_title}}
-                </span>
-            </li>
-        @endforeach
-    </ul>
+    <!-- rendered with react -->
+    <div class="cats" id="cats">
+
+    </div>
+
 </aside>

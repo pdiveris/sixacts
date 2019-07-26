@@ -103,6 +103,7 @@ class ProposalController extends Controller
         if ($ret) {
             event(new MessagePosted($user, 'refresh'));
             return response()->json($response);
+            return response()->json($response);
         }
         return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
     }

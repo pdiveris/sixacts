@@ -100,8 +100,6 @@ class LoginController extends Controller
                 'email' => $request->get('email'),
                 'password' => $request->get('password')
             );
-
-
             // attempt to do the login
             if (\Auth::attempt($userdata, true)) {
                 return redirect('/');

@@ -2,16 +2,39 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
-import { ToastContainer, toast } from 'react-toastify';
+import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // minified version is also included
 // import 'react-toastify/dist/ReactToastify.min.css';
+
+const portalRoot = document.getElementById("cats");
+
+class Portal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.el = document.createElement("div");
+    }
+
+    componentDidMount = () => {
+        portalRoot.appendChild(this.el);
+    };
+
+    componentWillUnmount = () => {
+        portalRoot.removeChild(this.el);
+    };
+
+    render() {
+        const {children} = this.props;
+        return ReactDOM.createPortal(children, this.el);
+    }
+}
 
 export default class Proposals extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            'items': []
+            'items': [],
+            'categories': []
         }
         this.echo = null;
     }
@@ -45,72 +68,73 @@ export default class Proposals extends Component {
                 "user": window.Laravel
             })
         }).then(results => results.json())
-          .then(results => this.handleResponse(results))
-          .catch(err => console.log(err));
+            .then(results => this.handleResponse(results))
+            .catch(err => console.log(err));
     }
 
     handleResponse(results) {
         this.getProposals();
-        console.log(results);
         this.notify(results.message, results.type, 2000);
+        console.log(results);
     }
 
     componentDidMount() {
-        document.addEventListener('click', this.handleClickOutside, true);
+        // document.addEventListener('click', this.handleClickOutside, true);
         this.getProposals();
+        this.getCategories();
         if (window.keepalive) {
             this.setupSocket();
         }
     }
 
     componentWillUnmount() {
-        document.removeEventListener('click', this.handleClickOutside, true);
+        // document.removeEventListener('click', this.handleClickOutside, true);
         this.echo.disconnect();
     }
 
     handleClickOutside = event => {
-        console.log('Pako!');
-/*
-        const domNode = ReactDOM.findDOMNode(this);
+        console.log(event);
+        /*
+                const domNode = ReactDOM.findDOMNode(this);
 
-        if (!domNode || !domNode.contains(event.target)) {
-            this.setState({
-                visible: false
-            });
-        }
-*/
+                if (!domNode || !domNode.contains(event.target)) {
+                    this.setState({
+                        visible: false
+                    });
+                }
+        */
     }
 
     setupSocket() {
         console.log('Setting up socket.io');
 
-        console.log('Hostname set to '+ window.location.hostname + ':6001');
+        console.log('Hostname set to ' + window.location.hostname + ':6001');
         this.echo = new Echo({
             broadcaster: 'socket.io',
             client: Socketio,
-            host: 'https://'+window.location.hostname + ':6001/'
+            host: 'https://' + window.location.hostname + ':6001/'
         });
 
         console.log('About to set to listening to "messages" for "NewMessage"');
         this.echo.channel('6_acts_database_messages')
             .listen('.NewMessage', (e) => {
                 console.log('Message received');
-                if(e.hasOwnProperty("politburo")) {
+                if (e.hasOwnProperty("politburo")) {
                     this.notify(e.message, e.type, 1000);
                 }
                 console.log(e);
                 if (e.message == 'refresh') {
                     this.getProposals();
                 } else {
-                    console.log("Unexpected message: "+e.message)
+                    console.log("Unexpected message: " + e.message)
                 }
             });
     }
 
     getProposals() {
-        let proto = window.location.protocol+'//';
+        let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
-        fetch(proto+hostName+'/api/proposals', {
+        fetch(proto + hostName + '/api/proposals', {
                 crossDomain: true,
             }
         )
@@ -118,63 +142,92 @@ export default class Proposals extends Component {
             .then(results => this.setState({'items': results}))
     }
 
+    getCategories() {
+        let proto = window.location.protocol + '//';
+        let hostName = window.location.hostname;
+        fetch(proto + hostName + '/api/categories', {
+                crossDomain: true,
+            }
+        )
+            .then(results => results.json())
+            .then(results => this.setState({'categories': results}))
+    }
 
     render() {
         return (
             <div>
+                <React.Fragment>
+                    <Portal>
+                        <ul className={"categoriesList"}>
+                            {this.state.categories.map((cat, index) => {
+                                    return (
+                                        <li key={`cat_${cat.id}`}>
+                                            <span
+                                                className={`tag ${cat.class} ${cat.sub_class}`}
+                                            >
+                                                {cat.short_title}
+                                            </span>
+                                        </li>
+                                    )
+                                }
+                            )}
+
+                        </ul>
+                    </Portal>
+                </React.Fragment>
                 <ul>
-                    {this.state.items.map( (item, index) => {
-                        return (
-                            <div key={index} className="u-mtop-2">
-                                <span className="subtitle has-text-weight-bold">{item.title}</span>
-                                <span
-                                    className={
-                                        `tag is-small u-mleft-15
+                    {this.state.items.map((item, index) => {
+                            return (
+                                <div key={index} className="u-mtop-2">
+                                    <span className="subtitle has-text-weight-bold">{item.title}</span>
+                                    <span
+                                        className={
+                                            `tag is-small u-mleft-15
                                         ${item.category.class}
                                         ${item.category.sub_class}`
-                                    }
-                                >
+                                        }
+                                    >
                                 {item.category.short_title.substr(0, 1)}
                                 </span>
-                                <div className="expander">
-                                    {letsDisco(item.body)}&nbsp;&nbsp;
-                                    <span className="icon">
+                                    <div className="expander">
+                                        {letsDisco(item.body)}&nbsp;&nbsp;
+                                        <span className="icon">
                                         <i className="fa fa-plus"></i>
                                     </span>
-                                </div>
-                                <div className="expandable collapsed">
-                                    {letsTango(item.body)}
-                                </div>
-                                <div className="author controls u-mtop-10 u-mright-10">
-                                    <i>Posted by</i>:&nbsp;
-                                    <b>
-                                        {item.user.display_name != ''
-                                            ? item.user.display_name
-                                            : item.user.name
-                                        }</b>
-                                    &nbsp;
-                                </div>
-                                <div className="aggs controls u-mbottom-20">
+                                    </div>
+                                    <div className="expandable collapsed">
+                                        {letsTango(item.body)}
+                                    </div>
+                                    <div className="author controls u-mtop-10 u-mright-10">
+                                        <i>Posted by</i>:&nbsp;
+                                        <b>
+                                            {item.user.display_name != ''
+                                                ? item.user.display_name
+                                                : item.user.name
+                                            }</b>
+                                        &nbsp;
+                                    </div>
+                                    <div className="aggs controls u-mbottom-20">
                                     <span className="numVotes">
                                     {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
-                                    <span className="icon u-mleft-20">
+                                        <span className="icon u-mleft-20">
                                         <a onClick={() => this.handleVote(item, 'up')}>
                                             <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
                                         </a>
                                     </span>
-                                    <span className="icon">
+                                        <span className="icon">
                                         <a onClick={() => this.handleVote(item, 'down')}>
                                             <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
                                         </a>
                                     </span>
-                                </div>
+                                    </div>
 
-                            </div>
-                        )
+                                </div>
+                            )
                         }
                     )}
                 </ul>
-                <ToastContainer />
+                <ToastContainer/>
             </div>
         );
     }
