@@ -14,7 +14,7 @@ Author Petros Diveris <petros@diveris.org>
 
     </div>
     <p class="menu-label">
-        Six Acts
+        Six Acts on Social
     </p>
     <a class="button is-size-6" href="https://twitter.com/ActsSix" target="sothial">
         <span>

@@ -43,7 +43,11 @@ export default class Proposals extends Component {
     }
 
     handleClick(event) {
-        console.log(event);
+        const {id} = event.target;
+        let pos = id.substring(id.indexOf('_')+1);
+        this.state.categories[pos-1].selected = !this.state.categories[pos-1].selected ;
+        this.forceUpdate();
+        this.getProposals();
     }
 
     /**
@@ -81,8 +85,7 @@ export default class Proposals extends Component {
 
     handleResponse(results) {
         this.getProposals();
-        this.notify(results.message, results.type, 2000);
-        console.log(results);
+        this.notify(results.message, results.type, 3000);
     }
 
     componentDidMount() {
@@ -98,36 +101,27 @@ export default class Proposals extends Component {
         // document.removeEventListener('click', this.handleClickOutside, true);
         this.echo.disconnect();
     }
-
+    // not in use for categories
     handleClickOutside = event => {
         console.log(event);
-        /*
-                const domNode = ReactDOM.findDOMNode(this);
-
-                if (!domNode || !domNode.contains(event.target)) {
-                    this.setState({
-                        visible: false
-                    });
-                }
-        */
     }
 
     setupSocket() {
         console.log('Setting up socket.io');
 
-        console.log('Hostname set to ' + window.location.hostname + ':6001');
+        console.log('Hostname set to ' + window.location.hostname);
         this.echo = new Echo({
             broadcaster: 'socket.io',
             client: Socketio,
             host: 'https://' + window.location.hostname + ':6001/'
         });
 
-        console.log('About to set to listening to "messages" for "NewMessage"');
+        console.log('About to set to listening to "messages"..');
         this.echo.channel('6_acts_database_messages')
             .listen('.NewMessage', (e) => {
                 console.log('Message received');
                 if (e.hasOwnProperty("politburo")) {
-                    this.notify(e.message, e.type, 1000);
+                    this.notify(e.message, e.type, 3000);
                 }
                 console.log(e);
                 if (e.message == 'refresh') {
@@ -139,9 +133,15 @@ export default class Proposals extends Component {
     }
 
     getProposals() {
+        const cats = this.state.categories.filter(function(cat) {
+            return cat.selected === true
+        }).map(function(cat) {
+           return cat.id;
+        });
+        let catsQuery = cats.join(':');
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
-        fetch(proto + hostName + '/api/proposals', {
+        fetch(proto + hostName + '/api/proposals?cats='+catsQuery, {
                 crossDomain: true,
             }
         )
@@ -160,6 +160,15 @@ export default class Proposals extends Component {
             .then(results => this.setState({'categories': results}))
     }
 
+    faded(status) {
+        // return (isMember ? "$2.00" : "$10.00");
+        if (status) {
+            return 'full';
+        } else {
+            return 'pale';
+        }
+    }
+
     render() {
         return (
             <div>
@@ -169,16 +178,18 @@ export default class Proposals extends Component {
                             {this.state.categories.map((cat, index) => {
                                     return (
                                         <li key={`cat_${cat.id}`}>
-                                            <span onClick={this.onClick}
-                                                className={`tag ${cat.class} ${cat.sub_class}`}
+                                            <span
+                                                className={`xbutton`}
                                             >
+                                                <a id={`Katze_${cat.id}`} href={"#"}
+                                                   onClick={this.onClick}
+                                                   className={`button ${cat.class} 
+                                                    ${this.faded(cat.selected)}`
+                                                   }
+                                                >
                                                 {cat.short_title}
+                                                </a>
                                         </span>
-                                            {cat.selected == 0
-                                                ? ''
-                                                : 1
-                                            }
-
                                         </li>
                                     )
                                 }

@@ -23,9 +23,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
         $cats = Category::all();
+        $addSelected = $request->get('addSelected', 0);
+        if ($addSelected == 1) {
+            foreach ($cats as $cat) {
+                $cat->selected = true;
+            }
+        }
         return response()->json($cats);
     }
     

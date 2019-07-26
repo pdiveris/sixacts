@@ -77,13 +77,57 @@ $response = new StreamedResponse(function () use ($request) {
             while (true) {
 ```
 
-So far I've come across two sp;utions that claim to do SSE in PHP, which I haven't tried due to lack of time and the very sparse info they provide. One of them is a library, simply called PHP SSE: Server-sent Events [on Github](https://github.com/hhxsv5/php-sse) and the other one this guy's [notes](https://chrisblackwell.me/server-sent-events-using-laravel-vue/). Leaving PHP aside, one could use the Mercure SSE hub, written in go. 
+So far I've come across two solutions that claim to do SSE in PHP, which I haven't tried due to lack of time and the very sparse info they provide. One of them is a library, simply called PHP SSE: Server-sent Events [on Github](https://github.com/hhxsv5/php-sse) and the other one this guy's [notes](https://chrisblackwell.me/server-sent-events-using-laravel-vue/). Leaving PHP aside, one could use the Mercure SSE hub, written in go. 
 
 ##### PHP SSE: Server-sent Events
 In the light of the failure with "this guy's notes," I now think I should have started with these guys. The documentation is laconic, so much so that it may actually work. A branch has been created to investigate.
 
 ##### This guy's notes
 I spent considerable amount of time getting this to work and ended up realising that it can only serve one connection, in the instance the first ever made. All consequent new connections do not received the events. The headers sent at the end and out of the loop should have raised alarm bells, as it's obvious that they never really get sent. One possibility though is that the `$response = new StreamedResponse(function () use ($request) {` can be wrapped in a ReactPHP or other higher lever non stopping MUX/DEMUX
+
+##### Update: libSSE-php, a newer anc much cleaner, more promising PHP SSE library
+“An easy-to-use, object-oriented library for Server-Sent Events“
+
+[Github](https://github.com/licson0729/libSSE-php)
+
+* Server:
+
+```
+<?php
+	require_once('/path/to/vendor/autoload.php'); //Load with ClassLoader
+	
+	use Sse\Event;
+	use Sse\SSE;
+
+	//create the event handler
+	class YourEventHandler implements Event {
+		public function update(){
+			//Here's the place to send data
+			return 'Hello, world!';
+		}
+
+		public function check(){
+			//Here's the place to check when the data needs update
+			return true;
+		}
+	}
+	
+	$sse = new SSE(); //create a libSSE instance
+	$sse->addEventListener('event_name', new YourEventHandler()); //your handler
+	$sse->start();//start the event loop
+	
+
+```
+
+* Client
+
+```
+var sse = new EventSource('path/to/your/sse/script.php');
+	sse.addEventListener('event_name',function(e){
+		var data = e.data;
+		//handle your data here
+	},false);
+```
 
 ##### Mercure SSE 
 Nice and lovely as it is, it's far too much for what I want to achieve. See notes about it in aginter (link will be provided.)

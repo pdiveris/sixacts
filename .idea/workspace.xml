@@ -4,20 +4,14 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="I am sdhgsadhagsdc because it closes #23">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Categories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/token.blade.php" afterDir="false" />
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/voting.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/voting.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/sixacts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sixacts.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -308,28 +302,7 @@
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
       <workItem from="1563314954101" duration="84711000" />
-      <workItem from="1564051059341" duration="11716000" />
-    </task>
-    <task id="LOCAL-00032" summary="Added screenshot of app to repo.">
-      <created>1562016806912</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1562016806912</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Made screenshot smaller">
-      <created>1562016961777</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1562016961777</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Made screenshot smaller">
-      <created>1562017330014</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1562017330014</updated>
+      <workItem from="1564051059341" duration="32692000" />
     </task>
     <task id="LOCAL-00035" summary="Made screenshot smaller">
       <created>1562017424725</created>
@@ -653,7 +626,28 @@
       <option name="project" value="LOCAL" />
       <updated>1564059192148</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Placeholder commit. &#10;&#10;The important bit is migrated the Categories from Laravel blade to React Fragment&#10;&#10;Loads of other work included too.">
+      <created>1564100861883</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1564100861883</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Social media buttons (main Six Acts) in the sidebar.&#10;Closed #35.">
+      <created>1564106991207</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1564106991207</updated>
+    </task>
+    <task id="LOCAL-00083" summary="The categories list is now &lt;Fragment&gt; of the Proposals component, in the portal paelance. It means that even though it sits outside the component's DOM tree, it's part of it for all concerned. It can now have its own &quot;synthetic&quot; events bubbling up the same way as all others within the component and in the right order. I don't know why this portal solution is not advocated for a loose model of development, rather than promoting an architecture which requires the ho=le page to be a single react component.&#10;&#10;I still don't know hpw ro attach a handler to it though.">
+      <created>1564109397777</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1564109397777</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -713,9 +707,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Replace logo with new one&#10;Swapped with HQ JPG provided by Eva (LOGO hand final V5 HEX-2)&#10;&#10;This closes #13" />
-    <MESSAGE value="Fixed &#10;BUG: Proposed actions do not show in front page on Android/iOS devices&#10;The issue was down to the API entry point used for feeding the compomenent&#10;Closed #16&#10;&#10;FIX: Replace logo with new one&#10;Swap the logo used with the one sent by Eva&#10;Closed #13" />
-    <MESSAGE value="Replace the sidebar [cats column, gap column, main column] layout &#10;with [cats column, main column] where the cats column gets the space &#10;it needs, not a gap after it (badly) ad hoc when space's needed." />
     <MESSAGE value="A with the previous commit, increased size of column 1 in sidebar, &#10;thus eliminating the need for a gap column (as originally requested &#10;by the ticket.)&#10;&#10;Closed #14." />
     <MESSAGE value="Added api/names/random endpoint to accommodate the building the voting &#10;async updates scaffolding and implementation. &#10;&#10;See docs/voting.md&#10;&#10;Closed #19" />
     <MESSAGE value="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes." />
@@ -738,7 +729,10 @@
     <MESSAGE value="With this commit the client connection to the server stays open (keeps alive) on;y of the .env file explicitly states `KEEP_ALIVE=true`.&#10;&#10;This therefore closes #22." />
     <MESSAGE value="Added Matomon analytics JS code at the botom of master layout as per #33. Similarly  Google analytics code might need adding, so this ticket will remain open for the time being." />
     <MESSAGE value="Handling events from outside React's scope (in the DOM)&#10;- with experimental experimental syntax 'classProperties'&#10;&#10; with the addition of &quot;@babel/preset-env&quot; in babel's configuration in `composer.json`&#10; &#10; It looks like this will ve resolving issue #4 which has been on the cards for aeons without having to migrate the buttons into the react component. Currently it simply reports to the console the infamous debug line." />
-    <option name="LAST_COMMIT_MESSAGE" value="Handling events from outside React's scope (in the DOM)&#10;- with experimental experimental syntax 'classProperties'&#10;&#10; with the addition of &quot;@babel/preset-env&quot; in babel's configuration in `composer.json`&#10; &#10; It looks like this will ve resolving issue #4 which has been on the cards for aeons without having to migrate the buttons into the react component. Currently it simply reports to the console the infamous debug line." />
+    <MESSAGE value="Placeholder commit. &#10;&#10;The important bit is migrated the Categories from Laravel blade to React Fragment&#10;&#10;Loads of other work included too." />
+    <MESSAGE value="Social media buttons (main Six Acts) in the sidebar.&#10;Closed #35." />
+    <MESSAGE value="The categories list is now &lt;Fragment&gt; of the Proposals component, in the portal paelance. It means that even though it sits outside the component's DOM tree, it's part of it for all concerned. It can now have its own &quot;synthetic&quot; events bubbling up the same way as all others within the component and in the right order. I don't know why this portal solution is not advocated for a loose model of development, rather than promoting an architecture which requires the ho=le page to be a single react component.&#10;&#10;I still don't know hpw ro attach a handler to it though." />
+    <option name="LAST_COMMIT_MESSAGE" value="The categories list is now &lt;Fragment&gt; of the Proposals component, in the portal paelance. It means that even though it sits outside the component's DOM tree, it's part of it for all concerned. It can now have its own &quot;synthetic&quot; events bubbling up the same way as all others within the component and in the right order. I don't know why this portal solution is not advocated for a loose model of development, rather than promoting an architecture which requires the ho=le page to be a single react component.&#10;&#10;I still don't know hpw ro attach a handler to it though." />
   </component>
   <component name="masterDetails">
     <states>

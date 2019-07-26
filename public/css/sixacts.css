@@ -167,3 +167,7 @@ div .author {
 .categoriesList li {
     padding-bottom: 0.70em;
 }
+
+span .pale {
+    opacity: 0.37 !important;
+}

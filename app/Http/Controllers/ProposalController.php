@@ -111,11 +111,19 @@ class ProposalController extends Controller
     /**
      * Get all proposals with their aggregations (if they have any..)
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $props = Proposal::all();
+        $catsQuery = $request->get('cats', '');
+        if (null !== $catsQuery && '' !== $catsQuery) {
+            $cats = explode(':', $catsQuery);
+            $props = Proposal::whereIn('category_id', $cats)->get();
+        } else {
+            $props = Proposal::all();
+        }
+        
         foreach ($props as $prop) {
             if ($prop->category) {
                 $prop->hasCategory = true;
