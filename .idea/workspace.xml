@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="Category filtering is now fully functioning. Unlike the implementation planned originally, this uses native React ways of achieving this. It sets the selected flags on the categories, themselves store in the application's state. From that point on, any change in that state will trigger a 'tree shakeup' and a diff. and consequently a smooth refresh of the main area, the listing of the proposals.&#10;&#10;Note that whilst I looked at listening at events external to the Proposal component's tree, it transpired that one can attach portals to a component which can live anywhere in the page. It's a much nicer way of achieving this and, after biting the original bullet, it's actually much easier as it belongs to the same cluster of logic as the main component&#10;&#10;In addition, the buttons now don't turn into outlines when unselected, they simply appear faded.&#10;&#10;Proudly closed #4.">
+      <change afterPath="$PROJECT_DIR$/public/js/cash.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/sixacts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sixacts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/proposal_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/proposal_form.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +45,9 @@
         <entry key="$PROJECT_DIR$" value="sse" />
       </map>
     </option>
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="xJPYLnjt" />
   </component>
   <component name="PHPCSFixerBlackList">
     <option name="filePaths">
@@ -205,11 +213,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tmp" />
       <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$/docs" />
       <recent name="$PROJECT_DIR$/app/Jobs" />
       <recent name="$PROJECT_DIR$/resources/views/emails/users" />
-      <recent name="$PROJECT_DIR$/resources/views" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/js/components" />
@@ -296,7 +304,7 @@
       <workItem from="1562927629573" duration="45976000" />
       <workItem from="1563142277998" duration="60626000" />
       <workItem from="1563314954101" duration="84711000" />
-      <workItem from="1564051059341" duration="36254000" />
+      <workItem from="1564051059341" duration="39323000" />
     </task>
     <task id="LOCAL-00036" summary="Swapped Laravel-Bulma preset for npm vanilla install which immediately &#10;sorted out all the form issues. I will also enable me to customise the&#10;colour scheme as requested by client.">
       <created>1562017546107</created>

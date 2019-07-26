@@ -85,37 +85,6 @@ div .author {
     min-height: 375px !important;
 }
 
-.k1 {
-    color: #00d1b2 !important;
-    border: 2px solid #00d1b2 !important;
-    font-size: 1.0em !important;
-}
-.k2 {
-    color: #3273dc !important;
-    border: 2px solid #3273dc !important;
-    font-size: 1.0em !important;
-}
-.k3 {
-    color: #ff3860 !important;
-    border: 2px solid #ff3860 !important;
-    font-size: 1.0em !important;
-}
-.k4 {
-    color: #4a4a4a !important;
-    border: 2px solid #4a4a4a !important;
-    font-size: 1.0em !important;
-}
-.k5 {
-    color: #23d160 !important;
-    border: 2px solid #23d160 !important;
-    font-size: 1.0em !important;
-}
-.k6 {
-    color: #ffdd57 !important;
-    border: 2px solid #ffdd57 !important;
-    font-size: 1.0em !important;
-}
-
 .logo_diaroia {
     height: 70px !important;
 }
@@ -169,5 +138,9 @@ div .author {
 }
 
 span .pale {
+    opacity: 0.37 !important;
+}
+
+#propose_buttons a.button.pale  {
     opacity: 0.37 !important;
 }

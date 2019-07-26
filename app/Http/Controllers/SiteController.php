@@ -84,6 +84,9 @@ class SiteController extends Controller
     public function getProposal()
     {
         $categories = Category::all();
+        foreach ($categories as $category) {
+            $category->selected = false;
+        }
         return view(
             'proposal_form',
             ['categories'=>$categories]

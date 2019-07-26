@@ -34,10 +34,11 @@
 
                             <div class="field-body">
                                 <div class="field">
-                                    <div class="buttons">
+                                    <div class="buttons" id="propose_buttons">
                                     @foreach($categories as $c)
                                     <a href="#"
-                                        class="tag k{{$c->id}}  u-m-5">{{$c->short_title}}</a>
+                                        class="button {{$c->class}} {{$c->selected? 'full' : 'pale' }} u-m-5"
+                                        >{{$c->short_title}}</a>
                                     @endforeach
                                     </div>
                                 </div>
@@ -96,4 +97,9 @@
             </div>
         </div>
     </div>
+    <script>
+        $( ".button" ).click(function() {
+            alert( "Handler for .click() called." );
+        });
+    </script>
 @stop
