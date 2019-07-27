@@ -89,7 +89,7 @@ class SiteController extends Controller
         }
         return view(
             'proposal_form',
-            ['categories'=>$categories]
+            ['categories'=>$categories, 'cash'=>'1']
         );
     }
     

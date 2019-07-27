@@ -37,9 +37,17 @@
                                     <div class="buttons" id="propose_buttons">
                                     @foreach($categories as $c)
                                     <a href="#"
-                                        class="button {{$c->class}} {{$c->selected? 'full' : 'pale' }} u-m-5"
-                                        >{{$c->short_title}}</a>
+                                       id="button_{{$c->id}}"
+                                       class="button swap {{$c->class}} {{$c->selected? 'full' : 'pale' }} u-m-5"
+                                     >{{$c->short_title}}</a>
                                     @endforeach
+                                        <input
+                                            type="hidden"
+                                            name="categoryId"
+                                            id="categoryId"
+                                            value="false"
+                                        />
+
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +89,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="field is-horizontal">
                             <div class="field-label"></div>
                             <div class="field-body">
@@ -97,9 +104,20 @@
             </div>
         </div>
     </div>
-    <script>
-        $( ".button" ).click(function() {
-            alert( "Handler for .click() called." );
-        });
+
+<script>
+    cash(function () {
+        cash('.button').on ( 'click', function callback ( event, data ) {
+            let elementId = event.target.id;
+            let categoryId = elementId.substring(elementId.indexOf('_')+1);
+
+            cash('.swap').removeClass('full');
+            cash('.swap').addClass('pale');
+
+            cash('#'+event.target.id).removeClass('pale');
+            cash('#categoryId').val(categoryId);
+
+        }) // => collection
+    });
     </script>
 @stop

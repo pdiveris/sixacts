@@ -82,7 +82,7 @@ div .author {
 }
 
 .proposal-form textarea {
-    min-height: 375px !important;
+    min-height: 250px !important;
 }
 
 .logo_diaroia {
@@ -138,9 +138,9 @@ div .author {
 }
 
 span .pale {
-    opacity: 0.37 !important;
+    opacity: 0.45 !important;
 }
 
 #propose_buttons a.button.pale  {
-    opacity: 0.37 !important;
+    opacity: 0.55 !important;
 }
