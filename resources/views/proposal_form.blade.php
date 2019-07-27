@@ -7,14 +7,9 @@
                     <p class="card-header-title">Propose action</p>
                 </header>
                 <div class="u-m-15">
-                    @if (session('status'))
+                    @if (session('type')==='success')
                         <div class="is-info alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    @if (session('warning'))
-                        <div class="is-warning alert-warning">
-                            {{ session('warning') }}
+                            {{ session('message') }}
                         </div>
                     @endif
                     @if (session('errors'))
@@ -27,7 +22,6 @@
                     <form class="proposal-form" method="POST" action="{{route('propose')}}">
                         {{ csrf_field() }}
                         <div class="field is-horizontal">
-                            <input type="hidden" name="category_id" id="category_id"  value="3" />
                             <div class="field-label">
                                 <label class="label">Category</label>
                             </div>
@@ -42,12 +36,12 @@
                                      >{{$c->short_title}}</a>
                                     @endforeach
                                         <input
-                                            type="hidden"
-                                            name="categoryId"
-                                            id="categoryId"
+                                            class="is-hidden"
+                                            type="text"
+                                            name="category_id"
+                                            id="category_id"
                                             value="false"
                                         />
-
                                     </div>
                                 </div>
                             </div>
@@ -104,20 +98,22 @@
             </div>
         </div>
     </div>
-
 <script>
-    cash(function () {
-        cash('.button').on ( 'click', function callback ( event, data ) {
-            let elementId = event.target.id;
-            let categoryId = elementId.substring(elementId.indexOf('_')+1);
+    window.onload = function() {
+        if (window.jQuery) {
+            console.log("Yeah!");
+            const jq = window.jQuery;
+            jq('.swap').on('click', function callback(event, data) {
+                const elementId = event.target.id;
+                const category_id = elementId.substring(elementId.indexOf('_')+1);
+                jq('.swap').removeClass('full');
+                jq('.swap').addClass('pale');
 
-            cash('.swap').removeClass('full');
-            cash('.swap').addClass('pale');
-
-            cash('#'+event.target.id).removeClass('pale');
-            cash('#categoryId').val(categoryId);
-
-        }) // => collection
-    });
-    </script>
+                jq('#'+event.target.id).removeClass('pale');
+                jq('#category_id').val(category_id);
+            });
+        } else {
+        }
+    }
+</script>
 @stop

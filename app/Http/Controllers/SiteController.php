@@ -99,31 +99,29 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function postProposal()
+    public function postProposal(Request $request)
     {
         // validate the info, create rules for the inputs
         $rules = array(
             'title'    => 'required|string',
             'body' => 'required|min:3',
-            'category_id' => 'required|integer|between:1,10',
+            'category_id' => 'required|integer|between:1,65535',
         );
-    
-        $validator = \Validator::make($this->request->all(), $rules);
-    
+        $validator = \Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             return redirect('propose')
                 ->withErrors($validator)
                 ->withInput($this->request->all());
-        } else {
-            $proposal = new Proposal();
-            $proposal->user_id = auth()->user()->id;
-            $proposal->title = $this->request->get('title');
-            $proposal->category_id = $this->request->get('category_id');
-            $proposal->body = $this->request->get('body');
-            $proposal->save();
-            
-            return redirect('propose')
-                ->with(['status'=>'all good']);
         }
+        $proposal = new Proposal();
+        $proposal->user_id = auth()->user()->id;
+        $proposal->title = $request->get('title');
+        $proposal->category_id = $request->get('category_id');
+        $proposal->body = $request->get('body');
+        if ($proposal->save()) {
+            return redirect('propose')
+                ->with(['type' => 'success', 'message' => 'Your proposal has been added to the Six Acts']);
+        }
+        abort(520);
     }
 }

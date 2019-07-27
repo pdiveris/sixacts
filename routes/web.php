@@ -14,12 +14,13 @@
 // Pay attention below, check for verified
 use App\Jobs\SendEmailJob;
 use App\Mail\VariableUserEmail as UserEmail;
+use App\Http\Controllers\SiteController;
 use App\User;
 
 Route::get('/', 'StaticController@home')->name('home');
 Route::get('react', 'StaticController@react')->name('react');
-Route::get('propose', 'SiteController@getProposal')->name('propose');
-Route::post('propose', 'SiteController@postProposal')->name('propose');
+Route::get('/propose', 'SiteController@getProposal')->name('propose');
+Route::post('/propose', 'SiteController@postProposal')->name('propose_spost');
 
 Route::get(
     'user/profile',

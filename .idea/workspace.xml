@@ -4,15 +4,15 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="Made buttons in the proposal form look and feel the same as the category filter ones. The only difference here is that this was achived with the use of cash, an absurdly small jQuery alternative for modern browsers. All buttons get set to pale, then the one clicked changes class to 'full' (as in opacity.) Similarly, single hidden textbox carries the value of the currently selected categoryId, to be posted to the API's post processor">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/sixacts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sixacts.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/proposal_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/proposal_form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -191,6 +191,7 @@
       <path value="$PROJECT_DIR$/vendor/react/stream" />
       <path value="$PROJECT_DIR$/vendor/hhxsv5/php-sse" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
+      <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OV7kGoeBx5IweYIBtWZbuOBDW5" />
@@ -308,14 +309,8 @@
       <workItem from="1563142277998" duration="60626000" />
       <workItem from="1563314954101" duration="84711000" />
       <workItem from="1564051059341" duration="39323000" />
-      <workItem from="1564179816251" duration="8719000" />
-    </task>
-    <task id="LOCAL-00037" summary="Changed HomeController to SiteController to bypass code sniffer's complains.&#10;It's better this way anyway, as it leaves the AppController for the app.">
-      <created>1562019175198</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1562019175198</updated>
+      <workItem from="1564179816251" duration="10524000" />
+      <workItem from="1564227765211" duration="9062000" />
     </task>
     <task id="LOCAL-00038" summary="phpcs stuff..">
       <created>1562792340128</created>
@@ -653,7 +648,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564180453354</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Made buttons in the proposal form look and feel the same as the category filter ones. The only difference here is that this was achieved with the use of cash, an absurdly small jQuery alternative for modern browsers. All buttons get set to pale, then the one clicked changes class to 'full' (as in opacity.) Similarly, single hidden textbox carries the value of the currently selected categoryId, to be posted to the post processor `POST /propose`.&#10;categoryId now needs adding to the validation rules (new ticket #38)and job's done.&#10;&#10;Closed #36.">
+      <created>1564191069121</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1564191069121</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -715,7 +717,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Moving from PHP based SSE messages to Socket.io with Laravel Echo, Redis.&#10;This commit contains both implementations, the PHP SSE having the drawback&#10;of not being able to spawn Buffered Streamd per client, the Socket.io&#10;working but.. not connecting to the right channel (client.)&#10;&#10;In synopsis the next commit should contain only the Socket.io implementation&#10;working in both private and public modes." />
     <MESSAGE value="SOcket.io with Laravel Echo in React is now working public mode.&#10;The big issue was with channel name (messages) which gets set by Laravel&#10;as 6_acts_database_messages. In itself this doesn't matter, bit only for &#10;as long as the channels are public. When the channel name end up being &#10;something like 6_acts_database_user_1 then the problem will return with&#10;a vengeance.&#10;&#10;This will be now tagged 2_sockets and we'll proceed to 3_interaction." />
     <MESSAGE value="Notes to voting. At the moment just links and things. &#10;A detailed description of the flow, architecture and implementation&#10;should emerge here, stay tuned." />
     <MESSAGE value="To be worked on later and on a different branch (sse)" />
@@ -740,7 +741,8 @@
     <MESSAGE value="The categories list is now &lt;Fragment&gt; of the Proposals component, in the portal paelance. It means that even though it sits outside the component's DOM tree, it's part of it for all concerned. It can now have its own &quot;synthetic&quot; events bubbling up the same way as all others within the component and in the right order. I don't know why this portal solution is not advocated for a loose model of development, rather than promoting an architecture which requires the ho=le page to be a single react component.&#10;&#10;I still don't know hpw ro attach a handler to it though." />
     <MESSAGE value="Category filtering is now fully functioning. Unlike the implementation planned originally, this uses native React ways of achieving this. It sets the selected flags on the categories, themselves store in the application's state. From that point on, any change in that state will trigger a 'tree shakeup' and a diff. and consequently a smooth refresh of the main area, the listing of the proposals.&#10;&#10;Note that whilst I looked at listening at events external to the Proposal component's tree, it transpired that one can attach portals to a component which can live anywhere in the page. It's a much nicer way of achieving this and, after biting the original bullet, it's actually much easier as it belongs to the same cluster of logic as the main component&#10;&#10;In addition, the buttons now don't turn into outlines when unselected, they simply appear faded.&#10;&#10;Proudly closed #4." />
     <MESSAGE value="Make social buttons [facebook, twitter] in sidebar open respective social deserts in new window.&#10;&#10;Closed #37" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make social buttons [facebook, twitter] in sidebar open respective social deserts in new window.&#10;&#10;Closed #37" />
+    <MESSAGE value="Made buttons in the proposal form look and feel the same as the category filter ones. The only difference here is that this was achieved with the use of cash, an absurdly small jQuery alternative for modern browsers. All buttons get set to pale, then the one clicked changes class to 'full' (as in opacity.) Similarly, single hidden textbox carries the value of the currently selected categoryId, to be posted to the post processor `POST /propose`.&#10;categoryId now needs adding to the validation rules (new ticket #38)and job's done.&#10;&#10;Closed #36." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made buttons in the proposal form look and feel the same as the category filter ones. The only difference here is that this was achieved with the use of cash, an absurdly small jQuery alternative for modern browsers. All buttons get set to pale, then the one clicked changes class to 'full' (as in opacity.) Similarly, single hidden textbox carries the value of the currently selected categoryId, to be posted to the post processor `POST /propose`.&#10;categoryId now needs adding to the validation rules (new ticket #38)and job's done.&#10;&#10;Closed #36." />
   </component>
   <component name="masterDetails">
     <states>
