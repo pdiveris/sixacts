@@ -70,7 +70,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="field is-horizontal">
                             <div class="field-label">
                                 <label class="label">Detailed action</label>
