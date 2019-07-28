@@ -89,7 +89,7 @@ class SiteController extends Controller
         }
         return view(
             'proposal_form',
-            ['categories'=>$categories, 'cash'=>'1']
+            ['categories'=>$categories, 'sixjs'=>'1']
         );
     }
     
@@ -97,6 +97,7 @@ class SiteController extends Controller
      * Handld the form/
      * Validate to save, that's our mission.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function postProposal(Request $request)

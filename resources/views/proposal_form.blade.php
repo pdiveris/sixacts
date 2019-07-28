@@ -74,10 +74,17 @@
                         <div class="field is-horizontal">
                             <div class="field-label">
                                 <label class="label">Detailed action</label>
+                                <div class="tiny">Max 100 words</div>
+                                <div class="tiny">
+                                    <span id="actual" class="has-text-info actual">
+                                        0
+                                    </span> words so far
+                                </div>
                             </div>
                             <div class="field-body">
                                 <div class="field">
-                                    <textarea class="textarea"
+                                    <textarea class="textarea is-medium"
+                                       id="body"
                                        placeholder="Action details (up to 200 words)"
                                        name="body"></textarea>
                                 </div>
@@ -103,6 +110,7 @@
         if (window.jQuery) {
             console.log("Yeah!");
             const jq = window.jQuery;
+            // attach to category buttons
             jq('.swap').on('click', function callback(event, data) {
                 const elementId = event.target.id;
                 const category_id = elementId.substring(elementId.indexOf('_')+1);
@@ -111,6 +119,17 @@
 
                 jq('#'+event.target.id).removeClass('pale');
                 jq('#category_id').val(category_id);
+            });
+            // attach to textarea for wordcount
+            jq('#body').on('input', function callback(event, data) {
+                let wCount = wordCountSum(countWords(jq('#body').val()));
+                jq('#actual').html(wCount);
+                if (wCount >= 90) {
+                    // has-text-info has-text-danger
+                    jq('#actual').removeClass('has-text-info').addClass('has-text-danger');
+                } else {
+                    jq('#actual').removeClass('has-text-danger').addClass('has-text-info');
+                }
             });
         } else {
         }

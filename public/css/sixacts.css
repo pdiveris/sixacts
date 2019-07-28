@@ -144,3 +144,10 @@ span .pale {
 #propose_buttons a.button.pale  {
     opacity: 0.55 !important;
 }
+
+div.tiny {
+    font-size: 0.75em;
+}
+span.actual {
+    font-weight: bold;
+}
