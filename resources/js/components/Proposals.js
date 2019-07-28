@@ -4,6 +4,7 @@ import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
 import {ToastContainer, toast} from 'react-toastify';
 import Modal from 'react-modal';
+import Countdown from 'react-countdown-now';
 import 'react-toastify/dist/ReactToastify.css';
 // minified version is also included
 // import 'react-toastify/dist/ReactToastify.min.css';
@@ -106,6 +107,10 @@ class SplashPortal extends React.Component {
                         </p>
                         <p>
                             Get thinking, get your acts together, and we'll see you back here on the 17th August!
+
+                        </p>
+                        <p>
+                            The clock is ticking! <span id={"countdown"}></span>
                         </p>
                     </div>
                 </Modal>
@@ -347,6 +352,25 @@ if (document.getElementById('splash')) {
     const props = {};
     ReactDOM.render(<SplashPortal {...props}/>, document.getElementById('splash'));
 }
+
+// Renderer callback with condition
+const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (completed) {
+        // Render a completed state
+        return <Completionist />;
+    } else {
+        // Render a countdown
+        return <span><b>{days}</b> days, {hours}:{minutes}:{seconds}</span>;
+    }
+};
+
+ReactDOM.render(
+    <Countdown
+        date={new Date('August 17, 2019 16:00:00').getTime()}
+        renderer={renderer}
+    />,
+    document.getElementById('countdown')
+);
 
 function letsDisco(theText, theSize) {
     let ret = theText.replace(/^(.{222}[^\s]*).*/, "$1");
