@@ -3,18 +3,28 @@ import ReactDOM from 'react-dom';
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
 import {ToastContainer, toast} from 'react-toastify';
+import Modal from 'react-modal';
 import 'react-toastify/dist/ReactToastify.css';
 // minified version is also included
 // import 'react-toastify/dist/ReactToastify.min.css';
 
 const portalRoot = document.getElementById("cats");
 
+const customStyles = {
+    content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)'
+    }
+};
+
 class Portal extends React.Component {
     constructor(props) {
         super(props);
         this.el = document.createElement("div");
-
-        // this.doKanga = this.handleKanga.bind(this);
     }
 
     componentDidMount = () => {
@@ -172,6 +182,11 @@ export default class Proposals extends Component {
     render() {
         return (
             <div>
+                <React.Fragment>
+                    <Portal>
+                        Some SPLASH
+                    </Portal>
+                </React.Fragment>
                 <React.Fragment>
                     <Portal>
                         <ul className={"categoriesList"}>
