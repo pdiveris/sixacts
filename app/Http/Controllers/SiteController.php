@@ -25,6 +25,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Proposal;
 use Illuminate\Http\Request as Request;
+use phpDocumentor\Reflection\Types\Object_;
 
 /**
  * Class SiteController
@@ -41,7 +42,7 @@ class SiteController extends Controller
     /**
      * @var \Request request
      */
-    protected $request;
+    private $request;
     
     /**
      * Create a new controller instance.
@@ -124,5 +125,28 @@ class SiteController extends Controller
                 ->with(['type' => 'success', 'message' => 'Your proposal has been added to the Six Acts']);
         }
         abort(520);
+    }
+    
+    /**
+     * Method to overcome the ludicrous splash screen when working internally
+     * Do not show the splash if
+     * - running locally
+     *
+     * @return bool
+     */
+    public static function showModal(): bool
+    {
+        $request = \Request();
+        if ($request->get('splash', '') === 'please') {
+            return true;
+        }
+        if ($request->getHost()==='sixacts.div'
+            || $request->ip()==='127.0.0.1'
+            || $request->ip()==='10.17.1.254'
+            || $request->get('nosplash', '') === 'please'
+        ) {
+            return false;
+        }
+        return env('SPLASH_SCREEN', false);
     }
 }

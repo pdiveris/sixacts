@@ -5,6 +5,7 @@
             @include('partials.sidebar')
         </div>
         <div class="column">
+            <div id="splash"></div>
             <div id="proposals"></div>
         </div>
     </div>

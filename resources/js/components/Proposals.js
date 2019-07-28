@@ -9,17 +9,33 @@ import 'react-toastify/dist/ReactToastify.css';
 // import 'react-toastify/dist/ReactToastify.min.css';
 
 const portalRoot = document.getElementById("cats");
+const splashPortalRoot = document.getElementById("splash");
 
 const customStyles = {
+    overlay: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(255, 255, 255, 0.75)'
+    },
     content : {
         top                   : '50%',
         left                  : '50%',
         right                 : 'auto',
         bottom                : 'auto',
-        marginRight           : '-50%',
+        marginRight           : '-30%',
         transform             : 'translate(-50%, -50%)'
     }
 };
+
+if (document.getElementById('proposals')) {
+    // ReactDOM.render(<Proposals/>, document.getElementById('proposals'));
+    Modal.setAppElement('#proposals');
+}
+
+
 
 class Portal extends React.Component {
     constructor(props) {
@@ -38,6 +54,63 @@ class Portal extends React.Component {
     render() {
         const {children} = this.props;
         return ReactDOM.createPortal(children, this.el);
+    }
+}
+
+class SplashPortal extends React.Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            showModal: window.showSplash
+        };
+
+        this.handleOpenModal = this.handleOpenModal.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this);
+    }
+
+    handleOpenModal () {
+        this.setState({ showModal: true });
+    }
+
+    handleCloseModal () {
+        this.setState({ showModal: false });
+    }
+
+    render () {
+        return (
+            <div>
+                <Modal
+                    isOpen={this.state.showModal}
+                    contentLabel="Minimal Modal Example"
+                    style={customStyles}
+                    aria={{
+                        labelledby: "heading",
+                        describedby: "full_description"
+                    }}>
+                    <div className="box content">
+                        <h1>Six Acts</h1>
+                        <img src={'/images/6_acts_logo.png'} width={'200'}/>
+                        <h2 className="title is-6">
+                            <i>
+                                The Six Acts project is an online platform to crowd-source radical ideas for
+                                improving and redesigning the way we practice democracy in the 21st century. </i>
+                        </h2>
+                        <p>
+                            The poll will open for submissions and voting at 4pm on the 17th August 2019.
+                        </p>
+                        <p>
+                            We look forward to your participation. In the meantime, please familiarise yourself with the
+                            information on this page which explains how the poll will be conducted and help you ensure
+                            that
+                            your proposals are submitted correctly.
+                        </p>
+                        <p>
+                            Get thinking, get your acts together, and we'll see you back here on the 17th August!
+                        </p>
+                    </div>
+                </Modal>
+            </div>
+        );
     }
 }
 
@@ -184,11 +257,6 @@ export default class Proposals extends Component {
             <div>
                 <React.Fragment>
                     <Portal>
-                        Some SPLASH
-                    </Portal>
-                </React.Fragment>
-                <React.Fragment>
-                    <Portal>
                         <ul className={"categoriesList"}>
                             {this.state.categories.map((cat, index) => {
                                     return (
@@ -273,6 +341,11 @@ export default class Proposals extends Component {
 
 if (document.getElementById('proposals')) {
     ReactDOM.render(<Proposals/>, document.getElementById('proposals'));
+}
+
+if (document.getElementById('splash')) {
+    const props = {};
+    ReactDOM.render(<SplashPortal {...props}/>, document.getElementById('splash'));
 }
 
 function letsDisco(theText, theSize) {

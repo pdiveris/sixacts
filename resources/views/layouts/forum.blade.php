@@ -24,6 +24,7 @@
         'user' => auth()->check() ? auth()->user()->id : null,
     ]) !!};
         window.keepalive = {!!json_encode(env('KEEP_ALIVE') ?? false)!!}
+        window.showSplash = {!!json_encode( \App\Http\Controllers\SiteController::showModal())!!}
     </script>
 </head>
 <body>
