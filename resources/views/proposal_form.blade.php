@@ -107,7 +107,6 @@
 <script>
     window.onload = function() {
         if (window.jQuery) {
-            console.log("Yeah!");
             const jq = window.jQuery;
             // attach to category buttons
             jq('.swap').on('click', function callback(event, data) {

@@ -116,7 +116,7 @@ export default class Proposals extends Component {
             host: 'https://' + window.location.hostname + ':6001/'
         });
 
-        console.log('About to set to listening to "messages"..');
+        console.log('Joined channel: "messages"');
         this.echo.channel('6_acts_database_messages')
             .listen('.NewMessage', (e) => {
                 console.log('Message received');

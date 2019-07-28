@@ -20,7 +20,7 @@ use App\User;
 Route::get('/', 'StaticController@home')->name('home');
 Route::get('react', 'StaticController@react')->name('react');
 Route::get('/propose', 'SiteController@getProposal')->name('propose');
-Route::post('/propose', 'SiteController@postProposal')->name('propose_spost');
+Route::post('/propose', 'SiteController@postProposal')->name('propose_post');
 
 Route::get(
     'user/profile',
@@ -40,6 +40,7 @@ Route::get('terms', 'StaticController@content')->name('terms');
 Route::get('privacy', 'StaticController@content')->name('privacy');
 Route::get('gdpr', 'StaticController@content')->name('gdpr');
 Route::get('about', 'StaticController@content')->name('about');
+Route::get('intro', 'StaticController@content')->name('splash');
 
 
 Route::get('signin', 'StaticController@signin')->name('signin');
