@@ -353,24 +353,26 @@ if (document.getElementById('splash')) {
     ReactDOM.render(<SplashPortal {...props}/>, document.getElementById('splash'));
 }
 
-// Renderer callback with condition
-const renderer = ({ days, hours, minutes, seconds, completed }) => {
-    if (completed) {
-        // Render a completed state
-        return <Completionist />;
-    } else {
-        // Render a countdown
-        return <span><b>{days}</b> days, {hours}:{minutes}:{seconds}</span>;
-    }
-};
+if (document.getElementById('countdown')) {
+    // Renderer callback with condition
+    const renderer = ({days, hours, minutes, seconds, completed}) => {
+        if (completed) {
+            // Render a completed state
+            return <Completionist/>;
+        } else {
+            // Render a countdown
+            return <span><b>{days}</b> days, {hours}:{minutes}:{seconds}</span>;
+        }
+    };
 
-ReactDOM.render(
-    <Countdown
-        date={new Date('August 17, 2019 16:00:00').getTime()}
-        renderer={renderer}
-    />,
-    document.getElementById('countdown')
-);
+    ReactDOM.render(
+        <Countdown
+            date={new Date('August 17, 2019 16:00:00').getTime()}
+            renderer={renderer}
+        />,
+        document.getElementById('countdown')
+    );
+}
 
 function letsDisco(theText, theSize) {
     let ret = theText.replace(/^(.{222}[^\s]*).*/, "$1");
