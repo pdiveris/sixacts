@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/fullpage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fullpage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/proposal_form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/proposal_form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -309,14 +303,7 @@
       <workItem from="1563314954101" duration="84711000" />
       <workItem from="1564051059341" duration="39323000" />
       <workItem from="1564179816251" duration="10524000" />
-      <workItem from="1564227765211" duration="21768000" />
-    </task>
-    <task id="LOCAL-00043" summary="Change auth() to auth('api') for -&gt;attempt and -&gt;factory() as per https://github.com/tymondesigns/jwt-auth/issues/1484 to get the JWT token working..">
-      <created>1562969814462</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1562969814462</updated>
+      <workItem from="1564227765211" duration="23499000" />
     </task>
     <task id="LOCAL-00044" summary="re-enabled API routes after getting main logins working again (nothing to do with API routes, see previous three commits..)">
       <created>1562970011533</created>
@@ -654,7 +641,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564277026252</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Fixed theGoogle urchin issue (following the https one solved not long ago.) &#10;It appears that urchin is deprecated. More testing is needed.">
+      <created>1564295297288</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1564295297288</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -716,7 +710,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="This commit essentially &quot;closes&quot; 26.&#10;&#10;It's based on the following a user cast 1 vote with a value of&#10;-1, 0, and 1.&#10;&#10;It's actually nit exactly like that. There is no vote with an explicit value of 0.&#10;&#10;A user can cast one vote only against any give proposal, with a value of 'up' or 'down' which, from the proposal's point of view, should it have one, equals to a 1 or -1.&#10;&#10;If, however, a voter has already cast their vote against the proposal, then this new click simply zeroes all the values in the user's vote record. A consequent vote will count again as the expected 1 or -1. I am assuming that this IS the expected behaviour. I am, leaving this issue open nevertheless with a 'testing awaiting' label attached to it to give us time to confirm that this is what we want, and, after testing, that this what it does." />
     <MESSAGE value="Notifications added in with &#10;https://github.com/minhtranite/react-notifications&#10;&#10;So far the simplest, but they all come out on green. &#10;Investigating.." />
     <MESSAGE value="Nice &quot;toast&quot; messages give users feedback when voting, e.g. &quot;You've already voted this down&quot; or &quot;You need to be logged in to vote&quot; etc.&#10;&#10;After hours of looking around ad at very many promising notifiers, and each one of t hem had something uniquely nice about it but.., I finally found this which seems to support all we want, including dragging it out the window with oer's thumb on a mobile or tablet. I have not tested this, will do and report.&#10; This relates to #24 which I am not closing since not all responses have been covered yet." />
     <MESSAGE value="Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24." />
@@ -741,7 +734,8 @@
     <MESSAGE value="Changing http to https does the job.&#10;Closed #41." />
     <MESSAGE value="Added word counter function and indicator in proposal page.&#10;&#10;Closed #31." />
     <MESSAGE value="Added splash pages seen for now &quot;naked&quot; at /intro - closed #39&#10;&#10;Added fullpage layout with no header, footer, sidebar etc (but with the rest of the framework wired in.) - closed #42" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added splash pages seen for now &quot;naked&quot; at /intro - closed #39&#10;&#10;Added fullpage layout with no header, footer, sidebar etc (but with the rest of the framework wired in.) - closed #42" />
+    <MESSAGE value="Fixed theGoogle urchin issue (following the https one solved not long ago.) &#10;It appears that urchin is deprecated. More testing is needed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed theGoogle urchin issue (following the https one solved not long ago.) &#10;It appears that urchin is deprecated. More testing is needed." />
   </component>
   <component name="masterDetails">
     <states>
