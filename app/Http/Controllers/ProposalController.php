@@ -45,6 +45,9 @@ class ProposalController extends Controller
         
         $user = User::find($params['user']['user']);
         // if not user etc..
+        if (null===$user) {
+            return response()->json(['type'=>'error', 'message'=>'You need to be logged in to vote']);
+        }
         if (null !== $vote) {
             if ($params['direction'] == 'up') {
                 if ($vote->up > 0) {
@@ -53,7 +56,7 @@ class ProposalController extends Controller
                             'message' => 'You have already voted up this proposal'
                         ]);
                 }
-                if ($vote->down == 1) {     // correct
+                if ($vote->down === 1) {     // correct
                     $vote->down = 0;
                     $vote->up = 0;
                     $response = ['type'=>'success', 'message'=>'You just removed your negative vote'];
@@ -63,14 +66,14 @@ class ProposalController extends Controller
                     $response = ['type'=>'success', 'message'=>'Vote up added'];
                 }
             }
-            if ($params['direction'] == 'down') {
+            if ($params['direction'] === 'down') {
                 if ($vote->down > 0) {
                     return response()->json([
                         'message' => 'You have already voted down this proposal',
                         'type'=>'warning',
                     ]);
                 }
-                if ($vote->up == 1) {       // correct
+                if ($vote->up === 1) {       // correct
                     $vote->up = 0;
                     $response = [
                         'type'=>'success',
@@ -89,7 +92,7 @@ class ProposalController extends Controller
             $vote = new \App\Vote();
             $vote->user_id = $params['user']['user'];
             $vote->proposal_id = $params['proposal_id'];
-            if ($params['direction']=='down') {
+            if ($params['direction']==='down') {
                 $vote->down = 1;
                 $vote->up = 0;
             } else {
