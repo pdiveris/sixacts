@@ -28,7 +28,7 @@
                     This is when you will be able to log in, submit proposals and begin voting on them.
                     <i>Remember: Each Six Acts proposal will be strictly limited to 100 words maximum.</i>
                 </p>
-                <h2 class="is-3">The Launch</h2>
+                <h2 class="is-3">Participating in the poll</h2>
                 <p>
                     We are not <i>limiting the number of proposals</i> any individual or organisation can submit to the
                     poll, or the number of proposals an individual or organisation can vote for.
@@ -79,7 +79,7 @@
                     include not only the leading proposal in each category, but will also have links to the other 5
                     closest contenders.
                 </p>
-                <h2 class="is-3">The Result</h2>
+                <h2 class="is-3">The Document</h2>
                 <p>
                     The end document will be a single-page mandate from the people which articulates their demands
                     for democratic reform. We invite the media, campaign groups, organisations, individuals and
