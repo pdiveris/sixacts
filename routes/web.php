@@ -86,14 +86,13 @@ Route::get(
 Route::get(
     '/test',
     function () {
-        $user = \App\User::find(3);
+        $user = \App\User::find(1);
         $profileUrl = url('user/profile');
         $email = new UserEmail(
             $user,
             'user_welcome',
             ['password'=>'kanga', 'profileUrl'=>$profileUrl]
         );
-    
         $dispatchJob = new SendEmailJob($email);
         dispatch($dispatchJob);
 

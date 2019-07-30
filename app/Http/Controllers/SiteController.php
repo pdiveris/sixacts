@@ -74,7 +74,8 @@ class SiteController extends Controller
      */
     public function userProfile()
     {
-        return view('user_profile');
+        $user = \Auth::user();
+        return view('user_profile', ['user'=>$user]);
     }
     
     /**

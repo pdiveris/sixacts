@@ -195,13 +195,12 @@ export default class Proposals extends Component {
     }
 
     setupSocket() {
-        console.log('Setting up socket.io');
-
-        console.log('Hostname set to ' + window.location.hostname);
+        console.log('Setting up socket.IO');
+        console.log('Hostname set to '+ window.location.hostname + ':'+window.echoPort);
         this.echo = new Echo({
             broadcaster: 'socket.io',
             client: Socketio,
-            host: 'https://' + window.location.hostname + ':6001/'
+            host: 'https://' + window.location.hostname + ':'+window.echoPort+'/'
         });
 
         console.log('Joined channel: "messages"');

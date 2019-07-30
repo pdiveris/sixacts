@@ -4,15 +4,17 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="This commit now adds a splash screen, animated as if it were, to the home page. That is, when a user visits, the main page gets softened out and a &quot;modal&quot; content block appears with the content we agreed. I had a much more jazzy animation in mind, this is merely a transition but it certainly does the job of &#10;&#10;* Attracting media-busy visitor's attention for a few seconds&#10;* Conveying the message&#10;* Offering more than just a glimpse of what's behind (the overlay is semi-transparent.)&#10;&#10;I could certainly do more work on  the transitions, animation and transparency but those improvements can wait as there are a couple of other more urgent issues:">
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/sixacts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sixacts.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/fullpage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fullpage.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user_profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -193,6 +195,8 @@
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
+      <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
+      <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OV7kGoeBx5IweYIBtWZbuOBDW5" />
@@ -312,28 +316,9 @@
       <workItem from="1564051059341" duration="39323000" />
       <workItem from="1564179816251" duration="10524000" />
       <workItem from="1564227765211" duration="34247000" />
-      <workItem from="1564326535685" duration="1301000" />
-    </task>
-    <task id="LOCAL-00045" summary="Added API tests for registration/login etc.">
-      <created>1562972092786</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1562972092786</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Do not allow API access to unverified users.&#10;Closed issue #1">
-      <created>1562981412568</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1562981412568</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Add support for up and down voting.&#10;Create VIEW vote aggregations.">
-      <created>1563008756339</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1563008756339</updated>
+      <workItem from="1564326535685" duration="6324000" />
+      <workItem from="1564336511638" duration="2861000" />
+      <workItem from="1564420981886" duration="6136000" />
     </task>
     <task id="LOCAL-00048" summary="Add down method to the migration (not that it's needed by anyhow..)">
       <created>1563008861318</created>
@@ -657,7 +642,28 @@
       <option name="project" value="LOCAL" />
       <updated>1564314427678</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="This commit now adds a splash screen, animated as if it were, to the home page. That is, when a user visits, the main page gets softened out and a &quot;modal&quot; content block appears with the content we agreed. I had a much more jazzy animation in mind, this is merely a transition but it certainly does the job of &#10;&#10;* Attracting media-busy visitor's attention for a few seconds&#10;* Conveying the message&#10;* Offering more than just a glimpse of what's behind (the overlay is semi-transparent.)&#10;&#10;I could certainly do more work on  the transitions, animation and transparency but those improvements can wait as there are a couple of other more urgent issues:&#10; &#10; #45 Disable menu items whilst on countdown mode (i.e. with the splash screen on)&#10; #44 Add a “countdown timer” to the splash screen.&#10; &#10; This closes #40 as it provides the splash screen, it does a transition of sorts, which might become more of an animation if I get a minute, and remaining elements of it have now been transferred to new individual tickets (#44, #45).">
+      <created>1564328299334</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1564328299334</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Added countdown timer. After spending a good 30 minutes refreshing my milliseconds, 60 minutes per hour, 24 hours per day etc, I came across.. this https://www.npmjs.com/package/react-countdown-now.&#10;&#10;It's obscene, everything has been done already (Umberto Eco, Postmodernism.)&#10;&#10;Closed #44.">
+      <created>1564336032500</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1564336032501</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Wrapped &lt;Countdown /&gt; control in if (element) statement to fix the obvious error that occured when the splashscreen wasn't rendered and the Proposals was still attaching the control to the DOM.&#10;&#10;Closed #46.">
+      <created>1564336853872</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1564336853872</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -719,9 +725,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Nice &quot;toast&quot; messages give users feedback when voting, e.g. &quot;You've already voted this down&quot; or &quot;You need to be logged in to vote&quot; etc.&#10;&#10;After hours of looking around ad at very many promising notifiers, and each one of t hem had something uniquely nice about it but.., I finally found this which seems to support all we want, including dragging it out the window with oer's thumb on a mobile or tablet. I have not tested this, will do and report.&#10; This relates to #24 which I am not closing since not all responses have been covered yet." />
-    <MESSAGE value="Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24." />
-    <MESSAGE value="Somehow Proposals.js was left out from previous commit - &#10;&#10;Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24." />
     <MESSAGE value="Have done a bit of work on the colours front. Certainly looks better, more work is needed though." />
     <MESSAGE value="Removed uneeded dump() statement." />
     <MESSAGE value="Added ''Categories Explained' and '9 Rules for the 6 Acts'&#10;Closes #29.&#10;&#10;Part of the wider re-arrangement and discussion, see #28." />
@@ -744,7 +747,10 @@
     <MESSAGE value="Added splash pages seen for now &quot;naked&quot; at /intro - closed #39&#10;&#10;Added fullpage layout with no header, footer, sidebar etc (but with the rest of the framework wired in.) - closed #42" />
     <MESSAGE value="Fixed theGoogle urchin issue (following the https one solved not long ago.) &#10;It appears that urchin is deprecated. More testing is needed." />
     <MESSAGE value="Pre-splash commit, lest we need to pedal back quickly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pre-splash commit, lest we need to pedal back quickly." />
+    <MESSAGE value="This commit now adds a splash screen, animated as if it were, to the home page. That is, when a user visits, the main page gets softened out and a &quot;modal&quot; content block appears with the content we agreed. I had a much more jazzy animation in mind, this is merely a transition but it certainly does the job of &#10;&#10;* Attracting media-busy visitor's attention for a few seconds&#10;* Conveying the message&#10;* Offering more than just a glimpse of what's behind (the overlay is semi-transparent.)&#10;&#10;I could certainly do more work on  the transitions, animation and transparency but those improvements can wait as there are a couple of other more urgent issues:&#10; &#10; #45 Disable menu items whilst on countdown mode (i.e. with the splash screen on)&#10; #44 Add a “countdown timer” to the splash screen.&#10; &#10; This closes #40 as it provides the splash screen, it does a transition of sorts, which might become more of an animation if I get a minute, and remaining elements of it have now been transferred to new individual tickets (#44, #45)." />
+    <MESSAGE value="Added countdown timer. After spending a good 30 minutes refreshing my milliseconds, 60 minutes per hour, 24 hours per day etc, I came across.. this https://www.npmjs.com/package/react-countdown-now.&#10;&#10;It's obscene, everything has been done already (Umberto Eco, Postmodernism.)&#10;&#10;Closed #44." />
+    <MESSAGE value="Wrapped &lt;Countdown /&gt; control in if (element) statement to fix the obvious error that occured when the splashscreen wasn't rendered and the Proposals was still attaching the control to the DOM.&#10;&#10;Closed #46." />
+    <option name="LAST_COMMIT_MESSAGE" value="Wrapped &lt;Countdown /&gt; control in if (element) statement to fix the obvious error that occured when the splashscreen wasn't rendered and the Proposals was still attaching the control to the DOM.&#10;&#10;Closed #46." />
   </component>
   <component name="masterDetails">
     <states>

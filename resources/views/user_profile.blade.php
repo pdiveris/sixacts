@@ -23,14 +23,57 @@
                         {{ csrf_field() }}
                         <div class="field is-horizontal">
                             <div class="field-label">
+                                <label class="label">Name</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control">
+                                        <input class="input"
+                                               id="name"
+                                               type="text"
+                                               name="name"
+                                               value="{{$user->name ?? old('name') }}"
+                                        required autofocus>
+                                    </p>
+                                    @if ($errors->has('email'))
+                                        <p class="help is-danger">
+                                            {{ $errors->first('name') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Display name</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <p class="control">
+                                        <input class="input"
+                                               id="display_name"
+                                               type="text"
+                                               name="display_name"
+                                               value="{{$user->display_name ?? old('display_name') }}"
+                                               required autofocus>
+                                    </p>
+                                    @if ($errors->has('email'))
+                                        <p class="help is-danger">
+                                            {{ $errors->first('display_name') }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
                                 <label class="label">E-Mail Address</label>
                             </div>
-
                             <div class="field-body">
                                 <div class="field">
                                     <p class="control">
                                         <input class="input" id="email" type="email" name="email"
-                                               value="{{ old('email') }}" required autofocus>
+                                               value="{{ $user->email ?? old('email') }}" required autofocus>
                                     </p>
                                     @if ($errors->has('email'))
                                         <p class="help is-danger">
@@ -47,7 +90,12 @@
                             <div class="field-body">
                                 <div class="field">
                                     <p class="control">
-                                        <input class="input" id="password" type="password" name="password" required>
+                                        <input
+                                            class="input"
+                                            id="password"
+                                            type="password"
+                                            value="{{$user->password}}"
+                                            name="password" required>
                                     </p>
                                     @if ($errors->has('password'))
                                         <p class="help is-danger">
@@ -64,7 +112,12 @@
                             <div class="field-body">
                                 <div class="field">
                                     <p class="control">
-                                        <input class="input" id="password2" type="password" name="password2" required>
+                                        <input class="input"
+                                               id="password2"
+                                               type="password"
+                                               value="{{$user->password}}"
+                                               name="password2"
+                                               required>
                                     </p>
                                     @if ($errors->has('password2'))
                                         <p class="help is-danger">

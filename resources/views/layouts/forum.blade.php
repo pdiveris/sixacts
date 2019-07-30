@@ -25,6 +25,7 @@
     ]) !!};
         window.keepalive = {!!json_encode(env('KEEP_ALIVE') ?? false)!!}
         window.showSplash = {!!json_encode( \App\Http\Controllers\SiteController::showModal())!!}
+        window.echoPort = {!!json_encode(env('ECHO_PORT') ?? 6001)!!}
     </script>
 </head>
 <body>
@@ -135,7 +136,6 @@
             + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-
 </script>
 </body>
 </html>
