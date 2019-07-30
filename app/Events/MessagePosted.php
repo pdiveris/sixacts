@@ -21,6 +21,8 @@ class MessagePosted implements ShouldBroadcast
     
     /**
      * Create a new event instance.
+     * @param \App\User $user
+     * @param $message
      *
      * @return void
      */
@@ -53,7 +55,7 @@ class MessagePosted implements ShouldBroadcast
      *
      * @return string
      */
-    public function broadcastAs()
+    public function broadcastAs(): string
     {
         return 'NewMessage';
     }

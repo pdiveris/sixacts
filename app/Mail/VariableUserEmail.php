@@ -56,6 +56,7 @@ class VariableUserEmail extends Mailable
         
         return $this->to($this->user->email)
             ->text('emails.users.'.$this->template.'_plain')
+            ->subject($data['subject'] ?? 'Welcome to Six Acts')
             ->view('emails.users.'.$this->template)
             ->with($data);
     }

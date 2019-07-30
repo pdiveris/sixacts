@@ -20,6 +20,8 @@ class MessageController extends Controller
     
     public function post(Request $request)
     {
+        // event(new MessagePosted($user, 'refresh'));
+    
         event(new MessagePosted(Auth::user(), $request->get('message')));
         redirect('message');
     }
