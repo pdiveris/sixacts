@@ -72,6 +72,13 @@ div .collapsed {
     display: none;
 }
 
+div. expanded {
+    display: block;
+}
+span.icon a {
+   color: black;
+}
+
 div .author {
     float: left;
     width: 100%;

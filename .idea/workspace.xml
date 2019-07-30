@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/sixacts.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sixacts.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -319,7 +318,7 @@
       <workItem from="1564336511638" duration="2861000" />
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
-      <workItem from="1564507543670" duration="1602000" />
+      <workItem from="1564507543670" duration="7135000" />
     </task>
     <task id="LOCAL-00054" summary="Introduced code in templates (a simple column) to give breathing space&#10;to categories, the aim being to be readable in all configurations.&#10;At the sam time, a media query was added as to make show them only when&#10;the area is crowded, i.e. below 1200 pixels width (media query.)">
       <created>1563416396536</created>

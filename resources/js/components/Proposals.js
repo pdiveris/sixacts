@@ -154,6 +154,16 @@ export default class Proposals extends Component {
         );
     }
 
+    handleExpand(index, display, elId) {
+        const { items } = this.state;
+        items[index].display = display;
+        // update state
+        this.setState({
+            items,
+        });
+        console.log('Handling expand: '+display);
+    }
+
     handleVote(item, ctx) {
         // this.setState({item:item})
         console.log('handleVote', ctx, item.id, window.Laravel);
@@ -255,6 +265,13 @@ export default class Proposals extends Component {
             return 'pale';
         }
     }
+    juggler(display) {
+        if (display === 'expanded') {
+            return 'collapsed';
+        } else {
+            return 'expanded';
+        }
+    }
 
     render() {
         return (
@@ -292,21 +309,32 @@ export default class Proposals extends Component {
                                     <span className="subtitle has-text-weight-bold">{item.title}</span>
                                     <span
                                         className={
-                                            `tag is-small u-mleft-15
-                                        ${item.category.class}
-                                        ${item.category.sub_class}`
+                                            `tag is-small u-mleft-15 ${item.category.class} ${item.category.sub_class}`
                                         }
-                                    >
-                                {item.category.short_title.substr(0, 1)}
-                                </span>
-                                    <div className="expander">
+                                        >
+                                        {item.category.short_title.substr(0, 1)}
+                                    </span>
+                                    <div className={`expander ${this.juggler(item.display)} '}`}
+                                         id={'expander_1_'+index}
+                                        >
                                         {letsDisco(item.body)}&nbsp;&nbsp;
                                         <span className="icon">
-                                        <i className="fa fa-plus"></i>
-                                    </span>
+                                            <a href={'#'} onClick={() =>
+                                                this.handleExpand(index, 'expanded', 'expander_1_'+index)}
+                                            >
+                                                <i className="fa fa-plus"> </i>
+                                            </a>
+                                        </span>
                                     </div>
-                                    <div className="expandable collapsed">
-                                        {letsTango(item.body)}
+                                    <div className={`expandable ${item.display}`} id={'expander_2_'+index}>
+                                        {item.body}
+                                        <span className="icon">
+                                            <a href={'#'} onClick={() =>
+                                                this.handleExpand(index, 'collapsed', 'expander_2_'+index)}
+                                            >
+                                                <i className="fa fa-minus"> </i>
+                                            </a>
+                                        </span>
                                     </div>
                                     <div className="author controls u-mtop-10 u-mright-10">
                                         <i>Posted by</i>:&nbsp;
@@ -383,3 +411,6 @@ function letsTango(theText, theSize) {
     return _.replace(theText, promptLine, '');
 };
 
+function doSomething() {
+    console.log('Doing something');
+}

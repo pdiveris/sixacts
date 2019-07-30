@@ -128,6 +128,7 @@ class ProposalController extends Controller
         }
         
         foreach ($props as $prop) {
+            $prop->display = 'collapsed';
             if ($prop->category) {
                 $prop->hasCategory = true;
             }
