@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Facades/Site.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Helpers/Site.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/SiteServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/Echo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/static/echo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user_profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user_profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -200,8 +201,11 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1OV7kGoeBx5IweYIBtWZbuOBDW5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -212,7 +216,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/layouts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/static" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -221,19 +225,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/layouts" />
-      <recent name="$PROJECT_DIR$/resources/views/static" />
-      <recent name="$PROJECT_DIR$/resources/js/components" />
-      <recent name="$PROJECT_DIR$/resources/views/auth" />
-      <recent name="$PROJECT_DIR$/resources/views/messsages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Facades" />
       <recent name="$PROJECT_DIR$/tmp" />
       <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$/docs" />
       <recent name="$PROJECT_DIR$/app/Jobs" />
-      <recent name="$PROJECT_DIR$/resources/views/emails/users" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/static" />
+      <recent name="$PROJECT_DIR$/resources/js/components" />
+      <recent name="$PROJECT_DIR$/resources/views/layouts" />
+      <recent name="$PROJECT_DIR$/resources/views/auth" />
+      <recent name="$PROJECT_DIR$/resources/views/messsages" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -318,28 +322,7 @@
       <workItem from="1564227765211" duration="34247000" />
       <workItem from="1564326535685" duration="6324000" />
       <workItem from="1564336511638" duration="2861000" />
-      <workItem from="1564420981886" duration="6136000" />
-    </task>
-    <task id="LOCAL-00048" summary="Add down method to the migration (not that it's needed by anyhow..)">
-      <created>1563008861318</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1563008861318</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Start work on the main component - the proposals list, the .&#10;Swap all references to Example with Proposals.">
-      <created>1563150069951</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1563150069951</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Peoposal list React component drafted, implemented and wired To Laravel's&#10;magix as per documentation and this young programmer's tutorial:&#10;&#10;https://www.youtube.com/watch?v=3UtvN8EBGpg&#10;&#10;To be considered &quot;version&quot; 0.20&#10;&#10;Additional fields need adding, including linked tables.">
-      <created>1563156733696</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1563156733696</updated>
+      <workItem from="1564420981886" duration="18121000" />
     </task>
     <task id="LOCAL-00051" summary="&quot;Tricking&quot; Eloquent - return full category attached to the proposal.&#10;Or more to the point, category to which the proposal is attached,">
       <created>1563217752713</created>
@@ -663,7 +646,28 @@
       <option name="project" value="LOCAL" />
       <updated>1564336853872</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="This is an end-of-the day commit which contains fixes and work for various tickets.&#10;&#10;Among many other issues and fixes:&#10;&#10;Closed #59.&#10;Closed #58.">
+      <created>1564445004870</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1564445004871</updated>
+    </task>
+    <task id="LOCAL-00098" summary="This correctly sets the callback URL for the social media login handlers to the right host - that is, the host as set in .env file, for security reasons.&#10;&#10;Closed #64.">
+      <created>1564446570236</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1564446570236</updated>
+    </task>
+    <task id="LOCAL-00099" summary="This fixes the issue where no appropriate message was returned to the client when aguest (not logged in visitor) attempted to vote.&#10;&#10;Closed #60.">
+      <created>1564450789426</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1564450789426</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -725,9 +729,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Have done a bit of work on the colours front. Certainly looks better, more work is needed though." />
-    <MESSAGE value="Removed uneeded dump() statement." />
-    <MESSAGE value="Added ''Categories Explained' and '9 Rules for the 6 Acts'&#10;Closes #29.&#10;&#10;Part of the wider re-arrangement and discussion, see #28." />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Re-arranged content as per issue #28 - added links to two new pages, 'Categories Explained' and '9 Rules for the 6 Acts', ready to be used for the animated splash.&#10;&#10;Closed #28.&#10;&#10;Customised colours. Whilst not final, now that the mechanism is there this closes #7." />
     <MESSAGE value="Fixed an issue where the message sent back to the client upon voting on a proposal with no previous votes was an array rather than a string, causing &quot;toast&quot; (the notification system) to fail and raise a JS error in the console.&#10;&#10;Closed #27." />
     <MESSAGE value="With this commit the client connection to the server stays open (keeps alive) on;y of the .env file explicitly states `KEEP_ALIVE=true`.&#10;&#10;This therefore closes #22." />
@@ -750,7 +752,10 @@
     <MESSAGE value="This commit now adds a splash screen, animated as if it were, to the home page. That is, when a user visits, the main page gets softened out and a &quot;modal&quot; content block appears with the content we agreed. I had a much more jazzy animation in mind, this is merely a transition but it certainly does the job of &#10;&#10;* Attracting media-busy visitor's attention for a few seconds&#10;* Conveying the message&#10;* Offering more than just a glimpse of what's behind (the overlay is semi-transparent.)&#10;&#10;I could certainly do more work on  the transitions, animation and transparency but those improvements can wait as there are a couple of other more urgent issues:&#10; &#10; #45 Disable menu items whilst on countdown mode (i.e. with the splash screen on)&#10; #44 Add a “countdown timer” to the splash screen.&#10; &#10; This closes #40 as it provides the splash screen, it does a transition of sorts, which might become more of an animation if I get a minute, and remaining elements of it have now been transferred to new individual tickets (#44, #45)." />
     <MESSAGE value="Added countdown timer. After spending a good 30 minutes refreshing my milliseconds, 60 minutes per hour, 24 hours per day etc, I came across.. this https://www.npmjs.com/package/react-countdown-now.&#10;&#10;It's obscene, everything has been done already (Umberto Eco, Postmodernism.)&#10;&#10;Closed #44." />
     <MESSAGE value="Wrapped &lt;Countdown /&gt; control in if (element) statement to fix the obvious error that occured when the splashscreen wasn't rendered and the Proposals was still attaching the control to the DOM.&#10;&#10;Closed #46." />
-    <option name="LAST_COMMIT_MESSAGE" value="Wrapped &lt;Countdown /&gt; control in if (element) statement to fix the obvious error that occured when the splashscreen wasn't rendered and the Proposals was still attaching the control to the DOM.&#10;&#10;Closed #46." />
+    <MESSAGE value="This is an end-of-the day commit which contains fixes and work for various tickets.&#10;&#10;Among many other issues and fixes:&#10;&#10;Closed #59.&#10;Closed #58." />
+    <MESSAGE value="This correctly sets the callback URL for the social media login handlers to the right host - that is, the host as set in .env file, for security reasons.&#10;&#10;Closed #64." />
+    <MESSAGE value="This fixes the issue where no appropriate message was returned to the client when aguest (not logged in visitor) attempted to vote.&#10;&#10;Closed #60." />
+    <option name="LAST_COMMIT_MESSAGE" value="This fixes the issue where no appropriate message was returned to the client when aguest (not logged in visitor) attempted to vote.&#10;&#10;Closed #60." />
   </component>
   <component name="masterDetails">
     <states>

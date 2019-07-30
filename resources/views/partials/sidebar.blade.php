@@ -2,7 +2,7 @@
 Sidebar snippet
 Author Petros Diveris <petros@diveris.org>
 --}}
-<a class="button ubuntu-green is-block is-alt" href="{{route('propose')}}">
+<a class="button ubuntu-green is-block is-alt" href="{{Site::menuLink('propose')}}">
     Propose an Act
 </a>
 <aside class="menu">

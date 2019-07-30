@@ -44,18 +44,18 @@
         <div id="topNav" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="{{url('')}}">Home</a>
-                <a class="navbar-item" href="{{url('about')}}">About</a>
-                <a class="navbar-item" href="{{url('categories')}}">Categories Explained</a>
-                <a class="navbar-item" href="{{url('nine_rules')}}">9 Rules for the Six Acts</a>
-                <a class="navbar-item" href="{{url('register')}}">Register</a>
-                <a class="navbar-item" href="{{url('signin')}}">Sign in</a>
+                <a class="navbar-item" href="{{Site::menuLink('about')}}">About</a>
+                <a class="navbar-item" href="{{Site::menuLink('categories')}}">Categories Explained</a>
+                <a class="navbar-item" href="{{Site::menuLink('nine_rules')}}">9 Rules for the Six Acts</a>
+                <a class="navbar-item" href="{{Site::menuLink('register')}}">Register</a>
+                <a class="navbar-item" href="{{Site::menuLink('signin')}}">Sign in</a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="field is-grouped">
                         <div class="control" >
                             @if(Auth::guest())
-                            <a class="button is-size-6 is-outlined" href="{{'login'}}">
+                            <a class="button is-size-6 is-outlined" href="{{Site::menuLink('login')}}">
                                 <span class="icon">
                                     <i class="fa fa-sign-in-alt"></i>
                                 </span>
