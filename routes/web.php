@@ -12,7 +12,8 @@
 */
 
 // Pay attention below, check for verified
-use App\Jobs\SendEmailJob;
+    use App\Events\MessagePosted;
+    use App\Jobs\SendEmailJob;
 use App\Mail\VariableUserEmail as UserEmail;
 use App\User;
 
@@ -86,9 +87,9 @@ Route::get(
 Route::get(
     '/test',
     function () {
-        \App\Facades\Site::getGreeting();
-        
-        return 'no emails today..';
+        event(new \App\Events\PublicMessage(\Auth::user(), 'refresh'));
+    
+        return 'pako';
         $user = \App\User::find(1);
         $profileUrl = url('user/profile');
         $email = new UserEmail(

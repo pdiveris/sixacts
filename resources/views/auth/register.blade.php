@@ -13,7 +13,6 @@
                         <p class="card-header-title">Register</p>
                     </header>
                     <div class="card-content">
-
                         <form class="register-form" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
                             <div class="field is-horizontal">
@@ -50,8 +49,13 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control">
-                                            <input class="input" id="email" type="email" name="email"
-                                                   value="{{ old('email') }}" required autofocus>
+                                            <input
+                                                class="input"
+                                                id="email"
+                                                type="text"
+                                                name="email"
+                                                autocomplete="false"
+                                                value="{{old('email')}}" required autofocus>
                                         </p>
 
                                         @if ($errors->has('email'))

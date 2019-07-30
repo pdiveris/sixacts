@@ -195,7 +195,7 @@ export default class Proposals extends Component {
     }
 
     setupSocket() {
-        console.log('Setting up socket.IO');
+        console.log('Setting up socket.io');
         console.log('Hostname set to '+ window.location.hostname + ':'+window.echoPort);
         this.echo = new Echo({
             broadcaster: 'socket.io',
