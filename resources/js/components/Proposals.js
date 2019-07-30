@@ -164,6 +164,26 @@ export default class Proposals extends Component {
         console.log('Handling expand: '+display);
     }
 
+    handleFacebook(item) {
+      const url = 'https://'+window.location.hostname+'/proposal/'+item.id;
+        window.open('https://www.facebook.com/sharer/sharer.php?u='+url,
+            'facebook-share-dialog',"width=626, height=436"
+        );
+    }
+
+    handleTwitter(item) {
+        let text = 'Six Acts to reboot democracy\n\nNew act proposed\n';
+        text += item.title;
+        text += '\n';
+        text += 'https://'+window.location.hostname+'/proposal/'+item.id;
+        text = encodeURI(text);
+        const popup = window.open('https://twitter.com/intent/tweet?text='+text,
+            'popupwindow',
+            'scrollbars=yes,width=800,height=400'
+        );
+        console.log('twatting...');
+    }
+
     handleVote(item, ctx) {
         // this.setState({item:item})
         console.log('handleVote', ctx, item.id, window.Laravel);
@@ -336,7 +356,7 @@ export default class Proposals extends Component {
                                             </a>
                                         </span>
                                     </div>
-                                    <div className="author controls u-mtop-10 u-mright-10">
+                                    <div className="author controls u-mtop-10 u-mright-10 u-mbottom-10">
                                         <i>Posted by</i>:&nbsp;
                                         <b>
                                             {item.user.display_name != ''
@@ -346,18 +366,37 @@ export default class Proposals extends Component {
                                         &nbsp;
                                     </div>
                                     <div className="aggs controls u-mbottom-20">
-                                    <span className="numVotes">
-                                    {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
-                                        <span className="icon u-mleft-20">
-                                        <a onClick={() => this.handleVote(item, 'up')}>
-                                            <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
-                                        </a>
-                                    </span>
+                                        <span className="numVotes">
+                                        {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
+                                            <span className="icon u-mleft-20">
+                                            <a onClick={() => this.handleVote(item, 'up')}>
+                                                <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                            </a>
+                                        </span>
                                         <span className="icon">
-                                        <a onClick={() => this.handleVote(item, 'down')}>
-                                            <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
-                                        </a>
-                                    </span>
+                                            <a onClick={() => this.handleVote(item, 'down')}>
+                                                <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
+                                            </a>
+                                        </span>
+                                        <div className={'icon kongo'}>
+                                            <a className="button"
+                                               data-size="large"
+                                               onClick={() => this.handleTwitter(item)}
+                                            >
+                                              <span className="icon is-small">
+                                                <i className="fab fa-twitter"> </i>
+                                              </span>
+                                            </a>&nbsp;
+                                            <a className="button"
+                                               onClick={() => this.handleFacebook(item)}
+                                               rel={'nofollow'}
+                                               target={'_blank'}
+                                            >
+                                              <span className="icon is-small">
+                                                <i className="fab fa-facebook-f"> </i>
+                                              </span>
+                                            </a>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -411,6 +450,8 @@ function letsTango(theText, theSize) {
     return _.replace(theText, promptLine, '');
 };
 
-function doSomething() {
-    console.log('Doing something');
+function share_fb(url) {
+    window.open('https://www.facebook.com/sharer/sharer.php?u='+url,
+        'facebook-share-dialog',"width=626, height=436"
+    )
 }

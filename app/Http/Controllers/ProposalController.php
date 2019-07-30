@@ -151,7 +151,7 @@ class ProposalController extends Controller
      */
     public function show($proposalId = 0)
     {
-        $prop = Proposal::find(\intval($proposalId));
+        $prop = Proposal::find((int)($proposalId));
         if (null===$prop) {
             return response()->json(['type'=>'error', 'error' => 'Not Found.'], 404);
         }
@@ -167,4 +167,12 @@ class ProposalController extends Controller
         return response()->json($prop);
     }
     
+    public function view($id)
+    {
+        $proposal = Proposal::find($id);
+        if (null === $proposal || ! $proposal) {
+            abort(521);
+        }
+        return view('static.proposal', ['proposal'=>$proposal]);
+    }
 }

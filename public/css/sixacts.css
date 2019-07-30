@@ -171,3 +171,11 @@ span.actual {
 .ReactModal__Overlay--before-close{
     opacity: 0;
 }
+
+.kongo {
+    position: relative;
+    /*
+    right: -60%;
+    */
+    left: 5%;
+}

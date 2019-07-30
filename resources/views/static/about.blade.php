@@ -57,7 +57,6 @@
                     refine, tweak or reconsider your proposal, giving it a better chance of being a contender for the
                     final Six Acts document. It is also important that you are completely happy with your proposal at
                     the time you submit it because <i>once submitted you will not be able to edit it.</i>
-                    (Only delete and replace it.)
                 </p>
                 <h2 class="is-3">The Result</h2>
                 <p>
