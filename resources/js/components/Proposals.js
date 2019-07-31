@@ -161,7 +161,6 @@ export default class Proposals extends Component {
         this.setState({
             items,
         });
-        console.log('Handling expand: '+display);
     }
 
     handleFacebook(item) {
@@ -246,7 +245,7 @@ export default class Proposals extends Component {
                 if (e.message == 'refresh') {
                     this.getProposals();
                 } else {
-                    console.log("Unexpected message: " + e.message)
+                    console.log("Other message: " + e.message)
                 }
             });
     }
@@ -280,7 +279,6 @@ export default class Proposals extends Component {
     }
 
     faded(status) {
-        // return (isMember ? "$2.00" : "$10.00");
         if (status) {
             return 'full';
         } else {
@@ -339,9 +337,9 @@ export default class Proposals extends Component {
                                     <div className={`expander ${this.juggler(item.display)} '}`}
                                          id={'expander_1_'+index}
                                         >
-                                        {letsDisco(item.body, 200)}&nbsp;&nbsp;
+                                        {letsDisco(item.body, 228)}&nbsp;&nbsp;
                                         <span className="icon">
-                                            <a href={'#'} onClick={() =>
+                                            <a onClick={() =>
                                                 this.handleExpand(index, 'expanded', 'expander_1_'+index)}
                                             >
                                                 <i className="fa fa-plus"> </i>
@@ -349,9 +347,9 @@ export default class Proposals extends Component {
                                         </span>
                                     </div>
                                     <div className={`expandable ${item.display}`} id={'expander_2_'+index}>
-                                        {item.body}
+                                        {item.body}&nbsp;
                                         <span className="icon">
-                                            <a href={'#'} onClick={() =>
+                                            <a onClick={() =>
                                                 this.handleExpand(index, 'collapsed', 'expander_2_'+index)}
                                             >
                                                 <i className="fa fa-minus"> </i>
@@ -458,14 +456,3 @@ function letsDisco(theText, maxLength) {
         }
     )
 };
-
-function letsTango(theText, theSize) {
-    let promptLine = theText.replace(/^(.{82}[^\s]*).*/, "$1");
-    return _.replace(theText, promptLine, '');
-};
-
-function share_fb(url) {
-    window.open('https://www.facebook.com/sharer/sharer.php?u='+url,
-        'facebook-share-dialog',"width=626, height=436"
-    )
-}
