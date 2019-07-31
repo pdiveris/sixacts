@@ -8,6 +8,8 @@ class LaunchChecker
 {
     /**
      * Handle an incoming request.
+     * Disable access to endpoints only accessible after launching.
+     * Simply throw a 404.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

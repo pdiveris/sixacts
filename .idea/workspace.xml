@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/LaunchChecker.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/LaunchChecker.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/LaunchChecker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -320,14 +319,7 @@
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
-      <workItem from="1564521261580" duration="7252000" />
-    </task>
-    <task id="LOCAL-00057" summary="Fixed &#10;BUG: Proposed actions do not show in front page on Android/iOS devices&#10;The issue was down to the API entry point used for feeding the compomenent&#10;Closed #16&#10;&#10;FIX: Replace logo with new one&#10;Swap the logo used with the one sent by Eva&#10;Closed #13">
-      <created>1563463848689</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1563463848689</updated>
+      <workItem from="1564521261580" duration="8770000" />
     </task>
     <task id="LOCAL-00058" summary="Replace the sidebar [cats column, gap column, main column] layout &#10;with [cats column, main column] where the cats column gets the space &#10;it needs, not a gap after it (badly) ad hoc when space's needed.">
       <created>1563465069480</created>
@@ -665,7 +657,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564531070467</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="Direct routes to signin, login, register, profile and propose are now disabled when the LAUNCH variable for the site instance is set to false (that is, the site hasn't launched yet.) This closes #69, truly allowing us to go live with no fear as there is no way for punters to bypass the filter - before it was only disable at the menu but one could still type https://oursite.org/register in the location bar and get there directly.">
+      <created>1564542814891</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1564542814891</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -728,7 +727,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Social media buttons (main Six Acts) in the sidebar.&#10;Closed #35." />
     <MESSAGE value="The categories list is now &lt;Fragment&gt; of the Proposals component, in the portal paelance. It means that even though it sits outside the component's DOM tree, it's part of it for all concerned. It can now have its own &quot;synthetic&quot; events bubbling up the same way as all others within the component and in the right order. I don't know why this portal solution is not advocated for a loose model of development, rather than promoting an architecture which requires the ho=le page to be a single react component.&#10;&#10;I still don't know hpw ro attach a handler to it though." />
     <MESSAGE value="Category filtering is now fully functioning. Unlike the implementation planned originally, this uses native React ways of achieving this. It sets the selected flags on the categories, themselves store in the application's state. From that point on, any change in that state will trigger a 'tree shakeup' and a diff. and consequently a smooth refresh of the main area, the listing of the proposals.&#10;&#10;Note that whilst I looked at listening at events external to the Proposal component's tree, it transpired that one can attach portals to a component which can live anywhere in the page. It's a much nicer way of achieving this and, after biting the original bullet, it's actually much easier as it belongs to the same cluster of logic as the main component&#10;&#10;In addition, the buttons now don't turn into outlines when unselected, they simply appear faded.&#10;&#10;Proudly closed #4." />
     <MESSAGE value="Make social buttons [facebook, twitter] in sidebar open respective social deserts in new window.&#10;&#10;Closed #37" />
@@ -753,7 +751,8 @@
     <MESSAGE value="Added collapse/expand functionality to the Proposals listing and so I closed #66." />
     <MESSAGE value="Social buttons added and wired. The content probably can do with testing various parameters (by content I mean the stuff we pass onto twitter and facebook respectively) bit I am closing the issue now because it works and because those customisations are at least hard, if not impossible. I will open another ticket relating to a glossy printable version of the expanded Action (its details page, such as https://beta.sixacts.org/proposal/2) and how best to refer to it in FB and twitter, but in terms of social sharing of a proposal this commit closes #68. You can go live and we carry on improving!  I shall be deploying this work now." />
     <MESSAGE value="Fixed the copy/pasted and thus wrong headings in about page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the copy/pasted and thus wrong headings in about page." />
+    <MESSAGE value="Direct routes to signin, login, register, profile and propose are now disabled when the LAUNCH variable for the site instance is set to false (that is, the site hasn't launched yet.) This closes #69, truly allowing us to go live with no fear as there is no way for punters to bypass the filter - before it was only disable at the menu but one could still type https://oursite.org/register in the location bar and get there directly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Direct routes to signin, login, register, profile and propose are now disabled when the LAUNCH variable for the site instance is set to false (that is, the site hasn't launched yet.) This closes #69, truly allowing us to go live with no fear as there is no way for punters to bypass the filter - before it was only disable at the menu but one could still type https://oursite.org/register in the location bar and get there directly." />
   </component>
   <component name="masterDetails">
     <states>
