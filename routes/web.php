@@ -88,9 +88,7 @@
     Route::get(
         '/test',
         function () {
-            event(new \App\Events\PublicMessage(\Auth::user(), 'refresh'));
-        
-            return 'pako';
+            // event(new \App\Events\PublicMessage(\Auth::user(), 'refresh'));
             $user = \App\User::find(1);
             $profileUrl = url('user/profile');
             $email = new UserEmail(
