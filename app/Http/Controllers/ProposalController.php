@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\MessagePosted;
 use App\Proposal;
+use App\ProposalView;
 use App\User;
 use App\Vote;
 use Illuminate\Http\Request;
@@ -122,9 +123,9 @@ class ProposalController extends Controller
         $catsQuery = $request->get('cats', '');
         if (null !== $catsQuery && '' !== $catsQuery) {
             $cats = explode(':', $catsQuery);
-            $props = Proposal::whereIn('category_id', $cats)->get();
+            $props = ProposalView::whereIn('category_id', $cats)->get();
         } else {
-            $props = Proposal::all();
+            $props = ProposalView::all();
         }
         
         foreach ($props as $prop) {

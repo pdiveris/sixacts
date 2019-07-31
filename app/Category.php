@@ -32,6 +32,8 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static Builder|\App\Category whereSubClass($value)
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Proposal[] $proposals
+ * @property string|null $class_was
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereClassWas($value)
  */
 class Category extends Model
 {

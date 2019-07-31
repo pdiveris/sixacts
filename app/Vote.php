@@ -13,7 +13,6 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @author Petros Diveris <petros@diveris.org>
  * @license Apache 2.0
  * @link https://www.diveris.org
- *
  * @property int $id
  * @property int $user_id
  * @property int $proposal_id
