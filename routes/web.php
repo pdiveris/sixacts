@@ -18,6 +18,7 @@
     use App\User;
 
     Route::get('/', 'StaticController@home')->name('home');
+    Route::get('ssr', 'StaticController@homeRendered')->name('ssr');
     Route::get('react', 'StaticController@react')->name('react');
     Route::get('echo', 'StaticController@react')->name('echo');
     Route::get('/propose', 'SiteController@getProposal')->name('propose');

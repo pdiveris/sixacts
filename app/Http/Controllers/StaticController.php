@@ -39,6 +39,21 @@ class StaticController extends Controller
     }
     
     /**
+     * Render the home view
+     *
+     * @return \Illuminate\View\View
+     */
+    public function homeRendered(): \Illuminate\View\View
+    {
+        $proposals = \App\Proposal::all();
+        $categories = \App\Category::all();
+        return view(
+            'static.ssr.welcome',
+            ['proposals'=>$proposals, 'categories'=>$categories]
+        );
+    }
+    
+    /**
      * Render the React view
      * It's the same as the home view usually but it serves as a testbed
      * for new features/fixes before they make their way to their actual place

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
 import {ToastContainer, toast} from 'react-toastify';
@@ -139,8 +141,8 @@ export default class Proposals extends Component {
     /**
      * Pop a message box up
      *
-     * @param msgText string 'Koko is rolling on the floor, I wom=nder why.
-     * @param msgType string i.e. infp, success, warning, error
+     * @param msgText string 'Koko is rolling on the floor, I wonder why.
+     * @param msgType string i.e. info, success, warning, error
      * @param ttl
      */
     notify(msgText, msgType = 'info', ttl = 4000) {
@@ -320,6 +322,7 @@ export default class Proposals extends Component {
                         </ul>
                     </Portal>
                 </React.Fragment>
+                <Router>
                 <ul>
                     {this.state.items.map((item, index) => {
                             return (
@@ -411,6 +414,7 @@ export default class Proposals extends Component {
                         }
                     )}
                 </ul>
+                </Router>
                 <ToastContainer/>
             </div>
         );
@@ -454,3 +458,12 @@ function letsDisco(theText, maxLength) {
         }
     )
 };
+
+function About() {
+    return (
+        <div>
+            <h2>About</h2>
+        </div>
+    );
+}
+

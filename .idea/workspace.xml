@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/static/ssr/partials/sidebar.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/static/ssr/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ProposalView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProposalView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -212,7 +215,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/static/ssr/partials" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -222,18 +225,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/static/ssr/partials" />
       <recent name="$PROJECT_DIR$/resources/views/static" />
       <recent name="$PROJECT_DIR$/resources/js/components" />
       <recent name="$PROJECT_DIR$/resources/views/layouts" />
       <recent name="$PROJECT_DIR$/resources/views/auth" />
-      <recent name="$PROJECT_DIR$/resources/views/messsages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/static/ssr" />
       <recent name="$PROJECT_DIR$/app/Facades" />
       <recent name="$PROJECT_DIR$/tmp" />
       <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$/docs" />
-      <recent name="$PROJECT_DIR$/app/Jobs" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -321,14 +324,7 @@
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
-      <workItem from="1564521261580" duration="22431000" />
-    </task>
-    <task id="LOCAL-00065" summary="Clean up connection on componentWillUnmount()&#10;Closed #20">
-      <created>1563833220291</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1563833220291</updated>
+      <workItem from="1564521261580" duration="27637000" />
     </task>
     <task id="LOCAL-00066" summary="&#10;First working version to include (async) voting. &#10;&#10;* It only sends a “refresh” message to the connected clients and, based on my testing using VPNs the updates happen within seconds.&#10;* This current commit doesn't disable voting for a proposal the user has already voted the same way.&#10;* It does, however, ignore the vote and instead returns a message stating “you’ve already up- down voted this proposal.”&#10;* There are more messages sent out and the logic of them seems OK to me, at this time of the night.&#10;•&#9;However, at this point and time I am not showing the messages to the user. That’s because I am looking for a nice lightweight notifying solution for React to use. Bit like the “toast” you get in Vue – perhaps the Vue component was migrated from React anyway. If not sure, I am sure there will be something more than adequate out there.&#10;* We may have to explain to people why a single vote might seem to be &quot;mistakenly&quot; adding or subtracting two. See if we'll manage!&#10;* This version has not been tested against iOS and android devices in terms of usability of its UI (the voting buttons.) This will become an issue in Github shortly.">
       <created>1563839726850</created>
@@ -666,7 +662,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564586611221</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="Use ProposalView in api/proposals so we fetch based on slug.&#10;Altered the main view and the social sharers to point to /site/proposal/slug.">
+      <created>1564599234186</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1564599234186</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -729,7 +732,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Changing http to https does the job.&#10;Closed #41." />
     <MESSAGE value="Added word counter function and indicator in proposal page.&#10;&#10;Closed #31." />
     <MESSAGE value="Added splash pages seen for now &quot;naked&quot; at /intro - closed #39&#10;&#10;Added fullpage layout with no header, footer, sidebar etc (but with the rest of the framework wired in.) - closed #42" />
     <MESSAGE value="Fixed theGoogle urchin issue (following the https one solved not long ago.) &#10;It appears that urchin is deprecated. More testing is needed." />
@@ -754,7 +756,8 @@
     <MESSAGE value="Added migration to create the `delete_orphaned_votes` trigger on the Proposals table so that when a proposal gets deleted so do the votes that were attached to it.&#10;&#10;Closed #72." />
     <MESSAGE value="Added slugify function SQL server to generate human readable &quot;keys&quot; for showing proposals, categories etc in PDF/print/facebook and twitter links." />
     <MESSAGE value="Added migrations for creating&#10;* RDMBS function to generate 'slugs' from a string, e.g. title or name&#10;* ProposalView to expose Proposals in the API with the slug&#10;&#10;These will come in handy in the proposal's details page, which will in turn feed into the print, facebook, twitter link, and PDF. It will also make the site slightly more SEO friendly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added migrations for creating&#10;* RDMBS function to generate 'slugs' from a string, e.g. title or name&#10;* ProposalView to expose Proposals in the API with the slug&#10;&#10;These will come in handy in the proposal's details page, which will in turn feed into the print, facebook, twitter link, and PDF. It will also make the site slightly more SEO friendly." />
+    <MESSAGE value="Use ProposalView in api/proposals so we fetch based on slug.&#10;Altered the main view and the social sharers to point to /site/proposal/slug." />
+    <option name="LAST_COMMIT_MESSAGE" value="Use ProposalView in api/proposals so we fetch based on slug.&#10;Altered the main view and the social sharers to point to /site/proposal/slug." />
   </component>
   <component name="masterDetails">
     <states>
