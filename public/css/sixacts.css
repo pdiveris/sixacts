@@ -172,10 +172,11 @@ span.actual {
     opacity: 0;
 }
 
-.kongo {
-    position: relative;
+.theworks {
     /*
     right: -60%;
+    position: relative;
+    left: 30%;
     */
-    left: 5%;
+    margin-left: 63%;
 }

@@ -1,5 +1,4 @@
-function countWords(s)
-{
+function countWords(s) {
     const stopwords = {"a":1,"all":1,"an":1,"and":1,"are":1,"as":1,"at":1,"be":1,"but":1,
         "by":1,"can":1,"do":1,"for":1,"from":1,"had":1,"have":1,"if":1,"in":1,"is":1,
         "it":1,"me":1,"my":1,"no":1,"not":1,"of":1,"on":1,"or":1,"our":1,"s":1,"so":1,
@@ -39,4 +38,19 @@ function wordCountSum(words)
         sum += words[i][1];
     }
     return sum;
+}
+
+function slugify(string) {
+    const a = 'àáäâãåăæąçćčđďèéěėëêęğǵḧìíïîįłḿǹńňñòóöôœøṕŕřßşśšșťțùúüûǘůűūųẃẍÿýźžż·/_,:;'
+    const b = 'aaaaaaaaacccddeeeeeeegghiiiiilmnnnnooooooprrsssssttuuuuuuuuuwxyyzzz------'
+    const p = new RegExp(a.split('').join('|'), 'g')
+
+    return string.toString().toLowerCase()
+        .replace(/\s+/g, '-') // Replace spaces with -
+        .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+        .replace(/&/g, '-and-') // Replace & with 'and'
+        .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+        .replace(/\-\-+/g, '-') // Replace multiple - with single -
+        .replace(/^-+/, '') // Trim - from start of text
+        .replace(/-+$/, '') // Trim - from end of text
 }

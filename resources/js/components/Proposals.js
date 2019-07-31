@@ -184,6 +184,10 @@ export default class Proposals extends Component {
         console.log('twatting...');
     }
 
+    handlePrintArticle(item) {
+        console.log(item);
+    }
+
     handleVote(item, ctx) {
         // this.setState({item:item})
         console.log('handleVote', ctx, item.id, window.Laravel);
@@ -225,8 +229,6 @@ export default class Proposals extends Component {
     }
 
     setupSocket() {
-        console.log('Setting up socket.io');
-        console.log('Hostname set to '+ window.location.hostname + ':'+window.echoPort);
         this.echo = new Echo({
             broadcaster: 'socket.io',
             client: Socketio,
@@ -337,7 +339,7 @@ export default class Proposals extends Component {
                                     <div className={`expander ${this.juggler(item.display)} '}`}
                                          id={'expander_1_'+index}
                                         >
-                                        {letsDisco(item.body)}&nbsp;&nbsp;
+                                        {letsDisco(item.body, 200)}&nbsp;&nbsp;
                                         <span className="icon">
                                             <a href={'#'} onClick={() =>
                                                 this.handleExpand(index, 'expanded', 'expander_1_'+index)}
@@ -378,7 +380,16 @@ export default class Proposals extends Component {
                                                 <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
                                             </a>
                                         </span>
-                                        <div className={'icon kongo'}>
+                                        <div className={'icon theworks'}>
+                                            <a className="button"
+                                               onClick={() => this.handlePrintArticle(item)}
+                                               rel={'nofollow'}
+                                               target={'_blank'}
+                                            >
+                                              <span className="icon is-small">
+                                                <i className="fas fa-print"> </i>
+                                              </span>
+                                            </a>&nbsp;
                                             <a className="button"
                                                data-size="large"
                                                onClick={() => this.handleTwitter(item)}
@@ -440,9 +451,12 @@ if (document.getElementById('countdown')) {
     );
 }
 
-function letsDisco(theText, theSize) {
-    let ret = theText.replace(/^(.{222}[^\s]*).*/, "$1");
-    return ret;
+function letsDisco(theText, maxLength) {
+    return _.truncate(theText, {
+          length: maxLength,
+            separator: /,?\.* +/ // separate by spaces, including preceding commas and periods
+        }
+    )
 };
 
 function letsTango(theText, theSize) {
