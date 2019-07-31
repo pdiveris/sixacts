@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/ProposalView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_07_31_142503_view_create_proposals_view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Vote.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Vote.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ProposalView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProposalView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -322,14 +321,7 @@
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
-      <workItem from="1564521261580" duration="20872000" />
-    </task>
-    <task id="LOCAL-00064" summary="To be worked on later and on a different branch (sse)">
-      <created>1563800194612</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1563800194612</updated>
+      <workItem from="1564521261580" duration="22431000" />
     </task>
     <task id="LOCAL-00065" summary="Clean up connection on componentWillUnmount()&#10;Closed #20">
       <created>1563833220291</created>
@@ -667,7 +659,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564577617250</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="Added migrations for creating&#10;* RDMBS function to generate 'slugs' from a string, e.g. title or name&#10;* ProposalView to expose Proposals in the API with the slug&#10;&#10;These will come in handy in the proposal's details page, which will in turn feed into the print, facebook, twitter link, and PDF. It will also make the site slightly more SEO friendly.">
+      <created>1564586611221</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1564586611221</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -730,7 +729,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Have added Matomo analytics, accessible from our intranet and Google analytis, assuing the code I saw in photo is correct. &#10;&#10;Closed #33." />
     <MESSAGE value="Changing http to https does the job.&#10;Closed #41." />
     <MESSAGE value="Added word counter function and indicator in proposal page.&#10;&#10;Closed #31." />
     <MESSAGE value="Added splash pages seen for now &quot;naked&quot; at /intro - closed #39&#10;&#10;Added fullpage layout with no header, footer, sidebar etc (but with the rest of the framework wired in.) - closed #42" />
@@ -755,7 +753,8 @@
     <MESSAGE value="Removed hashtag from href of okus minus buttons, thus preventing the page from scrolling up/down when said buttons are clicked whilst viewing proposals further down (i.e. after scrolling.) This closes #71.&#10;&#10;Also, removed various `js` `console.log` statements which might give an idea to savvy users about API access points, socket services etc." />
     <MESSAGE value="Added migration to create the `delete_orphaned_votes` trigger on the Proposals table so that when a proposal gets deleted so do the votes that were attached to it.&#10;&#10;Closed #72." />
     <MESSAGE value="Added slugify function SQL server to generate human readable &quot;keys&quot; for showing proposals, categories etc in PDF/print/facebook and twitter links." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added slugify function SQL server to generate human readable &quot;keys&quot; for showing proposals, categories etc in PDF/print/facebook and twitter links." />
+    <MESSAGE value="Added migrations for creating&#10;* RDMBS function to generate 'slugs' from a string, e.g. title or name&#10;* ProposalView to expose Proposals in the API with the slug&#10;&#10;These will come in handy in the proposal's details page, which will in turn feed into the print, facebook, twitter link, and PDF. It will also make the site slightly more SEO friendly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added migrations for creating&#10;* RDMBS function to generate 'slugs' from a string, e.g. title or name&#10;* ProposalView to expose Proposals in the API with the slug&#10;&#10;These will come in handy in the proposal's details page, which will in turn feed into the print, facebook, twitter link, and PDF. It will also make the site slightly more SEO friendly." />
   </component>
   <component name="masterDetails">
     <states>

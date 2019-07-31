@@ -22,7 +22,7 @@
     Route::get('echo', 'StaticController@react')->name('echo');
     Route::get('/propose', 'SiteController@getProposal')->name('propose');
     Route::post('/propose', 'SiteController@postProposal')->name('propose_post');
-    Route::get('proposal/{id}', 'ProposalController@view')->name('proposal');
+    Route::get('proposal/{slug}', 'ProposalController@view')->name('proposal');
 
     Route::get(
         'user/profile',

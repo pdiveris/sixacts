@@ -170,7 +170,13 @@ class ProposalController extends Controller
     
     public function view($id)
     {
-        $proposal = Proposal::find($id);
+        if (is_numeric($id)) {
+            $proposal = ProposalView::find($id);
+        } else {
+            $proposal = ProposalView::where('slug', '=', $id)
+                                        ->first();
+        }
+        
         if (null === $proposal || ! $proposal) {
             abort(521);
         }

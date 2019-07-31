@@ -66,5 +66,4 @@ class ProposalView extends Model
     {
         return $this->hasMany('App\VoteAgg', 'proposal_id');
     }
-    
 }

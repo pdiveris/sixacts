@@ -36,8 +36,6 @@ if (document.getElementById('proposals')) {
     Modal.setAppElement('#proposals');
 }
 
-
-
 class Portal extends React.Component {
     constructor(props) {
         super(props);
@@ -164,7 +162,7 @@ export default class Proposals extends Component {
     }
 
     handleFacebook(item) {
-      const url = 'https://'+window.location.hostname+'/proposal/'+item.id;
+      const url = 'https://'+window.location.hostname+'/proposal/'+item.slug;
         window.open('https://www.facebook.com/sharer/sharer.php?u='+url,
             'facebook-share-dialog',"width=626, height=436"
         );
@@ -174,17 +172,17 @@ export default class Proposals extends Component {
         let text = 'Six Acts to reboot democracy\n\nNew act proposed\n';
         text += item.title;
         text += '\n';
-        text += 'https://'+window.location.hostname+'/proposal/'+item.id;
+        text += 'https://'+window.location.hostname+'/proposal/'+item.slug;
         text = encodeURI(text);
         const popup = window.open('https://twitter.com/intent/tweet?text='+text,
             'popupwindow',
             'scrollbars=yes,width=800,height=400'
         );
-        console.log('twatting...');
     }
 
     handlePrintArticle(item) {
-        console.log(item);
+        const url = 'https://'+window.location.hostname+'/proposal/'+item.slug+'?target=printer';
+        window.open(url, 'print-dialog');
     }
 
     handleVote(item, ctx) {
