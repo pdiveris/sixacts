@@ -55,11 +55,22 @@ class StaticController extends Controller
     {
         $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
-        echo \Cache::get('SSR');
         return view(
             'static.ssr.welcome',
             ['proposals'=>$proposals, 'categories'=>$categories]
         );
+    }
+    
+    /**
+     * Switch to SSR version and go to
+     * home view
+     *
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     */
+    public function homePlain()
+    {
+        \Cache::set('ssr', true);
+        return $this->homeRendered();
     }
     
     /**

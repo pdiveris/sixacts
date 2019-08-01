@@ -1,6 +1,9 @@
+{{--
+This view drives the experience of clients with either javascript off, or poor implementation of it.
+Essentially this is our Server Side Rendered page which itonically is what the React component is based on.
+--}}
 @extends('layouts.forum')
 @section('content')
-    <h3>Old browsers</h3>
     <div class="columns">
         <div class="column is-4">
             @include('static.ssr.partials.sidebar')

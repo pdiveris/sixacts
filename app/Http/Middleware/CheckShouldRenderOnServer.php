@@ -39,14 +39,15 @@ Mozilla/5.0 (Windows Phone 8.1; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0;
     public function handle($request, Closure $next)
     {
         $headers = $request->headers;
-        \Cache::set('SSR', false);
-    
+        \Cache::set('ssr', false);
+        $request->headers->remove('ssr');
         if ($headers->has('user-agent')) {
             $agent = $headers->get('user-agent');
             if (strpos($agent, 'bot')!==false
                 || strpos($agent, 'BingPreview/')!==false
             ) {
-                \Cache::set('SSR', true);
+                $request->headers->set('ssr', true);
+                \Cache::set('ssr', true);
             }
         }
         return $next($request);

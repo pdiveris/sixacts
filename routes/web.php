@@ -19,14 +19,16 @@
 
     Route::get(
         'pako',
-        function () {
-            
-            return 'arsseholes..';
+        function (\Illuminate\Http\Request $request) {
+            echo '<h3>Stuff</h3>';
+            var_dump($request->headers);
         }
     );
 
     Route::get('/', 'StaticController@home')->name('home');
     Route::get('ssr', 'StaticController@homeRendered')->name('ssr');
+    Route::get('plain', 'StaticController@homePlain')->name('plain');
+    Route::get('full', 'StaticController@homeFull')->name('full');
     Route::get('react', 'StaticController@react')->name('react');
     Route::get('echo', 'StaticController@react')->name('echo');
     Route::get('/propose', 'SiteController@getProposal')->name('propose');

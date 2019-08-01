@@ -4,15 +4,12 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/LegacyController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckShouldRenderOnServer.php" afterDir="false" />
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="Remove unnecessary debug line which only causes problems in non-dev environments.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VoteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VoteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckShouldRenderOnServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckShouldRenderOnServer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/static/ssr/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/ssr/partials/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/static/ssr/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/ssr/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -326,21 +323,7 @@
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
-      <workItem from="1564521261580" duration="34885000" />
-    </task>
-    <task id="LOCAL-00067" summary="Never leave dump($var) statements in. A commit filter needs writing perhaps.">
-      <created>1563843768176</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1563843768176</updated>
-    </task>
-    <task id="LOCAL-00068" summary="This commit essentially &quot;closes&quot; 26.&#10;&#10;It's based on the following a user cast 1 vote with a value of&#10;-1, 0, and 1.&#10;&#10;It's actually nit exactly like that. There is no vote with an explicit value of 0.&#10;&#10;A user can cast one vote only against any give proposal, with a value of 'up' or 'down' which, from the proposal's point of view, should it have one, equals to a 1 or -1.&#10;&#10;If, however, a voter has already cast their vote against the proposal, then this new click simply zeroes all the values in the user's vote record. A consequent vote will count again as the expected 1 or -1. I am assuming that this IS the expected behaviour. I am, leaving this issue open nevertheless with a 'testing awaiting' label attached to it to give us time to confirm that this is what we want, and, after testing, that this what it does.">
-      <created>1563917107017</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1563917107017</updated>
+      <workItem from="1564521261580" duration="40128000" />
     </task>
     <task id="LOCAL-00069" summary="Notifications added in with &#10;https://github.com/minhtranite/react-notifications&#10;&#10;So far the simplest, but they all come out on green. &#10;Investigating..">
       <created>1563927755975</created>
@@ -671,7 +654,21 @@
       <option name="project" value="LOCAL" />
       <updated>1564609600414</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="More work done on the vanilla view of the site, depending on a Cache variable SSR set to true or false. The goal here being to have the site indexed, as I can't get the React rendered proposal links to appear in the final DOM of the main page. It is also possible that this version of the site can be switched on for browsers that indicate poor support of Javascript, but that's quite hard to conclude just out of the User-agent string. Looking into it.">
+      <created>1564676538946</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1564676538946</updated>
+    </task>
+    <task id="LOCAL-00117" summary="Remove unnecessary debug line which only causes problems in non-dev environments.">
+      <created>1564677189509</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1564677189509</updated>
+    </task>
+    <option name="localTasksCounter" value="118" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -734,8 +731,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added splash pages seen for now &quot;naked&quot; at /intro - closed #39&#10;&#10;Added fullpage layout with no header, footer, sidebar etc (but with the rest of the framework wired in.) - closed #42" />
-    <MESSAGE value="Fixed theGoogle urchin issue (following the https one solved not long ago.) &#10;It appears that urchin is deprecated. More testing is needed." />
     <MESSAGE value="Pre-splash commit, lest we need to pedal back quickly." />
     <MESSAGE value="This commit now adds a splash screen, animated as if it were, to the home page. That is, when a user visits, the main page gets softened out and a &quot;modal&quot; content block appears with the content we agreed. I had a much more jazzy animation in mind, this is merely a transition but it certainly does the job of &#10;&#10;* Attracting media-busy visitor's attention for a few seconds&#10;* Conveying the message&#10;* Offering more than just a glimpse of what's behind (the overlay is semi-transparent.)&#10;&#10;I could certainly do more work on  the transitions, animation and transparency but those improvements can wait as there are a couple of other more urgent issues:&#10; &#10; #45 Disable menu items whilst on countdown mode (i.e. with the splash screen on)&#10; #44 Add a “countdown timer” to the splash screen.&#10; &#10; This closes #40 as it provides the splash screen, it does a transition of sorts, which might become more of an animation if I get a minute, and remaining elements of it have now been transferred to new individual tickets (#44, #45)." />
     <MESSAGE value="Added countdown timer. After spending a good 30 minutes refreshing my milliseconds, 60 minutes per hour, 24 hours per day etc, I came across.. this https://www.npmjs.com/package/react-countdown-now.&#10;&#10;It's obscene, everything has been done already (Umberto Eco, Postmodernism.)&#10;&#10;Closed #44." />
@@ -759,7 +754,9 @@
     <MESSAGE value="Added migrations for creating&#10;* RDMBS function to generate 'slugs' from a string, e.g. title or name&#10;* ProposalView to expose Proposals in the API with the slug&#10;&#10;These will come in handy in the proposal's details page, which will in turn feed into the print, facebook, twitter link, and PDF. It will also make the site slightly more SEO friendly." />
     <MESSAGE value="Use ProposalView in api/proposals so we fetch based on slug.&#10;Altered the main view and the social sharers to point to /site/proposal/slug." />
     <MESSAGE value="Adding Google and other search engine specific SSR view of main page to deal with the indexing conundrum." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding Google and other search engine specific SSR view of main page to deal with the indexing conundrum." />
+    <MESSAGE value="More work done on the vanilla view of the site, depending on a Cache variable SSR set to true or false. The goal here being to have the site indexed, as I can't get the React rendered proposal links to appear in the final DOM of the main page. It is also possible that this version of the site can be switched on for browsers that indicate poor support of Javascript, but that's quite hard to conclude just out of the User-agent string. Looking into it." />
+    <MESSAGE value="Remove unnecessary debug line which only causes problems in non-dev environments." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove unnecessary debug line which only causes problems in non-dev environments." />
   </component>
   <component name="masterDetails">
     <states>

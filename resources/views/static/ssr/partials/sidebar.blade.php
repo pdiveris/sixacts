@@ -1,24 +1,20 @@
-<a class="button is-primary is-block is-alt is-large" href="#">
+<a class="button ubuntu-green is-block is-alt" href="{{url('propose')}}">
     Propose Act
 </a>
 <aside class="menu">
     <p class="menu-label">
         Tags
     </p>
-    <ul class="menu-list">
-        @foreach($categories as $category)
+    <ul class="categoriesList">
+        @foreach($categories as $i=>$category)
             <li>
-                <span class="tag {{$category->class}} is-medium {{$category->sub_class}}">{{$category->short_title}}</span>
+                <span class="xbutton">
+                    <a id="Katze_{{$i+1}}"
+                       class="button {{$category->class}}">
+                        {{$category->short_title}}
+                    </a>
+                </span>
             </li>
         @endforeach
-        {{--
-                <li><span class="tag is-primary is-medium ">Dashboard</span></li>
-                <li><span class="tag is-link is-medium ">Customers</span></li>
-                <li><span class="tag is-light is-danger is-medium ">Authentication</span></li>
-                <li><span class="tag is-dark is-medium ">Payments</span></li>
-                <li><span class="tag is-success is-medium ">Transfers</span></li>
-                <li><span class="tag is-warning is-medium ">Balance</span></li>
-                <li><span class="tag is-medium ">Question</span></li>
-        --}}
     </ul>
 </aside>
