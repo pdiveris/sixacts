@@ -33,8 +33,6 @@ class StaticController extends Controller
         $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
         
-        dump(\Cache::get('SSR', false));
-        
         if (\Cache::get('SSR', false)) {
             return view(
                 'static.ssr.welcome',
