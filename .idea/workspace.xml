@@ -4,14 +4,13 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="Remove unnecessary debug line which only causes problems in non-dev environments.">
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckShouldRenderOnServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckShouldRenderOnServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/ssr/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/ssr/partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/ssr/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/ssr/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/static/react.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/react.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/static/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -323,21 +322,7 @@
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
-      <workItem from="1564521261580" duration="40128000" />
-    </task>
-    <task id="LOCAL-00069" summary="Notifications added in with &#10;https://github.com/minhtranite/react-notifications&#10;&#10;So far the simplest, but they all come out on green. &#10;Investigating..">
-      <created>1563927755975</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1563927755975</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Nice &quot;toast&quot; messages give users feedback when voting, e.g. &quot;You've already voted this down&quot; or &quot;You need to be logged in to vote&quot; etc.&#10;&#10;After hours of looking around ad at very many promising notifiers, and each one of t hem had something uniquely nice about it but.., I finally found this which seems to support all we want, including dragging it out the window with oer's thumb on a mobile or tablet. I have not tested this, will do and report.&#10; This relates to #24 which I am not closing since not all responses have been covered yet.">
-      <created>1563963514046</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
-      <option name="project" value="LOCAL" />
-      <updated>1563963514046</updated>
+      <workItem from="1564521261580" duration="42521000" />
     </task>
     <task id="LOCAL-00071" summary="Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24.">
       <created>1563966797265</created>
@@ -668,7 +653,21 @@
       <option name="project" value="LOCAL" />
       <updated>1564677189509</updated>
     </task>
-    <option name="localTasksCounter" value="118" />
+    <task id="LOCAL-00118" summary="Added links to plain/full version of site to play nicely with the crawlers - no cheating then.">
+      <created>1564682588122</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1564682588122</updated>
+    </task>
+    <task id="LOCAL-00119" summary="Remove funny debug routes from repo.">
+      <created>1564682708971</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
+      <option name="project" value="LOCAL" />
+      <updated>1564682708971</updated>
+    </task>
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -731,8 +730,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Pre-splash commit, lest we need to pedal back quickly." />
-    <MESSAGE value="This commit now adds a splash screen, animated as if it were, to the home page. That is, when a user visits, the main page gets softened out and a &quot;modal&quot; content block appears with the content we agreed. I had a much more jazzy animation in mind, this is merely a transition but it certainly does the job of &#10;&#10;* Attracting media-busy visitor's attention for a few seconds&#10;* Conveying the message&#10;* Offering more than just a glimpse of what's behind (the overlay is semi-transparent.)&#10;&#10;I could certainly do more work on  the transitions, animation and transparency but those improvements can wait as there are a couple of other more urgent issues:&#10; &#10; #45 Disable menu items whilst on countdown mode (i.e. with the splash screen on)&#10; #44 Add a “countdown timer” to the splash screen.&#10; &#10; This closes #40 as it provides the splash screen, it does a transition of sorts, which might become more of an animation if I get a minute, and remaining elements of it have now been transferred to new individual tickets (#44, #45)." />
     <MESSAGE value="Added countdown timer. After spending a good 30 minutes refreshing my milliseconds, 60 minutes per hour, 24 hours per day etc, I came across.. this https://www.npmjs.com/package/react-countdown-now.&#10;&#10;It's obscene, everything has been done already (Umberto Eco, Postmodernism.)&#10;&#10;Closed #44." />
     <MESSAGE value="Wrapped &lt;Countdown /&gt; control in if (element) statement to fix the obvious error that occured when the splashscreen wasn't rendered and the Proposals was still attaching the control to the DOM.&#10;&#10;Closed #46." />
     <MESSAGE value="This is an end-of-the day commit which contains fixes and work for various tickets.&#10;&#10;Among many other issues and fixes:&#10;&#10;Closed #59.&#10;Closed #58." />
@@ -756,7 +753,9 @@
     <MESSAGE value="Adding Google and other search engine specific SSR view of main page to deal with the indexing conundrum." />
     <MESSAGE value="More work done on the vanilla view of the site, depending on a Cache variable SSR set to true or false. The goal here being to have the site indexed, as I can't get the React rendered proposal links to appear in the final DOM of the main page. It is also possible that this version of the site can be switched on for browsers that indicate poor support of Javascript, but that's quite hard to conclude just out of the User-agent string. Looking into it." />
     <MESSAGE value="Remove unnecessary debug line which only causes problems in non-dev environments." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unnecessary debug line which only causes problems in non-dev environments." />
+    <MESSAGE value="Added links to plain/full version of site to play nicely with the crawlers - no cheating then." />
+    <MESSAGE value="Remove funny debug routes from repo." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove funny debug routes from repo." />
   </component>
   <component name="masterDetails">
     <states>

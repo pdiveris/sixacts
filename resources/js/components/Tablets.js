@@ -47,20 +47,6 @@ export default class Tablets extends Component {
                     console.log("Unexpected message: "+e.message)
                 }
             });
-
-/*
-        echo.private('user.' + window.Laravel.user)
-            .listen('MessageSent', (e) => {
-                console.log('MessageSent');
-                this.setState({
-                    messages: this.state.messages.concat({
-                        message: e.message.message,
-                        user: e.user
-                    })
-                });
-            });
-*/
-
     }
 
     setupStream() {

@@ -33,7 +33,7 @@ class StaticController extends Controller
         $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
         
-        if (\Cache::get('SSR', false)) {
+        if (\Cache::get('ssr', false)) {
             return view(
                 'static.ssr.welcome',
                 ['proposals'=>$proposals, 'categories'=>$categories]
@@ -82,14 +82,10 @@ class StaticController extends Controller
      */
     public function react()
     {
-        $proposals = \App\Proposal::all();
-        $categories = \App\Category::all();
         $listData = json_encode(['Koko', 'Taylor', 'Tash', 'Μιχαλάκης', 'Lucia']);
         return view(
             'static.react',
             [
-                'proposals'=>$proposals,
-                'categories'=>$categories,
                 'listData'=>$listData,
             ]
         );
