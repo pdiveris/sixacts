@@ -45,6 +45,7 @@ class Portal extends React.Component {
     }
 
     componentDidMount = () => {
+        window.react = '1';
         portalRoot.appendChild(this.el);
     };
 

@@ -5,17 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="shortcut icon" href="{{asset('images/favicon-16x16.png')}}" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('images/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon-16x16.png')}}">
-    <link rel="manifest" href="{{asset('sixacts.webmanifest')}}">
+    <link rel="shortcut icon" href="{{asset('images/favicon-16x16.png')}}" type="image/x-icon"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset('images/apple-touch-icon.png')}}"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('images/favicon-32x32.png')}}"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon-16x16.png')}}"/>
+    <link rel="manifest" href="{{asset('/sixacts.webmanifest')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-    <script async type="text/javascript" src="{{asset('js/sixacts.js')}}"></script>
-    <script async type="text/javascript" src="{{asset('js/app.js')}}"></script>
+    <script async type="text/javascript" src="{{asset('/js/sixacts.js')}}"></script>
+    <script async type="text/javascript" src="{{asset('/js/app.js')}}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/sixacts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/css/sixacts.css')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         window.Laravel = {!! json_encode([

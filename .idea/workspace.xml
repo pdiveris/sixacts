@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StaticController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckShouldRenderOnServer.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckShouldRenderOnServer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Tablets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Tablets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/react.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/react.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/static/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/static/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/fullpage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fullpage.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -322,14 +320,7 @@
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
-      <workItem from="1564521261580" duration="42521000" />
-    </task>
-    <task id="LOCAL-00071" summary="Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24.">
-      <created>1563966797265</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
-      <option name="project" value="LOCAL" />
-      <updated>1563966797265</updated>
+      <workItem from="1564521261580" duration="45526000" />
     </task>
     <task id="LOCAL-00072" summary="Somehow Proposals.js was left out from previous commit - &#10;&#10;Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24.">
       <created>1563967793626</created>
@@ -667,7 +658,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564682708971</updated>
     </task>
-    <option name="localTasksCounter" value="120" />
+    <task id="LOCAL-00120" summary="Pre-render the content before React takes over.">
+      <created>1564687785628</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
+      <option name="project" value="LOCAL" />
+      <updated>1564687785628</updated>
+    </task>
+    <option name="localTasksCounter" value="121" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -730,7 +728,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added countdown timer. After spending a good 30 minutes refreshing my milliseconds, 60 minutes per hour, 24 hours per day etc, I came across.. this https://www.npmjs.com/package/react-countdown-now.&#10;&#10;It's obscene, everything has been done already (Umberto Eco, Postmodernism.)&#10;&#10;Closed #44." />
     <MESSAGE value="Wrapped &lt;Countdown /&gt; control in if (element) statement to fix the obvious error that occured when the splashscreen wasn't rendered and the Proposals was still attaching the control to the DOM.&#10;&#10;Closed #46." />
     <MESSAGE value="This is an end-of-the day commit which contains fixes and work for various tickets.&#10;&#10;Among many other issues and fixes:&#10;&#10;Closed #59.&#10;Closed #58." />
     <MESSAGE value="This correctly sets the callback URL for the social media login handlers to the right host - that is, the host as set in .env file, for security reasons.&#10;&#10;Closed #64." />
@@ -755,7 +752,8 @@
     <MESSAGE value="Remove unnecessary debug line which only causes problems in non-dev environments." />
     <MESSAGE value="Added links to plain/full version of site to play nicely with the crawlers - no cheating then." />
     <MESSAGE value="Remove funny debug routes from repo." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove funny debug routes from repo." />
+    <MESSAGE value="Pre-render the content before React takes over." />
+    <option name="LAST_COMMIT_MESSAGE" value="Pre-render the content before React takes over." />
   </component>
   <component name="masterDetails">
     <states>
