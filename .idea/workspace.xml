@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/app.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/provision.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/provision.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/fullpage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fullpage.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -320,14 +323,7 @@
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
-      <workItem from="1564521261580" duration="45526000" />
-    </task>
-    <task id="LOCAL-00072" summary="Somehow Proposals.js was left out from previous commit - &#10;&#10;Messages have now been tuned to reflect the users' actions.&#10;They probably need tuning so I suspect that we'll be re-opening this issue but, since it's technically resolved, this commit now closes #24.">
-      <created>1563967793626</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1563967793626</updated>
+      <workItem from="1564521261580" duration="47897000" />
     </task>
     <task id="LOCAL-00073" summary="Have done a bit of work on the colours front. Certainly looks better, more work is needed though.">
       <created>1563990275413</created>
@@ -665,7 +661,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564687785628</updated>
     </task>
-    <option name="localTasksCounter" value="121" />
+    <task id="LOCAL-00121" summary="Commit before attempting to add uglify">
+      <created>1564698654319</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
+      <option name="project" value="LOCAL" />
+      <updated>1564698654319</updated>
+    </task>
+    <option name="localTasksCounter" value="122" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -728,7 +731,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Wrapped &lt;Countdown /&gt; control in if (element) statement to fix the obvious error that occured when the splashscreen wasn't rendered and the Proposals was still attaching the control to the DOM.&#10;&#10;Closed #46." />
     <MESSAGE value="This is an end-of-the day commit which contains fixes and work for various tickets.&#10;&#10;Among many other issues and fixes:&#10;&#10;Closed #59.&#10;Closed #58." />
     <MESSAGE value="This correctly sets the callback URL for the social media login handlers to the right host - that is, the host as set in .env file, for security reasons.&#10;&#10;Closed #64." />
     <MESSAGE value="This fixes the issue where no appropriate message was returned to the client when aguest (not logged in visitor) attempted to vote.&#10;&#10;Closed #60." />
@@ -753,7 +755,8 @@
     <MESSAGE value="Added links to plain/full version of site to play nicely with the crawlers - no cheating then." />
     <MESSAGE value="Remove funny debug routes from repo." />
     <MESSAGE value="Pre-render the content before React takes over." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pre-render the content before React takes over." />
+    <MESSAGE value="Commit before attempting to add uglify" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit before attempting to add uglify" />
   </component>
   <component name="masterDetails">
     <states>

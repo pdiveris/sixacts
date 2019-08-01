@@ -32,4 +32,10 @@ DevOps
 * Ubuntu MicroK8s
 * 
 
+## POST DEPLOYMENT
+Until I find how to instruct Laravel mix to produce sane JS output for/from my React components, after deployment it might be worth manually uglifying the main output
+* `uglifyjs  public/js/app.js --compress -o apismall.js` and
+* replace site's api.js with newly creayed file
+
+
 
