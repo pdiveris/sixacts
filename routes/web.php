@@ -18,10 +18,9 @@
     use App\User;
 
     Route::get(
-        'pako',
+        'anothertest',
         function (\Illuminate\Http\Request $request) {
-            echo '<h3>Stuff</h3>';
-            var_dump($request->headers);
+            return 'Another Test route - ignore';
         }
     );
 
