@@ -66,5 +66,4 @@ class VoteController extends Controller
         }
         return response()->json($vote);
     }
-    
 }

@@ -17,6 +17,14 @@
     use App\Mail\VariableUserEmail as UserEmail;
     use App\User;
 
+    Route::get(
+        'pako',
+        function () {
+            
+            return 'arsseholes..';
+        }
+    );
+
     Route::get('/', 'StaticController@home')->name('home');
     Route::get('ssr', 'StaticController@homeRendered')->name('ssr');
     Route::get('react', 'StaticController@react')->name('react');

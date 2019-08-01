@@ -1,5 +1,6 @@
 @extends('layouts.forum')
 @section('content')
+    <h3>Old browsers</h3>
     <div class="columns">
         <div class="column is-4">
             @include('static.ssr.partials.sidebar')
@@ -8,15 +9,19 @@
             <div class="box content">
                 @foreach($proposals as $proposal)
                     <article class="post">
-                        <h4>{{$proposal->title}}</h4>
+                        <a href="{{url('proposal/'.$proposal->slug)}}">
+                        <h4>
+                            {{$proposal->title}}
+                        </h4>
+                        </a>
                         <p>
                             {{$proposal->body}}
                         </p>
-
+                        </a>
                         <div class="media">
                             <div class="media-left">
                                 <p class="image is-32x32">
-                                    <img src="http://bulma.io/images/placeholders/128x128.png">
+                                    <img src="https://bulma.io/images/placeholders/128x128.png">
                                 </p>
                             </div>
                             <div class="media-content">

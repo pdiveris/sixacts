@@ -30,12 +30,22 @@ class StaticController extends Controller
      */
     public function home()
     {
-        $proposals = \App\Proposal::all();
+        $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
-        return view(
-            'static.welcome',
-            ['proposals'=>$proposals, 'categories'=>$categories]
-        );
+        
+        dump(\Cache::get('SSR', false));
+        
+        if (\Cache::get('SSR', false)) {
+            return view(
+                'static.ssr.welcome',
+                ['proposals'=>$proposals, 'categories'=>$categories]
+            );
+        } else {
+            return view(
+                'static.welcome',
+                ['proposals'=>$proposals, 'categories'=>$categories]
+            );
+        }
     }
     
     /**
@@ -45,8 +55,9 @@ class StaticController extends Controller
      */
     public function homeRendered(): \Illuminate\View\View
     {
-        $proposals = \App\Proposal::all();
+        $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
+        echo \Cache::get('SSR');
         return view(
             'static.ssr.welcome',
             ['proposals'=>$proposals, 'categories'=>$categories]
@@ -82,7 +93,7 @@ class StaticController extends Controller
      *
      * @return string
      */
-    public static function authorLink(\App\Proposal $proposal)
+    public static function authorLink(\App\ProposalView $proposal)
     {
         $displayName = $proposal->user->display_name;
         if (null !== $displayName && '' !== $displayName) {
