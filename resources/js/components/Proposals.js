@@ -213,10 +213,14 @@ export default class Proposals extends Component {
     componentDidMount() {
         // document.addEventListener('click', this.handleClickOutside, true);
         this.getProposals();
-        this.getCategories();
+         this.getCategories();
         if (window.keepalive) {
             this.setupSocket();
         }
+/*
+        let el = document.getElementById('proposals');
+        el.style.opacity = '1.00';
+*/
     }
 
     componentWillUnmount() {
@@ -409,7 +413,6 @@ export default class Proposals extends Component {
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             )
                         }
@@ -467,4 +470,3 @@ function About() {
         </div>
     );
 }
-
