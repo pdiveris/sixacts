@@ -140,12 +140,14 @@
       <path value="$PROJECT_DIR$/vendor/react/event-loop" />
       <path value="$PROJECT_DIR$/vendor/clue/sse-react" />
       <path value="$PROJECT_DIR$/vendor/react/stream" />
-      <path value="$PROJECT_DIR$/vendor/hhxsv5/php-sse" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
+      <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
+      <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-feed" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
     </include_path>

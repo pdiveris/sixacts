@@ -136,3 +136,5 @@
     Route::get('sse/server/{token?}', 'ServerSideEventsController@server');
     Route::get('sse/semaphore/{token?}', 'ServerSideEventsController@semaphore');
     Route::get('sse/client/{token?}', 'ServerSideEventsController@client');
+
+    Route::feeds('/feed');

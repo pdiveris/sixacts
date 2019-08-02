@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder as Builder;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 
 /**
  * App\ProposalView
@@ -32,7 +34,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Category $category
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\VoteAgg[] $aggs
  */
-class ProposalView extends Model
+class ProposalView extends Model implements Feedable
 {
     protected $table = 'proposals_view';
     
@@ -65,5 +67,31 @@ class ProposalView extends Model
     public function aggs()
     {
         return $this->hasMany('App\VoteAgg', 'proposal_id');
+    }
+    
+    /**
+     * Return one document as a feed item
+     *
+     * @return mixed
+     */
+    public function toFeedItem()
+    {
+        return FeedItem::create()
+            ->id($this->id)
+            ->title($this->title)
+            ->summary($this->body)
+            ->link('/proposal'.$this->id)
+            ->author('Six Acts')
+            ->updated($this->updated_at);
+    }
+    
+    /**
+     * Return all feed items
+     *
+     * @return \App\ProposalView[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public static function getFeedItems()
+    {
+        return ProposalView::all();
     }
 }
