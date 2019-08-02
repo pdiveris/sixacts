@@ -12,9 +12,15 @@
                         @foreach($proposals as $proposal)
                             <article class="post">
                                 <a href="{{url('proposal/'.$proposal->slug)}}">
-                                    <h4>
-                                        {{$proposal->title}}
-                                    </h4>
+                                <span class="subtitle has-text-weight-bold">
+                                    {{$proposal->title}}
+                                </span>
+                                <span
+                                  class="tag is-small u-mleft-15 {{$proposal->category->class}}
+                                  {{$proposal->category->sub_class}}"
+                                >
+                                {{substr($proposal->category->short_title,0, 1)}}
+                                </span>
                                 </a>
                                 <p>
                                     {{$proposal->body}}
