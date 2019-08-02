@@ -13,39 +13,56 @@ Essentially this is our Server Side Rendered page which itonically is what the R
                 @foreach($proposals as $proposal)
                     <article class="post">
                         <a href="{{url('proposal/'.$proposal->slug)}}">
-                        <h4>
+                        <span class="subtitle has-text-weight-bold">
                             {{$proposal->title}}
-                        </h4>
+                        </span>
+                        <span
+                            class="tag is-small u-mleft-15 {{$proposal->category->class}}
+                            {{$proposal->category->sub_class}}">
+                        {{substr($proposal->category->short_title,0, 1)}}
+                        </span>
                         </a>
                         <p>
                             {{$proposal->body}}
                         </p>
                         </a>
-                        <div class="media">
-                            <div class="media-left">
-                                <p class="image is-32x32">
-                                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                                </p>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <a href="#">
-                                            {{\App\Http\Controllers\StaticController::authorLink($proposal)}}
-                                        </a>
-                                        replied 34 minutes ago &nbsp;
-                                        <span class="tag">TAG
-                                        </span>
-                                        <span>
-                                            @if(count($proposal->aggs))
-                                                KOKO
-                                            @endif
-                                        </span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="media-right">
-                                <span class="has-text-grey-light"><i class="fa fa-comments"></i> 1</span>
+                        <div class="author controls u-mtop-10 u-mright-10 u-mbottom-10">
+                            <i>Posted by</i>:&nbsp;
+                            <b>
+                                {{$proposal->user->display_name ?? $proposal->user->name }}
+                            </b>
+                            &nbsp;
+                        </div>
+                        <div class="aggs controls u-mbottom-20">
+                            <span class="numVotes">
+                                {{count($proposal->aggs) > 0 ? $proposal->aggs[0]->total_votes : ' No'}}
+                            </span> votes
+                            <span class="icon u-mleft-20">
+                               <a href="#">
+                                  <i class="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                </a>
+                            </span>
+                            <span class="icon">
+                                <a href="#">
+                                   <i class="fa fa-arrow-alt-circle-down">&nbsp;</i>
+                                </a>
+                            </span>
+                            <div class="'icon theworks">
+                                <a class="button" href="#">
+                                <span class="icon is-small">
+                                   <i class="fas fa-print"> </i>
+                                </span>
+                                </a>&nbsp;
+                                <a class="button" href="#">
+                                <span class="icon is-small">
+                                    <i class="fab fa-twitter"> </i>
+                                </span>
+                                </a>&nbsp;
+                                <a class="button" href="#">
+                                <span class="icon is-small">
+                                    <i class="fab fa-facebook-f"> </i>
+                                </span>
+                                </a>
                             </div>
                         </div>
                     </article>
