@@ -171,6 +171,21 @@ export default class Proposals extends Component {
         );
     }
 
+    handleThumb(item, ctx) {
+        fetch('/api/vote/', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            contentType: "application/json; charset=utf-8",
+            body: JSON.stringify({
+                "proposal_id": item.id,
+                "direction": ctx,
+                "user": window.Laravel
+            })
+        }).then(results => results.json())
+            .then(results => this.handleResponse(results))
+            .catch(err => console.log(err));
+    }
+
     handleTwitter(item) {
         let text = 'Six Acts to reboot democracy\n\nNew act proposed\n';
         text += item.title;
@@ -190,7 +205,7 @@ export default class Proposals extends Component {
 
     handleVote(item, ctx) {
         // this.setState({item:item})
-        console.log('handleVote', ctx, item.id, window.Laravel);
+        // console.log('handleVote', ctx, item.id, window.Laravel);
         fetch('/api/vote/', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -213,10 +228,14 @@ export default class Proposals extends Component {
     componentDidMount() {
         // document.addEventListener('click', this.handleClickOutside, true);
         this.getProposals();
-        this.getCategories();
+         this.getCategories();
         if (window.keepalive) {
             this.setupSocket();
         }
+/*
+        let el = document.getElementById('proposals');
+        el.style.opacity = '1.00';
+*/
     }
 
     componentWillUnmount() {
@@ -260,12 +279,13 @@ export default class Proposals extends Component {
         let catsQuery = cats.join(':');
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
-        fetch(proto + hostName + '/api/proposals?cats='+catsQuery, {
+        let uid = '&user_id='+window.Laravel.user;
+        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid, {
                 crossDomain: true,
             }
         )
             .then(results => results.json())
-            .then(results => this.setState({'items': results}))
+            .then(results => this.setState( {'items': results}))
     }
 
     getCategories() {
@@ -371,15 +391,43 @@ export default class Proposals extends Component {
                                         <span className="numVotes">
                                         {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
                                             <span className="icon u-mleft-20">
-                                            <a onClick={() => this.handleVote(item, 'up')}>
-                                                <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
-                                            </a>
+                                            {!item.hasOwnProperty('myvote') || item.myvote.vote == 0 ?
+                                                (
+                                                <a onClick={() => this.handleVote(item, 'vote')}>
+                                                    <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                                </a>
+                                                ) : (
+                                                <a onClick={() => this.handleVote(item, 'vote')}>
+                                                    <i className="fa fa-minus-circle">&nbsp;</i>
+                                                </a>
+
+                                                )
+                                            }
                                         </span>
+{/*
                                         <span className="icon">
-                                            <a onClick={() => this.handleVote(item, 'down')}>
-                                                <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
+                                            <a onClick={() => this.handleVote(item, 'vote')}>
+                                                <i className="fa fa-minus-circle">&nbsp;</i>
                                             </a>
                                         </span>
+*/}
+                                        <span className="numDislikes">
+                                        <span className="icon u-mleft-10 u-mright-5">
+                                            {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?
+                                                (
+                                                <a onClick={() => this.handleThumb(item, 'dislike')}>
+                                                    <i className="fas fa-thumbs-up thumb-olive">&nbsp;</i>
+                                                </a>
+                                                ) : (
+                                                    <a onClick={() => this.handleThumb(item, 'dislike')}>
+                                                        <i className="fas fa-thumbs-down thumb-purple">&nbsp;</i>
+                                                    </a>
+                                                )
+
+                                            }
+                                        </span>
+                                        {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' No'}</span> dislikes
+
                                         <div className={'icon theworks'}>
                                             <a className="button"
                                                onClick={() => this.handlePrintArticle(item)}
@@ -409,7 +457,6 @@ export default class Proposals extends Component {
                                             </a>
                                         </div>
                                     </div>
-
                                 </div>
                             )
                         }
@@ -467,4 +514,3 @@ function About() {
         </div>
     );
 }
-
