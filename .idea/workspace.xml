@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/emacs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/feed.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sixacts.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sixacts.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ProposalView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProposalView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/forum.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,12 +36,12 @@
     <select />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sse" />
+        <entry key="$PROJECT_DIR$" value="voting" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="xJPYLnjt" />
@@ -56,6 +49,8 @@
   <component name="PHPCSFixerBlackList">
     <option name="filePaths">
       <list>
+        <option value="$PROJECT_DIR$/_ide_helper.php" />
+        <option value="$PROJECT_DIR$/_ide_helper.php" />
         <option value="$PROJECT_DIR$/_ide_helper.php" />
       </list>
     </option>
@@ -201,6 +196,7 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-feed" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
+      <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OV7kGoeBx5IweYIBtWZbuOBDW5" />
@@ -228,19 +224,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/vendor/spatie/laravel-feed/resources/views" />
-      <recent name="$PROJECT_DIR$/resources/views/static/ssr/partials" />
-      <recent name="$PROJECT_DIR$/resources/views/static" />
-      <recent name="$PROJECT_DIR$/resources/js/components" />
-      <recent name="$PROJECT_DIR$/resources/views/layouts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/static/ssr" />
       <recent name="$PROJECT_DIR$/app/Facades" />
       <recent name="$PROJECT_DIR$/tmp" />
       <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$/docs" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vendor/spatie/laravel-feed/resources/views" />
+      <recent name="$PROJECT_DIR$/resources/views/static/ssr/partials" />
+      <recent name="$PROJECT_DIR$/resources/views/static" />
+      <recent name="$PROJECT_DIR$/resources/js/components" />
+      <recent name="$PROJECT_DIR$/resources/views/layouts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -281,9 +277,9 @@
       <list>
         <item itemvalue="PHPUnit.AuthenticationTest.testItWillRegisterAUser" />
         <item itemvalue="PHPUnit.AuthenticationTest" />
-        <item itemvalue="JavaScript Debug.ProposalController.php" />
-        <item itemvalue="JavaScript Debug.response_to_join_mailinglist.blade.html" />
         <item itemvalue="Node.js.webpack.mix.js" />
+        <item itemvalue="JavaScript Debug.response_to_join_mailinglist.blade.html" />
+        <item itemvalue="JavaScript Debug.ProposalController.php" />
       </list>
     </recent_temporary>
   </component>
@@ -329,20 +325,7 @@
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
       <workItem from="1564521261580" duration="53469000" />
-    </task>
-    <task id="LOCAL-00074" summary="Removed uneeded dump() statement.">
-      <created>1563991054100</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1563991054100</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Added ''Categories Explained' and '9 Rules for the 6 Acts'&#10;Closes #29.&#10;&#10;Part of the wider re-arrangement and discussion, see #28.">
-      <created>1563999152056</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1563999152056</updated>
+      <workItem from="1564844130112" duration="160000" />
     </task>
     <task id="LOCAL-00076" summary="Re-arranged content as per issue #28 - added links to two new pages, 'Categories Explained' and '9 Rules for the 6 Acts', ready to be used for the animated splash.&#10;&#10;Closed #28.&#10;&#10;Customised colours. Whilst not final, now that the mechanism is there this closes #7.">
       <created>1563999486236</created>
@@ -673,7 +656,21 @@
       <option name="project" value="LOCAL" />
       <updated>1564702464626</updated>
     </task>
-    <option name="localTasksCounter" value="123" />
+    <task id="LOCAL-00001" summary="Database migration. Caution, removes fields up and down from `propoals`.&#10;Closed #83.">
+      <created>1564832641620</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564832641620</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Commit for testing #67. Caution, it's full of dump() and debug statements.">
+      <created>1564832798199</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1564832798199</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
