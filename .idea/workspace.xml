@@ -40,7 +40,6 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map />
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="xJPYLnjt" />
@@ -194,6 +193,7 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-feed" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
       <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
+      <path value="$PROJECT_DIR$/vendor/bentleyworks/metafield" />
     </include_path>
   </component>
   <component name="ProjectId" id="1OV7kGoeBx5IweYIBtWZbuOBDW5" />
@@ -227,13 +227,6 @@
       <recent name="$PROJECT_DIR$/tmp" />
       <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$/docs" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/vendor/spatie/laravel-feed/resources/views" />
-      <recent name="$PROJECT_DIR$/resources/views/static/ssr/partials" />
-      <recent name="$PROJECT_DIR$/resources/views/static" />
-      <recent name="$PROJECT_DIR$/resources/js/components" />
-      <recent name="$PROJECT_DIR$/resources/views/layouts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -275,8 +268,6 @@
         <item itemvalue="PHPUnit.AuthenticationTest.testItWillRegisterAUser" />
         <item itemvalue="PHPUnit.AuthenticationTest" />
         <item itemvalue="Node.js.webpack.mix.js" />
-        <item itemvalue="JavaScript Debug.response_to_join_mailinglist.blade.html" />
-        <item itemvalue="JavaScript Debug.ProposalController.php" />
       </list>
     </recent_temporary>
   </component>
@@ -637,21 +628,6 @@
       <option name="project" value="LOCAL" />
       <updated>1564702464626</updated>
     </task>
-    <task id="LOCAL-00001" summary="Database migration. Caution, removes fields up and down from `propoals`.&#10;Closed #83.">
-      <created>1564832641620</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1564832641620</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Commit for testing #67. Caution, it's full of dump() and debug statements.">
-      <created>1564832798199</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1564832798199</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -735,10 +711,6 @@
     <MESSAGE value="Pre-render the content before React takes over." />
     <MESSAGE value="Commit before attempting to add uglify" />
     <MESSAGE value="Load javscript carefully to get home page always populated.&#10;&#10;Closed #73" />
-    <MESSAGE value="Database migration. Caution, removes fields up and down from `propoals`" />
-    <MESSAGE value="Database migration. Caution, removes fields up and down from `propoals`.&#10;Closed #83." />
-    <MESSAGE value="Commit for testing #67. Caution, it's full of dump() and debug statements." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit for testing #67. Caution, it's full of dump() and debug statements." />
   </component>
   <component name="masterDetails">
     <states>
