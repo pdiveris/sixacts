@@ -393,15 +393,26 @@ export default class Proposals extends Component {
                                         <span className="numVotes">
                                         {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
                                             <span className="icon u-mleft-20">
-                                            <a onClick={() => this.handleVote(item, 'up')}>
-                                                <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
-                                            </a>
+                                            {!item.hasOwnProperty('myvote') || item.myvote.vote == 0 ?
+                                                (
+                                                <a onClick={() => this.handleVote(item, 'vote')}>
+                                                    <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                                </a>
+                                                ) : (
+                                                <a onClick={() => this.handleVote(item, 'vote')}>
+                                                    <i className="fa fa-minus-circle">&nbsp;</i>
+                                                </a>
+
+                                                )
+                                            }
                                         </span>
+{/*
                                         <span className="icon">
-                                            <a onClick={() => this.handleVote(item, 'down')}>
-                                                <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
+                                            <a onClick={() => this.handleVote(item, 'vote')}>
+                                                <i className="fa fa-minus-circle">&nbsp;</i>
                                             </a>
                                         </span>
+*/}
                                         <span className="numDislikes">
                                         <span className="icon u-mleft-10 u-mright-5">
                                             {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?

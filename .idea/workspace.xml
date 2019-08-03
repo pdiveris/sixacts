@@ -4,10 +4,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
-
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="New vortinf as per . This commit removes fields from DB">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,9 +37,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-
-      </map>
+      <map />
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -49,6 +47,7 @@
   <component name="PHPCSFixerBlackList">
     <option name="filePaths">
       <list>
+        <option value="$PROJECT_DIR$/_ide_helper.php" />
         <option value="$PROJECT_DIR$/_ide_helper.php" />
       </list>
     </option>
@@ -221,19 +220,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/vendor/spatie/laravel-feed/resources/views" />
-      <recent name="$PROJECT_DIR$/resources/views/static/ssr/partials" />
-      <recent name="$PROJECT_DIR$/resources/views/static" />
-      <recent name="$PROJECT_DIR$/resources/js/components" />
-      <recent name="$PROJECT_DIR$/resources/views/layouts" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views/static/ssr" />
       <recent name="$PROJECT_DIR$/app/Facades" />
       <recent name="$PROJECT_DIR$/tmp" />
       <recent name="$PROJECT_DIR$/database/migrations" />
       <recent name="$PROJECT_DIR$/docs" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vendor/spatie/laravel-feed/resources/views" />
+      <recent name="$PROJECT_DIR$/resources/views/static/ssr/partials" />
+      <recent name="$PROJECT_DIR$/resources/views/static" />
+      <recent name="$PROJECT_DIR$/resources/js/components" />
+      <recent name="$PROJECT_DIR$/resources/views/layouts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -321,7 +320,6 @@
       <workItem from="1564420981886" duration="26828000" />
       <workItem from="1564506618821" duration="352000" />
       <workItem from="1564507543670" duration="7494000" />
-
     </task>
     <task id="LOCAL-00078" summary="With this commit the client connection to the server stays open (keeps alive) on;y of the .env file explicitly states `KEEP_ALIVE=true`.&#10;&#10;This therefore closes #22.">
       <created>1564005867500</created>
@@ -638,7 +636,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564702464626</updated>
     </task>
-
+    <task id="LOCAL-00001" summary="Database migration. Caution, removes fields up and down from `propoals`.&#10;Closed #83.">
+      <created>1564832641620</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564832641620</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -701,7 +706,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-
     <MESSAGE value="Made some modifications to work around the weird prefixes Laravel Echo adds to broadcast messages when delivered/instantiated by Redis. These changes mean that the beta and the live site will be handling messages from and sending to the same queue and channel. It appears that the only possibility of making the channel specific to the site is on application level - that is, adding something to&#10;&#10;```&#10;    public function broadcastOn()&#10;    {&#10;        return new Channel('messages');&#10;    }&#10;```&#10;&#10;e.g. a &quot;-site&quot; suffix. For the time being none of this is very important as the messages are mostly 'refresh' ones which have no impact to the system whatsoever." />
     <MESSAGE value="Added collapse/expand functionality to the Proposals listing and so I closed #66." />
     <MESSAGE value="Social buttons added and wired. The content probably can do with testing various parameters (by content I mean the stuff we pass onto twitter and facebook respectively) bit I am closing the issue now because it works and because those customisations are at least hard, if not impossible. I will open another ticket relating to a glossy printable version of the expanded Action (its details page, such as https://beta.sixacts.org/proposal/2) and how best to refer to it in FB and twitter, but in terms of social sharing of a proposal this commit closes #68. You can go live and we carry on improving!  I shall be deploying this work now." />
@@ -723,7 +727,9 @@
     <MESSAGE value="Pre-render the content before React takes over." />
     <MESSAGE value="Commit before attempting to add uglify" />
     <MESSAGE value="Load javscript carefully to get home page always populated.&#10;&#10;Closed #73" />
-
+    <MESSAGE value="Database migration. Caution, removes fields up and down from `propoals`" />
+    <MESSAGE value="Database migration. Caution, removes fields up and down from `propoals`.&#10;Closed #83." />
+    <option name="LAST_COMMIT_MESSAGE" value="Database migration. Caution, removes fields up and down from `propoals`.&#10;Closed #83." />
   </component>
   <component name="masterDetails">
     <states>

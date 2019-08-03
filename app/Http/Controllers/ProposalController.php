@@ -31,94 +31,138 @@ class ProposalController extends Controller
     {
         $params = $request->all();
         $response = [];
+        $ret = false;
+    
         if (!array_key_exists('proposal_id', $params) ||
             !array_key_exists('direction', $params) ||
             !array_key_exists('user', $params)
         ) {
-            return response()->json(['type'=>'error', 'message'=>'Bad request (missing data)']);
+            return response()->json(['type' => 'error', 'message' => 'Bad request (missing data)']);
         }
-        if (!$params['direction'] == 'up' || !$params['direction'] == 'down') {
-            return response()->json(['type'=>'error', 'message'=>'Bad request (vote)']);
+        if (!$params['direction'] === 'up' || !$params['direction'] === 'down') {
+            return response()->json(['type' => 'error', 'message' => 'Bad request (vote)']);
         }
-        
+    
         $vote = Vote::where('user_id', '=', $params['user']['user'])
-                        ->where('proposal_id', '=', $params['proposal_id'])
-                        ->first();
-        
+            ->where('proposal_id', '=', $params['proposal_id'])
+            ->first()
+        ;
+    
         $user = User::find($params['user']['user']);
         // if not user etc..
-        if (null===$user) {
-            return response()->json(['type'=>'error', 'message'=>'You need to be logged in to vote']);
+        if (null === $user) {
+            return response()->json(['type' => 'error', 'message' => 'You need to be logged in to vote']);
         }
-        
-        if (null===$vote) {
-            dump('Voting fresh '.$params['direction']);
+
+        if (null === $vote) {
+            dump('Voting fresh ' . $params['direction']);
             $vote = new \App\Vote();
             $vote->user_id = $params['user']['user'];
             $vote->proposal_id = $params['proposal_id'];
-            if ($params['direction'] === 'up') {
-                $vote->vote = 1;
-                $response = ['type' => 'success', 'message' => "Proposal voted " . $params['direction']];
-            } elseif ($params['direction'] === 'dislike') {
+            
+            if ($params['direction'] === 'dislike') {
                 $vote->dislike = 1;
-                $response = ['type' => 'success', 'message' => "Your dislike was registered"];
-            }
-            // $vote->save();
-        } else {
-            switch ($params['direction']) {
-                case 'up':
-                    if ($vote->vote > 0) {
-                        $response =  [
-                            'type'=>'warning',
-                            'message' => 'You have already voted up this proposal'
-                        ];
-                    } else {
-                        $vote->dislike = 0;
-                        $vote->vote = 1;
-                        $vote->save();
-                        $response =  [
-                            'type'=>'success',
-                            'message' => 'Your vote has been castl'
-                        ];
-                    }
-                    break;
-                case 'down':
-                    if ($vote->vote === 1) {
-                        $vote->delete();
-                        return response()->json([
-                            'type'=>'success',
-                            'message' => 'Your vote for this proposal has been removed'
-                        ]);
-                    }
-                    dump('GROTESQUE POINT #1. ATTENTION! ATTENTION! ATTENTION! ');
-// dislike
-                    break;
-                case 'dislike':
-                    if ($vote->dislike > 0) {
-                        $response = [
-                            'type'=>'success',
-                            'message' => 'You removed you dislike'
-                        ];
-                        // if vote == 0, delete, else decrease dislike
-                        dump('The guy is removing negative vote, good on him!');
-                    } else {
-                        if ($vote->vote > 0) {
-                            $response = [
-                                'type'=>'warning',
-                                'message' => 'You have disliked a proposal you have cast a vote for!'
-                            ];
-                            dump('ODD: disliking item he voted for..'.$vote->proposal_id);
-                        } else {
-                            dump('THIS SHOULD NEVER HAPPEN '.$vote->id);
-                        }
-                    }
-                    
-                    break;
+                $response = [
+                    'type' => 'success',
+                    'message' => 'Your dislike has been noted NULL',
+                    'action' => 'persist'
+                ];
+            } else {
+                $response = [
+                    'type' => 'success',
+                    'message' => 'Your vote has been cast NULL',
+                    'action' => 'persist'
+                ];
+                $vote->vote = 1;
             }
         }
         
-        // $ret = $vote->save();
-        $ret = true;
+        if ($vote->vote === 1 && $vote->dislike === 1) {
+            if ($params['direction'] === 'dislike') {
+                dump('V:1 D:1 VOTE dislike');
+                $vote->dislike = 0;
+                $response = [
+                    'type' => 'success',
+                    'message' => 'Your have removed your dislike',
+                    'action' => 'persist'
+                ];
+            } else {
+                dump('V:1 D:1 VOTE remove my vote');
+                $response = [
+                    'type' => 'success',
+                    'message' => 'You\'ve removed your vote',
+                    'action' => 'persist'
+                ];
+                $vote->vote = 0;
+            }
+        } elseif ($vote->vote === 1 && $vote->dislike === 0) {
+            if ($params['direction'] === 'dislike') {
+                $vote->dislike = 1;
+                $response = [
+                    'type' => 'success',
+                    'message' => 'WEIRDO: Your dislike has been noted VOTE1DIS0',
+                    'action' => 'persist'
+                ];
+            } else {
+                dump('V:1 D:1 VOTE remove my vote');
+                $response = [
+                    'type' => 'success',
+                    'message' => 'You\'ve removed your vote',
+                    'action' => 'persist'
+                ];
+                $vote->vote = 0;
+            }
+        } elseif ($vote->vote === 0 && $vote->dislike === 0) {
+            if ($params['direction'] === 'dislike') {
+                $vote->dislike = 1;
+                $response = [
+                    'type' => 'success',
+                    'message' => 'Your dislike has been noted VOTE0DIS0',
+                    'action' => 'persist'
+                ];
+            } else {
+                $vote->vote = 1;
+                $response = [
+                    'type' => 'success',
+                    'message' => 'Your vote has been cast VOTE0DIS0',
+                    'action' => 'persist'
+                ];
+            }
+        } elseif ($vote->vote === 0 && $vote->dislike === 1) {
+            dump('V: D:1');
+            if ($params['direction'] === 'dislike') {
+                dump('V: D:1 DISLIKE');
+                $response = [
+                    'type' => 'success',
+                    'message' => 'Your dislike has been removed VOTE0DIS1 ',
+                    'action' => 'remove'
+                ];
+            } else {
+                dump('V: D:1 VOTE');
+                $vote->vote = 1;
+                $response = [
+                    'type' => 'success',
+                    'message' => 'Your vote has been added VOTE0DIS0',
+                    'action' => 'persist'
+                ];
+            }
+        }
+        if ($response['action'] === 'remove') {
+            dump('DELETING VOTE');
+            dump($response);
+            $ret = $vote->delete();
+        } elseif ($response['action'] === 'persist') {
+            dump('PERSISTING VOTE');
+            dump($response);
+            $ret = $vote->save();
+        } elseif ($response['action'] === 'discard') {
+            dump('DISCARDING VOTE');
+            dump($response);
+            $ret = true;
+        } else {
+            dump('HORROR');
+            dump($response);
+        }
         
         if ($ret) {
             event(new MessagePosted($user, 'refresh'));
