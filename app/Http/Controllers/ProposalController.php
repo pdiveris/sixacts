@@ -97,7 +97,7 @@ class ProposalController extends Controller
                 $vote->dislike = 1;
                 $response = [
                     'type' => 'success',
-                    'message' => 'WEIRDO: Your dislike has been noted VOTE1DIS0',
+                    'message' => 'Your dislike has been noted VOTE1DIS0',
                     'action' => 'persist'
                 ];
             } else {
