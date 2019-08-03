@@ -172,8 +172,6 @@ export default class Proposals extends Component {
     }
 
     handleThumb(item, ctx) {
-        console.log('Vive la France!');
-        console.log(item);
         fetch('/api/vote/', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -207,7 +205,7 @@ export default class Proposals extends Component {
 
     handleVote(item, ctx) {
         // this.setState({item:item})
-        console.log('handleVote', ctx, item.id, window.Laravel);
+        // console.log('handleVote', ctx, item.id, window.Laravel);
         fetch('/api/vote/', {
             method: "POST",
             headers: {"Content-Type": "application/json"},

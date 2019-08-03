@@ -55,7 +55,6 @@ class ProposalController extends Controller
         }
 
         if (null === $vote) {
-            dump('Voting fresh ' . $params['direction']);
             $vote = new \App\Vote();
             $vote->user_id = $params['user']['user'];
             $vote->proposal_id = $params['proposal_id'];
@@ -79,7 +78,6 @@ class ProposalController extends Controller
         
         if ($vote->vote === 1 && $vote->dislike === 1) {
             if ($params['direction'] === 'dislike') {
-                dump('V:1 D:1 VOTE dislike');
                 $vote->dislike = 0;
                 $response = [
                     'type' => 'success',
@@ -87,7 +85,6 @@ class ProposalController extends Controller
                     'action' => 'persist'
                 ];
             } else {
-                dump('V:1 D:1 VOTE remove my vote');
                 $response = [
                     'type' => 'success',
                     'message' => 'You\'ve removed your vote',
@@ -104,7 +101,6 @@ class ProposalController extends Controller
                     'action' => 'persist'
                 ];
             } else {
-                dump('V:1 D:1 VOTE remove my vote');
                 $response = [
                     'type' => 'success',
                     'message' => 'You\'ve removed your vote',
@@ -129,16 +125,13 @@ class ProposalController extends Controller
                 ];
             }
         } elseif ($vote->vote === 0 && $vote->dislike === 1) {
-            dump('V: D:1');
             if ($params['direction'] === 'dislike') {
-                dump('V: D:1 DISLIKE');
                 $response = [
                     'type' => 'success',
                     'message' => 'Your dislike has been removed VOTE0DIS1 ',
                     'action' => 'remove'
                 ];
             } else {
-                dump('V: D:1 VOTE');
                 $vote->vote = 1;
                 $response = [
                     'type' => 'success',
@@ -148,20 +141,12 @@ class ProposalController extends Controller
             }
         }
         if ($response['action'] === 'remove') {
-            dump('DELETING VOTE');
-            dump($response);
             $ret = $vote->delete();
         } elseif ($response['action'] === 'persist') {
-            dump('PERSISTING VOTE');
-            dump($response);
             $ret = $vote->save();
         } elseif ($response['action'] === 'discard') {
-            dump('DISCARDING VOTE');
-            dump($response);
             $ret = true;
-        } else {
-            dump('HORROR');
-            dump($response);
+        } else { // Horror!
         }
         
         if ($ret) {

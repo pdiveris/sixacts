@@ -4,9 +4,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="New vortinf as per . This commit removes fields from DB">
+    <list default="true" id="1a81c4a7-1070-4c2c-8606-e6c4e14fd0dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProposalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_03_113018_alter_votes_remove_legacy_up_down.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_03_113018_alter_votes_remove_legacy_up_down.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/Proposals.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Proposals.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -643,7 +644,14 @@
       <option name="project" value="LOCAL" />
       <updated>1564832641620</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit for testing #67. Caution, it's full of dump() and debug statements.">
+      <created>1564832798199</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1564832798199</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -729,7 +737,8 @@
     <MESSAGE value="Load javscript carefully to get home page always populated.&#10;&#10;Closed #73" />
     <MESSAGE value="Database migration. Caution, removes fields up and down from `propoals`" />
     <MESSAGE value="Database migration. Caution, removes fields up and down from `propoals`.&#10;Closed #83." />
-    <option name="LAST_COMMIT_MESSAGE" value="Database migration. Caution, removes fields up and down from `propoals`.&#10;Closed #83." />
+    <MESSAGE value="Commit for testing #67. Caution, it's full of dump() and debug statements." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit for testing #67. Caution, it's full of dump() and debug statements." />
   </component>
   <component name="masterDetails">
     <states>

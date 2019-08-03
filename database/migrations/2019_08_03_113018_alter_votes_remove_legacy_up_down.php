@@ -13,7 +13,17 @@ class AlterVotesRemoveLegacyUpDown extends Migration
      */
     public function up()
     {
-        //
+        if (Schema::hasColumn('votes', 'up')) {
+            Schema::table('votes', function (Blueprint $table) {
+                $table->dropColumn('up');
+            });
+        }
+        if (Schema::hasColumn('votes', 'down')) {
+            Schema::table('votes', function (Blueprint $table) {
+                $table->dropColumn('down');
+            });
+        }
+
     }
 
     /**
