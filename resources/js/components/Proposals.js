@@ -171,6 +171,23 @@ export default class Proposals extends Component {
         );
     }
 
+    handleThumb(item, ctx) {
+        console.log('Vive la France!');
+        console.log(item);
+        fetch('/api/vote/', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            contentType: "application/json; charset=utf-8",
+            body: JSON.stringify({
+                "proposal_id": item.id,
+                "direction": ctx,
+                "user": window.Laravel
+            })
+        }).then(results => results.json())
+            .then(results => this.handleResponse(results))
+            .catch(err => console.log(err));
+    }
+
     handleTwitter(item) {
         let text = 'Six Acts to reboot democracy\n\nNew act proposed\n';
         text += item.title;
@@ -260,12 +277,13 @@ export default class Proposals extends Component {
         let catsQuery = cats.join(':');
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
-        fetch(proto + hostName + '/api/proposals?cats='+catsQuery, {
+        let uid = '&user_id='+window.Laravel.user;
+        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid, {
                 crossDomain: true,
             }
         )
             .then(results => results.json())
-            .then(results => this.setState({'items': results}))
+            .then(results => this.setState( {'items': results}))
     }
 
     getCategories() {
@@ -380,6 +398,23 @@ export default class Proposals extends Component {
                                                 <i className="fa fa-arrow-alt-circle-down">&nbsp;</i>
                                             </a>
                                         </span>
+                                        <span className="numDislikes">
+                                        <span className="icon u-mleft-10 u-mright-5">
+                                            {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?
+                                                (
+                                                <a onClick={() => this.handleThumb(item, 'dislike')}>
+                                                    <i className="fas fa-thumbs-up thumb-olive">&nbsp;</i>
+                                                </a>
+                                                ) : (
+                                                    <a onClick={() => this.handleThumb(item, 'dislike')}>
+                                                        <i className="fas fa-thumbs-down thumb-purple">&nbsp;</i>
+                                                    </a>
+                                                )
+
+                                            }
+                                        </span>
+                                        {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' No'}</span> dislikes
+
                                         <div className={'icon theworks'}>
                                             <a className="button"
                                                onClick={() => this.handlePrintArticle(item)}

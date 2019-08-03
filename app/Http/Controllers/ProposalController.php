@@ -25,6 +25,7 @@ class ProposalController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @return void
+     * @throws \Exception
      */
     public function vote(Request $request)
     {
@@ -49,64 +50,78 @@ class ProposalController extends Controller
         if (null===$user) {
             return response()->json(['type'=>'error', 'message'=>'You need to be logged in to vote']);
         }
-        if (null !== $vote) {
-            if ($params['direction'] == 'up') {
-                if ($vote->up > 0) {
-                    return response()->json([
-                            'type'=>'warning',
-                            'message' => 'You have already voted up this proposal'
-                        ]);
-                }
-                if ($vote->down === 1) {     // correct
-                    $vote->down = 0;
-                    $vote->up = 0;
-                    $response = ['type'=>'success', 'message'=>'You just removed your negative vote'];
-                } else {                    // correct
-                    $vote->down = 0;
-                    $vote->up = 1;
-                    $response = ['type'=>'success', 'message'=>'Vote up added'];
-                }
-            }
-            if ($params['direction'] === 'down') {
-                if ($vote->down > 0) {
-                    return response()->json([
-                        'message' => 'You have already voted down this proposal',
-                        'type'=>'warning',
-                    ]);
-                }
-                if ($vote->up === 1) {       // correct
-                    $vote->up = 0;
-                    $response = [
-                        'type'=>'success',
-                        'message'=>'You just removed your vote for this proposal'
-                    ];
-                } else {                    // correct
-                    $vote->up = 0;
-                    $vote->down = 1;
-                    $response = [
-                        'type'=>'success',
-                        'message'=>'You have now cast a negative vote for this proposal'
-                    ];
-                }
-            }
-        } else {
+        
+        if (null===$vote) {
+            dump('Voting fresh '.$params['direction']);
             $vote = new \App\Vote();
             $vote->user_id = $params['user']['user'];
             $vote->proposal_id = $params['proposal_id'];
-            if ($params['direction']==='down') {
-                $vote->down = 1;
-                $vote->up = 0;
-            } else {
-                $vote->up = 1;
-                $vote->down = 0;
+            if ($params['direction'] === 'up') {
+                $vote->vote = 1;
+                $response = ['type' => 'success', 'message' => "Proposal voted " . $params['direction']];
+            } elseif ($params['direction'] === 'dislike') {
+                $vote->dislike = 1;
+                $response = ['type' => 'success', 'message' => "Your dislike was registered"];
             }
-            $response = ['type'=>'success', 'message'=>"Proposal voted ".$params['direction']];
+            // $vote->save();
+        } else {
+            switch ($params['direction']) {
+                case 'up':
+                    if ($vote->vote > 0) {
+                        $response =  [
+                            'type'=>'warning',
+                            'message' => 'You have already voted up this proposal'
+                        ];
+                    } else {
+                        $vote->dislike = 0;
+                        $vote->vote = 1;
+                        $vote->save();
+                        $response =  [
+                            'type'=>'success',
+                            'message' => 'Your vote has been castl'
+                        ];
+                    }
+                    break;
+                case 'down':
+                    if ($vote->vote === 1) {
+                        $vote->delete();
+                        return response()->json([
+                            'type'=>'success',
+                            'message' => 'Your vote for this proposal has been removed'
+                        ]);
+                    }
+                    dump('GROTESQUE POINT #1. ATTENTION! ATTENTION! ATTENTION! ');
+// dislike
+                    break;
+                case 'dislike':
+                    if ($vote->dislike > 0) {
+                        $response = [
+                            'type'=>'success',
+                            'message' => 'You removed you dislike'
+                        ];
+                        // if vote == 0, delete, else decrease dislike
+                        dump('The guy is removing negative vote, good on him!');
+                    } else {
+                        if ($vote->vote > 0) {
+                            $response = [
+                                'type'=>'warning',
+                                'message' => 'You have disliked a proposal you have cast a vote for!'
+                            ];
+                            dump('ODD: disliking item he voted for..'.$vote->proposal_id);
+                        } else {
+                            dump('THIS SHOULD NEVER HAPPEN '.$vote->id);
+                        }
+                    }
+                    
+                    break;
+            }
         }
-        $ret = $vote->save();
+        
+        // $ret = $vote->save();
+        $ret = true;
         
         if ($ret) {
             event(new MessagePosted($user, 'refresh'));
-            return response()->json($response);
             return response()->json($response);
         }
         return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
@@ -120,6 +135,7 @@ class ProposalController extends Controller
      */
     public function index(Request $request)
     {
+        $userId = $request->get('user_id');
         $catsQuery = $request->get('cats', '');
         if (null !== $catsQuery && '' !== $catsQuery) {
             $cats = explode(':', $catsQuery);
@@ -127,7 +143,9 @@ class ProposalController extends Controller
         } else {
             $props = ProposalView::all();
         }
-        
+        if ($userId > 0) {
+            $props = StaticController::mergeProposalsWithVotes($props, $userId);
+        }
         foreach ($props as $prop) {
             $prop->display = 'collapsed';
             if ($prop->category) {

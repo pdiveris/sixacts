@@ -24,6 +24,27 @@ class StaticController extends Controller
     }
     
     /**
+     * @param $proposals
+     * @param $votes
+     * @return mixed
+     */
+    public static function mergeProposalsWithVotes($proposals, string $userId)
+    {
+        $votes = \App\Vote::where('user_id', '=', $userId)->get();
+        foreach ($votes as $vote) {
+            foreach ($proposals as $i => $prop) {
+                if ($prop->id === $vote->proposal_id) {
+                    $prop->myvote = [
+                      'vote'=>$vote->vote,
+                      'dislike'=>$vote->dislike
+                    ];
+                }
+            }
+        }
+        return $proposals;
+    }
+    
+    /**
      * Render the home view
      *
      * @return \Illuminate\Contracts\View\View
@@ -32,7 +53,8 @@ class StaticController extends Controller
     {
         $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
-        
+
+        $proposals = $this->mergeProposalsWithVotes($proposals, \Auth::user()->id);
         if (\Cache::get('ssr', false)) {
             return view(
                 'static.ssr.welcome',
