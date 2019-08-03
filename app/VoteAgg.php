@@ -21,6 +21,8 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @property float|null $total_votes
  * @property-read \App\Proposal $proposal
  * @method static \Illuminate\Database\Eloquent\Builder|\App\VoteAgg whereTotalVotes($value)
+ * @property float|null $total_dislikes
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\VoteAgg whereTotalDislikes($value)
  */
 class VoteAgg extends Model
 {

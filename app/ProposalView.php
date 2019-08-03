@@ -33,6 +33,8 @@ use Spatie\Feed\FeedItem;
  * @property-read \App\User $user
  * @property-read \App\Category $category
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\VoteAgg[] $aggs
+ * @property string|null $slug
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProposalView whereSlug($value)
  */
 class ProposalView extends Model implements Feedable
 {

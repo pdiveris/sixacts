@@ -16,6 +16,8 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @property int $id
  * @property int $user_id
  * @property int $proposal_id
+ * @property int|null $vote
+ * @property int|null $dislike
  * @property int $up
  * @property int $down
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -31,6 +33,8 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereDown($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereUp($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereDislike($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereVote($value)
  */
 class Vote extends Model
 {
