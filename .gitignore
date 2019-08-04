@@ -28,5 +28,4 @@ nova-components/Metafield/*
 .php_cs.cache
 laravel-echo-server.lock
 laravel-echo-server.json
-bin
 .idea
