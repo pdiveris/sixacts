@@ -32,6 +32,7 @@
         "bulma": "^0.7.5",
         "bulma-checkradio": "^1.1.1",
         "bulma-extensions": "^6.2.7",
+        "faye": "^1.2.4",
         "fs": "0.0.1-security",
         "laravel-echo": "^1.5.4",
         "pusher-js": "^4.4.0",

@@ -53,8 +53,14 @@ class StaticController extends Controller
     {
         $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
-
-        $proposals = $this->mergeProposalsWithVotes($proposals, \Auth::user()->id);
+    
+        if (\Auth::user()) {
+            $id = \Auth::user()->id;
+        } else {
+            $id = 0;
+        }
+        $id = \Auth::user() ? \Auth::user()->id : 0;
+        $proposals = $this->mergeProposalsWithVotes($proposals, $id);
         if (\Cache::get('ssr', false)) {
             return view(
                 'static.ssr.welcome',
