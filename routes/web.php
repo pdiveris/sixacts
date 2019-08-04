@@ -16,7 +16,8 @@
     use App\Jobs\SendEmailJob;
     use App\Mail\VariableUserEmail as UserEmail;
     use App\User;
-
+    use GuzzleHttp\Client;
+    
     Route::get(
         'anothertest',
         function (\Illuminate\Http\Request $request) {
@@ -29,7 +30,7 @@
     Route::get('plain', 'StaticController@homePlain')->name('plain');
     Route::get('full', 'StaticController@homeFull')->name('full');
     Route::get('react', 'StaticController@react')->name('react');
-    Route::get('echo', 'StaticController@react')->name('echo');
+    Route::get('echo', 'EchoController@index')->name('echo');
     Route::get('/propose', 'SiteController@getProposal')->name('propose');
     Route::post('/propose', 'SiteController@postProposal')->name('propose_post');
     Route::get('proposal/{slug}', 'ProposalController@view')->name('proposal');
@@ -112,6 +113,15 @@
             return '';
         }
     );
+    
+    Route::get('/sse', function () {
+        
+
+        $dispatchJob = new \App\Jobs\SendServerEvent(['Kanga os your friend...']);
+        dispatch($dispatchJob);
+        echo 'Yeah...';
+        return '';
+    });
     
     Route::get(
         ('i'),
