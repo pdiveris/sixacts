@@ -8,6 +8,7 @@
 require('./bootstrap');
 import Proposals from './components/Proposals';
 import Tablets from './components/Tablets';
+import Echo from './components/Echo';
 
 /*
 window.Vue = require('vue');
