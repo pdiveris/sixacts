@@ -16,7 +16,8 @@
     use App\Jobs\SendEmailJob;
     use App\Mail\VariableUserEmail as UserEmail;
     use App\User;
-
+    use GuzzleHttp\Client;
+    
     Route::get(
         'anothertest',
         function (\Illuminate\Http\Request $request) {
@@ -112,6 +113,15 @@
             return '';
         }
     );
+    
+    Route::get('/sse', function () {
+        
+
+        $dispatchJob = new \App\Jobs\SendServerEvent(['Kanga os your friend...']);
+        dispatch($dispatchJob);
+        echo 'Yeah...';
+        return '';
+    });
     
     Route::get(
         ('i'),
