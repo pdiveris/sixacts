@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
 
 export default class Echo extends Component {
     constructor(props) {
@@ -35,34 +34,24 @@ export default class Echo extends Component {
         console.log('URL set to '+ nchan);
 
         function onNewUpdate(message){
-            console.log(message.data);
-        }
-
-        const source = new EventSource(nchan);
-        source.onmessage = onNewUpdate;
+            console.log(message);
+            console.log('Message received');
 
 /*
-        this.echo = new Echo({
-            broadcaster: 'socket.io',
-            client: Socketio,
-            host: 'https://' + window.location.hostname + ':'+window.echoPort+'/'
-        });
+            if (e.hasOwnProperty("politburo")) {
+                this.notify(e.message, e.type, 3000);
+            }
+            console.log(e);
 
-        console.log('Joined channel: "messages"');
-        this.echo.channel('6_acts_database_messages')
-            .listen('.NewMessage', (e) => {
-                console.log('Message received');
-                if (e.hasOwnProperty("politburo")) {
-                    this.notify(e.message, e.type, 3000);
-                }
-                console.log(e);
-
-                if (e.message == 'refresh') {
-                    this.getProposals();
-                    console.log("Unexpected message: " + e.message)
-                }
-            });
+            if (e.message == 'refresh') {
+                this.getProposals();
+                console.log("Unexpected message: " + e.message)
+            }
 */
+
+        }
+        const source = new EventSource(nchan);
+        source.onmessage = onNewUpdate;
     }
 
     render() {
