@@ -10,28 +10,13 @@ import Countdown from 'react-countdown-now';
 import 'react-toastify/dist/ReactToastify.css';
 // minified version is also included
 // import 'react-toastify/dist/ReactToastify.min.css';
+import SplashPortal from './Splash';
+import Categories from './Categories';
 
 const portalRoot = document.getElementById("cats");
 const splashPortalRoot = document.getElementById("splash");
 
-const customStyles = {
-    overlay: {
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(255, 255, 255, 0.75)'
-    },
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-30%',
-        transform             : 'translate(-50%, -50%)'
-    }
-};
+// here was the customStyles
 
 if (document.getElementById('proposals')) {
     // ReactDOM.render(<Proposals/>, document.getElementById('proposals'));
@@ -59,67 +44,7 @@ class Portal extends React.Component {
     }
 }
 
-class SplashPortal extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            showModal: window.showSplash
-        };
-
-        this.handleOpenModal = this.handleOpenModal.bind(this);
-        this.handleCloseModal = this.handleCloseModal.bind(this);
-    }
-
-    handleOpenModal () {
-        this.setState({ showModal: true });
-    }
-
-    handleCloseModal () {
-        this.setState({ showModal: false });
-    }
-
-    render () {
-        return (
-            <div>
-                <Modal
-                    isOpen={this.state.showModal}
-                    contentLabel="Minimal Modal Example"
-                    style={customStyles}
-                    aria={{
-                        labelledby: "heading",
-                        describedby: "full_description"
-                    }}>
-                    <div className="box content">
-                        <h1>Six Acts</h1>
-                        <img src={'/images/6_acts_logo.png'} width={'200'}/>
-                        <h2 className="title is-6">
-                            <i>
-                                The Six Acts proposals and voting site where you'll be able to input into the idea pool
-                                for radical democratic action.
-                            </i>
-                        </h2>
-                        <p>
-                            The poll will open for submissions and voting at 4pm on the 17th August 2019.
-                        </p>
-                        <p>
-                            We look forward to your participation. In the meantime, please familiarise yourself with the
-                            information on this page which explains how the poll will be conducted and help you ensure
-                            that
-                            your proposals are submitted correctly.
-                        </p>
-                        <p>
-                            Get thinking, get your acts together, and we'll see you back here on the 17th August!
-
-                        </p>
-                        <p>
-                            The clock is ticking! <span id={"countdown"}></span>
-                        </p>
-                    </div>
-                </Modal>
-            </div>
-        );
-    }
-}
+// Here was the SplashPortal
 
 export default class Proposals extends Component {
     constructor(props) {
@@ -129,15 +54,9 @@ export default class Proposals extends Component {
             'categories': []
         }
         this.echo = null;
-        this.onClick = this.handleClick.bind(this);
-    }
-
-    handleClick(event) {
-        const {id} = event.target;
-        let pos = id.substring(id.indexOf('_')+1);
-        this.state.categories[pos-1].selected = !this.state.categories[pos-1].selected ;
-        this.forceUpdate();
-        this.getProposals();
+        this.getCategoriesUpdateFromChild = this.getCategoriesUpdateFromChild.bind(this);
+        // this.onClick = this.handleClick.bind(this);
+        // this.getCategoriesUpdateFromChild = this.getCategoriesUpdateFromChild().bind(this);
     }
 
     /**
@@ -227,9 +146,7 @@ export default class Proposals extends Component {
     }
 
     componentDidMount() {
-        // document.addEventListener('click', this.handleClickOutside, true);
         this.getProposals();
-         this.getCategories();
         if (window.keepalive) {
             this.setupSocket();
         }
@@ -240,7 +157,6 @@ export default class Proposals extends Component {
     }
 
     componentWillUnmount() {
-        // document.removeEventListener('click', this.handleClickOutside, true);
         this.echo.disconnect();
     }
     // not in use for categories
@@ -289,24 +205,11 @@ export default class Proposals extends Component {
             .then(results => this.setState( {'items': results}))
     }
 
-    getCategories() {
-        let proto = window.location.protocol + '//';
-        let hostName = window.location.hostname;
-        fetch(proto + hostName + '/api/categories?addSelected=1', {
-                crossDomain: true,
-            }
-        )
-            .then(results => results.json())
-            .then(results => this.setState({'categories': results}))
+    getCategoriesUpdateFromChild(cats) {
+        this.state.categories = cats;
+        this.getProposals();
     }
 
-    faded(status) {
-        if (status) {
-            return 'full';
-        } else {
-            return 'pale';
-        }
-    }
     juggler(display) {
         if (display === 'expanded') {
             return 'collapsed';
@@ -318,151 +221,128 @@ export default class Proposals extends Component {
     render() {
         return (
             <div>
-                <React.Fragment>
-                    <Portal>
-                        <ul className={"categoriesList"}>
-                            {this.state.categories.map((cat, index) => {
-                                    return (
-                                        <li key={`cat_${cat.id}`}>
-                                            <span
-                                                className={`xbutton`}
-                                            >
-                                                <a id={`Katze_${cat.id}`}
-                                                   onClick={this.onClick}
-                                                   className={`button ${cat.class} 
-                                                    ${this.faded(cat.selected)}`
-                                                   }
-                                                >
-                                                {cat.short_title}
-                                                </a>
-                                        </span>
-                                        </li>
-                                    )
-                                }
-                            )}
-
-                        </ul>
-                    </Portal>
-                </React.Fragment>
                 <Router>
-                <ul>
-                    {this.state.items.map((item, index) => {
-                            return (
-                                <div key={index} className="u-mtop-2">
-                                    <span className="subtitle has-text-weight-bold">{item.title}</span>
-                                    <span
-                                        className={
-                                            `tag is-small u-mleft-15 ${item.category.class} ${item.category.sub_class}`
-                                        }
-                                        >
-                                        {item.category.short_title.substr(0, 1)}
-                                    </span>
-                                    <div className={`expander ${this.juggler(item.display)} '}`}
-                                         id={'expander_1_'+index}
-                                        >
-                                        {letsDisco(item.body, 228)}&nbsp;&nbsp;
-                                        <span className="icon">
-                                            <a onClick={() =>
-                                                this.handleExpand(index, 'expanded', 'expander_1_'+index)}
+                    <Portal>
+                        <Categories getCategoriesUpdateFromChild={this.getCategoriesUpdateFromChild}/>
+                    </Portal>
+                    <ul>
+                        {this.state.items.map((item, index) => {
+                                return (
+                                    <div key={index} className="u-mtop-2">
+                                        <span className="subtitle has-text-weight-bold">{item.title}</span>
+                                        <span
+                                            className={
+                                                `tag is-small u-mleft-15 ${item.category.class} ${item.category.sub_class}`
+                                            }
                                             >
-                                                <i className="fa fa-plus"> </i>
-                                            </a>
+                                            {item.category.short_title.substr(0, 1)}
                                         </span>
-                                    </div>
-                                    <div className={`expandable ${item.display}`} id={'expander_2_'+index}>
-                                        {item.body}&nbsp;
-                                        <span className="icon">
-                                            <a onClick={() =>
-                                                this.handleExpand(index, 'collapsed', 'expander_2_'+index)}
+                                        <div className={`expander ${this.juggler(item.display)} '}`}
+                                             id={'expander_1_'+index}
                                             >
-                                                <i className="fa fa-minus"> </i>
-                                            </a>
-                                        </span>
-                                    </div>
-                                    <div className="author controls u-mtop-10 u-mright-10 u-mbottom-10">
-                                        <i>Posted by</i>:&nbsp;
-                                        <b>
-                                            {item.user.display_name != ''
-                                                ? item.user.display_name
-                                                : item.user.name
-                                            }</b>
-                                        &nbsp;
-                                    </div>
-                                    <div className="aggs controls u-mbottom-20">
-                                        <span className="numVotes">
-                                        {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
-                                            <span className="icon u-mleft-20">
-                                            {!item.hasOwnProperty('myvote') || item.myvote.vote == 0 ?
-                                                (
-                                                <a onClick={() => this.handleVote(item, 'vote')}>
-                                                    <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                            {letsDisco(item.body, 228)}&nbsp;&nbsp;
+                                            <span className="icon">
+                                                <a onClick={() =>
+                                                    this.handleExpand(index, 'expanded', 'expander_1_'+index)}
+                                                >
+                                                    <i className="fa fa-plus"> </i>
                                                 </a>
-                                                ) : (
+                                            </span>
+                                        </div>
+                                        <div className={`expandable ${item.display}`} id={'expander_2_'+index}>
+                                            {item.body}&nbsp;
+                                            <span className="icon">
+                                                <a onClick={() =>
+                                                    this.handleExpand(index, 'collapsed', 'expander_2_'+index)}
+                                                >
+                                                    <i className="fa fa-minus"> </i>
+                                                </a>
+                                            </span>
+                                        </div>
+                                        <div className="author controls u-mtop-10 u-mright-10 u-mbottom-10">
+                                            <i>Posted by</i>:&nbsp;
+                                            <b>
+                                                {item.user.display_name != ''
+                                                    ? item.user.display_name
+                                                    : item.user.name
+                                                }</b>
+                                            &nbsp;
+                                        </div>
+                                        <div className="aggs controls u-mbottom-20">
+                                            <span className="numVotes">
+                                            {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
+                                                <span className="icon u-mleft-20">
+                                                {!item.hasOwnProperty('myvote') || item.myvote.vote == 0 ?
+                                                    (
+                                                    <a onClick={() => this.handleVote(item, 'vote')}>
+                                                        <i className="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                                    </a>
+                                                    ) : (
+                                                    <a onClick={() => this.handleVote(item, 'vote')}>
+                                                        <i className="fa fa-minus-circle">&nbsp;</i>
+                                                    </a>
+
+                                                    )
+                                                }
+                                            </span>
+    {/*
+                                            <span className="icon">
                                                 <a onClick={() => this.handleVote(item, 'vote')}>
                                                     <i className="fa fa-minus-circle">&nbsp;</i>
                                                 </a>
-
-                                                )
-                                            }
-                                        </span>
-{/*
-                                        <span className="icon">
-                                            <a onClick={() => this.handleVote(item, 'vote')}>
-                                                <i className="fa fa-minus-circle">&nbsp;</i>
-                                            </a>
-                                        </span>
-*/}
-                                        <span className="numDislikes">
-                                        <span className="icon u-mleft-10 u-mright-5">
-                                            {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?
-                                                (
-                                                <a onClick={() => this.handleThumb(item, 'dislike')}>
-                                                    <i className="fas fa-thumbs-up thumb-olive">&nbsp;</i>
-                                                </a>
-                                                ) : (
+                                            </span>
+    */}
+                                            <span className="numDislikes">
+                                            <span className="icon u-mleft-10 u-mright-5">
+                                                {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?
+                                                    (
                                                     <a onClick={() => this.handleThumb(item, 'dislike')}>
-                                                        <i className="fas fa-thumbs-down thumb-purple">&nbsp;</i>
+                                                        <i className="fas fa-thumbs-up thumb-olive">&nbsp;</i>
                                                     </a>
-                                                )
+                                                    ) : (
+                                                        <a onClick={() => this.handleThumb(item, 'dislike')}>
+                                                            <i className="fas fa-thumbs-down thumb-purple">&nbsp;</i>
+                                                        </a>
+                                                    )
 
-                                            }
-                                        </span>
-                                        {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' No'}</span> dislikes
+                                                }
+                                            </span>
+                                            {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' No'}</span> dislikes
 
-                                        <div className={'icon theworks'}>
-                                            <a className="button"
-                                               onClick={() => this.handlePrintArticle(item)}
-                                               rel={'nofollow'}
-                                               target={'_blank'}
-                                            >
-                                              <span className="icon is-small">
-                                                <i className="fas fa-print"> </i>
-                                              </span>
-                                            </a>&nbsp;
-                                            <a className="button"
-                                               data-size="large"
-                                               onClick={() => this.handleTwitter(item)}
-                                            >
-                                              <span className="icon is-small">
-                                                <i className="fab fa-twitter"> </i>
-                                              </span>
-                                            </a>&nbsp;
-                                            <a className="button"
-                                               onClick={() => this.handleFacebook(item)}
-                                               rel={'nofollow'}
-                                               target={'_blank'}
-                                            >
-                                              <span className="icon is-small">
-                                                <i className="fab fa-facebook-f"> </i>
-                                              </span>
-                                            </a>
+                                            <div className={'icon theworks'}>
+                                                <a className="button"
+                                                   onClick={() => this.handlePrintArticle(item)}
+                                                   rel={'nofollow'}
+                                                   target={'_blank'}
+                                                >
+                                                  <span className="icon is-small">
+                                                    <i className="fas fa-print"> </i>
+                                                  </span>
+                                                </a>&nbsp;
+                                                <a className="button"
+                                                   data-size="large"
+                                                   onClick={() => this.handleTwitter(item)}
+                                                >
+                                                  <span className="icon is-small">
+                                                    <i className="fab fa-twitter"> </i>
+                                                  </span>
+                                                </a>&nbsp;
+                                                <a className="button"
+                                                   onClick={() => this.handleFacebook(item)}
+                                                   rel={'nofollow'}
+                                                   target={'_blank'}
+                                                >
+                                                  <span className="icon is-small">
+                                                    <i className="fab fa-facebook-f"> </i>
+                                                  </span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        }
-                    )}
-                </ul>
+                                )
+                            }
+                        )}
+                    </ul>
                 </Router>
                 <ToastContainer/>
             </div>
@@ -484,7 +364,7 @@ if (document.getElementById('countdown')) {
     const renderer = ({days, hours, minutes, seconds, completed}) => {
         if (completed) {
             // Render a completed state
-            return <Completionist/>;
+            return <Completionist />;
         } else {
             // Render a countdown
             return <span><b>{days}</b> days, {hours}:{minutes}:{seconds}</span>;
@@ -508,10 +388,3 @@ function letsDisco(theText, maxLength) {
     )
 };
 
-function About() {
-    return (
-        <div>
-            <h2>About</h2>
-        </div>
-    );
-}
