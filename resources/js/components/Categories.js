@@ -23,7 +23,7 @@ export default class Categories extends Component {
     componentWillUnmount() {
     }
 
-    getCategories() {
+    async getCategories() {
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
         fetch(proto + hostName + '/api/categories?addSelected=1', {
