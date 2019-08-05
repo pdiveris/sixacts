@@ -6,7 +6,6 @@ export default class Categories extends Component {
         super(props);
         this.state = { 'categories': [] };
         this.onClick = this.handleClick.bind(this);
-
     }
 
     handleClick(event) {
@@ -79,10 +78,4 @@ export default class Categories extends Component {
         );
     }
 }
-/*
-
-if (document.getElementById('cats')) {
-    ReactDOM.render(<Categories/>, document.getElementById('cats'));
-}
-*/
 
