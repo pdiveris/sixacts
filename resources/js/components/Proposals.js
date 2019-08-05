@@ -94,8 +94,9 @@ class SplashPortal extends React.Component {
                         <img src={'/images/6_acts_logo.png'} width={'200'}/>
                         <h2 className="title is-6">
                             <i>
-                                The Six Acts project is an online platform to crowd-source radical ideas for
-                                improving and redesigning the way we practice democracy in the 21st century. </i>
+                                The Six Acts proposals and voting site where you'll be able to input into the idea pool
+                                for radical democratic action.
+                            </i>
                         </h2>
                         <p>
                             The poll will open for submissions and voting at 4pm on the 17th August 2019.
@@ -326,7 +327,7 @@ export default class Proposals extends Component {
                                             <span
                                                 className={`xbutton`}
                                             >
-                                                <a id={`Katze_${cat.id}`} href={"#"}
+                                                <a id={`Katze_${cat.id}`}
                                                    onClick={this.onClick}
                                                    className={`button ${cat.class} 
                                                     ${this.faded(cat.selected)}`
