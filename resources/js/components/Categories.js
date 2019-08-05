@@ -1,53 +1,76 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
-// import Echo from 'laravel-echo';
-// import Socketio from 'socket.io-client';
 
 export default class Categories extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            'country': 'Kongo'
-        }
+        this.state = { 'categories': [] };
+        this.onClick = this.handleClick.bind(this);
 
+    }
+
+    handleClick(event) {
+        const {id} = event.target;
+        let pos = id.substring(id.indexOf('_')+1);
+        this.state.categories[pos-1].selected = !this.state.categories[pos-1].selected ;
+        this.forceUpdate();
+        this.props.getCategoriesUpdateFromChild(this.state.categories);
     }
 
     componentDidMount() {
-        // this.getProposals();
+        this.getCategories();
     }
 
     componentWillUnmount() {
-        // this.echo.disconnect();
     }
 
     getCategories() {
-        console.log("getCategories()");
-        fetch('https://sixacts.div/api/categories/', {
+        let proto = window.location.protocol + '//';
+        let hostName = window.location.hostname;
+        fetch(proto + hostName + '/api/categories?addSelected=1', {
                 crossDomain: true,
             }
         )
             .then(results => results.json())
-            .then(results => this.setState({'items': results}));
+            .then(results => this.setState({'categories': results}))
+    }
+
+    faded(status) {
+        if (status) {
+            return 'full';
+        } else {
+            return 'pale';
+        }
+    }
+
+    juggler(display) {
+        if (display === 'expanded') {
+            return 'collapsed';
+        } else {
+            return 'expanded';
+        }
     }
 
     render() {
         return (
             <div>
-                <div className="u-mb-20">
-                    <a id="butt_1" onClick={this.onClick}
-                       className="button is-medium is-black">Fetch!
-                    </a>
-                    <a id="butt_2" onClick={this.refresh}
-                       className="u-mleft-20  button is-medium is-info">CLICK
-                    </a>
-                </div>
-                <ul>
-                    {this.state.items.map(function (item, index) {
+                <ul className={"categoriesList"}>
+                    {this.state.categories.map((cat, index) => {
                             return (
-                                <div key={index} className="u-mtop-2">
-                                    <span className="subtitle">{item.name}</span>
-                                </div>
+                                <li key={`cat_${cat.id}`}>
+                                            <span
+                                                className={`xbutton`}
+                                            >
+                                                <a id={`Katze_${cat.id}`}
+                                                   onClick={this.onClick}
+                                                   className={`button ${cat.class} 
+                                                    ${this.faded(cat.selected)}`
+                                                   }
+                                                >
+                                                {cat.short_title}
+                                                </a>
+                                        </span>
+                                </li>
                             )
                         }
                     )}
@@ -56,8 +79,10 @@ export default class Categories extends Component {
         );
     }
 }
+/*
 
 if (document.getElementById('cats')) {
     ReactDOM.render(<Categories/>, document.getElementById('cats'));
 }
+*/
 

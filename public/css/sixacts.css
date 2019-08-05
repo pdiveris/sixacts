@@ -159,6 +159,19 @@ span.actual {
     font-weight: bold;
 }
 
+/*
+
+.ReactModal__Body--open {
+  overflow-y: hidden;
+}
+
+
+ */
+
+.ReactModal__Body--open {
+    overflow-y: hidden;
+}
+
 .ReactModal__Overlay {
     opacity: 0;
     transition: opacity 3000ms ease-in-out;
