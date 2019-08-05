@@ -187,7 +187,7 @@ export default class Proposals extends Component {
             });
     }
 
-    getProposals() {
+    async getProposals() {
         const cats = this.state.categories.filter(function(cat) {
             return cat.selected === true
         }).map(function(cat) {
