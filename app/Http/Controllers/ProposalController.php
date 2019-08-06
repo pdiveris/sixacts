@@ -22,6 +22,9 @@ class ProposalController extends Controller
 {
     /**
      * Vote action
+     * Please consult the Wiki page for an explanation of how voting works
+     *
+     * @link https://github.com/pdiveris/sixacts/wiki/Voting,-the-ruleset
      *
      * @param \Illuminate\Http\Request $request
      * @return void
@@ -30,8 +33,7 @@ class ProposalController extends Controller
     public function vote(Request $request)
     {
         $params = $request->all();
-        $response = [];
-        $ret = false;
+        $response = ['action'=>'unspecified'];
     
         if (!array_key_exists('proposal_id', $params) ||
             !array_key_exists('direction', $params) ||
@@ -39,7 +41,8 @@ class ProposalController extends Controller
         ) {
             return response()->json(['type' => 'error', 'message' => 'Bad request (missing data)']);
         }
-        if (!$params['direction'] === 'up' || !$params['direction'] === 'down') {
+
+        if (!($params['direction'] === 'vote') && !($params['direction'] === 'dislike')) {
             return response()->json(['type' => 'error', 'message' => 'Bad request (vote)']);
         }
     
@@ -48,13 +51,14 @@ class ProposalController extends Controller
             ->first()
         ;
     
-        $user = User::find($params['user']['user']);
+        $user = User::find((int)$params['user']['user']);
+
         // if not user etc..
-        if (null === $user) {
+        if (!$user) {
             return response()->json(['type' => 'error', 'message' => 'You need to be logged in to vote']);
         }
 
-        if (null === $vote) {
+        if (!$vote) {
             $vote = new \App\Vote();
             $vote->user_id = $params['user']['user'];
             $vote->proposal_id = $params['proposal_id'];
@@ -75,56 +79,56 @@ class ProposalController extends Controller
                 $vote->vote = 1;
             }
         }
-        
-        if ($vote->vote === 1 && $vote->dislike === 1) {
+
+        if ((int)$vote->vote === 1 && (int)$vote->dislike === 1) {
             if ($params['direction'] === 'dislike') {
                 $vote->dislike = 0;
                 $response = [
                     'type' => 'success',
-                    'message' => 'Your have removed your dislike',
+                    'message' => 'Your dislike has been removed',
                     'action' => 'persist'
                 ];
             } else {
                 $response = [
                     'type' => 'success',
-                    'message' => 'You\'ve removed your vote',
+                    'message' => 'Your vote was removed',
                     'action' => 'persist'
                 ];
                 $vote->vote = 0;
             }
-        } elseif ($vote->vote === 1 && $vote->dislike === 0) {
+        } elseif ((int)$vote->vote === 1 && (int)$vote->dislike === 0) {
             if ($params['direction'] === 'dislike') {
                 $vote->dislike = 1;
                 $response = [
                     'type' => 'success',
-                    'message' => 'Your dislike has been noted VOTE1DIS0',
+                    'message' => 'Your dislike has been added',
                     'action' => 'persist'
                 ];
             } else {
                 $response = [
                     'type' => 'success',
-                    'message' => 'You\'ve removed your vote',
+                    'message' => 'Your vote was removed',
                     'action' => 'persist'
                 ];
                 $vote->vote = 0;
             }
-        } elseif ($vote->vote === 0 && $vote->dislike === 0) {
+        } elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 0) {
             if ($params['direction'] === 'dislike') {
                 $vote->dislike = 1;
                 $response = [
                     'type' => 'success',
-                    'message' => 'Your dislike has been noted VOTE0DIS0',
+                    'message' => 'Your dislike has been registered',
                     'action' => 'persist'
                 ];
             } else {
                 $vote->vote = 1;
                 $response = [
                     'type' => 'success',
-                    'message' => 'Your vote has been cast VOTE0DIS0',
+                    'message' => 'Your vote has been cast',
                     'action' => 'persist'
                 ];
             }
-        } elseif ($vote->vote === 0 && $vote->dislike === 1) {
+        } elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 1) {
             if ($params['direction'] === 'dislike') {
                 $response = [
                     'type' => 'success',
@@ -135,7 +139,7 @@ class ProposalController extends Controller
                 $vote->vote = 1;
                 $response = [
                     'type' => 'success',
-                    'message' => 'Your vote has been added VOTE0DIS0',
+                    'message' => 'Your vote has been added',
                     'action' => 'persist'
                 ];
             }
@@ -147,6 +151,7 @@ class ProposalController extends Controller
         } elseif ($response['action'] === 'discard') {
             $ret = true;
         } else { // Horror!
+            return response()->json(['type' => 'error', 'message' => 'HORROR!']);
         }
         
         if ($ret) {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -96,7 +96,6 @@
 </section>
 @include('partials.footer')
 <script async type="text/javascript" src="{{asset('/js/app.js')}}"></script>
-
 <script async type="text/javascript" src="{{asset('js/bulma.js')}}"></script>
 <!-- Matomo -->
 <script type="text/javascript">
@@ -125,5 +124,7 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 </script>
+<script async type="text/javascript" src="{{asset('/js/extras.js')}}"></script>
+
 </body>
 </html>

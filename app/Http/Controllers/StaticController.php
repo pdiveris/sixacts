@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Gravatar;
+use \GuzzleHttp\Client;
 
 class StaticController extends Controller
 {
-    /**
+    /*
      * Temporary main proposal content result set
      *
      * @param \Illuminate\Http\Request $request Request
      *
      * @return \Illuminate\Contracts\View\View
      */
+    private $withErrors;
+    
     public function content(Request $request)
     {
         $proposals = \App\Proposal::all();
@@ -24,16 +26,17 @@ class StaticController extends Controller
     }
     
     /**
+     * Get a user's votes for a proposal, if any and add them to the recordset
      * @param $proposals
-     * @param $votes
+     * @param $userId
      * @return mixed
      */
-    public static function mergeProposalsWithVotes($proposals, string $userId)
+    public static function mergeProposalsWithVotes($proposals, $userId)
     {
-        $votes = \App\Vote::where('user_id', '=', $userId)->get();
+        $votes = \App\Vote::where('user_id', '=', (int)$userId)->get();
         foreach ($votes as $vote) {
             foreach ($proposals as $i => $prop) {
-                if ($prop->id === $vote->proposal_id) {
+                if ((int)$prop->id === (int)$vote->proposal_id) {
                     $prop->myvote = [
                       'vote'=>$vote->vote,
                       'dislike'=>$vote->dislike
@@ -60,7 +63,7 @@ class StaticController extends Controller
             $id = 0;
         }
         $id = \Auth::user() ? \Auth::user()->id : 0;
-        $proposals = $this->mergeProposalsWithVotes($proposals, $id);
+        $proposals = self::mergeProposalsWithVotes($proposals, $id);
         if (\Cache::get('ssr', false)) {
             return view(
                 'static.ssr.welcome',
@@ -83,6 +86,8 @@ class StaticController extends Controller
     {
         $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
+        $id = \Auth::user() ? \Auth::user()->id : 0;
+        $proposals = $this->mergeProposalsWithVotes($proposals, $id);
         return view(
             'static.ssr.welcome',
             ['proposals'=>$proposals, 'categories'=>$categories]
@@ -99,6 +104,44 @@ class StaticController extends Controller
     {
         \Cache::set('ssr', true);
         return $this->homeRendered();
+    }
+    
+    /**
+     * Handle non API proposal vote requests
+     */
+    public function plainVote(Request $request) {
+        if (!\Auth::user() || null == \Auth::user()) {
+            return back()->withErrors(['error'=>'You must be logged in to vote']);
+        }
+        $user = \Auth::user();
+        // array(2) { ["pid"]=> string(1) "1" ["action"]=> string(4) "vote" }
+        /*
+            
+            array:3 [
+              "proposal_id" => 1
+              "direction" => "vote"
+              "user" => array:1 [
+                "user" => 1
+              ]
+            ]
+         *
+         */
+        $scheme = $request->getScheme();
+        $host = $request->getHost();
+
+        $client = new Client(["base_uri" => $scheme . '://' . $host, 'verify' => false ]);
+        $options = [
+            'json' => [
+                "proposal_id" => (int)$request->get('pid', 0),
+                "direction" => $request->get('action', 'unspecified'),
+                "user" => ['user'=>$user->id ?? 0]
+            ]
+        ];
+        $response = $client->post('/api/vote/', $options);
+        // {"type":"success","message":"You've removed your vote","action":"persist"}
+        // "type":"success","message":"Your vote has been added VOTE0DIS0","action":"persist"}
+        $status = json_decode($response->getBody()->getContents());
+        return back()->with(['type'=>$status->type, 'message' => $status->message]);
     }
     
     /**

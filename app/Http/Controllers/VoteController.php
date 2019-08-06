@@ -28,39 +28,25 @@ class VoteController extends Controller
     }
     
     /**
-     * Vote up handler
-     *
-     * @return void
-     */
-    public function voteUp()
-    {
-        $this->vote();
-    }
-    
-    /**
-     * Vote down handler
-     *
-     * @return void
-     */
-    public function voteDown()
-    {
-        $this->vote(-1);
-    }
-    
-    /**
      * Get all Votes with their aggregations (if they have any..)
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(): \Illuminate\Http\JsonResponse
     {
         $votes = Vote::all();
         return response()->json($votes);
     }
-
+    
+    /**
+     * API return single vote by ID
+     *
+     * @param int $VoteId
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function show($VoteId = 0)
     {
-        $vote = Vote::find(\intval($VoteId));
+        $vote = Vote::find((int)$VoteId);
         if (null===$vote) {
             return response()->json(['message' => 'Not Found.'], 404);
         }

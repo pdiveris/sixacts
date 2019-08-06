@@ -10,7 +10,7 @@ DevOps
 
 ##### PROVIDERS
 * Petros Diveris
-  * Free. Limitations
+  * Free. Limitations apply.
 * Amazon
   * Eva to ask about pricing
 * Digital Ocean
