@@ -38,14 +38,17 @@ Essentially this is our Server Side Rendered page which itonically is what the R
                                 {{count($proposal->aggs) > 0 ? $proposal->aggs[0]->total_votes : ' No'}}
                             </span> votes
                             <span class="icon u-mleft-20">
-                               <a href="#">
+                                <form method="post">
+                                @if(isset($proposal->myvote) && $proposal->myvote['vote'] == 0)
+                                <a href="#">
                                   <i class="fa fa-arrow-alt-circle-up">&nbsp;</i>
                                 </a>
-                            </span>
-                            <span class="icon">
+                                @else
                                 <a href="#">
-                                   <i class="fa fa-arrow-alt-circle-down">&nbsp;</i>
+                                   <i class="fa fa-minus-circle">&nbsp;</i>
                                 </a>
+                                @endif
+                                </form>
                             </span>
                             <div class="'icon theworks">
                                 <a class="button" href="#">

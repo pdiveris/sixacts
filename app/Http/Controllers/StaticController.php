@@ -7,7 +7,7 @@ use Laravel\Nova\Fields\Gravatar;
 
 class StaticController extends Controller
 {
-    /**
+    /*
      * Temporary main proposal content result set
      *
      * @param \Illuminate\Http\Request $request Request
@@ -28,12 +28,13 @@ class StaticController extends Controller
      * @param $votes
      * @return mixed
      */
-    public static function mergeProposalsWithVotes($proposals, string $userId)
+    public static function mergeProposalsWithVotes($proposals, $userId)
     {
+
         $votes = \App\Vote::where('user_id', '=', $userId)->get();
         foreach ($votes as $vote) {
             foreach ($proposals as $i => $prop) {
-                if ($prop->id === $vote->proposal_id) {
+                if ((int)$prop->id === (int)$vote->proposal_id) {
                     $prop->myvote = [
                       'vote'=>$vote->vote,
                       'dislike'=>$vote->dislike
@@ -83,6 +84,9 @@ class StaticController extends Controller
     {
         $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
+        $id = \Auth::user() ? \Auth::user()->id : 0;
+        $proposals = $this->mergeProposalsWithVotes($proposals, $id);
+        dump($proposals);
         return view(
             'static.ssr.welcome',
             ['proposals'=>$proposals, 'categories'=>$categories]
