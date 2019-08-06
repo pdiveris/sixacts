@@ -57,53 +57,51 @@ Essentially this is our Server Side Rendered page which itonically is what the R
                             &nbsp;
                         </div>
                         <div class="aggs controls u-mbottom-20">
-                            <form method="post" action="{{route('plainvote')}}">
-                                <span class="numVotes">
-                                    {{count($proposal->aggs) > 0 ? $proposal->aggs[0]->total_votes : ' No'}}
-                                </span> votes
-                                <span class="icon u-mleft-20">
-                                    @if(!isset($proposal->myvote) || $proposal->myvote['vote'] == 0)
-                                    <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=vote">
-                                      <i class="fa fa-arrow-alt-circle-up">&nbsp;</i>
-                                    </a>
+                            <span class="numVotes">
+                                {{count($proposal->aggs) > 0 ? $proposal->aggs[0]->total_votes : ' No'}}
+                            </span> votes
+                            <span class="icon u-mleft-20">
+                                @if(!isset($proposal->myvote) || $proposal->myvote['vote'] == 0)
+                                <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=vote">
+                                  <i class="fa fa-arrow-alt-circle-up">&nbsp;</i>
+                                </a>
+                                @else
+                                <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=vote">
+                                   <i class="fa fa-minus-circle">&nbsp;</i>
+                                </a>
+                                @endif
+                            </span>
+                            <span className="numDislikes">
+                                <span className="icon u-mleft-10 u-mright-5">
+                                    @if(isset($proposal->myvote) && $proposal->myvote['dislike'] > 0)
+                                        <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=dislike">
+                                            <i class="fas fa-thumbs-up thumb-olive">&nbsp;</i>
+                                        </a>
                                     @else
-                                    <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=vote">
-                                       <i class="fa fa-minus-circle">&nbsp;</i>
-                                    </a>
+                                        <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=dislike">
+                                            <i class="fas fa-thumbs-down thumb-purple">&nbsp;</i>
+                                        </a>
                                     @endif
                                 </span>
-                                <span className="numDislikes">
-                                    <span className="icon u-mleft-10 u-mright-5">
-                                        @if(isset($proposal->myvote) && $proposal->myvote['dislike'] > 0)
-                                            <a href="#">
-                                                <i class="fas fa-thumbs-up thumb-olive">&nbsp;</i>
-                                            </a>
-                                        @else
-                                            <a href="#">
-                                                <i class="fas fa-thumbs-down thumb-purple">&nbsp;</i>
-                                            </a>
-                                        @endif
-                                    </span>
-                                    {{count($proposal->aggs) > 0 ? $proposal->aggs[0]->total_dislikes : ' No'}}
-                                </span> dislikes
-                                <div class="'icon theworks">
-                                    <a class="button" href="#">
-                                    <span class="icon is-small">
-                                       <i class="fas fa-print"> </i>
-                                    </span>
-                                    </a>&nbsp;
-                                    <a class="button" href="#">
-                                    <span class="icon is-small">
-                                        <i class="fab fa-twitter"> </i>
-                                    </span>
-                                    </a>&nbsp;
-                                    <a class="button" href="#">
-                                    <span class="icon is-small">
-                                        <i class="fab fa-facebook-f"> </i>
-                                    </span>
-                                    </a>
-                                </div>
-                            </form>
+                                {{count($proposal->aggs) > 0 ? $proposal->aggs[0]->total_dislikes : ' No'}}
+                            </span> dislikes
+                            <div class="'icon theworks">
+                                <a class="button" href="#">
+                                <span class="icon is-small">
+                                   <i class="fas fa-print"> </i>
+                                </span>
+                                </a>&nbsp;
+                                <a class="button" href="#">
+                                <span class="icon is-small">
+                                    <i class="fab fa-twitter"> </i>
+                                </span>
+                                </a>&nbsp;
+                                <a class="button" href="#">
+                                <span class="icon is-small">
+                                    <i class="fab fa-facebook-f"> </i>
+                                </span>
+                                </a>
+                            </div>
                         </div>
                     </article>
                 @endforeach
