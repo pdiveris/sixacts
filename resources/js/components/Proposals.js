@@ -293,21 +293,22 @@ export default class Proposals extends Component {
                                             </span>
     */}
                                             <span className="numDislikes">
-                                            <span className="icon u-mleft-10 u-mright-5">
-                                                {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?
-                                                    (
-                                                    <a onClick={() => this.handleThumb(item, 'dislike')}>
-                                                        <i className="fas fa-thumbs-up thumb-olive">&nbsp;</i>
-                                                    </a>
-                                                    ) : (
+                                                <span className="icon u-mleft-10 u-mright-5">
+                                                    {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?
+                                                        (
                                                         <a onClick={() => this.handleThumb(item, 'dislike')}>
-                                                            <i className="fas fa-thumbs-down thumb-purple">&nbsp;</i>
+                                                            <i className="fas fa-thumbs-up thumb-olive">&nbsp;</i>
                                                         </a>
-                                                    )
+                                                        ) : (
+                                                            <a onClick={() => this.handleThumb(item, 'dislike')}>
+                                                                <i className="fas fa-thumbs-down thumb-purple">&nbsp;</i>
+                                                            </a>
+                                                        )
 
-                                                }
-                                            </span>
-                                            {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' No'}</span> dislikes
+                                                    }
+                                                </span>
+                                                {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' No'}
+                                            </span> dislikes
 
                                             <div className={'icon theworks'}>
                                                 <a className="button"
