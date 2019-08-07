@@ -30,7 +30,7 @@
                     e.g. limiting monopolistic control or creating the right to challenge deliberately
                     misleading claims.
                 </p>
-                <h2 class="title is-4">Economic and Financial Influences</h2>
+                <h2 class="title is-4">4. Economic and Financial Influences</h2>
                 <p>
                     The moderating or curtailing of external economic influences which interfere with or
                     unduly influence democratic structures and processes. Increasing the democratisation of
