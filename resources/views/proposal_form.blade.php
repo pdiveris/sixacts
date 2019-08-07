@@ -84,7 +84,7 @@
                                 <div class="field">
                                     <textarea class="textarea is-medium"
                                        id="body"
-                                       placeholder="Action details (up to 200 words)"
+                                       placeholder="Action details (up to 100 words)"
                                        name="body"></textarea>
                                 </div>
                             </div>
