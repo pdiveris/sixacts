@@ -88,8 +88,7 @@ class ProposalController extends Controller
                         'message' => 'Your dislike has been removed',
                         'action' => 'persist'
                     ];
-                }
-                else {
+                } else {
                     $response = [
                         'type' => 'success',
                         'message' => 'Your vote was removed',
@@ -97,8 +96,7 @@ class ProposalController extends Controller
                     ];
                     $vote->vote = 0;
                 }
-            }
-            elseif ((int)$vote->vote === 1 && (int)$vote->dislike === 0) {
+            } elseif ((int)$vote->vote === 1 && (int)$vote->dislike === 0) {
                 if ($params['direction'] === 'dislike') {
                     $vote->dislike = 1;
                     $response = [
@@ -106,8 +104,7 @@ class ProposalController extends Controller
                         'message' => 'Your dislike has been added',
                         'action' => 'persist'
                     ];
-                }
-                else {
+                } else {
                     $response = [
                         'type' => 'success',
                         'message' => 'Your vote was removed',
@@ -115,8 +112,7 @@ class ProposalController extends Controller
                     ];
                     $vote->vote = 0;
                 }
-            }
-            elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 0) {
+            } elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 0) {
                 if ($params['direction'] === 'dislike') {
                     $vote->dislike = 1;
                     $response = [
@@ -124,8 +120,7 @@ class ProposalController extends Controller
                         'message' => 'Your dislike has been added',
                         'action' => 'persist'
                     ];
-                }
-                else {
+                } else {
                     $vote->vote = 1;
                     $response = [
                         'type' => 'success',
@@ -133,16 +128,14 @@ class ProposalController extends Controller
                         'action' => 'persist'
                     ];
                 }
-            }
-            elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 1) {
+            } elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 1) {
                 if ($params['direction'] === 'dislike') {
                     $response = [
                         'type' => 'success',
                         'message' => 'Your dislike has been removed',
                         'action' => 'remove'
                     ];
-                }
-                else {
+                } else {
                     $vote->vote = 1;
                     $response = [
                         'type' => 'success',
@@ -163,7 +156,18 @@ class ProposalController extends Controller
         }
         
         if ($ret) {
-            event(new MessagePosted($user, 'refresh'));
+            if (env('SOCKET_PROVIDER', 'echo') === 'nchan') {
+                event(
+                    new \App\Events\ProposalVotedEvent([
+                        'message' => 'refresh', 'user' => $user->name
+                    ],
+                        'messages',
+                        $user
+                    )
+                );
+            } else {
+                event(new MessagePosted($user, 'refresh'));
+            }
             return response()->json($response);
         }
         return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);

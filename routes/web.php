@@ -28,6 +28,7 @@
     Route::get('/', 'StaticController@home')->name('home');
     Route::get('ssr', 'StaticController@homeRendered')->name('ssr');
     Route::get('plain', 'StaticController@homePlain')->name('plain');
+    Route::get('nchan', 'StaticController@nchan')->name('nchan');
     Route::get('plain/vote', 'StaticController@plainVote')->name('plainvote');
     Route::get('full', 'StaticController@homeFull')->name('full');
     Route::get('react', 'StaticController@react')->name('react');
@@ -119,8 +120,13 @@
 /*        $dispatchJob = new \App\Jobs\SendServerEvent(['msg'=>'Kanga is your friend...'], 'messages');
         dispatch($dispatchJob);*/
         echo 'Yeah...';
-    
-        event(new \App\Events\ProposalVotedEvent(['msg'=>'Pako was here earlier..'], 'messages'));
+        $user = \App\User::find(1);
+        event(new \App\Events\ProposalVotedEvent(
+            [
+                'message'=>'refresh', 'user'=>'Petros Diveris'
+            ], 'messages',
+            $user)
+        );
         return '';
     });
     

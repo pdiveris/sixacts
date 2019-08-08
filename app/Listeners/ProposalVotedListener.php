@@ -26,8 +26,7 @@ class ProposalVotedListener
      */
     public function handle(ProposalVotedEvent $event)
     {
-        //
-        $dispatchJob = new \App\Jobs\SendServerEvent($event->data, $event->channel);
+        $dispatchJob = new \App\Jobs\SendServerEvent($event->data, $event->channel, $event->user);
         dispatch($dispatchJob);
         
     }

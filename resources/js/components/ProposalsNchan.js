@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import NchanSubscriber from "nchan";
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
 import {ToastContainer, toast} from 'react-toastify';
@@ -12,16 +12,15 @@ import 'react-toastify/dist/ReactToastify.css';
 // import 'react-toastify/dist/ReactToastify.min.css';
 import SplashPortal from './Splash';
 import Categories from './Categories';
-import NchanSubscriber from "nchan";
 
 const portalRoot = document.getElementById("cats");
 const splashPortalRoot = document.getElementById("splash");
 
 // here was the customStyles
 
-if (document.getElementById('proposals')) {
+if (document.getElementById('proposals-nchan')) {
     // ReactDOM.render(<Proposals/>, document.getElementById('proposals'));
-    Modal.setAppElement('#proposals');
+    Modal.setAppElement('#proposals-nchan');
 }
 
 class Portal extends React.Component {
@@ -47,7 +46,7 @@ class Portal extends React.Component {
 
 // Here was the SplashPortal
 
-export default class Proposals extends Component {
+export default class ProposalsNchan extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -165,30 +164,7 @@ export default class Proposals extends Component {
         console.log(event);
     }
 
-    setupEcho() {
-        this.echo = new Echo({
-            broadcaster: 'socket.io',
-            client: Socketio,
-            host: 'https://' + window.location.hostname + ':6001/'
-        });
-
-        console.log('Joined channel: "messages"');
-        this.echo.channel('6_acts_database_messages')
-            .listen('.NewMessage', (e) => {
-                console.log('Message received');
-                if (e.hasOwnProperty("politburo")) {
-                    this.notify(e.message, e.type, 3000);
-                }
-                console.log(e);
-                if (e.message == 'refresh') {
-                    this.getProposals();
-                } else {
-                    console.log("Other message: " + e.message)
-                }
-            });
-    }
-
-    setUpNchan() {
+    setupSocket() {
         let url = window.location.protocol + '//' + window.location.hostname + '/sub?id=messages';
         let lastEventId = window.localStorage.getItem('lastEventId');
         if (lastEventId !== null) {
@@ -234,16 +210,6 @@ export default class Proposals extends Component {
         sub.start();
     }
 
-    setupSocket() {
-        if (window.sock === 'nchan') {
-            console.log('Setting up nchan');
-            this.setUpNchan();
-        } else {
-            console.log('Setting up echo');
-            this.setupEcho();
-        }
-    }
-
     async getProposals() {
         const cats = this.state.categories.filter(function(cat) {
             return cat.selected === true
@@ -282,6 +248,7 @@ export default class Proposals extends Component {
                     <Portal>
                         <Categories getCategoriesUpdateFromChild={this.getCategoriesUpdateFromChild}/>
                     </Portal>
+                    <h1 className="title is-4">ProposalsNchan</h1>
                     <ul>
                         {this.state.items.map((item, index) => {
                                 return (
@@ -408,8 +375,8 @@ export default class Proposals extends Component {
     }
 }
 
-if (document.getElementById('proposals')) {
-    ReactDOM.render(<Proposals/>, document.getElementById('proposals'));
+if (document.getElementById('proposals-nchan')) {
+    ReactDOM.render(<ProposalsNchan/>, document.getElementById('proposals-nchan'));
 }
 
 if (document.getElementById('splash')) {
