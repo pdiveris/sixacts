@@ -1,7 +1,7 @@
 @extends('layouts.forum')
 @section('content')
     <div class="columns">
-        <div class="column is-9">
+        <div class="column is-12">
             <div class="box content">
                 <h1 class="title">The Six Reform Categories Explained</h1>
                 <p>
