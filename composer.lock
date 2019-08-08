@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "693cc0b3408a9b69e2686812f2216724",
+    "content-hash": "1d0cead8523440188b1980ecb5b654e3",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -126,8 +126,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova-components/Metafield",
-                "reference": "0febeaff03b265dc1e2b26ea3790c1f6e8024b3a",
-                "shasum": null
+                "reference": "0febeaff03b265dc1e2b26ea3790c1f6e8024b3a"
             },
             "require": {
                 "php": ">=7.1.0"
@@ -949,6 +948,64 @@
             "time": "2015-11-12T18:04:22+00:00"
         },
         {
+            "name": "itsgoingd/clockwork",
+            "version": "v4.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itsgoingd/clockwork.git",
+                "reference": "aa4c909b74fc5eb69367266bfad5a592bcc98b63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/itsgoingd/clockwork/zipball/aa4c909b74fc5eb69367266bfad5a592bcc98b63",
+                "reference": "aa4c909b74fc5eb69367266bfad5a592bcc98b63",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5",
+                "psr/log": "1.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Clockwork\\Support\\Laravel\\ClockworkServiceProvider"
+                    ],
+                    "aliases": {
+                        "Clockwork": "Clockwork\\Support\\Laravel\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Clockwork\\": "Clockwork/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "itsgoingd",
+                    "email": "itsgoingd@luzer.sk",
+                    "homepage": "https://twitter.com/itsgoingd"
+                }
+            ],
+            "description": "php dev tools integrated to your browser",
+            "homepage": "https://underground.works/clockwork",
+            "keywords": [
+                "Devtools",
+                "debugging",
+                "laravel",
+                "logging",
+                "lumen",
+                "profiling",
+                "slim"
+            ],
+            "time": "2019-08-07T12:40:49+00:00"
+        },
+        {
             "name": "jakub-onderka/php-console-color",
             "version": "v0.2",
             "source": {
@@ -1231,8 +1288,7 @@
             "dist": {
                 "type": "path",
                 "url": "./nova",
-                "reference": "44b2d572e7dfff707439ada0b0e9c0c608a88ae9",
-                "shasum": null
+                "reference": "44b2d572e7dfff707439ada0b0e9c0c608a88ae9"
             },
             "require": {
                 "cakephp/chronos": "^1.0",
