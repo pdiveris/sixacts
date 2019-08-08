@@ -116,11 +116,11 @@
     );
     
     Route::get('/sse', function () {
-        
-
-        $dispatchJob = new \App\Jobs\SendServerEvent(['Kanga os your friend...']);
-        dispatch($dispatchJob);
+/*        $dispatchJob = new \App\Jobs\SendServerEvent(['msg'=>'Kanga is your friend...'], 'messages');
+        dispatch($dispatchJob);*/
         echo 'Yeah...';
+    
+        event(new \App\Events\ProposalVotedEvent(['msg'=>'Pako was here earlier..'], 'messages'));
         return '';
     });
     

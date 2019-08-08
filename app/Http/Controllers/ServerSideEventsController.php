@@ -35,13 +35,11 @@ class ServerSideEventsController extends Controller
      * Fire message over the pipes
      *
      */
-    public static function fire(string $channel = 'asty')
+    public static function fire($payload, string $channel = 'asty')
     {
-        $client = new \GuzzleHttp\Client(["base_uri" => 'https://beta.sixacts.org']);
+        $client = new \GuzzleHttp\Client(["base_uri" => 'https://sixacts.div', 'verify' => false ]);
         $options = [
-            'json' => [
-                "fruit" => "apple"
-            ]
+            'json' => $payload
         ];
         $response = $client->post('/pub?id='.$channel, $options);
         return 'Ave Kelly';

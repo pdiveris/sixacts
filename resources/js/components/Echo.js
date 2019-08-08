@@ -29,26 +29,20 @@ export default class Echo extends Component {
     setupSocket() {
         console.log('Setting up SSE event listener');
 
-        // let nchan = window.location.hostname + '/sub?id=asty';
-        let nchan = 'https://beta.sixacts.org/sub?id=asty';
+        // let nchan = window.location.scheme + '://' + window.location.hostname + '/sub?id=messages';
+        // let nchan = 'https://sixacts.div/sub?id=messages';
+        // &last_event_id=1565224710:0
+        let nchan = window.location.protocol + '//' + window.location.hostname + '/sub?id=messages';
+        let lastEventId = window.localStorage.getItem('lastEventId');
+        if (lastEventId !== null) {
+            nchan = nchan + '&last_event_id='+lastEventId;
+        }
         console.log('URL set to '+ nchan);
 
         function onNewUpdate(message){
             console.log(message);
+            window.localStorage.setItem('lastEventId', message.lastEventId);
             console.log('Message received');
-
-/*
-            if (e.hasOwnProperty("politburo")) {
-                this.notify(e.message, e.type, 3000);
-            }
-            console.log(e);
-
-            if (e.message == 'refresh') {
-                this.getProposals();
-                console.log("Unexpected message: " + e.message)
-            }
-*/
-
         }
         const source = new EventSource(nchan);
         source.onmessage = onNewUpdate;
@@ -57,7 +51,7 @@ export default class Echo extends Component {
     render() {
         return (
             <div>
-                PARACHUNA
+                <h1 className="title is-3">Echo</h1>
             </div>
         );
     }

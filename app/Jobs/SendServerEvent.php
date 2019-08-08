@@ -15,14 +15,18 @@ class SendServerEvent implements ShouldQueue
 
     private $payload;
     
+    private $channel;
+    
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($payload)
+    public function __construct($payload, $channel)
     {
         $this->payload = $payload;
+        
+        $this->channel = $channel;
     }
 
     /**
@@ -33,6 +37,7 @@ class SendServerEvent implements ShouldQueue
      */
     public function handle()
     {
-        \App\Http\Controllers\ServerSideEventsController::fire();
+        \App\Http\Controllers\ServerSideEventsController::fire($this->payload, $this->channel);
+//        \App\Http\Controllers\ServerSideEventsController::fire($this->payload, 'messages');
     }
 }
