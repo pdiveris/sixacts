@@ -270,7 +270,7 @@ export default class Proposals extends Component {
                                         </div>
                                         <div className="aggs controls u-mbottom-20">
                                             <span className="numVotes">
-                                            {item.aggs.length > 0 ? item.aggs[0].total_votes : ' No'}</span> votes
+                                            {item.aggs.length > 0 ? item.aggs[0].total_votes : ' 0'}</span> votes
                                                 <span className="icon u-mleft-20">
                                                 {!item.hasOwnProperty('myvote') || item.myvote.vote == 0 ?
                                                     (
@@ -307,7 +307,7 @@ export default class Proposals extends Component {
 
                                                     }
                                                 </span>
-                                                {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' No'}
+                                                {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' 0'}
                                             </span> dislikes
 
                                             <div className={'icon theworks'}>
