@@ -7,7 +7,8 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use GuzzleHttp\Client;
+use App\User;
+use \App\Http\Controllers\ServerSideEventsController;
 
 class SendServerEvent implements ShouldQueue
 {
@@ -17,16 +18,18 @@ class SendServerEvent implements ShouldQueue
     
     private $channel;
     
+    private $user;
+    
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($payload, $channel)
+    public function __construct($payload, $channel, User $user)
     {
         $this->payload = $payload;
-        
         $this->channel = $channel;
+        $this->user = $user;
     }
 
     /**
@@ -37,7 +40,6 @@ class SendServerEvent implements ShouldQueue
      */
     public function handle()
     {
-        \App\Http\Controllers\ServerSideEventsController::fire($this->payload, $this->channel);
-//        \App\Http\Controllers\ServerSideEventsController::fire($this->payload, 'messages');
+        \App\Http\Controllers\ServerSideEventsController::fire($this->payload, $this->channel, $this->user);
     }
 }

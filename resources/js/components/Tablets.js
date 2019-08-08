@@ -29,11 +29,11 @@ export default class Tablets extends Component {
 
     setupSocket() {
         console.log('Setting up socket.io');
-        console.log('Hostname set to '+ window.location.hostname + ':'+window.echoPort);
+        console.log('Hostname set to '+ window.location.hostname);
         this.echo = new Echo({
             broadcaster: 'socket.io',
             client: Socketio,
-            host: 'https://' + window.location.hostname + ':'+window.echoPort+'/'
+            host: 'https://' + window.location.hostname + ':6001/'
         });
 
         console.log('About to set to listening to "messages" for "NewMessage"');

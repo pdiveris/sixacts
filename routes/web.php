@@ -120,8 +120,13 @@
 /*        $dispatchJob = new \App\Jobs\SendServerEvent(['msg'=>'Kanga is your friend...'], 'messages');
         dispatch($dispatchJob);*/
         echo 'Yeah...';
-    
-        event(new \App\Events\ProposalVotedEvent(['msg'=>'Pako was here earlier..'], 'messages'));
+        $user = \App\User::find(1);
+        event(new \App\Events\ProposalVotedEvent(
+            [
+                'message'=>'refresh', 'user'=>'Petros Diveris'
+            ], 'messages',
+            $user)
+        );
         return '';
     });
     

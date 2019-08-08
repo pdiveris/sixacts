@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // import 'react-toastify/dist/ReactToastify.min.css';
 import SplashPortal from './Splash';
 import Categories from './Categories';
+import NchanSubscriber from "nchan";
 
 const portalRoot = document.getElementById("cats");
 const splashPortalRoot = document.getElementById("splash");
@@ -164,11 +165,11 @@ export default class Proposals extends Component {
         console.log(event);
     }
 
-    setupSocket() {
+    setupEcho() {
         this.echo = new Echo({
             broadcaster: 'socket.io',
             client: Socketio,
-            host: 'https://' + window.location.hostname + ':'+window.echoPort+'/'
+            host: 'https://' + window.location.hostname + ':6001/'
         });
 
         console.log('Joined channel: "messages"');
@@ -185,6 +186,62 @@ export default class Proposals extends Component {
                     console.log("Other message: " + e.message)
                 }
             });
+    }
+
+    setUpNchan() {
+        let url = window.location.protocol + '//' + window.location.hostname + '/sub?id=messages';
+        let lastEventId = window.localStorage.getItem('lastEventId');
+        if (lastEventId !== null) {
+            url = url + '&last_event_id='+lastEventId;
+        }
+
+        let opt = {
+            subscriber: ['websocket', 'eventsource'],
+            reconnect: 'persist',
+            shared: false
+        };
+
+        var sub = new NchanSubscriber(url, opt);
+        console.log('Joined channel: "messages"');
+        console.log(sub);
+        sub.on("message", (message, message_metadata) =>  {
+            // message is a string
+            // message_metadata is a hash that may contain 'id' and 'content-type'
+
+            console.log(message_metadata);
+            window.localStorage.setItem('lastEventId', message_metadata.id);
+            let msg = JSON.parse(message);
+            console.log(msg);
+
+            if (msg.hasOwnProperty("politburo")) {
+                this.notify(msg.message, msg.type, 3000);
+            }
+            if (msg.message === 'refresh') {
+                console.log('Refreshing...');
+                this.getProposals();
+            } else {
+                console.log("Other msg: " + msg.message)
+            }
+
+        });
+
+        sub.on('connect', function(evt) {
+            //fired when first connected.
+            console.log('connected');
+            console.log(evt);
+        });
+
+        sub.start();
+    }
+
+    setupSocket() {
+        if (window.sock === 'nchan') {
+            console.log('Setting up nchan');
+            this.setUpNchan();
+        } else {
+            console.log('Setting up echo');
+            this.setupEcho();
+        }
     }
 
     async getProposals() {
