@@ -50,7 +50,8 @@ class ProposalController extends Controller
             ->where('proposal_id', '=', $params['proposal_id'])
             ->first()
         ;
-    
+        
+        // this needs changing to be set from the session or from token
         $user = User::find((int)$params['user']['user']);
 
         // if not user etc..
@@ -67,73 +68,8 @@ class ProposalController extends Controller
                 $vote->dislike = 1;
                 $response = [
                     'type' => 'success',
-                    'message' => 'Your dislike has been noted NULL',
-                    'action' => 'persist'
-                ];
-            } else {
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your vote has been cast NULL',
-                    'action' => 'persist'
-                ];
-                $vote->vote = 1;
-            }
-        }
-
-        if ((int)$vote->vote === 1 && (int)$vote->dislike === 1) {
-            if ($params['direction'] === 'dislike') {
-                $vote->dislike = 0;
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your dislike has been removed',
-                    'action' => 'persist'
-                ];
-            } else {
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your vote was removed',
-                    'action' => 'persist'
-                ];
-                $vote->vote = 0;
-            }
-        } elseif ((int)$vote->vote === 1 && (int)$vote->dislike === 0) {
-            if ($params['direction'] === 'dislike') {
-                $vote->dislike = 1;
-                $response = [
-                    'type' => 'success',
                     'message' => 'Your dislike has been added',
                     'action' => 'persist'
-                ];
-            } else {
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your vote was removed',
-                    'action' => 'persist'
-                ];
-                $vote->vote = 0;
-            }
-        } elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 0) {
-            if ($params['direction'] === 'dislike') {
-                $vote->dislike = 1;
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your dislike has been registered',
-                    'action' => 'persist'
-                ];
-            } else {
-                $vote->vote = 1;
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your vote has been cast',
-                    'action' => 'persist'
-                ];
-            }
-        } elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 1) {
-            if ($params['direction'] === 'dislike') {
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your dislike has been removed VOTE0DIS1 ',
-                    'action' => 'remove'
                 ];
             } else {
                 $vote->vote = 1;
@@ -142,6 +78,78 @@ class ProposalController extends Controller
                     'message' => 'Your vote has been added',
                     'action' => 'persist'
                 ];
+            }
+        } else {
+            if ((int)$vote->vote === 1 && (int)$vote->dislike === 1) {
+                if ($params['direction'] === 'dislike') {
+                    $vote->dislike = 0;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your dislike has been removed',
+                        'action' => 'persist'
+                    ];
+                }
+                else {
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your vote was removed',
+                        'action' => 'persist'
+                    ];
+                    $vote->vote = 0;
+                }
+            }
+            elseif ((int)$vote->vote === 1 && (int)$vote->dislike === 0) {
+                if ($params['direction'] === 'dislike') {
+                    $vote->dislike = 1;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your dislike has been added',
+                        'action' => 'persist'
+                    ];
+                }
+                else {
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your vote was removed',
+                        'action' => 'persist'
+                    ];
+                    $vote->vote = 0;
+                }
+            }
+            elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 0) {
+                if ($params['direction'] === 'dislike') {
+                    $vote->dislike = 1;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your dislike has been added',
+                        'action' => 'persist'
+                    ];
+                }
+                else {
+                    $vote->vote = 1;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your vote has been added',
+                        'action' => 'persist'
+                    ];
+                }
+            }
+            elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 1) {
+                if ($params['direction'] === 'dislike') {
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your dislike has been removed',
+                        'action' => 'remove'
+                    ];
+                }
+                else {
+                    $vote->vote = 1;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your vote has been added',
+                        'action' => 'persist'
+                    ];
+                }
             }
         }
         if ($response['action'] === 'remove') {
