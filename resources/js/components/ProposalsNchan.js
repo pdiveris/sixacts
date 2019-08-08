@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import NchanSubscriber from "nchan";
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
 import {ToastContainer, toast} from 'react-toastify';
@@ -165,26 +165,49 @@ export default class ProposalsNchan extends Component {
     }
 
     setupSocket() {
-        this.echo = new Echo({
-            broadcaster: 'socket.io',
-            client: Socketio,
-            host: 'https://' + window.location.hostname + ':'+window.echoPort+'/'
+        let url = window.location.protocol + '//' + window.location.hostname + '/sub?id=messages';
+        let lastEventId = window.localStorage.getItem('lastEventId');
+        if (lastEventId !== null) {
+            url = url + '&last_event_id='+lastEventId;
+        }
+
+        let opt = {
+            subscriber: ['websocket', 'eventsource'],
+            reconnect: 'persist',
+            shared: false
+        };
+
+        var sub = new NchanSubscriber(url, opt);
+        console.log('Joined channel: "messages"');
+        console.log(sub);
+        sub.on("message", (message, message_metadata) =>  {
+            // message is a string
+            // message_metadata is a hash that may contain 'id' and 'content-type'
+
+            console.log(message_metadata);
+            window.localStorage.setItem('lastEventId', message_metadata.id);
+            let msg = JSON.parse(message);
+            console.log(msg);
+
+            if (msg.hasOwnProperty("politburo")) {
+                this.notify(msg.message, msg.type, 3000);
+            }
+            if (msg.message === 'refresh') {
+                console.log('Refreshing...');
+                this.getProposals();
+            } else {
+                console.log("Other msg: " + msg.message)
+            }
+
         });
 
-        console.log('Joined channel: "messages"');
-        this.echo.channel('6_acts_database_messages')
-            .listen('.NewMessage', (e) => {
-                console.log('Message received');
-                if (e.hasOwnProperty("politburo")) {
-                    this.notify(e.message, e.type, 3000);
-                }
-                console.log(e);
-                if (e.message == 'refresh') {
-                    this.getProposals();
-                } else {
-                    console.log("Other message: " + e.message)
-                }
-            });
+        sub.on('connect', function(evt) {
+            //fired when first connected.
+            console.log('connected');
+            console.log(evt);
+        });
+
+        sub.start();
     }
 
     async getProposals() {
