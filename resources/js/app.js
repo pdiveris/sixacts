@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 import Proposals from './components/Proposals';
+import ProposalsNchan from './components/ProposalsNchan';
 import Tablets from './components/Tablets';
 import Echo from './components/Echo';
 
