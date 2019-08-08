@@ -80,6 +80,31 @@ class StaticController extends Controller
     /**
      * Render the home view
      *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function nchan()
+    {
+        $proposals = \App\ProposalView::all();
+        $categories = \App\Category::all();
+        
+        if (\Auth::user()) {
+            $id = \Auth::user()->id;
+        } else {
+            $id = 0;
+        }
+        $id = \Auth::user() ? \Auth::user()->id : 0;
+        $proposals = self::mergeProposalsWithVotes($proposals, $id);
+        return view(
+            'static.nchan',
+            ['proposals'=>$proposals, 'categories'=>$categories]
+        );
+
+    }
+    
+    
+    /**
+     * Render the home view
+     *
      * @return \Illuminate\View\View
      */
     public function homeRendered(): \Illuminate\View\View
@@ -114,18 +139,6 @@ class StaticController extends Controller
             return back()->withErrors(['error'=>'You must be logged in to vote']);
         }
         $user = \Auth::user();
-        // array(2) { ["pid"]=> string(1) "1" ["action"]=> string(4) "vote" }
-        /*
-            
-            array:3 [
-              "proposal_id" => 1
-              "direction" => "vote"
-              "user" => array:1 [
-                "user" => 1
-              ]
-            ]
-         *
-         */
         $scheme = $request->getScheme();
         $host = $request->getHost();
 
