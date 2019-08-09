@@ -93,9 +93,13 @@ export default class Proposals extends Component {
     }
 
     handleThumb(item, ctx) {
+        const bearer = 'Bearer ' + window.token;
         fetch('/api/vote/', {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': bearer,
+            },
             contentType: "application/json; charset=utf-8",
             body: JSON.stringify({
                 "proposal_id": item.id,
@@ -127,9 +131,13 @@ export default class Proposals extends Component {
     handleVote(item, ctx) {
         // this.setState({item:item})
         // console.log('handleVote', ctx, item.id, window.Laravel);
+        const bearer = 'Bearer ' + window.token;
         fetch('/api/vote/', {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': bearer,
+            },
             contentType: "application/json; charset=utf-8",
             body: JSON.stringify({
                 "proposal_id": item.id,
