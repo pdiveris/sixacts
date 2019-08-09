@@ -158,7 +158,6 @@ class SiteController extends Controller
             foreach ($twit->entities->urls as $i=>$url) {
                $twit->real_url = $url->url;
             }
-           // dump($keys);
         }
         return $twits;
     }
