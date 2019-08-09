@@ -21,6 +21,16 @@ class AuthController extends Controller
     use AuthenticatesUsers;
     
     /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
+    
+    /**
      * Register method
      *
      * @param \Illuminate\Http\Request $request request
@@ -36,9 +46,7 @@ class AuthController extends Controller
             'name'     => $request->name,
             ]
         );
-        
         $token = auth()->login($user);
-        
         return $this->respondWithToken($token);
     }
     
@@ -49,7 +57,7 @@ class AuthController extends Controller
      */
     public function login()
     {
-        
+        dump('xxxxxx');
         $credentials = request(['email', 'password']);
         $user = auth()->attempt($credentials);
         if (null !== $user && $user) {
@@ -64,10 +72,10 @@ class AuthController extends Controller
         } else {
             $oAuth = AuthData::where('email', '=', request(['email']))
                 ->first();
+            
             if (null!==$oAuth) {
                 $user = \App\User::where('email', '=', $oAuth->email)->first();
                 \Auth::login($user);
-
                 if (auth()->user()->verified) {
                     return $this->respondWithToken($oAuth->token);
                 } else {
@@ -76,6 +84,16 @@ class AuthController extends Controller
             }
         }
         return response()->json(['error' => 'Unauthorized'], 401);
+    }
+    
+    /**
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function me()
+    {
+        return response()->json(auth()->user());
     }
     
     /**
@@ -88,6 +106,17 @@ class AuthController extends Controller
         return view('auth.token', ['token'=>$token]);
     }
     
+    public static function getToken()
+    {
+        $user = \Auth::user();
+        if ($user) {
+            $token = auth('api')->login($user);
+            return $token;
+        } else {
+            return '';
+        }
+    }
+    
     /**
      * Logout method
      *
@@ -96,8 +125,17 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
-        
         return response()->json(['message' => 'Successfully logged out']);
+    }
+    
+    /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        return $this->respondWithToken(auth()->refresh());
     }
     
     /**

@@ -200,3 +200,7 @@ span.actual {
 .thumb-olive {
     color: #b58900 !important;
 }
+
+.twitterbox {
+    max-width: 320px !important;
+}

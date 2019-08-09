@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Thujohn\Twitter\TwitterServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -228,5 +228,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
         'Site' => App\Facades\Site::class,
+        'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
     ],
 ];

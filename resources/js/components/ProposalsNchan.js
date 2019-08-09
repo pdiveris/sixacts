@@ -91,21 +91,6 @@ export default class ProposalsNchan extends Component {
         );
     }
 
-    handleThumb(item, ctx) {
-        fetch('/api/vote/', {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            contentType: "application/json; charset=utf-8",
-            body: JSON.stringify({
-                "proposal_id": item.id,
-                "direction": ctx,
-                "user": window.Laravel
-            })
-        }).then(results => results.json())
-            .then(results => this.handleResponse(results))
-            .catch(err => console.log(err));
-    }
-
     handleTwitter(item) {
         let text = 'Six Acts to reboot democracy\n\nNew act proposed\n';
         text += item.title;
@@ -126,9 +111,13 @@ export default class ProposalsNchan extends Component {
     handleVote(item, ctx) {
         // this.setState({item:item})
         // console.log('handleVote', ctx, item.id, window.Laravel);
+        const bearer = 'Bearer ' + window.token;
         fetch('/api/vote/', {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': bearer,
+            },
             contentType: "application/json; charset=utf-8",
             body: JSON.stringify({
                 "proposal_id": item.id,
@@ -309,22 +298,15 @@ export default class ProposalsNchan extends Component {
                                                     )
                                                 }
                                             </span>
-    {/*
-                                            <span className="icon">
-                                                <a onClick={() => this.handleVote(item, 'vote')}>
-                                                    <i className="fa fa-minus-circle">&nbsp;</i>
-                                                </a>
-                                            </span>
-    */}
                                             <span className="numDislikes">
                                                 <span className="icon u-mleft-10 u-mright-5">
                                                     {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?
                                                         (
-                                                        <a onClick={() => this.handleThumb(item, 'dislike')}>
+                                                        <a onClick={() => this.handleVote(item, 'dislike')}>
                                                             <i className="fas fa-thumbs-up thumb-olive">&nbsp;</i>
                                                         </a>
                                                         ) : (
-                                                            <a onClick={() => this.handleThumb(item, 'dislike')}>
+                                                            <a onClick={() => this.handleVote(item, 'dislike')}>
                                                                 <i className="fas fa-thumbs-down thumb-purple">&nbsp;</i>
                                                             </a>
                                                         )
