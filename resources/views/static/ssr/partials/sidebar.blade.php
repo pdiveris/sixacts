@@ -22,12 +22,12 @@
     </p>
     <a class="button is-size-6" href="https://twitter.com/ActsSix/" target="sothial">
         <span>
-            <i class="fab fa-twitter"></i>
+            <i class="fab fa-twitter"> </i>
         </span>
     </a>
     <a class="button is-size-6 u-mbottom-10" href="https://www.facebook.com/groups/899694013703882/" target="sothial">
         <span>
-            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-facebook-f"> </i>
         </span>
     </a>
     <p class="menu-label">
