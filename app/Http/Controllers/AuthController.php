@@ -111,6 +111,7 @@ class AuthController extends Controller
         $user = \Auth::user();
         if ($user) {
             $token = auth('api')->login($user);
+            return $token;
         } else {
             return '';
         }
