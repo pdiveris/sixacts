@@ -100,22 +100,46 @@ class StaticController extends Controller
         );
 
     }
-    
-    
+
     /**
      * Render the home view
      *
      * @return \Illuminate\View\View
      */
-    public function homeRendered(): \Illuminate\View\View
+    public function homeRendered(Request $request): \Illuminate\View\View
     {
-        $proposals = \App\ProposalView::all();
+        $filter = '';
+        switch ($request->get('filter', '')) {
+            case 'most':
+                $proposals = \App\ProposalView::orderBy('num_votes','desc')
+                    ->get();
+                $filter = 'Most Votes';
+                break;
+            case 'recent':
+                $proposals = \App\ProposalView::orderBy('created_at','desc')->get();
+                $filter = 'Most Recent';
+                break;
+            case 'current':
+                $proposals = \App\ProposalView::orderBy('num_votes','desc')
+                    ->limit(6)
+                    ->get();
+                $filter = 'Current Document';
+                break;
+            default:
+                $proposals = \App\ProposalView::all();
+                $filter = '';
+        }
+        
         $categories = \App\Category::all();
         $id = \Auth::user() ? \Auth::user()->id : 0;
-        $proposals = $this->mergeProposalsWithVotes($proposals, $id);
+        $proposals = self::mergeProposalsWithVotes($proposals, $id);
         return view(
             'static.ssr.welcome',
-            ['proposals'=>$proposals, 'categories'=>$categories]
+            [
+                'filter'=>$filter,
+                'proposals'=>$proposals,
+                'categories'=>$categories
+            ]
         );
     }
     
@@ -125,10 +149,10 @@ class StaticController extends Controller
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
-    public function homePlain()
+    public function homePlain(Request $request)
     {
         \Cache::set('ssr', true);
-        return $this->homeRendered();
+        return $this->homeRendered($request);
     }
     
     /**
@@ -141,9 +165,21 @@ class StaticController extends Controller
         $user = \Auth::user();
         $scheme = $request->getScheme();
         $host = $request->getHost();
-
-        $client = new Client(["base_uri" => $scheme . '://' . $host, 'verify' => false ]);
+        
+        $client = new Client(
+            [
+                "base_uri" => $scheme . '://' . $host,
+                'verify' => false
+            ]
+        );
+        
+        $token = AuthController::getToken();
+        
         $options = [
+            'headers' =>
+                [
+                    'Authorization' => "Bearer {$token}"
+                ],
             'json' => [
                 "proposal_id" => (int)$request->get('pid', 0),
                 "direction" => $request->get('action', 'unspecified'),

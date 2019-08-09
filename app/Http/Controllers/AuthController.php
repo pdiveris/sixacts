@@ -57,7 +57,6 @@ class AuthController extends Controller
      */
     public function login()
     {
-        dump('xxxxxx');
         $credentials = request(['email', 'password']);
         $user = auth()->attempt($credentials);
         if (null !== $user && $user) {
