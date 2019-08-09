@@ -88,6 +88,17 @@ class AuthController extends Controller
         return view('auth.token', ['token'=>$token]);
     }
     
+    public static function getToken()
+    {
+        $user = \Auth::user();
+        if ($user) {
+            $token = auth('api')->login($user);
+            return $token;
+        } else {
+            return '';
+        }
+    }
+    
     /**
      * Logout method
      *

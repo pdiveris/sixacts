@@ -25,6 +25,6 @@ Route::get('categories', 'CategoryController@index');
 Route::get('names', 'NamesController@index');
 Route::get('names/random', 'NamesController@random');
 Route::post('proposals', 'ProposalController@store');
-Route::post('vote', 'ProposalController@vote');
+Route::post('vote', 'ProposalController@vote')->middleware('auth:api');
 Route::get('proposals/{id}', 'ProposalController@show');
 // Route::put('proposals/{project}', 'ProposalController@markAsCompleted');

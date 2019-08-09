@@ -116,6 +116,17 @@
         }
     );
     
+    Route::get('/twitter', function() {
+        $twits =  Twitter::getUserTimeline(['screen_name' => 'ActsSix', 'count' => 3, 'format' => 'json']);
+        $ttl = env('TWITTER_TTL', 'undefined');
+        if ($ttl === 'undefined') {
+            \Cache::set('twitter', $twits);
+        } else {
+            \Cache::set('twitter', $twits, $ttl);
+        }
+        return '';
+    });
+    
     Route::get('/sse', function () {
 /*        $dispatchJob = new \App\Jobs\SendServerEvent(['msg'=>'Kanga is your friend...'], 'messages');
         dispatch($dispatchJob);*/
