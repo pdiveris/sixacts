@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\ProposalView;
 use Illuminate\Http\Request;
 use \GuzzleHttp\Client;
+use phpDocumentor\Reflection\Types\Self_;
 
 class StaticController extends Controller
 {
@@ -15,6 +17,12 @@ class StaticController extends Controller
      * @return \Illuminate\Contracts\View\View
      */
     private $withErrors;
+    
+    public static $filterLabels = [
+        'most'=>'Most Votes',
+        'recent' => 'Most Recent',
+        'current' => 'Current Document'
+    ];
     
     public function content(Request $request)
     {
@@ -108,35 +116,21 @@ class StaticController extends Controller
      */
     public function homeRendered(Request $request): \Illuminate\View\View
     {
-        $filter = '';
-        switch ($request->get('filter', '')) {
-            case 'most':
-                $proposals = \App\ProposalView::orderBy('num_votes','desc')
-                    ->get();
-                $filter = 'Most Votes';
-                break;
-            case 'recent':
-                $proposals = \App\ProposalView::orderBy('created_at','desc')->get();
-                $filter = 'Most Recent';
-                break;
-            case 'current':
-                $proposals = \App\ProposalView::orderBy('num_votes','desc')
-                    ->limit(6)
-                    ->get();
-                $filter = 'Current Document';
-                break;
-            default:
-                $proposals = \App\ProposalView::all();
-                $filter = '';
-        }
+        $filter = $request->get('filter', '');
         
+        $proposals = ProposalView::getFiltered($filter);
+        $label = '';
+        if (array_key_exists($filter, self::$filterLabels)) {
+            $label = self::$filterLabels[$filter];
+        }
+
         $categories = \App\Category::all();
         $id = \Auth::user() ? \Auth::user()->id : 0;
         $proposals = self::mergeProposalsWithVotes($proposals, $id);
         return view(
             'static.ssr.welcome',
             [
-                'filter'=>$filter,
+                'label'=>$label,
                 'proposals'=>$proposals,
                 'categories'=>$categories
             ]
