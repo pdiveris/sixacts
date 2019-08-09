@@ -34,7 +34,6 @@ class SendUserTestEmail extends Mailable
      */
     public function build()
     {
-        dump('SendUserTestEmail.build...');
         // return $this->view('view.name');
         return $this->to($this->user->email)
             ->text('emails.user.'.$this->template.'_plain')
