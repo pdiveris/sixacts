@@ -34,7 +34,6 @@ class UserCreatedJob extends SendMailable implements ShouldQueue
      */
     public function build()
     {
-        dump('UserCreatedJob handle..');
         return $this->from('mario@sixacts.org', 'Λάκης Μποθγάτσας')
             ->to($this->user->email)
             ->cc('pdiveris@gmail.com')

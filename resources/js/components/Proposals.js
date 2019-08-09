@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // import 'react-toastify/dist/ReactToastify.min.css';
 import SplashPortal from './Splash';
 import Categories from './Categories';
+import Filters from './Filters';
 import NchanSubscriber from "nchan";
 
 const portalRoot = document.getElementById("cats");
@@ -52,12 +53,12 @@ export default class Proposals extends Component {
         super(props);
         this.state = {
             'items': [],
-            'categories': []
+            'categories': [],
+            'filter': ''
         }
         this.echo = null;
         this.getCategoriesUpdateFromChild = this.getCategoriesUpdateFromChild.bind(this);
-        // this.onClick = this.handleClick.bind(this);
-        // this.getCategoriesUpdateFromChild = this.getCategoriesUpdateFromChild().bind(this);
+        this.getFiltersUpdateFromChild = this.getFiltersUpdateFromChild.bind(this);
     }
 
     /**
@@ -247,7 +248,9 @@ export default class Proposals extends Component {
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
         let uid = '&user_id='+window.Laravel.user;
-        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid, {
+        let filter = this.state.filter;
+        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid+'&filter='+filter,
+            {
                 crossDomain: true,
             }
         )
@@ -257,6 +260,11 @@ export default class Proposals extends Component {
 
     getCategoriesUpdateFromChild(cats) {
         this.state.categories = cats;
+        this.getProposals();
+    }
+
+    getFiltersUpdateFromChild(filter) {
+        this.state.filter = filter;
         this.getProposals();
     }
 
@@ -274,6 +282,9 @@ export default class Proposals extends Component {
                 <Router>
                     <Portal>
                         <Categories getCategoriesUpdateFromChild={this.getCategoriesUpdateFromChild}/>
+                    </Portal>
+                    <Portal>
+                        <Filters getFiltersUpdateFromChild={this.getFiltersUpdateFromChild}/>
                     </Portal>
                     <ul>
                         {this.state.items.map((item, index) => {
