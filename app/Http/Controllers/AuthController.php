@@ -21,6 +21,16 @@ class AuthController extends Controller
     use AuthenticatesUsers;
     
     /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
+    
+    /**
      * Register method
      *
      * @param \Illuminate\Http\Request $request request
@@ -79,6 +89,16 @@ class AuthController extends Controller
     }
     
     /**
+     * Get the authenticated User.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function me()
+    {
+        return response()->json(auth()->user());
+    }
+    
+    /**
      * Get an API token for the user currently logged in
      */
     public function getUserToken()
@@ -109,6 +129,16 @@ class AuthController extends Controller
         auth()->logout();
         
         return response()->json(['message' => 'Successfully logged out']);
+    }
+    
+    /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        return $this->respondWithToken(auth()->refresh());
     }
     
     /**
