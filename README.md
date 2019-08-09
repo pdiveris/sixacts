@@ -7,5 +7,5 @@ The code the site and app is open source and it's hybrid, based on React and Lar
 
 Please take a look at the Wiki area for documentaiton specific to the front-end and the overall architecture.
 
-![Six Acts screenshot](https://www.diveris.org/SixActsScreen.png "Six Acts screenshot")
+![Six Acts screenshot](https://www.sixacts.org/images/SixActsScreenshot.png "Six Acts screenshot")
 
