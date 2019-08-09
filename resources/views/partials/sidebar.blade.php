@@ -21,7 +21,7 @@ Author Petros Diveris <petros@diveris.org>
             <i class="fab fa-twitter"></i>
         </span>
     </a>
-    <a class="button is-size-6" href="https://twitter.com/ActsSix" target="sothial">
+    <a class="button is-size-6" href="https://www.facebook.com/groups/899694013703882/" target="sothial">
         <span>
             <i class="fab fa-facebook-f"></i>
         </span>
