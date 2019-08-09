@@ -150,4 +150,16 @@ class SiteController extends Controller
         }
         return env('SPLASH_SCREEN', false);
     }
+    
+    public static function getTwitts()
+    {
+        $twits =  json_decode(\Cache::get('twitter', '[]'));
+        foreach ($twits as $twit) {
+            foreach ($twit->entities->urls as $i=>$url) {
+               $twit->real_url = $url->url;
+            }
+           // dump($keys);
+        }
+        return $twits;
+    }
 }
