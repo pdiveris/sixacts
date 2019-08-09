@@ -174,7 +174,7 @@ class StaticController extends Controller
         );
         
         $token = AuthController::getToken();
-        
+
         $options = [
             'headers' =>
                 [

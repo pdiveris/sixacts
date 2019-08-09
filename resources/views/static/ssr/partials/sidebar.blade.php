@@ -31,6 +31,23 @@
         </span>
     </a>
     <p class="menu-label">
+        View by
+    </p>
+    <p>
+        <span class="button is-small">
+            <a class="text-purple" href="{{route('plain')}}?filter=most">Most votes</a>
+        </span>
+        <span class="button is-small">
+            <a class="text-purple" href="{{route('plain')}}?filter=recent">Most recent</a>
+        </span>
+    </p>
+    <p class="u-mtop-10">
+        <span class="button is-small">
+            <a class="text-purple" href="{{route('plain')}}?filter=current">Current document</a>
+        </span>
+    </p>
+{{--
+    <p class="menu-label">
         Recent Posts
     </p>
      @foreach(\App\Http\Controllers\SiteController::getTwitts() as $twit)
@@ -47,4 +64,5 @@
             </div>
         </div>
     @endforeach
+--}}
 </aside>
