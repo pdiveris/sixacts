@@ -26,6 +26,13 @@ export default class Filters extends Component {
 
     }
 
+    getClass(el) {
+        if (this.state.filter === el) {
+            return 'button is-small is-dark';
+        }
+        return 'button is-small text-purple';
+    }
+
     render() {
         return (
             <div className={'u-mbottom-20'}>
@@ -33,20 +40,20 @@ export default class Filters extends Component {
                     View By
                 </p>
                 <p>
-                    <span className="button is-small">
-                        <a className="text-purple" id="most" onClick={this.onClick}>
+                    <span className="is-small u-m-5">
+                        <a className={this.getClass('most')} id="most" onClick={this.onClick}>
                             Most votes
                         </a>
                     </span>
-                    <span className="button is-small">
-                        <a className="text-purple" id="recent" onClick={this.onClick}>
+                    <span className="is-small u-m-5">
+                        <a className={this.getClass('recent')} id="recent" onClick={this.onClick}>
                             Most recent
                         </a>
                     </span>
                 </p>
                 <p className="u-mtop-10">
-                    <span className="button is-small">
-                        <a className="text-purple" id="current" onClick={this.onClick}>
+                    <span className="is-small u-m-5">
+                        <a className={this.getClass('current')} id="current" onClick={this.onClick}>
                             Current document
                         </a>
                     </span>

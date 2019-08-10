@@ -34,16 +34,19 @@
         View by
     </p>
     <p>
-        <span class="button is-small">
-            <a class="text-purple" href="{{route('plain')}}?filter=most">Most votes</a>
+        <span class="is-small u-m-5">
+            <a class="button is-small {{$filter === 'most' ? 'is-dark' : 'text-purple' }}"
+               href="{{route('plain')}}?filter=most">Most votes</a>
         </span>
-        <span class="button is-small">
-            <a class="text-purple" href="{{route('plain')}}?filter=recent">Most recent</a>
+        <span class="is-small u-m-5">
+            <a class="button is-small {{$filter === 'recent' ? 'is-dark' : 'text-purple' }}"
+               href="{{route('plain')}}?filter=recent">Most recent</a>
         </span>
     </p>
     <p class="u-mtop-10">
-        <span class="button is-small">
-            <a class="text-purple" href="{{route('plain')}}?filter=current">Current document</a>
+        <span class="is-small u-m-5">
+            <a class="button is-small {{$filter === 'current' ? 'is-dark' : 'text-purple' }}"
+               href="{{route('plain')}}?filter=current">Current document</a>
         </span>
     </p>
 {{--
