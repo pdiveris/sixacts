@@ -16,12 +16,13 @@
                 </p>
                 <p>
                     The event will kick off with regional marchers and parades arriving at 3pm, followed by a shared
-                    picnic with live entertainment and a 'democratic marketplace' of discussions, sharing of ideas and
-                    debate. This will act as a first 'health check' of our democratic practices and devising practical
-                    reforms to recondition and redesign a democracy that works for us all in the 21st century.                </p>
+                    picnic with live entertainment and a 'Sedition Corner' a democratic marketplace for trading ideas,
+                    votes and arguments over a range of radical ideas designed to reinvigorate democracy for the 21st
+                    century.
+                </p>
                 <p>
                     For more information about the 17th August Illegal Picnic event, including opportunities for stall
-                    holders, see our <a href="http://peterloomassacre.org/news.html" target="_blank">events</a> page.
+                    holders, see the PMC <a href="http://peterloomassacre.org/news.html">events</a> page.
                 </p>
                 <p>
                     We will open the Six Acts online poll website at 4pm, 17th August.
@@ -30,13 +31,27 @@
                 </p>
                 <h2 class="is-3">Participating in the poll</h2>
                 <p>
-                    We are not <i>limiting the number of proposals</i> any individual or organisation can submit to the
-                    poll, or the number of proposals an individual or organisation can vote for.
+                    <strong>Submitting a proposal</strong> - We are not <i>limiting the number of proposals</i>
+                    any individual or organisation can submit to the poll.
                 </p>
                 <p>
-                    A user can <i>only vote for each proposal</i> once and this vote <i>can be removed</i> by the user
-                    at any time  during the live poll period, should they change their minds. You can also delete
-                    your proposal at any time if you feel it has been superseded by another, improved one.
+                    A user can submit a new proposal to the poll at any time during the live period. There are some
+                    practical restrictions and guidelines for submissions which we have implemented to prevent misuse
+                    and maximise constructive input. Please read our
+                    <a href="{{route('nine_rules')}}">9 Rules for the 6 Acts</a> and
+                    <a href="{{route('categories_explained')}}">Categories Explained</a> documents before
+                    submitting a proposal.
+                </p>
+                <p>
+                    We urge participants to road-test their proposals on friends, colleagues and the Six Acts community
+                    social media platforms before submitting to the poll. This will give you a chance to refine, tweak
+                    or  reconsider your proposal, giving it a better chance of being a contender for the final Six Acts
+                    document. It is also important that you are completely happy with your proposal at the time you
+                    submit it because <i>once submitted you will not be able to edit it.</i>
+                </p>
+                <p>
+                    <strong>Voting</strong> - A user can <i>only vote for each proposal once</i> and this vote can be
+                    removed by the user at any time during the live poll period, should you change your mind.
                 </p>
                 <p>
                     While we leave it to the user to decide the number of proposals they vote for, we urge people to
@@ -44,40 +59,36 @@
                     effective and feasible reforms for optimising our democratic practices.
                 </p>
                 <p>
-                    A user can submit a new proposal to the poll at any time during the live period. There are some
-                    practical restrictions and guidelines for submissions which we have implemented to prevent
-                    misuse and maximise constructive input. Please read our
-                    <a href="{{Site::menuLink('nine_rules')}}">9 Rules for the 6 Acts</a> and
-                    <a href="{{Site::menuLink('categories')}}">Categories Explained</a> documents before
-                    submitting a proposal.
+                    In addition to adding a vote, users can also dislike a proposal. 'Votes' and 'Dislikes' will both be
+                    visible to the public as two separate counters. Adding a vote will not affect the number of dislikes,
+                    and disliking will not affect the number of votes.
                 </p>
                 <p>
-                    We urge participants to road-test their proposals on friends, colleagues and the Six Acts
-                    community social media platforms before submitting to the poll. This will give you a chance to
-                    refine, tweak or reconsider your proposal, giving it a better chance of being a contender for the
-                    final Six Acts document. It is also important that you are completely happy with your proposal at
-                    the time you submit it because <i>once submitted you will not be able to edit it.</i>
+                    Users can filter the proposals to view by:
+                    <ol>
+                    <li><i>Most votes</i> – default view</li>
+                    <li><i>Most recent</i> – default view</li>
+                    <li><i>Current document</i> – which is a skim of the <strong>one</strong>
+                        top proposal from <strong>each category</strong></li>
+                </ol>
                 </p>
                 <h2 class="is-3">The Result</h2>
                 <p>
-                    The online poll will be live from the <b>17th August.</b>
-                    During the live period we will be taking <b>regular snapshots</b> of the current version of the
-                    document. <b>The first of these will be published shortly before the Conservative government's
-                    annual party conference, which will be held in September at the site of the Peterloo Massacre.</b>
+                    The online poll will be live from the <strong>17th August</strong>. During this live period we
+                    will release <strong>regular updates</strong> on Six Acts social media of the current version of
+                    the document. These will include the leading proposal in each category, along with links to the
+                    other 5 closest contenders.
                 </p>
                 <p>
-                    <i>
-                        An appropriate final closing date for the finished Six Acts document will be collectively chosen later.
-                    </i>
+                    <strong>The first formal publication of the Six Acts document will be published towards the end
+                    September 2019.</strong> The exact closing date for voting and submissions will be confirmed no
+                    later than two weeks prior to closure.
                 </p>
+                <h2 class="is-3">Re-opening the Poll</h2>
                 <p>
-                    Users can also get a <i>Status Report</i> of the top-ranking proposals at any time. This report
-                    will be a summary of the top proposals which are leading in each of the six reform categories.
-                </p>
-                <p>
-                    The Six Acts team will also announce and display status reports at regular intervals, which will
-                    include not only the leading proposal in each category, but will also have links to the other 5
-                    closest contenders.
+                    After publication of the first Six Acts document in September 2019, we will consult with our
+                    participants regarding re-opening the Six Acts poll again in 2020, and the possibility of continuing
+                    to run the poll on an annual basis.
                 </p>
                 <h2 class="is-3">The Document</h2>
                 <p>
