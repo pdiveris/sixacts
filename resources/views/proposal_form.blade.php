@@ -1,7 +1,7 @@
 @extends('layouts.forum')
 @section('content')
     <div class="columns">
-        <div class="column is-9">
+        <div class="column is-12">
             <div class="card">
                 <header class="card-header">
                     <p class="card-header-title">Propose action</p>

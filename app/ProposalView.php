@@ -96,4 +96,33 @@ class ProposalView extends Model implements Feedable
     {
         return ProposalView::all();
     }
+    
+    /**
+     * Get filtered Proposals (used in API and Controller)
+     *
+     * @param string $filter
+     * @return \App\ProposalView[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Support\Collection
+     */
+    public static function getFiltered($filter = '')
+    {
+        switch ($filter) {
+            case 'most':
+                $proposals = \App\ProposalView::orderBy('num_votes','desc')
+                    ->get();
+                break;
+            case 'recent':
+                $proposals = \App\ProposalView::orderBy('created_at','desc')->get();
+                break;
+            case 'current':
+                $proposals = \App\ProposalView::orderBy('num_votes','desc')
+                    ->limit(6)
+                    ->get();
+                break;
+            default:
+                $proposals = \App\ProposalView::all();
+        }
+        return $proposals;
+    }
+    
+    
 }

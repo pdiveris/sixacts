@@ -173,6 +173,7 @@ class ProposalController extends Controller
         return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
     }
     
+    
     /**
      * Get all proposals with their aggregations (if they have any..)
      *
@@ -187,7 +188,25 @@ class ProposalController extends Controller
             $cats = explode(':', $catsQuery);
             $props = ProposalView::whereIn('category_id', $cats)->get();
         } else {
-            $props = ProposalView::all();
+            $filter = $request->get('filter', '');
+            switch ($filter) {
+                case 'most':
+                    $props = \App\ProposalView::orderBy('num_votes','desc')
+                        ->get();
+                    break;
+                case 'recent':
+                    $props = \App\ProposalView::orderBy('created_at','desc')->get();
+                    break;
+                case 'current':
+                    $props = \App\ProposalView::orderBy('num_votes','desc')
+                        ->limit(6)
+                        ->get();
+                    break;
+                default:
+                    $props = \App\ProposalView::all();
+            }
+            $props = ProposalView::getFiltered($filter);
+            // $props = ProposalView::all();
         }
         if ($userId > 0) {
             $props = StaticController::mergeProposalsWithVotes($props, $userId);
