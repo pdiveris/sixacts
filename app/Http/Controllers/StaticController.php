@@ -130,6 +130,7 @@ class StaticController extends Controller
         return view(
             'static.ssr.welcome',
             [
+                'filter' => $filter,
                 'label'=>$label,
                 'proposals'=>$proposals,
                 'categories'=>$categories
