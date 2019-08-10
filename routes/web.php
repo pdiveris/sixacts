@@ -18,13 +18,6 @@
     use App\User;
     use GuzzleHttp\Client;
     
-    Route::get(
-        'anothertest',
-        function (\Illuminate\Http\Request $request) {
-            return 'Another Test route - ignore';
-        }
-    );
-
     Route::get('/', 'StaticController@home')->name('home');
     Route::get('ssr', 'StaticController@homeRendered')->name('ssr');
     Route::get('plain', 'StaticController@homePlain')->name('plain');
@@ -73,19 +66,7 @@
     
     Route::get('login/delete/faceboook', 'Auth\LoginController@handleProviderDelete')
         ->name('deletefacebook');
-    
-    Route::get(
-        'twitter',
-        function () {
-            // $credentials = ['email'=>'petros@diveris.org', 'password'=>'yellowbrix!!'];
-            $ourUser = User::find(1);
-            dump('Becoming Eva...');
-            Auth::login($ourUser, true);
-            return redirect('/');
-            // return '';
-        }
-    );
-    
+
     Route::get('/home', 'SiteController@index')->name('home');
     
     Auth::routes();
@@ -95,24 +76,6 @@
         'login/verify',
         function () {
             return view('static.registration_thanks');
-        }
-    );
-    
-    Route::get(
-        '/test',
-        function () {
-            // event(new \App\Events\PublicMessage(\Auth::user(), 'refresh'));
-            $user = \App\User::find(1);
-            $profileUrl = url('user/profile');
-            $email = new UserEmail(
-                $user,
-                'user_welcome',
-                ['password'=>'kanga', 'profileUrl'=>$profileUrl]
-            );
-            $dispatchJob = new SendEmailJob($email);
-            dispatch($dispatchJob);
-    
-            return '';
         }
     );
     
@@ -128,9 +91,6 @@
     });
     
     Route::get('/sse', function () {
-/*        $dispatchJob = new \App\Jobs\SendServerEvent(['msg'=>'Kanga is your friend...'], 'messages');
-        dispatch($dispatchJob);*/
-        echo 'Yeah...';
         $user = \App\User::find(1);
         event(new \App\Events\ProposalVotedEvent(
             [
@@ -141,23 +101,7 @@
         return '';
     });
     
-    Route::get(
-        ('i'),
-        function () {
-            phpinfo();
-            return '';
-        }
-    );
-    
-    Route::get(
-        'l/{email?}',
-        function ($email) {
-            $user = User::where('email', '=', $email)->first();
-            Auth::login($user);
-            return redirect('/');
-        }
-    );
-    
+
     Route::get('email', 'EmailController@sendEmail');
     
     Route::get('sse/test', 'ServerSideEventsController@test');
