@@ -1,7 +1,7 @@
 @extends('layouts.forum')
 @section('content')
     <div class="columns">
-        <div class="column is-9">
+        <div class="column is-12">
             <div class="card">
                 <header class="card-header">
                     <p class="card-header-title">Propose action</p>
@@ -84,7 +84,7 @@
                                 <div class="field">
                                     <textarea class="textarea is-medium"
                                        id="body"
-                                       placeholder="Action details (up to 200 words)"
+                                       placeholder="Action details (up to 100 words)"
                                        name="body"></textarea>
                                 </div>
                             </div>

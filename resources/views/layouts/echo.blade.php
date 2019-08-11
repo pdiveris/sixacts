@@ -23,7 +23,9 @@
     ]) !!};
         window.keepalive = {!!json_encode(env('KEEP_ALIVE') ?? false)!!}
         window.showSplash = {!!json_encode( \App\Http\Controllers\SiteController::showModal())!!}
-        window.echoPort = {!!json_encode(env('ECHO_PORT') ?? 6001)!!}
+        window.sock = {!!json_encode(env('SOCKET_PROVIDER') ?? 'echo')!!}
+        window.d = {!!json_encode(env('APP_DEBUG') ?? false )!!}
+        window.token = {!!json_encode(\App\Http\Controllers\AuthController::getToken() )!!}
     </script>
     @include('feed::links')
 </head>

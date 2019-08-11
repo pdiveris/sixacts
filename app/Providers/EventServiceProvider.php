@@ -2,8 +2,7 @@
 
 namespace App\Providers;
 
-use App\Listeners\KangoCreating as KangoListener;
-use App\Listeners\KangoCreating as KangoCreatingEvent;
+use App\Events\ProposalVotedEvent;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -20,8 +19,8 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        KangoCreatingEvent::class=> [
-            KangoListener::class
+        ProposalVotedEvent::class=> [
+            ProposalVotedListener::class
         ]
     ];
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +22,9 @@
     ]) !!};
         window.keepalive = {!!json_encode(env('KEEP_ALIVE') ?? false)!!}
         window.showSplash = {!!json_encode( \App\Http\Controllers\SiteController::showModal())!!}
-        window.echoPort = {!!json_encode(env('ECHO_PORT') ?? 6001)!!}
+        window.sock = {!!json_encode(env('SOCKET_PROVIDER') ?? 'echo')!!}
+        window.d = {!!json_encode(env('APP_DEBUG') ?? false )!!}
+        window.token = {!!json_encode(\App\Http\Controllers\AuthController::getToken() )!!}
     </script>
     @include('feed::links')
 </head>
@@ -96,7 +98,6 @@
 </section>
 @include('partials.footer')
 <script async type="text/javascript" src="{{asset('/js/app.js')}}"></script>
-
 <script async type="text/javascript" src="{{asset('js/bulma.js')}}"></script>
 <!-- Matomo -->
 <script type="text/javascript">
@@ -125,5 +126,7 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
 </script>
+<script async type="text/javascript" src="{{asset('/js/extras.js')}}"></script>
+
 </body>
 </html>

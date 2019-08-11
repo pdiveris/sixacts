@@ -18,16 +18,11 @@
     use App\User;
     use GuzzleHttp\Client;
     
-    Route::get(
-        'anothertest',
-        function (\Illuminate\Http\Request $request) {
-            return 'Another Test route - ignore';
-        }
-    );
-
     Route::get('/', 'StaticController@home')->name('home');
     Route::get('ssr', 'StaticController@homeRendered')->name('ssr');
     Route::get('plain', 'StaticController@homePlain')->name('plain');
+    Route::get('nchan', 'StaticController@nchan')->name('nchan');
+    Route::get('plain/vote', 'StaticController@plainVote')->name('plainvote');
     Route::get('full', 'StaticController@homeFull')->name('full');
     Route::get('react', 'StaticController@react')->name('react');
     Route::get('echo', 'EchoController@index')->name('echo');
@@ -71,19 +66,7 @@
     
     Route::get('login/delete/faceboook', 'Auth\LoginController@handleProviderDelete')
         ->name('deletefacebook');
-    
-    Route::get(
-        'twitter',
-        function () {
-            // $credentials = ['email'=>'petros@diveris.org', 'password'=>'yellowbrix!!'];
-            $ourUser = User::find(1);
-            dump('Becoming Eva...');
-            Auth::login($ourUser, true);
-            return redirect('/');
-            // return '';
-        }
-    );
-    
+
     Route::get('/home', 'SiteController@index')->name('home');
     
     Auth::routes();
@@ -96,50 +79,29 @@
         }
     );
     
-    Route::get(
-        '/test',
-        function () {
-            // event(new \App\Events\PublicMessage(\Auth::user(), 'refresh'));
-            $user = \App\User::find(1);
-            $profileUrl = url('user/profile');
-            $email = new UserEmail(
-                $user,
-                'user_welcome',
-                ['password'=>'kanga', 'profileUrl'=>$profileUrl]
-            );
-            $dispatchJob = new SendEmailJob($email);
-            dispatch($dispatchJob);
-    
-            return '';
+    Route::get('/twitter', function() {
+        $twits =  Twitter::getUserTimeline(['screen_name' => 'ActsSix', 'count' => 3, 'format' => 'json']);
+        $ttl = env('TWITTER_TTL', 'undefined');
+        if ($ttl === 'undefined') {
+            \Cache::set('twitter', $twits);
+        } else {
+            \Cache::set('twitter', $twits, $ttl);
         }
-    );
-    
-    Route::get('/sse', function () {
-        
-
-        $dispatchJob = new \App\Jobs\SendServerEvent(['Kanga os your friend...']);
-        dispatch($dispatchJob);
-        echo 'Yeah...';
         return '';
     });
     
-    Route::get(
-        ('i'),
-        function () {
-            phpinfo();
-            return '';
-        }
-    );
+    Route::get('/sse', function () {
+        $user = \App\User::find(1);
+        event(new \App\Events\ProposalVotedEvent(
+            [
+                'message'=>'refresh', 'user'=>'Petros Diveris'
+            ], 'messages',
+            $user)
+        );
+        return '';
+    });
     
-    Route::get(
-        'l/{email?}',
-        function ($email) {
-            $user = User::where('email', '=', $email)->first();
-            Auth::login($user);
-            return redirect('/');
-        }
-    );
-    
+
     Route::get('email', 'EmailController@sendEmail');
     
     Route::get('sse/test', 'ServerSideEventsController@test');

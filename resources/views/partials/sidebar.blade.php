@@ -13,18 +13,24 @@ Author Petros Diveris <petros@diveris.org>
     <div class="cats" id="cats">
 
     </div>
-    <p class="menu-label">
-        Six Acts on Social
-    </p>
-    <a class="button is-size-6" href="https://twitter.com/ActsSix" target="sothial">
-        <span>
-            <i class="fab fa-twitter"></i>
-        </span>
-    </a>
-    <a class="button is-size-6" href="https://twitter.com/ActsSix" target="sothial">
-        <span>
-            <i class="fab fa-facebook-f"></i>
-        </span>
-    </a>
+    <div>
+        <p class="menu-label">
+            Six Acts on Social
+        </p>
+        <a class="button is-size-6" href="https://twitter.com/ActsSix" target="sothial">
+            <span>
+                <i class="fab fa-twitter"> </i>
+            </span>
+        </a>
+        <a class="button is-size-6" href="https://www.facebook.com/groups/899694013703882/" target="sothial">
+            <span>
+                <i class="fab fa-facebook-f"> </i>
+            </span>
+        </a>
+    </div>
+    <div class="filters" id="filters">
 
+    </div>
 </aside>
+
+

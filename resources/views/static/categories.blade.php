@@ -1,7 +1,7 @@
 @extends('layouts.forum')
 @section('content')
     <div class="columns">
-        <div class="column is-9">
+        <div class="column is-12">
             <div class="box content">
                 <h1 class="title">The Six Reform Categories Explained</h1>
                 <p>
@@ -16,7 +16,7 @@
                     Policy proposals that address the way elections are conducted, such as who votes, how
                     voting happens, when voting happens, and how voting results are recognized and applied.
                 </p>
-                <h2 class="title is-4">2. Government Structures and Conduct of Elected Representatives</h2>
+                <h2 class="title is-4">2. Governance and Political Conduct</h2>
                 <p>
                     How elected representatives organise themselves, interact, debate issues, make decisions
                     and the rules for re-election. Transparency, discosure of interests and the means by which
@@ -30,7 +30,7 @@
                     e.g. limiting monopolistic control or creating the right to challenge deliberately
                     misleading claims.
                 </p>
-                <h2 class="title is-4">Economic and Financial Influences</h2>
+                <h2 class="title is-4">4. Economic and Financial Influences</h2>
                 <p>
                     The moderating or curtailing of external economic influences which interfere with or
                     unduly influence democratic structures and processes. Increasing the democratisation of

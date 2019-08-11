@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import NchanSubscriber from "nchan";
 import Echo from "laravel-echo";
 import Socketio from "socket.io-client";
 import {ToastContainer, toast} from 'react-toastify';
@@ -12,17 +12,15 @@ import 'react-toastify/dist/ReactToastify.css';
 // import 'react-toastify/dist/ReactToastify.min.css';
 import SplashPortal from './Splash';
 import Categories from './Categories';
-import Filters from './Filters';
-import NchanSubscriber from "nchan";
 
 const portalRoot = document.getElementById("cats");
 const splashPortalRoot = document.getElementById("splash");
 
 // here was the customStyles
 
-if (document.getElementById('proposals')) {
+if (document.getElementById('proposals-nchan')) {
     // ReactDOM.render(<Proposals/>, document.getElementById('proposals'));
-    Modal.setAppElement('#proposals');
+    Modal.setAppElement('#proposals-nchan');
 }
 
 class Portal extends React.Component {
@@ -48,17 +46,17 @@ class Portal extends React.Component {
 
 // Here was the SplashPortal
 
-export default class Proposals extends Component {
+export default class ProposalsNchan extends Component {
     constructor(props) {
         super(props);
         this.state = {
             'items': [],
-            'categories': [],
-            'filter': ''
+            'categories': []
         }
         this.echo = null;
         this.getCategoriesUpdateFromChild = this.getCategoriesUpdateFromChild.bind(this);
-        this.getFiltersUpdateFromChild = this.getFiltersUpdateFromChild.bind(this);
+        // this.onClick = this.handleClick.bind(this);
+        // this.getCategoriesUpdateFromChild = this.getCategoriesUpdateFromChild().bind(this);
     }
 
     /**
@@ -132,10 +130,6 @@ export default class Proposals extends Component {
     }
 
     handleResponse(results) {
-        if (results[0] === 'unauthorized') {
-            console.log('401 unauthorized');
-            return;
-        }
         this.getProposals();
         this.notify(results.message, results.type, 3000);
     }
@@ -159,30 +153,7 @@ export default class Proposals extends Component {
         console.log(event);
     }
 
-    setupEcho() {
-        this.echo = new Echo({
-            broadcaster: 'socket.io',
-            client: Socketio,
-            host: 'https://' + window.location.hostname + ':6001/'
-        });
-
-        console.log('Joined channel: "messages"');
-        this.echo.channel('6_acts_database_messages')
-            .listen('.NewMessage', (e) => {
-                console.log('Message received');
-                if (e.hasOwnProperty("politburo")) {
-                    this.notify(e.message, e.type, 3000);
-                }
-                console.log(e);
-                if (e.message == 'refresh') {
-                    this.getProposals();
-                } else {
-                    console.log("Other message: " + e.message)
-                }
-            });
-    }
-
-    setUpNchan() {
+    setupSocket() {
         let url = window.location.protocol + '//' + window.location.hostname + '/sub?id=messages';
         let lastEventId = window.localStorage.getItem('lastEventId');
         if (lastEventId !== null) {
@@ -195,29 +166,23 @@ export default class Proposals extends Component {
             shared: false
         };
 
-        let sub = new NchanSubscriber(url, opt);
+        var sub = new NchanSubscriber(url, opt);
         console.log('Joined channel: "messages"');
-        if (window.d === true) {
-            console.log(sub);
-        }
+        console.log(sub);
         sub.on("message", (message, message_metadata) =>  {
             // message is a string
             // message_metadata is a hash that may contain 'id' and 'content-type'
-            if (window.d===true) {
-                console.log(message_metadata);
-            }
+
+            console.log(message_metadata);
             window.localStorage.setItem('lastEventId', message_metadata.id);
             let msg = JSON.parse(message);
-            if (window.d === true) {
-                console.log(msg);
-            }
+            console.log(msg);
+
             if (msg.hasOwnProperty("politburo")) {
                 this.notify(msg.message, msg.type, 3000);
             }
             if (msg.message === 'refresh') {
-                if (window.d===true) {
-                    console.log('Refreshing...');
-                }
+                console.log('Refreshing...');
                 this.getProposals();
             } else {
                 console.log("Other msg: " + msg.message)
@@ -227,23 +192,11 @@ export default class Proposals extends Component {
 
         sub.on('connect', function(evt) {
             //fired when first connected.
-            if (window.d === true) {
-                console.log('connected');
-                console.log(evt);
-            }
+            console.log('connected');
+            console.log(evt);
         });
 
         sub.start();
-    }
-
-    setupSocket() {
-        if (window.sock === 'nchan') {
-            console.log('Setting up nchan');
-            this.setUpNchan();
-        } else {
-            console.log('Setting up echo');
-            this.setupEcho();
-        }
     }
 
     async getProposals() {
@@ -256,9 +209,7 @@ export default class Proposals extends Component {
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
         let uid = '&user_id='+window.Laravel.user;
-        let filter = this.state.filter;
-        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid+'&filter='+filter,
-            {
+        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid, {
                 crossDomain: true,
             }
         )
@@ -268,11 +219,6 @@ export default class Proposals extends Component {
 
     getCategoriesUpdateFromChild(cats) {
         this.state.categories = cats;
-        this.getProposals();
-    }
-
-    getFiltersUpdateFromChild(filter) {
-        this.state.filter = filter;
         this.getProposals();
     }
 
@@ -291,9 +237,7 @@ export default class Proposals extends Component {
                     <Portal>
                         <Categories getCategoriesUpdateFromChild={this.getCategoriesUpdateFromChild}/>
                     </Portal>
-                    <Portal>
-                        <Filters getFiltersUpdateFromChild={this.getFiltersUpdateFromChild}/>
-                    </Portal>
+                    <h1 className="title is-4">ProposalsNchan</h1>
                     <ul>
                         {this.state.items.map((item, index) => {
                                 return (
@@ -354,13 +298,6 @@ export default class Proposals extends Component {
                                                     )
                                                 }
                                             </span>
-    {/*
-                                            <span className="icon">
-                                                <a onClick={() => this.handleVote(item, 'vote')}>
-                                                    <i className="fa fa-minus-circle">&nbsp;</i>
-                                                </a>
-                                            </span>
-    */}
                                             <span className="numDislikes">
                                                 <span className="icon u-mleft-10 u-mright-5">
                                                     {item.hasOwnProperty('myvote') && item.myvote.dislike >  0 ?
@@ -420,8 +357,8 @@ export default class Proposals extends Component {
     }
 }
 
-if (document.getElementById('proposals')) {
-    ReactDOM.render(<Proposals/>, document.getElementById('proposals'));
+if (document.getElementById('proposals-nchan')) {
+    ReactDOM.render(<ProposalsNchan/>, document.getElementById('proposals-nchan'));
 }
 
 if (document.getElementById('splash')) {

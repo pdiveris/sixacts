@@ -22,6 +22,9 @@ class ProposalController extends Controller
 {
     /**
      * Vote action
+     * Please consult the Wiki page for an explanation of how voting works
+     *
+     * @link https://github.com/pdiveris/sixacts/wiki/Voting,-the-ruleset
      *
      * @param \Illuminate\Http\Request $request
      * @return void
@@ -30,8 +33,7 @@ class ProposalController extends Controller
     public function vote(Request $request)
     {
         $params = $request->all();
-        $response = [];
-        $ret = false;
+        $response = ['action'=>'unspecified'];
     
         if (!array_key_exists('proposal_id', $params) ||
             !array_key_exists('direction', $params) ||
@@ -39,7 +41,8 @@ class ProposalController extends Controller
         ) {
             return response()->json(['type' => 'error', 'message' => 'Bad request (missing data)']);
         }
-        if (!$params['direction'] === 'up' || !$params['direction'] === 'down') {
+
+        if (!($params['direction'] === 'vote') && !($params['direction'] === 'dislike')) {
             return response()->json(['type' => 'error', 'message' => 'Bad request (vote)']);
         }
     
@@ -47,14 +50,16 @@ class ProposalController extends Controller
             ->where('proposal_id', '=', $params['proposal_id'])
             ->first()
         ;
-    
-        $user = User::find($params['user']['user']);
+        
+        // this needs changing to be set from the session or from token
+        $user = User::find((int)$params['user']['user']);
+
         // if not user etc..
-        if (null === $user) {
+        if (!$user) {
             return response()->json(['type' => 'error', 'message' => 'You need to be logged in to vote']);
         }
 
-        if (null === $vote) {
+        if (!$vote) {
             $vote = new \App\Vote();
             $vote->user_id = $params['user']['user'];
             $vote->proposal_id = $params['proposal_id'];
@@ -63,81 +68,81 @@ class ProposalController extends Controller
                 $vote->dislike = 1;
                 $response = [
                     'type' => 'success',
-                    'message' => 'Your dislike has been noted NULL',
-                    'action' => 'persist'
-                ];
-            } else {
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your vote has been cast NULL',
-                    'action' => 'persist'
-                ];
-                $vote->vote = 1;
-            }
-        }
-        
-        if ($vote->vote === 1 && $vote->dislike === 1) {
-            if ($params['direction'] === 'dislike') {
-                $vote->dislike = 0;
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your have removed your dislike',
-                    'action' => 'persist'
-                ];
-            } else {
-                $response = [
-                    'type' => 'success',
-                    'message' => 'You\'ve removed your vote',
-                    'action' => 'persist'
-                ];
-                $vote->vote = 0;
-            }
-        } elseif ($vote->vote === 1 && $vote->dislike === 0) {
-            if ($params['direction'] === 'dislike') {
-                $vote->dislike = 1;
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your dislike has been noted VOTE1DIS0',
-                    'action' => 'persist'
-                ];
-            } else {
-                $response = [
-                    'type' => 'success',
-                    'message' => 'You\'ve removed your vote',
-                    'action' => 'persist'
-                ];
-                $vote->vote = 0;
-            }
-        } elseif ($vote->vote === 0 && $vote->dislike === 0) {
-            if ($params['direction'] === 'dislike') {
-                $vote->dislike = 1;
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your dislike has been noted VOTE0DIS0',
+                    'message' => 'Your dislike has been added',
                     'action' => 'persist'
                 ];
             } else {
                 $vote->vote = 1;
                 $response = [
                     'type' => 'success',
-                    'message' => 'Your vote has been cast VOTE0DIS0',
+                    'message' => 'Your vote has been added',
                     'action' => 'persist'
                 ];
             }
-        } elseif ($vote->vote === 0 && $vote->dislike === 1) {
-            if ($params['direction'] === 'dislike') {
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your dislike has been removed VOTE0DIS1 ',
-                    'action' => 'remove'
-                ];
-            } else {
-                $vote->vote = 1;
-                $response = [
-                    'type' => 'success',
-                    'message' => 'Your vote has been added VOTE0DIS0',
-                    'action' => 'persist'
-                ];
+        } else {
+            if ((int)$vote->vote === 1 && (int)$vote->dislike === 1) {
+                if ($params['direction'] === 'dislike') {
+                    $vote->dislike = 0;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your dislike has been removed',
+                        'action' => 'persist'
+                    ];
+                } else {
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your vote was removed',
+                        'action' => 'persist'
+                    ];
+                    $vote->vote = 0;
+                }
+            } elseif ((int)$vote->vote === 1 && (int)$vote->dislike === 0) {
+                if ($params['direction'] === 'dislike') {
+                    $vote->dislike = 1;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your dislike has been added',
+                        'action' => 'persist'
+                    ];
+                } else {
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your vote was removed',
+                        'action' => 'persist'
+                    ];
+                    $vote->vote = 0;
+                }
+            } elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 0) {
+                if ($params['direction'] === 'dislike') {
+                    $vote->dislike = 1;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your dislike has been added',
+                        'action' => 'persist'
+                    ];
+                } else {
+                    $vote->vote = 1;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your vote has been added',
+                        'action' => 'persist'
+                    ];
+                }
+            } elseif ((int)$vote->vote === 0 && (int)$vote->dislike === 1) {
+                if ($params['direction'] === 'dislike') {
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your dislike has been removed',
+                        'action' => 'remove'
+                    ];
+                } else {
+                    $vote->vote = 1;
+                    $response = [
+                        'type' => 'success',
+                        'message' => 'Your vote has been added',
+                        'action' => 'persist'
+                    ];
+                }
             }
         }
         if ($response['action'] === 'remove') {
@@ -147,14 +152,27 @@ class ProposalController extends Controller
         } elseif ($response['action'] === 'discard') {
             $ret = true;
         } else { // Horror!
+            return response()->json(['type' => 'error', 'message' => 'HORROR!']);
         }
         
         if ($ret) {
-            event(new MessagePosted($user, 'refresh'));
+            if (env('SOCKET_PROVIDER', 'echo') === 'nchan') {
+                event(
+                    new \App\Events\ProposalVotedEvent([
+                        'message' => 'refresh', 'user' => $user->name
+                    ],
+                        'messages',
+                        $user
+                    )
+                );
+            } else {
+                event(new MessagePosted($user, 'refresh'));
+            }
             return response()->json($response);
         }
         return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
     }
+    
     
     /**
      * Get all proposals with their aggregations (if they have any..)
@@ -170,7 +188,25 @@ class ProposalController extends Controller
             $cats = explode(':', $catsQuery);
             $props = ProposalView::whereIn('category_id', $cats)->get();
         } else {
-            $props = ProposalView::all();
+            $filter = $request->get('filter', '');
+            switch ($filter) {
+                case 'most':
+                    $props = \App\ProposalView::orderBy('num_votes','desc')
+                        ->get();
+                    break;
+                case 'recent':
+                    $props = \App\ProposalView::orderBy('created_at','desc')->get();
+                    break;
+                case 'current':
+                    $props = \App\ProposalView::orderBy('num_votes','desc')
+                        ->limit(6)
+                        ->get();
+                    break;
+                default:
+                    $props = \App\ProposalView::all();
+            }
+            $props = ProposalView::getFiltered($filter);
+            // $props = ProposalView::all();
         }
         if ($userId > 0) {
             $props = StaticController::mergeProposalsWithVotes($props, $userId);

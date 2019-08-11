@@ -117,6 +117,6 @@ class Utils
     
     public static function getRevisionString()
     {
-        return '0.2';
+        return '0.6';
     }
 }
