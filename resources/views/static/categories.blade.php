@@ -16,7 +16,7 @@
                     Policy proposals that address the way elections are conducted, such as who votes, how
                     voting happens, when voting happens, and how voting results are recognized and applied.
                 </p>
-                <h2 class="title is-4">2. Government Structures and Conduct of Elected Representatives</h2>
+                <h2 class="title is-4">2. Governance and Political Conduct</h2>
                 <p>
                     How elected representatives organise themselves, interact, debate issues, make decisions
                     and the rules for re-election. Transparency, discosure of interests and the means by which
