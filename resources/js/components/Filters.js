@@ -19,7 +19,7 @@ export default class Filters extends Component {
     }
 
     componentDidMount() {
-        console.log('Mount we did (filters)');
+        console.log('Filters loaded');
     }
 
     componentWillUnmount() {

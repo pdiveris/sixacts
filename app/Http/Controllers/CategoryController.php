@@ -26,12 +26,14 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $cats = Category::all();
+        
         $addSelected = $request->get('addSelected', 0);
-        if ($addSelected == 1) {
+        if ((int)$addSelected === 1) {
             foreach ($cats as $cat) {
                 $cat->selected = true;
             }
         }
+
         return response()->json($cats);
     }
     
@@ -44,7 +46,7 @@ class CategoryController extends Controller
      */
     public function show($categoryId = 0)
     {
-        $cat = Category::find(\intval($categoryId));
+        $cat = Category::find((int)($categoryId));
         if (null===$cat) {
             return response()->json(['type'=>'error', 'message' => 'Not Found.'], 404);
         }
