@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NchanSubscriber from "nchan";
-import Echo from "laravel-echo";
-import Socketio from "socket.io-client";
 import {ToastContainer, toast} from 'react-toastify';
 import Modal from 'react-modal';
 import Countdown from 'react-countdown-now';
