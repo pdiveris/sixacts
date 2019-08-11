@@ -195,23 +195,29 @@ export default class Proposals extends Component {
             shared: false
         };
 
-        var sub = new NchanSubscriber(url, opt);
+        let sub = new NchanSubscriber(url, opt);
         console.log('Joined channel: "messages"');
-        console.log(sub);
+        if (window.d === true) {
+            console.log(sub);
+        }
         sub.on("message", (message, message_metadata) =>  {
             // message is a string
             // message_metadata is a hash that may contain 'id' and 'content-type'
-
-            console.log(message_metadata);
+            if (window.d===true) {
+                console.log(message_metadata);
+            }
             window.localStorage.setItem('lastEventId', message_metadata.id);
             let msg = JSON.parse(message);
-            console.log(msg);
-
+            if (window.d === true) {
+                console.log(msg);
+            }
             if (msg.hasOwnProperty("politburo")) {
                 this.notify(msg.message, msg.type, 3000);
             }
             if (msg.message === 'refresh') {
-                console.log('Refreshing...');
+                if (window.d===true) {
+                    console.log('Refreshing...');
+                }
                 this.getProposals();
             } else {
                 console.log("Other msg: " + msg.message)
@@ -221,8 +227,10 @@ export default class Proposals extends Component {
 
         sub.on('connect', function(evt) {
             //fired when first connected.
-            console.log('connected');
-            console.log(evt);
+            if (window.d === true) {
+                console.log('connected');
+                console.log(evt);
+            }
         });
 
         sub.start();
