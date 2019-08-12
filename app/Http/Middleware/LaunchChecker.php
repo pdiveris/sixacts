@@ -18,8 +18,12 @@ class LaunchChecker
     public function handle($request, Closure $next)
     {
         $hostPart = 'https://'.$request->getHost().'/';
+        if (\Session::get('campaigner', false) === true) {
+            return $next($request);
+        }
         $url = str_replace($hostPart, '', $request->getUri());
-        if (in_array($url, ['register', 'propose', 'profile', 'login', 'signin']) && !env('LAUNCH')) {
+        if (in_array($url, ['register', 'propose', 'profile', 'login', 'signin'])
+            && !env('LAUNCH')) {
             abort(404);
         }
         return $next($request);

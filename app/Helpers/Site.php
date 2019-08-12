@@ -48,7 +48,7 @@ class Site
     
     public function menuLink(string $endPoint): string
     {
-        if (env('LAUNCH')) {
+        if (env('LAUNCH') || \Session::get('campaigner', false)===true) {
             return $endPoint;
         }
         if (array_key_exists($endPoint, self::$menuItems)) {
