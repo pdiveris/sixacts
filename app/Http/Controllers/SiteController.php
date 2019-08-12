@@ -148,7 +148,11 @@ class SiteController extends Controller
         ) {
             return false;
         }
-        return env('SPLASH_SCREEN', false);
+        if (\Session::get('campaigner', false)===true) {
+            return false;
+        } else {
+            return env('SPLASH_SCREEN', false);
+        }
     }
     
     public static function getTwitts()

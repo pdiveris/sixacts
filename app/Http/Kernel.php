@@ -21,7 +21,6 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrustProxies::class,
         \Barryvdh\Cors\HandleCors::class,
         \App\Http\Middleware\CheckShouldRenderOnServer::class,
-        \App\Http\Middleware\LaunchChecker::class
     ];
 
     /**
@@ -38,6 +37,8 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\LaunchChecker::class
+            
         ],
         'cors' => [
             \Barryvdh\Cors\HandleCors::class,
