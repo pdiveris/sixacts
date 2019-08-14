@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "220548f7eca95630822f528166f21f54",
+    "content-hash": "fbca8e310908c89bdc1d2a51601e2212",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1095,6 +1095,55 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
+        },
+        {
+            "name": "kktsvetkov/krumo",
+            "version": "0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kktsvetkov/krumo.git",
+                "reference": "fc8bfbb350ca481446820a665afe93ab98423e1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kktsvetkov/krumo/zipball/fc8bfbb350ca481446820a665afe93ab98423e1e",
+                "reference": "fc8bfbb350ca481446820a665afe93ab98423e1e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "class.krumo.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Kaloyan Tsvetkov (KT)",
+                    "role": "Developer",
+                    "email": "kaloyan@kaloyan.info",
+                    "homepage": "http://kaloyan.info"
+                }
+            ],
+            "description": "Krumo is a debugging tool, which displays structured information about any PHP variable. It is a nice replacement for print_r() or var_dump() which are used by a lot of PHP developers.",
+            "homepage": "http://krumo.kaloyan.info",
+            "keywords": [
+                "debug",
+                "debugging",
+                "devel",
+                "development",
+                "krumo",
+                "print_r",
+                "var_dump",
+                "var_export"
+            ],
+            "time": "2017-11-21T10:11:07+00:00"
         },
         {
             "name": "laravel-frontend-presets/bulma",

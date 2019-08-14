@@ -54,9 +54,11 @@ export default class Proposals extends Component {
         this.state = {
             'items': [],
             'categories': [],
-            'filter': ''
+            'filter': '',
+            'query': ''
         }
         this.echo = null;
+        this.handleChange = this.handleChange.bind(this);
         this.getCategoriesUpdateFromChild = this.getCategoriesUpdateFromChild.bind(this);
         this.getFiltersUpdateFromChild = this.getFiltersUpdateFromChild.bind(this);
     }
@@ -257,7 +259,9 @@ export default class Proposals extends Component {
         let hostName = window.location.hostname;
         let uid = '&user_id='+window.Laravel.user;
         let filter = this.state.filter;
-        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid+'&filter='+filter,
+        let q = this.state.query;
+
+        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid+'&filter='+filter+'&q='+q,
             {
                 crossDomain: true,
             }
@@ -284,6 +288,12 @@ export default class Proposals extends Component {
         }
     }
 
+    handleChange(event) {
+        this.state.query = event.target.value;
+        this.getProposals();
+        console.log(event.target.value);
+    }
+
     render() {
         return (
             <div>
@@ -294,6 +304,21 @@ export default class Proposals extends Component {
                     <Portal>
                         <Filters getFiltersUpdateFromChild={this.getFiltersUpdateFromChild}/>
                     </Portal>
+                    <form autoComplete="off" method="post" action="">
+                        <div className="field is-horizontal ">
+                            <div className="field-body u-mbottom-20">
+                                <div className="field">
+                                    <div className="control">
+                                        <input className="input"
+                                               type="text"
+                                               placeholder="Search"
+                                               onChange={this.handleChange}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <ul>
                         {this.state.items.map((item, index) => {
                                 return (
@@ -301,10 +326,11 @@ export default class Proposals extends Component {
                                         <span className="subtitle has-text-weight-bold">{item.title}</span>
                                         <span
                                             className={
-                                                `tag is-small u-mleft-15 ${item.category.class} ${item.category.sub_class}`
+                                                `tag is-small u-mleft-15 ${item.category_class} 
+                                                ${item.category_sub_class}`
                                             }
                                             >
-                                            {item.category.short_title.substr(0, 1)}
+                                            {item.category_short_title.substr(0, 1)}
                                         </span>
                                         <div className={`expander ${this.juggler(item.display)} '}`}
                                              id={'expander_1_'+index}
@@ -331,15 +357,15 @@ export default class Proposals extends Component {
                                         <div className="author controls u-mtop-10 u-mright-10 u-mbottom-10">
                                             <i>Posted by</i>:&nbsp;
                                             <b>
-                                                {item.user.display_name != ''
-                                                    ? item.user.display_name
-                                                    : item.user.name
+                                                {item.user_display_name !== ''
+                                                    ? item.user_display_name
+                                                    : item.user_name
                                                 }</b>
                                             &nbsp;
                                         </div>
                                         <div className="aggs controls u-mbottom-20">
                                             <span className="numVotes">
-                                            {item.aggs.length > 0 ? item.aggs[0].total_votes : ' 0'}</span> votes
+                                            {item.aggs ? item.aggs_total_votes : ' 0'}</span> votes
                                                 <span className="icon u-mleft-20">
                                                 {!item.hasOwnProperty('myvote') || item.myvote.vote == 0 ?
                                                     (
@@ -376,7 +402,7 @@ export default class Proposals extends Component {
 
                                                     }
                                                 </span>
-                                                {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' 0'}
+                                                {item.aggs ? item.aggs_total_dislikes : ' 0'}
                                             </span> dislikes
 
                                             <div className={'icon theworks'}>

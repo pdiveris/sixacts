@@ -79,6 +79,24 @@
         }
     );
     
+    Route::get(
+        '/campaigner',
+        function () {
+            \Session::put('campaigner', true);
+            return redirect('/');
+        }
+    );
+    
+    Route::get('query', 'ProposalController@testa');
+    
+    Route::get(
+        '/stop',
+        function () {
+            \Session::put('campaigner', false);
+            return redirect('/');
+        }
+    );
+    
     Route::get('/twitter', function() {
         $twits =  Twitter::getUserTimeline(['screen_name' => 'ActsSix', 'count' => 3, 'format' => 'json']);
         $ttl = env('TWITTER_TTL', 'undefined');

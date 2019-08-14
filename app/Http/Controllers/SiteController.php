@@ -79,7 +79,7 @@ class SiteController extends Controller
     }
     
     /**
-     * Display a form to colect the proposed action
+     * Display a form to collect the proposed action
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -96,7 +96,7 @@ class SiteController extends Controller
     }
     
     /**
-     * Handld the form/
+     * Handle the form/
      * Validate to save, that's our mission.
      *
      * @param \Illuminate\Http\Request $request
@@ -155,6 +155,11 @@ class SiteController extends Controller
         }
     }
     
+    /**
+     * Scheduled task
+     *
+     * @return mixed
+     */
     public static function getTwitts()
     {
         $twits =  json_decode(\Cache::get('twitter', '[]'));

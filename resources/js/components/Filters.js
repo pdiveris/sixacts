@@ -58,6 +58,13 @@ export default class Filters extends Component {
                         </a>
                     </span>
                 </p>
+                <p className="u-mtop-10">
+                    <span className="is-small u-m-5">
+                        <a className={this.getClass('dislikes')} id="dislikes" onClick={this.onClick}>
+                            Most disliked
+                        </a>
+                    </span>
+                </p>
             </div>
         );
     }
