@@ -173,6 +173,34 @@ class ProposalController extends Controller
         return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
     }
     
+    public function testa(Request $request)
+    {
+        $q = '';
+
+        $query = "
+SELECT
+ proposals.id as id,
+    proposals.title as title,
+    proposals.body as body,
+    proposals.slug as slug,
+    MATCH (proposals.title, proposals.body)
+    AGAINST ('*ind*' IN BOOLEAN MODE) as score,
+    category.sub_class as category_sub_class,
+    category.short_title as category_short_title,
+    user.display_name as user_display_name,
+    user.name as user_name,
+    aggs.total_votes as aggs_total_votes
+    FROM proposals_view proposals
+    LEFT JOIN categories category ON (category.id = proposals.category_id)
+    LEFT JOIN users user ON (user.id = proposals.user_id)
+    LEFT JOIN vote_aggs aggs ON (proposals.id = aggs.proposal_id)
+    WHERE category_id in (1,2,3,4,5,6)
+    ORDER BY score DESC, category_id ASC
+    ";
+
+        $props = ProposalView::raw($query)->get();
+    }
+    
     
     /**
      * Get all proposals with their aggregations (if they have any..)
@@ -184,44 +212,20 @@ class ProposalController extends Controller
     {
         $userId = $request->get('user_id');
         $catsQuery = $request->get('cats', '');
-        if (null !== $catsQuery && '' !== $catsQuery) {
-            $cats = explode(':', $catsQuery);
-            $props = ProposalView::whereIn('category_id', $cats)->get();
-        } else {
-            $filter = $request->get('filter', '');
-            switch ($filter) {
-                case 'most':
-                    $props = \App\ProposalView::orderBy('num_votes','desc')
-                        ->get();
-                    break;
-                case 'recent':
-                    $props = \App\ProposalView::orderBy('created_at','desc')->get();
-                    break;
-                case 'current':
-                    $props = \App\ProposalView::orderBy('num_votes','desc')
-                        ->limit(6)
-                        ->get();
-                    break;
-                default:
-                    $props = \App\ProposalView::all();
-            }
-            $props = ProposalView::getFiltered($filter);
-            // $props = ProposalView::all();
+        
+        $q = $request->get('q', '');
+        $filter = $request->get('filter', '');
+        $props = ProposalView::getFiltered($catsQuery, $q, $userId, $filter);
+
+        foreach ($props as $prop) {
+            $prop->display = 'collapsed';
         }
+        
         if ($userId > 0) {
             $props = StaticController::mergeProposalsWithVotes($props, $userId);
         }
         foreach ($props as $prop) {
             $prop->display = 'collapsed';
-            if ($prop->category) {
-                $prop->hasCategory = true;
-            }
-            if (count($prop->aggs)>0) {
-                $prop->hasAggs = true;
-            }
-            if ($prop->user) {
-                $prop->hasUser = true;
-            }
         }
         return response()->json($props);
     }

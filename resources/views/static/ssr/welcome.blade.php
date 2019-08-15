@@ -40,9 +40,9 @@ Essentially this is our Server Side Rendered page which itonically is what the R
                             {{$proposal->title}}
                         </span>
                         <span
-                            class="tag is-small u-mleft-15 {{$proposal->category->class}}
-                            {{$proposal->category->sub_class}}">
-                            {{substr($proposal->category->short_title,0, 1)}}
+                            class="tag is-small u-mleft-15 {{$proposal->category_class}}
+                            {{$proposal->category_sub_class}}">
+                            {{substr($proposal->category_short_title,0, 1)}}
                         </span>
                         </a>
                         <p>
@@ -52,21 +52,22 @@ Essentially this is our Server Side Rendered page which itonically is what the R
                         <div class="author controls u-mtop-10 u-mright-10 u-mbottom-10">
                             <i>Posted by</i>:&nbsp;
                             <b>
-                                {{$proposal->user->display_name ?? $proposal->user->name }}
+                                {{$proposal->user_display_name ?? $proposal->user_name }}
                             </b>
                             &nbsp;
                         </div>
+
                         <div class="aggs controls u-mbottom-20">
                             <span class="numVotes">
-                                {{count($proposal->aggs) > 0 ? $proposal->aggs[0]->total_votes : ' No'}}
+                                {{$proposal->aggs_total_votes > 0 ? $proposal->aggs_total_votes : ' No'}}
                             </span> votes
                             <span class="icon u-mleft-20">
                                 @if(!isset($proposal->myvote) || $proposal->myvote['vote'] == 0)
-                                <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=vote">
+                                    <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=vote">
                                   <i class="fa fa-arrow-alt-circle-up">&nbsp;</i>
                                 </a>
                                 @else
-                                <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=vote">
+                                    <a href="{{route('plainvote')}}?pid={{$proposal->id}}&action=vote">
                                    <i class="fa fa-minus-circle">&nbsp;</i>
                                 </a>
                                 @endif
@@ -83,7 +84,7 @@ Essentially this is our Server Side Rendered page which itonically is what the R
                                         </a>
                                     @endif
                                 </span>
-                                {{count($proposal->aggs) > 0 ? $proposal->aggs[0]->total_dislikes : ' No'}}
+                                {{$proposal->aggs_total_dislikes > 0 ? $proposal->aggs_total_dislikes : ' No'}}
                             </span> dislikes
                             <div class="'icon theworks">
                                 <a class="button" href="#">
@@ -103,6 +104,8 @@ Essentially this is our Server Side Rendered page which itonically is what the R
                                 </a>
                             </div>
                         </div>
+
+
                     </article>
                 @endforeach
             </div>
