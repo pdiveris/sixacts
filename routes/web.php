@@ -87,8 +87,6 @@
         }
     );
     
-    Route::get('query', 'ProposalController@testa');
-    
     Route::get(
         '/stop',
         function () {

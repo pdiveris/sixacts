@@ -121,7 +121,9 @@ class ProposalView extends Model implements Feedable
         FROM proposals_view proposals
         LEFT JOIN categories category ON (category.id = proposals.category_id)
         LEFT JOIN users user ON (user.id = proposals.user_id)
-        LEFT JOIN vote_aggs aggs ON (proposals.id = aggs.proposal_id) #cats_replacement #order_by";
+        LEFT JOIN vote_aggs aggs ON (proposals.id = aggs.proposal_id) #cats_replacement #order_by
+        #limit
+        ";
     
         if ($catsFilter !== null &&  $catsFilter !== '') {
             // $cats = explode(':', $catsQuery);
@@ -131,34 +133,28 @@ class ProposalView extends Model implements Feedable
                 ["WHERE category_id  IN ($cats)", "ORDER BY score DESC"],
                 $query
             );
-        } else {
-            $query = str_replace(['#cats_replacement', '**'], '', $query);
         }
+        $query = str_replace(['#cats_replacement', '**'], '', $query);
         switch ($type) {
             case 'most':
-                $query = str_replace(['#order_by'], ['ORDER BY num_votes DESC, score DESC'], $query);
-                $props = ProposalView::raw($query)->get();
+                $query = str_replace(['#order_by', '#limit'], ['ORDER BY num_votes DESC, score DESC', ''], $query);
+                $props = \DB::select($query);
                 break;
             case 'recent':
-                $query = str_replace('#order_by', 'ORDER BY score desc, proposals.created_at desc', $query);
-                $props = ProposalView::raw($query)->get();
+                $query = str_replace(array('#limit', '#order_by'),
+                    array('', 'ORDER BY score desc, proposals.created_at desc'), $query
+                );
+                $props = \DB::select($query);
                 break;
             case 'current':
-                $query = str_replace('#order_by', 'ORDER BY num_votes desc, score DESC', $query);
-                $props = ProposalView::raw($query)->get();
+                $query = str_replace(array('#limit', '#order_by'), array(' LIMIT 3 ', 'ORDER BY num_votes desc'), $query);
+                $props = \DB::select($query);
                 break;
             default:
-                $query = str_replace(['#order_by'], ['ORDER BY score DESC '], $query);
+                $query = str_replace(array('#limit', '#order_by'), array('', 'ORDER BY score DESC '), $query);
                 $props = \DB::select($query);
-/*
-                foreach ($props as $prop) {
-                    echo json_encode($prop);
-                }
-                die;*/
         }
-        foreach ($props as $prop) {
-            // $prop->_kanga = 'Patriotic shit';
-        }
+        // dump($query);
         return $props;
     }
 

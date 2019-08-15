@@ -173,37 +173,10 @@ class ProposalController extends Controller
         return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
     }
     
-    public function testa(Request $request)
-    {
-        $q = '';
-
-        $query = "
-SELECT
- proposals.id as id,
-    proposals.title as title,
-    proposals.body as body,
-    proposals.slug as slug,
-    MATCH (proposals.title, proposals.body)
-    AGAINST ('*ind*' IN BOOLEAN MODE) as score,
-    category.sub_class as category_sub_class,
-    category.short_title as category_short_title,
-    user.display_name as user_display_name,
-    user.name as user_name,
-    aggs.total_votes as aggs_total_votes
-    FROM proposals_view proposals
-    LEFT JOIN categories category ON (category.id = proposals.category_id)
-    LEFT JOIN users user ON (user.id = proposals.user_id)
-    LEFT JOIN vote_aggs aggs ON (proposals.id = aggs.proposal_id)
-    WHERE category_id in (1,2,3,4,5,6)
-    ORDER BY score DESC, category_id ASC
-    ";
-
-        $props = ProposalView::raw($query)->get();
-    }
-    
-    
     /**
      * Get all proposals with their aggregations (if they have any..)
+     *
+     * endpoint: /api/proposals?cats=&user_id=1&filter=current&q=
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
