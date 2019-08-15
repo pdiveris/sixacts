@@ -267,12 +267,17 @@ export default class Proposals extends Component {
             }
         )
             .then(results => results.json())
-            .then(results => this.setState( {'items': results}))
+            .then(results => this.setState( {'items': results})  )
     }
 
     getCategoriesUpdateFromChild(cats) {
+        console.log(cats);
         this.state.categories = cats;
         this.getProposals();
+        if (window.d) {
+            console.log('Got proposals');
+            console.log(this.state.items);
+        }
     }
 
     getFiltersUpdateFromChild(filter) {
@@ -326,8 +331,7 @@ export default class Proposals extends Component {
                                         <span className="subtitle has-text-weight-bold">{item.title}</span>
                                         <span
                                             className={
-                                                `tag is-small u-mleft-15 ${item.category_class} 
-                                                ${item.category_sub_class}`
+                                                `tag is-small u-mleft-15 ${item.category_class} ${item.category_sub_class}`
                                             }
                                             >
                                             {item.category_short_title.substr(0, 1)}
@@ -357,7 +361,7 @@ export default class Proposals extends Component {
                                         <div className="author controls u-mtop-10 u-mright-10 u-mbottom-10">
                                             <i>Posted by</i>:&nbsp;
                                             <b>
-                                                {item.user_display_name !== ''
+                                                {item.user_display_name != '' && item.user_display_name != null
                                                     ? item.user_display_name
                                                     : item.user_name
                                                 }</b>
@@ -365,7 +369,7 @@ export default class Proposals extends Component {
                                         </div>
                                         <div className="aggs controls u-mbottom-20">
                                             <span className="numVotes">
-                                            {item.aggs ? item.aggs_total_votes : ' 0'}</span> votes
+                                            {item.aggs_total_votes ? item.aggs_total_votes : ' 0'}</span> votes
                                                 <span className="icon u-mleft-20">
                                                 {!item.hasOwnProperty('myvote') || item.myvote.vote == 0 ?
                                                     (
@@ -402,7 +406,7 @@ export default class Proposals extends Component {
 
                                                     }
                                                 </span>
-                                                {item.aggs ? item.aggs_total_dislikes : ' 0'}
+                                                {item.aggs_total_dislikes ? item.aggs_total_dislikes : ' 0'}
                                             </span> dislikes
 
                                             <div className={'icon theworks'}>

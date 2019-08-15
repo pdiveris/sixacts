@@ -58,11 +58,45 @@ class StaticController extends Controller
     /**
      * Render the home view
      *
+     * @return \Illuminate\View\View
+     */
+    public function homeRendered(Request $request): \Illuminate\View\View
+    {
+        $filter = $request->get('filter', '');
+        
+        $proposals = ProposalView::getFiltered($filter);
+        $label = '';
+        if (array_key_exists($filter, self::$filterLabels)) {
+            $label = self::$filterLabels[$filter];
+        }
+        
+        $categories = \App\Category::all();
+        $id = \Auth::user() ? \Auth::user()->id : 0;
+        $proposals = self::mergeProposalsWithVotes($proposals, $id);
+        return view(
+            'static.ssr.welcome',
+            [
+                'filter' => $filter,
+                'label'=>$label,
+                'proposals'=>$proposals,
+                'categories'=>$categories
+            ]
+        );
+    }
+    
+    /**
+     * Render the home view
+     *
      * @return \Illuminate\Contracts\View\View
      */
-    public function home()
+    public function home(Request $request)
     {
-        $proposals = \App\ProposalView::all();
+        $userId = $request->get('user_id');
+        $catsQuery = $request->get('cats', '');
+        $q = $request->get('q', '');
+        $filter = $request->get('filter', '');
+        $proposals = ProposalView::getFiltered($catsQuery, $q, $userId, $filter);
+        
         $categories = \App\Category::all();
     
         if (\Auth::user()) {
@@ -77,12 +111,12 @@ class StaticController extends Controller
                 'static.ssr.welcome',
                 ['proposals'=>$proposals, 'categories'=>$categories]
             );
-        } else {
-            return view(
-                'static.welcome',
-                ['proposals'=>$proposals, 'categories'=>$categories]
-            );
         }
+    
+        return view(
+            'static.welcome',
+            ['proposals'=>$proposals, 'categories'=>$categories]
+        );
     }
     
     /**
@@ -107,35 +141,6 @@ class StaticController extends Controller
             ['proposals'=>$proposals, 'categories'=>$categories]
         );
 
-    }
-
-    /**
-     * Render the home view
-     *
-     * @return \Illuminate\View\View
-     */
-    public function homeRendered(Request $request): \Illuminate\View\View
-    {
-        $filter = $request->get('filter', '');
-        
-        $proposals = ProposalView::getFiltered($filter);
-        $label = '';
-        if (array_key_exists($filter, self::$filterLabels)) {
-            $label = self::$filterLabels[$filter];
-        }
-
-        $categories = \App\Category::all();
-        $id = \Auth::user() ? \Auth::user()->id : 0;
-        $proposals = self::mergeProposalsWithVotes($proposals, $id);
-        return view(
-            'static.ssr.welcome',
-            [
-                'filter' => $filter,
-                'label'=>$label,
-                'proposals'=>$proposals,
-                'categories'=>$categories
-            ]
-        );
     }
     
     /**

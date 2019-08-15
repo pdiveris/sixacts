@@ -177,7 +177,8 @@ class ProposalController extends Controller
     {
         $q = '';
 
-        $query = <<<EOT
+        $query = "
+SELECT
  proposals.id as id,
     proposals.title as title,
     proposals.body as body,
@@ -195,16 +196,9 @@ class ProposalController extends Controller
     LEFT JOIN vote_aggs aggs ON (proposals.id = aggs.proposal_id)
     WHERE category_id in (1,2,3,4,5,6)
     ORDER BY score DESC, category_id ASC
-    ;
+    ";
 
-EOT;
-        $props = ProposalView::selectRaw($query, [$q])->first();
-        
-        // $props = ProposalView::where()
-        
-        krumo($props->getAttributes());
-
-
+        $props = ProposalView::raw($query)->get();
     }
     
     
@@ -218,89 +212,20 @@ EOT;
     {
         $userId = $request->get('user_id');
         $catsQuery = $request->get('cats', '');
+        
         $q = $request->get('q', '');
-        $cats_replacement = '';
-        
-        $query = <<<EOT
- proposals.id as id,
-    proposals.title as title,
-    proposals.body as body,
-    proposals.slug as slug,
-    MATCH (proposals.title, proposals.body)
-    AGAINST ('*?*' IN BOOLEAN MODE) as score,
-    category.sub_class as category_sub_class,
-    category.class as category_class,
-    category.short_title as category_short_title,
-    user.display_name as user_display_name,
-    user.name as user_name,
-    aggs.total_votes as aggs_total_votes,
-    aggs.total_dislikes as aggs_total_dislikes
-    FROM proposals_view proposals
-    LEFT JOIN categories category ON (category.id = proposals.category_id)
-    LEFT JOIN users user ON (user.id = proposals.user_id)
-    LEFT JOIN vote_aggs aggs ON (proposals.id = aggs.proposal_id)
-    #cats_replacement
-    #order_by
-    ;
-EOT;
-        
-        if (null !== $catsQuery && '' !== $catsQuery) {
-            // $cats = explode(':', $catsQuery);
-            $cats = str_replace(':', ',', $catsQuery);
-            $query = str_replace(
-                ['#cats_replacement', '#order_by'],
-                ["WHERE category_id  IN ($cats)", "ORDER BY score DESC"],
-                $query
-            );
-            
-            // $props = ProposalView::whereIn('category_id', $cats)->get();
-            $props = ProposalView::selectRaw($query, [$q])->get();
-        } else {
-            $query = str_replace(array('#cats_replacement', '*?*'), '', $query);
-            $filter = $request->get('filter', '');
-            switch ($filter) {
-                case 'most':
-                    $query = str_replace('#order_by', 'ORDER BY num_votes DESC, score DESC', $query);
-                    // $props = \App\ProposalView::orderBy('num_votes','desc')->get();
-                    $props = ProposalView::selectRaw($query, [$q])->get();
-                    break;
-                case 'recent':
-                    $query = str_replace('#order_by', 'ORDER BY created_at DESC, score DESC', $query);
-                    // $props = \App\ProposalView::orderBy('created_at','desc')->get();
-                    $props = ProposalView::selectRaw($query, [$q])->get();
-                    break;
-                case 'current':
-                    $query = str_replace('#order_by', 'ORDER BY num_votes DESC, score DESC', $query);
-                    // $props = \App\ProposalView::orderBy('num_votes','desc')->get();
-                    $props = ProposalView::selectRaw($query, [$q])->limit(6);
-                    break;
-                default:
-                    // $props = \App\ProposalView::all();
-                    $query = str_replace('#order_by', 'ORDER BY num_votes DESC, score DESC', $query);
-                    // $props = \App\ProposalView::orderBy('num_votes','desc')->get();
-                    $props = ProposalView::selectRaw($query, [$q])->get();
-                    
-            }
-            // move code to getFiltered
-            // $props = ProposalView::getFiltered($filter);
-            // dump($filter);
-            dump($query);
-            // dump($props);
+        $filter = $request->get('filter', '');
+        $props = ProposalView::getFiltered($catsQuery, $q, $userId, $filter);
+
+        foreach ($props as $prop) {
+            $prop->display = 'collapsed';
         }
+        
         if ($userId > 0) {
             $props = StaticController::mergeProposalsWithVotes($props, $userId);
         }
         foreach ($props as $prop) {
             $prop->display = 'collapsed';
-/*            if ($prop->category) {
-                $prop->hasCategory = true;
-            }
-            if (count($prop->aggs)>0) {
-                $prop->hasAggs = true;
-            }
-            if ($prop->user) {
-                $prop->hasUser = true;
-            }*/
         }
         return response()->json($props);
     }

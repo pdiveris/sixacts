@@ -25,7 +25,6 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Proposal;
 use Illuminate\Http\Request as Request;
-use phpDocumentor\Reflection\Types\Object_;
 
 /**
  * Class SiteController
