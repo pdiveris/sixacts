@@ -88,7 +88,9 @@ class SiteController extends Controller
     {
         $rules = array(
             'name'    => 'required|string',
-            'email' => 'email:rfc,dns'
+            'email' => 'email:rfc,dns',
+            'password' => 'string|confirmed',
+            'password_confirmation' => 'string',
         );
         $validator = \Validator::make($this->request->all(), $rules);
        
@@ -98,12 +100,15 @@ class SiteController extends Controller
                 ->withInput($this->request->all());
         } else {
             $oauthuser = \Auth::user();
+            if (null === $oauthuser) {
+                abort(501, 'System error retrieving your details. We are working on it..');
+            }
             
             $user = User::find($oauthuser->id);
-            
             $user->email = $request->get('email');
             $user->name = $request->get('name');
             $user->display_name = $request->get('display_name');
+            $user->password = bcrypt($request->get('password'));
             
             $user->save();
             return redirect('/user/profile')

@@ -59,7 +59,7 @@
                                            type="text"
                                            name="name"
                                            value="{{$user->name ?? old('name') }}"
-
+                                           autocomplete="new-name"
                                            autofocus
                                         >
                                     </p>
@@ -110,6 +110,7 @@
                                             id="email"
                                             type="email"
                                             name="email"
+                                            autocomplete="new-email"
                                             value="{{ $user->email ?? old('email') }}"
                                         >
                                     </p>
@@ -136,6 +137,7 @@
                                             id="password"
                                             type="password"
                                             value=""
+                                            autocomplete="new-password"
                                             name="password"
                                         >
 
@@ -161,7 +163,8 @@
                                         id="password2"
                                         type="password"
                                         value=""
-                                        name="password2"
+                                        autocomplete="new-password"
+                                        name="password_confirmation"
                                     >
                                 @if ($errors->has('password2'))
                                         <p class="help is-danger">
