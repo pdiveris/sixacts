@@ -28,12 +28,18 @@
     Route::get('echo', 'EchoController@index')->name('echo');
     Route::get('/propose', 'SiteController@getProposal')->name('propose');
     Route::post('/propose', 'SiteController@postProposal')->name('propose_post');
-    Route::get('proposal/{slug}', 'ProposalController@view')->name('proposal');
+    Route::get( '/proposal/{slug}', 'ProposalController@view')->name('proposal');
+    Route::get( '/pause/', 'SiteController@pause')->name('pause');
 
     Route::get(
-        'user/profile',
+        '/user/profile',
         'SiteController@userProfile'
     )->name('profile')->middleware('verified');
+    
+    Route::post(
+        '/user/profile',
+        'SiteController@postUserProfile'
+    )->name('post_profile')->middleware('verified');
     
     Route::get('user/token', 'AuthController@getUserToken')->name('user_token');
     

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use \Illuminate\Database\Eloquent\Builder as Builder;
 use \Illuminate\Notifications\DatabaseNotificationCollection as DatabaseNotificationCollection;
+use QCod\ImageUp\HasImageUploads;
 
 /**
  * App\User

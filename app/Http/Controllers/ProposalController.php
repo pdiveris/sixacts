@@ -32,6 +32,14 @@ class ProposalController extends Controller
      */
     public function vote(Request $request)
     {
+        $pause = \Cache::get('pause', 'off');
+        
+        if ($pause === 'on') {
+            return response()->json([
+                'type' => 'warning',
+                'message' => 'Voting is paused for 30 minutes!'
+            ]);
+        }
         $params = $request->all();
         $response = ['action'=>'unspecified'];
     

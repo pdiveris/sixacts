@@ -73,8 +73,43 @@ class SiteController extends Controller
      */
     public function userProfile()
     {
+        // dump($this->request->session()->all());
+
         $user = \Auth::user();
-        return view('user_profile', ['user'=>$user]);
+        
+        return view('user_profile', [
+            'user'=>$user,
+             'sixjs'=>'1'
+            ]
+        );
+    }
+    
+    public function postUserProfile(Request $request)
+    {
+        $rules = array(
+            'name'    => 'required|string',
+            'email' => 'email:rfc,dns'
+        );
+        $validator = \Validator::make($this->request->all(), $rules);
+       
+        if ($validator->fails()) {
+            return redirect('/user/profile')
+                ->withErrors($validator)
+                ->withInput($this->request->all());
+        } else {
+            $oauthuser = \Auth::user();
+            
+            $user = User::find($oauthuser->id);
+            
+            $user->email = $request->get('email');
+            $user->name = $request->get('name');
+            $user->display_name = $request->get('display_name');
+            
+            $user->save();
+            return redirect('/user/profile')
+                ->with('success', 'Your details have been updated')
+                ->withInput($this->request->all());
+        }
     }
     
     /**
@@ -84,13 +119,16 @@ class SiteController extends Controller
      */
     public function getProposal()
     {
+        $pause = \Cache::get('pause', 'off');
+        
         $categories = Category::all();
         foreach ($categories as $category) {
             $category->selected = false;
         }
+        $this->request->session()->flash('warning', 'Record successfully added!');
         return view(
             'proposal_form',
-            ['categories'=>$categories, 'sixjs'=>'1']
+            ['categories'=>$categories, 'sixjs'=>'1', 'pause' => $pause]
         );
     }
     
@@ -168,5 +206,34 @@ class SiteController extends Controller
             }
         }
         return $twits;
+    }
+    
+    /**
+     * If voting is ON, turn it off
+     * If voting is OFF turn it on
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Psr\SimpleCache\InvalidArgumentException
+     */
+    public function pause()
+    {
+        $user = \Auth::user();
+        if ($user && in_array($user->id, [1 ,2 ,3])) {
+            $status = \Cache::get('pause', 'off');
+            echo 'Found the cache $status<br />';
+    
+            if ($status === 'off') {
+                echo 'Setting pause to on';
+                \Cache::set('pause', 'on', 1800);
+            }
+            else {
+                echo 'Setting pause to off, forever';
+                \Cache::set('pause', 'off');
+            }
+            echo '<br/>';
+        } else {
+            return redirect('/');
+        }
+        
     }
 }

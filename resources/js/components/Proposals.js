@@ -333,7 +333,7 @@ export default class Proposals extends Component {
                                 return (
                                     <div key={index} className="u-mtop-2">
                                         <span className="subtitle has-text-weight-bold">
-                                            {item.score} - {item.title}
+                                            {item.title}
                                         </span>
                                         <span
                                             className={
