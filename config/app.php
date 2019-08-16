@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Bentleyworks\Revel\RevelServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
         /*
          * Application Service Providers...
@@ -176,6 +177,7 @@ return [
         App\Providers\NovaServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\SiteServiceProvider::class,
+
     ],
 
     /*

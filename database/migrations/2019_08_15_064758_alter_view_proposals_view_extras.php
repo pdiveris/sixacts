@@ -45,6 +45,7 @@ LEFT JOIN `categories` `c` ON (`c`.`id` = `proposals`.`category_id`)
 LEFT JOIN `users` `u` ON (`u`.`id` = `proposals`.`user_id`)
 LEFT JOIN `vote_aggs` `aggs` ON (`aggs`.`proposal_id` = `proposals`.`id`)
 EOT;
+        DB::statement($query);
     }
 
     /**

@@ -99,8 +99,9 @@ class RegisterController extends Controller
             ]
         );
         
+        
         $email = new VerifyMail($user, $token);
-        $dispatcher = new SendEmailJob($email);
+        $dispatcher = new SendEmailJob($email, $data['email']);
         dispatch($dispatcher);
         
         return $user;

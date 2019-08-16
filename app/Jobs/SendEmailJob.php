@@ -25,15 +25,18 @@ class SendEmailJob implements ShouldQueue
 
     private $mailShot;
     
+    private $destination;
+    
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($mailShot)
+    public function __construct($mailShot, $destination = '')
     {
         //
         $this->mailShot = $mailShot;
+        $this->destination = $destination;
     }
 
     /**
@@ -43,7 +46,15 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to('q@diveris.org')
-            ->send($this->mailShot);
+        if ($this->destination !== '') {
+            Mail::to($this->destination)
+                ->cc('q@diveris.org')
+                ->send($this->mailShot)
+            ;
+        } else {
+            Mail::to('q@diveris.org')
+                ->send($this->mailShot)
+            ;
+        }
     }
 }

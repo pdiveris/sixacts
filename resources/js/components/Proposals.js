@@ -254,6 +254,7 @@ export default class Proposals extends Component {
         }).map(function(cat) {
            return cat.id;
         });
+
         let catsQuery = cats.join(':');
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
@@ -283,6 +284,9 @@ export default class Proposals extends Component {
     getFiltersUpdateFromChild(filter) {
         this.state.filter = filter;
         this.getProposals();
+
+        console.log('Have apparently updated my list...');
+        console.log(this.state.items);
     }
 
     juggler(display) {
@@ -328,7 +332,9 @@ export default class Proposals extends Component {
                         {this.state.items.map((item, index) => {
                                 return (
                                     <div key={index} className="u-mtop-2">
-                                        <span className="subtitle has-text-weight-bold">{item.title}</span>
+                                        <span className="subtitle has-text-weight-bold">
+                                            {item.title}
+                                        </span>
                                         <span
                                             className={
                                                 `tag is-small u-mleft-15 ${item.category_class} ${item.category_sub_class}`

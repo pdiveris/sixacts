@@ -68,9 +68,10 @@
                                 <div class="rows">
                                     <div class="column" style="display: inline; ">
                                             <!-- Show image with default dimensions -->
+                                            <a href="{{route('profile')}}">
                                             <img class="navatar"
                                                  src="{{ \App\Http\Controllers\StaticController::makeAvatar(Auth::user())}}"
-                                            >
+                                            ></a>
                                     </div>
                                     <div class="column" style="display: inline; ">
                                         <a href="{{'logout'}}"
