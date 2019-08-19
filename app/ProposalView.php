@@ -147,7 +147,7 @@ class ProposalView extends Model implements Feedable
                 $props = \DB::select($query);
                 break;
             case 'current':
-                $query = str_replace(array('#limit', '#order_by'), array(' LIMIT 3 ', 'ORDER BY num_votes desc'), $query);
+                $query = str_replace(array('#limit', '#order_by'), array(' LIMIT 6 ', 'ORDER BY num_votes desc'), $query);
                 $props = \DB::select($query);
                 break;
             default:
