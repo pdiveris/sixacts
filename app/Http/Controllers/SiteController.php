@@ -265,4 +265,11 @@ class SiteController extends Controller
         }
         
     }
+    
+    public function session(Request $request) {
+        $data = $request->session()->all();
+        dump($data);
+        var_dump($data);
+        return '';
+    }
 }

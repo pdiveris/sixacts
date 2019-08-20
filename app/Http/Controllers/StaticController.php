@@ -62,17 +62,21 @@ class StaticController extends Controller
      */
     public function homeRendered(Request $request): \Illuminate\View\View
     {
+        $userId = $request->get('user_id');
+        $catsQuery = $request->get('cats', '');
+        $q = $request->get('q', '');
         $filter = $request->get('filter', '');
         
-        $proposals = ProposalView::getFiltered($filter);
+        
+        $proposals = ProposalView::getFiltered($catsQuery, $q, $userId, $filter);
         $label = '';
+        
         if (array_key_exists($filter, self::$filterLabels)) {
             $label = self::$filterLabels[$filter];
         }
         
         $categories = \App\Category::all();
-        $id = \Auth::user() ? \Auth::user()->id : 0;
-        $proposals = self::mergeProposalsWithVotes($proposals, $id);
+        $proposals = self::mergeProposalsWithVotes($proposals, $userId);
         return view(
             'static.ssr.welcome',
             [
