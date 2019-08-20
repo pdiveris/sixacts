@@ -84,7 +84,7 @@ class SiteController extends Controller
                 'user'=>$user,
                 'sixjs'=>'1',
                 'croppie' => '1',
-                'avatar' => '1',
+                /*'avatar' => '1',*/
             ]
         );
     }
