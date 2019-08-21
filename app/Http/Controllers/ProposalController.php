@@ -59,8 +59,7 @@ class ProposalController extends Controller
             ->first()
         ;
         
-        // this needs changing to be set from the session or from token
-        $user = User::find((int)$params['user']['user']);
+        $user = User::find((int)\Auth::user()->id);
 
         // if not user etc..
         if (!$user) {
