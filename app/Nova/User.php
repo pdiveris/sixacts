@@ -94,7 +94,11 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
     
-            Image::make('avatar')
+            Text::make('Display name')
+                ->sortable()
+                ->rules('max:255'),
+        
+                Image::make('avatar')
                 ->disk('public')
                 ->path('avatars')
                 ->thumbnail(function ($value, $path) {
