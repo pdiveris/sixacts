@@ -140,6 +140,13 @@ div .author {
     padding-bottom: 0px;
     padding-left: 1rem;
 }
+
+.navbar-menu .is-active {
+    font-weight: bold;
+    color: #772953 !important;
+}
+
+
 .categoriesList li {
     padding-bottom: 0.70em;
 }
@@ -206,4 +213,8 @@ span.actual {
 }
 .text-purple {
     color: #8A4D76 !important;
+}
+
+.user_avatar {
+    max-width: 120px !important;
 }
