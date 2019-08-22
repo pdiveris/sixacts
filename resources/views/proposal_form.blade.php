@@ -32,10 +32,10 @@
                         </article>
                     @endif
                     @if (session('type')==='success')
-                        <article class="message is-danger killable" id="errorbox">
+                        <article class="message is-danger killable" id="success">
                             <div class="message-header ubuntu-green">
                                 <p>{{ session('message') }}</p>
-                                <button class="delete" aria-label="delete"  onclick="$('#errorbox').hide();"
+                                <button class="delete" aria-label="delete"  onclick="$('#success').hide();"
                                 >
                                 </button>
                             </div>

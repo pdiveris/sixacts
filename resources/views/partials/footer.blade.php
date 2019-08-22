@@ -10,6 +10,8 @@
                 <br />
                 <a href="{{url('plain')}}">Plain version</a>
                 | <a href="{{url('/')}}">Home</a>
+                | <a href="{{url('/about')}}">About</a>
+                | <a href="{{url('/user/profile')}}">Profile</a>
             </div>
             <div class="has-text-centered">
                 <span class="title-6">Licence: <b>Apache</b></span> |

@@ -81,7 +81,10 @@ class Proposal extends Model
         parent::boot();
         
         static::creating(function ($post) {
-            $post->user_id = auth()->user()->id;
+            $user = auth()->user();
+            if ($user !== null && $user) {
+                $post->user_id = auth()->user()->id;
+            }
         });
     }
 }

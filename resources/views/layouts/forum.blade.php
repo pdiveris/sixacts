@@ -12,6 +12,11 @@
     <link rel="manifest" href="{{asset('/sixacts.webmanifest')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    @isset($croppie)
+        <link rel="stylesheet" href="{{asset('js/croppie/croppie.css')}}">
+        <script type="text/javascript" src="{{asset('js/croppie/jq.js')}}"></script>
+        <script async type="text/javascript" src="{{asset('js/croppie/croppie.min.js')}}"></script>
+    @endisset
     <script async type="text/javascript" src="{{asset('/js/sixacts.js')}}"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('/css/sixacts.css')}}">
@@ -43,12 +48,25 @@
         </div>
         <div id="topNav" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="{{url('')}}">Home</a>
-                <a class="navbar-item" href="{{Site::menuLink('about')}}">About</a>
-                <a class="navbar-item" href="{{Site::menuLink('categories')}}">Categories Explained</a>
-                <a class="navbar-item" href="{{Site::menuLink('nine_rules')}}">9 Rules for the Six Acts</a>
-                <a class="navbar-item" href="{{Site::menuLink('register')}}">Register</a>
-                <a class="navbar-item" href="{{Site::menuLink('signin')}}">Sign in</a>
+                <a class="navbar-item {{Site::menuClass('')}}" href="{{url('')}}">Home</a>
+                <a class="navbar-item {{Site::menuClass('about')}}" href="/{{Site::menuLink('about')}}">
+                    About
+                </a>
+                <a class="navbar-item {{Site::menuClass('categories')}}" href="/{{Site::menuLink('categories')}}">
+                    Categories Explained
+                </a>
+                <a class="navbar-item {{Site::menuClass('nine_rules')}}" href="/{{Site::menuLink('nine_rules')}}">
+                    9 Rules for the Six Acts
+                </a>
+                <a class="navbar-item {{Site::menuClass('register')}}" href="/{{Site::menuLink('register')}}">
+                    Register
+                </a>
+                <a class="navbar-item {{Site::menuClass('user/profile')}}" href="/{{Site::menuLink('user/profile')}}">
+                    Profile
+                </a>
+                <a class="navbar-item {{Site::menuClass('signin')}}" href="/{{Site::menuLink('signin')}}">
+                    Sign in
+                </a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">
@@ -128,6 +146,5 @@
     })();
 </script>
 <script async type="text/javascript" src="{{asset('/js/extras.js')}}"></script>
-
 </body>
 </html>

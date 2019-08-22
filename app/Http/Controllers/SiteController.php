@@ -24,6 +24,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Proposal;
+use http\Client\Curl\User;
 use Illuminate\Http\Request as Request;
 
 /**
@@ -52,8 +53,20 @@ class SiteController extends Controller
      */
     public function __construct(Request $request)
     {
-        $this->middleware('auth');
         $this->request = $request;
+    
+        $earl = $request->getUri();
+        $host = $request->getHost();
+        // dump($host);
+        
+        $path = str_replace('https://'.$host.'/', '', $earl);
+
+        if (strpos($path, 'become')!== false) {
+            //
+        } else {
+            $this->middleware('auth');
+        }
+        
     }
     
     /**
@@ -73,25 +86,43 @@ class SiteController extends Controller
      */
     public function userProfile()
     {
-        // dump($this->request->session()->all());
-
-        $user = \Auth::user();
-        
-        return view('user_profile', [
-            'user'=>$user,
-             'sixjs'=>'1'
+        $oAuthUser = \Auth::user();
+        if (!$oAuthUser) {
+            abort(419, 'Page has expired');
+        }
+        $user = \App\User::find((int)$oAuthUser->id);
+        return view('user_profile',
+            [
+                'user'=>$user,
+                'sixjs'=>'1',
+                'croppie' => '1',
+                /*'avatar' => '1',*/
             ]
         );
     }
     
+    /**
+     * Process the updated user profile
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function postUserProfile(Request $request)
     {
         $rules = array(
             'name'    => 'required|string',
             'email' => 'email:rfc,dns',
-            'password' => 'string|confirmed',
-            'password_confirmation' => 'string',
         );
+        
+        if ($request->get('password') !== '' &&
+            $request->get('password') !== null &&
+            $request->get('password_confirmation') !== '' &&
+            $request->get('password_confirmation') !== null
+        ) {
+            $rules['password'] = 'string|confirmed';
+            $rules['password_confirmation'] = 'string';
+        }
+        
         $validator = \Validator::make($this->request->all(), $rules);
        
         if ($validator->fails()) {
@@ -104,12 +135,13 @@ class SiteController extends Controller
                 abort(501, 'System error retrieving your details. We are working on it..');
             }
             
-            $user = User::find($oauthuser->id);
+            $user = \App\User::find($oauthuser->id);
             $user->email = $request->get('email');
             $user->name = $request->get('name');
             $user->display_name = $request->get('display_name');
-            $user->password = bcrypt($request->get('password'));
-            
+            if ($request->get('password') !== null && $request->get('password') !== '') {
+                $user->password = bcrypt($request->get('password'));
+            }
             $user->save();
             return redirect('/user/profile')
                 ->with('success', 'Your details have been updated')
@@ -133,7 +165,11 @@ class SiteController extends Controller
         $this->request->session()->flash('warning', 'Record successfully added!');
         return view(
             'proposal_form',
-            ['categories'=>$categories, 'sixjs'=>'1', 'pause' => $pause]
+            [
+                'categories'=>$categories,
+                'sixjs'=>'1',
+                'pause' => $pause
+            ]
         );
     }
     
@@ -240,5 +276,20 @@ class SiteController extends Controller
             return redirect('/');
         }
         
+    }
+    
+    /**
+     * Become someone else
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function become(Request $request, $id) {
+        if (!in_array($request->ip(), ['10.17.1.254', '88.97.78.236', '127.0.0.1'])) {
+            abort(404, 'Not found');
+        }
+        \Auth::loginUsingId($id);
+        return redirect('/');
+
     }
 }

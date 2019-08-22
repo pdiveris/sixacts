@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\ProposalView;
 use Illuminate\Http\Request;
 use \GuzzleHttp\Client;
-use phpDocumentor\Reflection\Types\Self_;
 
 class StaticController extends Controller
 {
@@ -62,17 +61,21 @@ class StaticController extends Controller
      */
     public function homeRendered(Request $request): \Illuminate\View\View
     {
+        $userId = $request->get('user_id');
+        $catsQuery = $request->get('cats', '');
+        $q = $request->get('q', '');
         $filter = $request->get('filter', '');
         
-        $proposals = ProposalView::getFiltered($filter);
+        
+        $proposals = ProposalView::getFiltered($catsQuery, $q, $userId, $filter);
         $label = '';
+        
         if (array_key_exists($filter, self::$filterLabels)) {
             $label = self::$filterLabels[$filter];
         }
         
         $categories = \App\Category::all();
-        $id = \Auth::user() ? \Auth::user()->id : 0;
-        $proposals = self::mergeProposalsWithVotes($proposals, $id);
+        $proposals = self::mergeProposalsWithVotes($proposals, $userId);
         return view(
             'static.ssr.welcome',
             [
@@ -124,7 +127,7 @@ class StaticController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function nchan()
+    public function nchan(): \Illuminate\Contracts\View\View
     {
         $proposals = \App\ProposalView::all();
         $categories = \App\Category::all();
@@ -149,7 +152,7 @@ class StaticController extends Controller
      *
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
-    public function homePlain(Request $request)
+    public function homePlain(Request $request): \Illuminate\View\View
     {
         \Cache::set('ssr', true);
         return $this->homeRendered($request);

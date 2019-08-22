@@ -29,6 +29,7 @@ class Site
             'about'=> 1,
             'categories' => 1,
             'nine_rules' => 1,
+            'user/profile' =>1,
             'terms' => 1,
             'privacy' => 1,
             'register' => 0,
@@ -36,6 +37,7 @@ class Site
             'login' => 0,
             'propose' => 0,
         ];
+    
     /**
      * Dummy method from the early testing days
      *
@@ -46,7 +48,11 @@ class Site
         return "The mother of helpers says hello hello";
     }
     
-    public function menuLink(string $endPoint): string
+    /**
+     * @param string $endPoint
+     * @return string
+     */
+    public static function menuLink(string $endPoint): string
     {
         if (env('LAUNCH') || \Session::get('campaigner', false)===true) {
             return $endPoint;
@@ -54,5 +60,22 @@ class Site
         if (array_key_exists($endPoint, self::$menuItems)) {
             return self::$menuItems[$endPoint] === 1 ? $endPoint : '#';
         }
+    }
+    
+    /**
+     * @param string $endPoint
+     * @return string
+     */
+    public static function menuClass(string $endPoint): string {
+        $earl = \Request::getUri();
+        $host = \Request::getHost();
+        // dump($host);
+        
+        $path = str_replace('https://'.$host.'/', '', $earl);
+        
+        if ($path === $endPoint) {
+            return 'is-active';
+        }
+        return '';
     }
 }

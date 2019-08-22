@@ -22,7 +22,7 @@
                 /*
                  * The view that will render the feed.
                  */
-                'view' => 'feed::sixacts',
+                'view' => 'feed',
             ],
         ],
     ];

@@ -166,7 +166,7 @@
                                         autocomplete="new-password"
                                         name="password_confirmation"
                                     >
-                                @if ($errors->has('password2'))
+                                    @if ($errors->has('password2'))
                                         <p class="help is-danger">
                                             {{ $errors->first('password2') }}
                                         </p>
@@ -174,24 +174,38 @@
                                 </div>
                             </div>
                         </div>
-{{--
-
                         <div class="field is-horizontal">
-                            <div class="registration field-label">
+                            <div class="field-label">
                                 <label class="label">Avatar</label>
                             </div>
                             <div class="field-body">
-                                <input
-                                    class="input"
-                                    type="file"
-                                    value="text"
-                                    name="local_avatar"
-                                >
-
+                                <div class="field">
+                                    <img class="1§1§"
+                                         src="{{ \App\Http\Controllers\StaticController::makeAvatar(Auth::user())}}"
+                                    >
+                                </div>
                             </div>
                         </div>
 
---}}
+                        @if(isset($avatar))
+                        <div class="field is-horizontal">
+                            <div class="registration field-label">
+                                <label class="label">Avatar</label>
+                                <p style="font-size: 0.7em;" class="small-text text-purple">
+                                    You shouldn't ne able to see this, it's an experimental feature.
+                                    By all means play with it, but it won't change anything in your
+                                    profile. Sorry, until it works!
+                                </p>
+
+                            </div>
+                            <div class="field-body" >
+                                <div id="avatar" style="min-width: 240px; min-height: 240px;"">
+                                    <input type="file" id="uploader"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        @endif
                         <div class="field is-horizontal">
                             <div class="registration field-label"></div>
                             <div class="field-body">
@@ -207,4 +221,36 @@
             </div>
         </div>
     </div>
+    @if(isset($avatar))
+    <script>
+        let basic = $('#avatar').croppie({
+            viewport: {
+                width: 64,
+                height: 64,
+                type: 'circle'
+            }
+        });
+        basic.croppie('bind', {
+            url: '{{asset($user->local_avatar)}}',
+            points: [10,10,74,74],
+            enableZoom: true,
+            enableResize: true,
+            enforceBoundary: true,
+        });
+        function doThis() {
+            basic.croppie('setZoom', '0.3');
+
+        }
+
+        setTimeout(function(){ doThis(); }, 40);
+
+        $('#avatar').click(function (e) {
+            let x = $(e.target);
+            if (x.hasClass('cr-boundary')) {
+                $("#uploader").trigger('click');
+            }
+        });
+        $('#uploader').hide();
+    </script>
+    @endif
 @stop
