@@ -135,6 +135,7 @@ export default class Proposals extends Component {
 
     handleResponse(results) {
         if (results[0] === 'unauthorized') {
+            this.notify('You need to be logged in to vote!', 'error', 3000);
             console.log('401 unauthorized');
             return;
         }
