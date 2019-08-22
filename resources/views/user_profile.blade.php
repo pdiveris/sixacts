@@ -174,6 +174,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="field is-horizontal">
+                            <div class="field-label">
+                                <label class="label">Avatar</label>
+                            </div>
+                            <div class="field-body">
+                                <div class="field">
+                                    <img class="1§1§"
+                                         src="{{ \App\Http\Controllers\StaticController::makeAvatar(Auth::user())}}"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
                         @if(isset($avatar))
                         <div class="field is-horizontal">
                             <div class="registration field-label">

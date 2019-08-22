@@ -48,12 +48,25 @@
         </div>
         <div id="topNav" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item" href="{{url('')}}">Home</a>
-                <a class="navbar-item" href="{{Site::menuLink('about')}}">About</a>
-                <a class="navbar-item" href="{{Site::menuLink('categories')}}">Categories Explained</a>
-                <a class="navbar-item" href="{{Site::menuLink('nine_rules')}}">9 Rules for the Six Acts</a>
-                <a class="navbar-item" href="{{Site::menuLink('register')}}">Register</a>
-                <a class="navbar-item" href="{{Site::menuLink('signin')}}">Sign in</a>
+                <a class="navbar-item {{Site::menuClass('')}}" href="{{url('')}}">Home</a>
+                <a class="navbar-item {{Site::menuClass('about')}}" href="/{{Site::menuLink('about')}}">
+                    About
+                </a>
+                <a class="navbar-item {{Site::menuClass('categories')}}" href="/{{Site::menuLink('categories')}}">
+                    Categories Explained
+                </a>
+                <a class="navbar-item {{Site::menuClass('nine_rules')}}" href="/{{Site::menuLink('nine_rules')}}">
+                    9 Rules for the Six Acts
+                </a>
+                <a class="navbar-item {{Site::menuClass('register')}}" href="/{{Site::menuLink('register')}}">
+                    Register
+                </a>
+                <a class="navbar-item {{Site::menuClass('user/profile')}}" href="/{{Site::menuLink('user/profile')}}">
+                    Profile
+                </a>
+                <a class="navbar-item {{Site::menuClass('signin')}}" href="/{{Site::menuLink('signin')}}">
+                    Sign in
+                </a>
             </div>
             <div class="navbar-end">
                 <div class="navbar-item">

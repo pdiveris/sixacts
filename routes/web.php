@@ -10,14 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Pay attention below, check for verified
-    use App\Events\MessagePosted;
-    use App\Jobs\SendEmailJob;
-    use App\Mail\VariableUserEmail as UserEmail;
-    use App\User;
-    use GuzzleHttp\Client;
-    
     Route::get('/', 'StaticController@home')->name('home');
     Route::get('ssr', 'StaticController@homeRendered')->name('ssr');
     Route::get('plain', 'StaticController@homePlain')->name('plain');
@@ -123,7 +115,8 @@
         return '';
     });
     
-
+    Route::get('/become/{id}', 'SiteController@become')->middleware('guest');
+    
     Route::get('email', 'EmailController@sendEmail');
     
     Route::get('sse/test', 'ServerSideEventsController@test');

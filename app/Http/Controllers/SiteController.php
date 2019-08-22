@@ -54,9 +54,19 @@ class SiteController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        if ($request->getUri() !== 'https://www.sixacts.org/become') {
+    
+        $earl = $request->getUri();
+        $host = $request->getHost();
+        // dump($host);
+        
+        $path = str_replace('https://'.$host.'/', '', $earl);
+
+        if (strpos($path, 'become')!== false) {
+            //
+        } else {
             $this->middleware('auth');
         }
+        
     }
     
     /**
@@ -275,7 +285,7 @@ class SiteController extends Controller
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function become(Request $request, $id) {
-        if (!in_array($request->ip(), ['10.17.1.254', '88.97.78.236'])) {
+        if (!in_array($request->ip(), ['10.17.1.254', '88.97.78.236', '127.0.0.1'])) {
             abort(404, 'Not found');
         }
         \Auth::loginUsingId($id);
