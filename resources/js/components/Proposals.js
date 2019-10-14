@@ -89,10 +89,17 @@ export default class Proposals extends Component {
     }
 
     handleFacebook(item) {
-      const url = 'https://'+window.location.hostname+'/proposal/'+item.slug;
-        window.open('https://www.facebook.com/sharer/sharer.php?u='+url,
+      const extras = '&caption=caption&description=DESCRIPTION';
+      // const url = 'https://'+window.location.hostname+'/proposal/'+item.slug;
+      // https://beta.sixacts.org/plain/vote?pid=17&action=vote
+      const url = 'https://'+window.location.hostname+'/plain/vote?pid='+item.id;
+        window.open('https://www.facebook.com/sharer/sharer.php?u='+url+extras,
             'facebook-share-dialog',"width=626, height=436"
         );
+    }
+
+    createMarkup(txt) {
+        return {__html: txt};
     }
 
     handleTwitter(item) {
@@ -355,8 +362,9 @@ export default class Proposals extends Component {
                                                 </a>
                                             </span>
                                         </div>
-                                        <div className={`expandable ${item.display}`} id={'expander_2_'+index}>
-                                            {item.body}&nbsp;
+                                        <div className={`expandable ${item.display}`} id={'expander_2_'+index}
+                                        >
+                                            <span dangerouslySetInnerHTML={{ __html: item.body }}></span>
                                             <span className="icon">
                                                 <a onClick={() =>
                                                     this.handleExpand(index, 'collapsed', 'expander_2_'+index)}

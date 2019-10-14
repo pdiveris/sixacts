@@ -1,11 +1,6 @@
 @extends('layouts.forum')
 @section('content')
     <div class="columns">
-        {{--
-                <div class="column is-3">
-                    @include('partials.sidebar')
-                </div>
-        --}}
         <div class="column is-9">
             <div class="box content">
                 <h1 class="title">Privacy Policy</h1>
@@ -29,8 +24,8 @@
                 </p>
                 <h2 class="title is-4">1. Information we collect</h2>
                 <p>
-                    When you sign or create a petition via our SixActs.org platform, an account is created for you; all of
-                    your activities on SixActs.org are then tied to this account. In the chart below, we’ve detailed
+                    When you sign or submit a proposal via our SixActs platform, an account is created for you; all of
+                    your activities on Six Acts are then tied to this account. In the chart below, we’ve detailed
                     the information we may collect about you, depending on your activities on the platform, and how
                     we obtain this information.
                 </p>
@@ -87,7 +82,7 @@
                         <td>
                             We will ask you for your postcode when you register for a Six Acts account.
                             This enables us to compile demographic data based on city and area and will be used
-                            purely for sociological research. You will not be profiled or targteted for marketing or
+                            purely for sociological research. You will not be profiled or targeted for marketing or
                             commercial interests and we will not share or sell this information with third parties.
                             Providing a postcode is required to use the service.
                         </td>
@@ -99,7 +94,7 @@
                         <td>
                             We will ask you for your country when you register for a Six Acts account.
                             This enables us to compile demographic data based on city and area and will be used
-                            purely for sociological research. You will not be profiled or targteted for marketing or
+                            purely for sociological research. You will not be profiled or targeted for marketing or
                             commercial interests and we will not share or sell this information with third parties.
                             Providing a country is required to use the service.
                         </td>
@@ -112,9 +107,9 @@
                             Certain information is collected by most browsers or automatically through your device,
                             such as your Media Access Control (MAC) address, computer type (Windows PC or Mac),
                             screen resolution, operating system name and version, device manufacturer and model,
-                            language, Internet browser type and version, and the name and version of the SixActs.org
+                            language, Internet browser type and version, and the name and version of the Six Acts
                             platform you are using. Collecting this information helps us build and deliver the best
-                            possible version of SixActs.org to you.
+                            possible version of Six Acts to you.
                         </td>
                     </tr>
                     <tr>
@@ -210,7 +205,7 @@
                             </li>
                             <li class="list-item">
                                 •	To facilitate the social sharing functionality that you choose to use, such as sharing
-                                content and petitions through the SixActs.org platform and other social media platforms
+                                content and proposals through the Six Acts platform and other social media platforms
                                 like Facebook and Twitter.
                             </li>
                         </td>
@@ -261,12 +256,12 @@
                     be visible to other users. If you choose to send messages or connect with others through our
                     platform about submissions  you have submitted, voted for or shared, you disclose your personal
                     information to the recipient of your message. Our platform provides an open forum for communication by
-                    users all around the world. <strong>We do not monitor, verify, or perform any background check on submitters of
-                        reform proposals, voters, or other users of Six Acts.</strong>
+                    users all around the world. <strong>We do not monitor, verify, or perform any background checks
+                    on people submitting reform proposals, voters, or other users of Six Acts.</strong>
                 </p>
                 <p>
                     •	We consider an online voting platform to be a public expression of support for an issue.
-                    Therefore, your name, general geographic location (postcode, country), and a link to your SixActs.org
+                    Therefore, your name, general geographic location (postcode, country), and a link to your Six Acts
                     user profile may be displayed on the landing page for any reform proposal you submit, and on related
                     areas of our platform. This information will be viewable to any visitor, including the media,
                     search engines, and other organisations that provide archival internet activities. If you do not wish
@@ -283,7 +278,7 @@
                 <h2 class="title is-4">Your connected social media platforms</h2>
                 <p>
                     •	You may share your activities on Six Acts with friends on other social media sites, for example,
-                    sharing a petition you signed on Facebook. To do so, you must connect your Six Acts account with your
+                    sharing a proposal you signed on Facebook. To do so, you must connect your Six Acts account with your
                     social media account. In such case, you authorise us to share information with your social media
                     account provider, and you understand that the use of the information we share will be governed by
                     the social media site’s privacy policy. If you do not want your information shared with other social
@@ -411,9 +406,18 @@
                 <p>
                     You can also write to the following address:<br/>
                     Six Acts<br/>
-                    Flat 408, 41 Old Birley Street<br/>
+                    Unit 1, Work For Change,
+                    41 Old Birley Street<br/>
                     Manchester M15 5RE<br/>
                     United Kingdom<br/>
+                </p>
+                <p>
+                    Six Acts located at the above address, is the initiative responsible for collection, use, and
+                    disclosure of your personal information under this Privacy Policy.
+                </p>
+                <p>
+                    You can contact our email <a href="mailto: thesixacts@gmail.com">thesixacts@gmail.com</a> for
+                    any data deletion or access requests.
                 </p>
             </div>
         </div>

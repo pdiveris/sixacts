@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b6418078510909e02032d7dcc5a1c6d",
+    "content-hash": "edf0f7d73945093b578f5b99c0aa2b93",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -911,6 +911,57 @@
             ],
             "description": "Password Generator Library",
             "time": "2019-04-19T13:22:10+00:00"
+        },
+        {
+            "name": "inertiajs/inertia-laravel",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inertiajs/inertia-laravel.git",
+                "reference": "2bdd1af10f488007a8981b66982d011054464e88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/2bdd1af10f488007a8981b66982d011054464e88",
+                "reference": "2bdd1af10f488007a8981b66982d011054464e88",
+                "shasum": ""
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Inertia\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Inertia\\": "src"
+                },
+                "files": [
+                    "./helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Reinink",
+                    "email": "jonathan@reinink.ca",
+                    "homepage": "https://reinink.ca"
+                }
+            ],
+            "description": "The Laravel adapter for Inertia.js.",
+            "keywords": [
+                "inertia",
+                "laravel"
+            ],
+            "time": "2019-08-10T13:58:04+00:00"
         },
         {
             "name": "ircop/passworder",
