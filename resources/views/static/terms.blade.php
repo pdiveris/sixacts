@@ -1,11 +1,6 @@
 @extends('layouts.forum')
 @section('content')
     <div class="columns">
-        {{--
-                <div class="column is-3">
-                    @include('partials.sidebar')
-                </div>
-        --}}
         <div class="column is-9">
             <div class="box content">
                 <h1 class="title">Terms of Service</h1>
@@ -54,14 +49,14 @@
 
                 <h2 class="title is-4">2. User content rules</h2>
                 <p>
-                    You’re responsible for what you post on Six Acts. You should keep your campaigns and comments in line
-                    with our 9 Rules for the 6 Acts document and the law, and respect the intellectual property rights of
-                    others. It’s not something we want to do, but we can terminate your account for repeated or major
-                    offenses.
+                    You’re responsible for what you post on Six Acts. You should keep your proposals and comments in line
+                    with our <a href="/nine_rules">9 Rules for the 6 Acts</a> document and the law, and respect the
+                    intellectual property rights of  others. It’s not something we want to do, but we can terminate your
+                    account for repeated or major offenses.
                 </p>
                 <p class="u-mtop-10">
                     <strong>Follow our Community Guidelines:</strong>
-                    When posting content you must follow the 9 Rules for the 6 Acts document
+                    When posting content you must follow the <a href="/nine_rules">9 Rules for the 6 Acts</a> document
                 </p>
                 <p class="u-mtop-10">
                     <strong>Abide by the law and respect rights of others:</strong>
@@ -100,9 +95,9 @@
                     comments (on the Six Acts site, in apps and in social media pages). If you are concerned about other
                     Six Acts community members, or people you don’t know, seeing a particular message or other content of
                     yours, please do not post it. If you do not wish to have your name publicly displayed in connection
-                    with a particular petition, <em>you may select the option not to display your name publicly</em>. Please
-                    check
-                    out our Privacy Policy for more details on information we collect and share when you use the platform.
+                    with a particular proposal, <em>you may choose to use a different display name.</em>. Please
+                    check  out our Privacy Policy for more details on information we collect and share when you use the
+                    platform.
                 </p>
                 <p class="u-mtop-10">
                     <strong>The content you post remains yours, and you also allow us to reuse and share it:</strong>
@@ -121,7 +116,7 @@
                     agree to all such uses of your content with no compensation paid to you.
                 </p>
                 <p class="u-mtop-10">
-                    <strong>Sharing campaigns:</strong>
+                    <strong>Sharing Proposals:</strong>
                     Except in very limited circumstances where we’ll expressly ask you not to, we
                     encourage you to link to, post to social media and third party services, such as Facebook or Twitter,
                     share via email, or otherwise copy and share individual reform submissions of interest to you, but
@@ -148,14 +143,16 @@
                         content:</strong>
                     Content posted by users comes from people, organisations and other various sources. We make no promises
                     about the reliability of any source or the accuracy, usefulness, safety, or intellectual property
-                    rights of any user content nor do we endorse any campaigns or petitions or support any views, opinions,
+                    rights of any user content nor do we endorse any proposals or petitions or support any views, opinions,
                     recommendations, or advice that may be posted by users. You therefore use the Six Acts service and rely
                     on
                     any content you find at your own risk.
                 </p>
                 <p>
-                    If you find any reform submission or other user content that violates our 9 Rules for the 6 Acts
-                    document please use the subject line “Report a policy violation” and email us at thesixacts@gmail.com
+                    If you find any reform submission or other user content that violates our
+                    <a href="">9 Rules for the 6 Acts</a> document please use the subject line
+                    “Report a policy violation” and email us at
+                    <a href="mailto: thesixacts@gmail.com">thesixacts@gmail.com</a>
                 </p>
                 <p>
                     <strong>Links out: </strong>When you use our platform, you will find links to other websites that we
@@ -236,52 +233,27 @@
                     Here is the contact information for our copyright agent:
                 </h2>
                 <p class="u-mleft-15">
-                    Eva Schlunke<br/>
-                    Flat 408, 41 Old Birley Street<br/>
+                    The Six Acts<br/>
+                    Unit 1, Work for Change,<br/>
+                    41 Old Birley Street<br/>
                     Manchester M15 5RE<br/>
                     United Kingdom<br/>
-                    Email: eva_schlunke@hotmail.com
+                    Email: <a href="mailto: thesixacts@gmail.com">thesixacts@gmail.com</a>
                 </p>
 
-                <h2 class="title is-4">7. Dispute Resolution</h2>
+                <h2 class="title is-4">More legal stuff to protect us</h2>
                 <p>
-                    One of the principles behind Six Acts is that people can interact with decision makers directly and
-                    come to solutions together. If you have a serious disagreement with a decision we make, let’s agree to
-                    sort it out with each other before we make claims in court.
+                    The possibilities for what people may do with a free, online platform that people everywhere can use
+                    to  create change are endless. Like other platforms where people can post content, these Terms give
+                    us legal protection from the countless things that could happen.
                 </p>
                 <p>
-                    Six Acts is a Uk-based initiative and these Terms are governed by laws of the United Kingdom without
-                    regard to their conflict of law principles. If a court having proper authority decides that any portion
-                    of these terms, policies and guidelines is invalid, only the part that is invalid will not apply and the
-                    rest will still be in effect. The official language of these Terms is English. If there is a conflict
-                    between the English language version and any translation, the English language version will prevail.
-                </p>
-                <p>
-                    In the event of any dispute, claim, question, or disagreement arising from or relating to these Terms
-                    or an alleged breach thereof, whether arising in contract, tort or otherwise, between you and us, we
-                    shall use our respective best efforts to settle the dispute. If a dispute arises, the complaining party
-                    shall provide written notice to the other party in a document specifically entitled “Notice of Dispute,”
-                    specifically setting forth the precise nature of the dispute.
-                </p>
-                <h2 class="title is-5">Please mail any Notice of Dispute to our head office at:</h2>
-                Flat 408, 41 Old Birley Street<br/>
-                Manchester M15 5RE<br/>
-                United Kingdom<br/>
-                <h2 class="title is-4">8. More legal stuff to protect us</h2>
-                <p>
-                    The possibilities for what people may do with a free, online platform that people everywhere can use to
-                    create change are endless. Like other platforms where people can post content, these Terms give us
-                    legal protection from the countless things that could happen.
-                </p>
-                <p>
-                    While we’re working hard to build an amazing free platform for people everywhere, we can’t make you any
-                    promises that it will always work perfectly or that we’ll maintain all our services forever.
-                </p>
-                <p class="u-mtop-10">
+                    While we’re working hard to build an amazing free platform for people everywhere, we can’t make you
+                    any promises that it will always work perfectly or that we’ll maintain all our services forever.
                     No waiver, assignment: If we waive any of our rights in any particular instance, it does not mean that
-                    we are waiving our rights generally or in the future. If we do not enforce all our rights all of the
-                    time under these Terms, it does not mean that we are waiving our rights, and we may decide to enforce
-                    them at a later date. These Terms, and any rights and licenses granted under these Terms, may not be
+                    we are waiving our rights generally or in the future. If we do not enforce all our rights all of the time
+                    under these Terms, it does not mean that we are waiving our rights, and we may decide to enforce them
+                    at a later date. These Terms, and any rights and licenses granted under these Terms, may not be
                     transferred or assigned by you, but may be assigned by us to another company or person without
                     restriction. We won’t be liable to you for any delay or failure to perform any obligation we have under
                     these Terms if the delay or failure is due to events which are beyond our reasonable control, including
@@ -291,26 +263,60 @@
                 </p>
                 <p>
                     <strong>
-                        As is service: Use of the Six Acts platform is at your own risk.
-                        The platform (including the content you find on it) is provided on an “AS IS” and “AS AVAILABLE”
-                        basis.
-                        Six Acts and its affiliates, suppliers, partners and agents expressly disclaim all warranties of any
-                        kind, whether express or implied, including, but not limited to, the implied warranties of title,
-                        merchantability, fitness for a particular purpose and non-infringement.
-                        Furthermore, Six Acts and its affiliates, suppliers, partners and agents make no warranty that
-                        (i) its platform or any products or services provided through the platform will meet your
-                        requirements;
-                        (ii) the platform will be uninterrupted, timely, secure or error-free or that Six Acts will fix any
-                        errors;
-                        (iii) you will obtain any specific results from use of the platform; or
-                        (iv) any content on the platform is accurate, complete, reliable, current or error-free.
-                        Any content obtained through use of the platform is obtained at your own discretion and risk and
-                        Six Acts shall not be responsible for any damage caused to your computer or data or for any bugs,
-                        viruses, Trojan horses or other destructive code resulting from use of the platform or any content
-                        obtained from the platform. Some countries do not allow the exclusion of implied warranties, so the
-                        above exclusion may not apply to you. You may also have other legal rights, which vary from
-                        country to country.
+                    As is service: Use of the Six Acts platform is at your own risk. The platform (including the content you
+                    find on it) is provided on an “AS IS” and “AS AVAILABLE” basis. Six Acts and its affiliates, suppliers,
+                    partners and agents expressly disclaim all warranties of any kind, whether express or implied,
+                    including, but not limited to, the implied warranties of title, merchantability, fitness for a particular
+                    purpose and non-infringement.
                     </strong>
+                </p>
+                <p>
+                    <strong>
+                    Furthermore, Six Acts and its affiliates, suppliers, partners and agents make no warranty that (i) its
+                    platform or any products or services provided through the platform will meet your requirements; (ii)
+                    the platform will be uninterrupted, timely, secure or error-free or that Six Acts will fix any errors; (iii)
+                    you will obtain any specific results from use of the platform; or (iv) any content on the platform is
+                    accurate, complete, reliable, current or error-free. Any content obtained through use of the platform
+                    is obtained at your own discretion and risk and Six Acts shall not be responsible for any damage
+                    caused to your computer or data or for any bugs, viruses, Trojan horses or other destructive code
+                    resulting from use of the platform or any content obtained from the platform. Some countries do not
+                    allow the exclusion of implied warranties, so the above exclusion may not apply to you. You may also
+                    have other legal rights, which vary from country to country.
+                    </strong>
+                </p>
+                <p>
+                    <strong>No guarantee of service: </strong>We may decide to cease making available the Six Acts
+                    platform, apps or  services or any portion of the services at any time and for any reason. Under no
+                    circumstances will Six Acts or its affiliates, suppliers, partners or agents be held liable for any
+                    damages due to such interruptions or lack of availability.
+                </p>
+                <p class="u-mtop-10">
+                    <strong>
+                    Limitation of liability: To the fullest extent permitted under law, Six Acts and its affiliates,
+                    suppliers, partners and agents have no obligation or liability (whether arising in contract, warranty,
+                    tort (including negligence), product liability or otherwise) for any indirect, incidental, special,
+                    punitive, or consequential damages or liabilities (including, but not limited to, any loss of data or
+                    content, revenue  or profit, or personal injury or death) arising from or related to your use of the
+                    Six Acts platform, service or any content provided by or through the Six Acts platform or service,
+                    even if we have been advised of the possibility of such damages in advance. This limitation applies
+                    to damages arising from
+                    (i) your use or inability to use the platform and access the services; (ii) cost of procurement of
+                    substitute products or services; (iii) unauthorised access to or alteration or distribution of content you
+                    submit through the platform; (iv) third party content made available to you through the platform; or
+                    (v) any other matter relating to any aspect of the Six Acts platform and service, including the website,
+                    the API, any present or future apps, email communications and Six Acts content on third party sites.
+                    Some countries and states do not allow the limitation or exclusion of incidental, consequential or
+                    other types of damages, so some of the above limitations may not apply to you.
+                    </strong>
+                </p>
+                <p>
+                    <strong>Indemnity: </strong>You agree to indemnify, defend (if we so request) and hold harmless
+                    Six Acts and its affiliates, suppliers, partners and agents from and against any claims, demands,
+                    losses, damages or expenses (including reasonable attorneys’ fees) arising from the content you post
+                    or submit, your use of and connection to the Six Acts website, applications, API, and any other
+                    aspect of the Six Acts platform or service, your violation of these Terms or your violation of any
+                    rights of any third-party. Your indemnification obligation will survive the termination of these
+                    Terms and your use of the Six Acts platform and service.
                 </p>
                 <p class="u-mtop-10">
                     <strong>No guarantee of service:</strong>
@@ -319,35 +325,6 @@
                     Six Acts or its affiliates, suppliers, partners or agents be held liable for any damages due to such
                     interruptions or lack of availability.
                 </p>
-                <p>
-                    <strong>
-                        Limitation of liability: To the fullest extent permitted under law, Six Acts and its affiliates,
-                        suppliers, partners and agents have no obligation or liability (whether arising in contract,
-                        warranty, tort (including negligence), product liability or otherwise) for any indirect,
-                        incidental, special, punitive, or consequential damages or liabilities (including, but not limited
-                        to, any loss of data or content, revenue or profit, or personal injury or death) arising from or
-                        related to your use of the Six Acts platform, service or any content provided by or through the
-                        Six Acts platform or service, even if we have been advised of the possibility of such damages in
-                        advance. This limitation applies to damages arising from (i) your use or inability to use the
-                        platform and access the services; (ii) cost of procurement of substitute products or services;
-                        (iii) unauthorised access to or alteration or distribution of content you submit through the
-                        platform;
-                        (iv) third party content made available to you through the platform; or (v) any other matter
-                        relating to any aspect of the Six Acts platform and service, including the website, the API, any
-                        present or future apps, email communications and Six Acts content on third party sites.
-                        Some countries and states do not allow the limitation or exclusion of incidental, consequential
-                        or other types of damages, so some of the above limitations may not apply to you.
-                    </strong>
-                </p>
-                <p class="u-mtop-10">
-                    <strong>Indemnity:</strong>You agree to indemnify, defend (if we so request) and hold harmless Six Acts
-                    and its affiliates, suppliers, partners and agents from and against any claims, demands, losses, damages
-                    or expenses (including reasonable attorneys’ fees) arising from the content you post or submit, your use
-                    of and connection to the Six Acts website, applications, API, and any other aspect of the Six Acts
-                    platform or service, your violation of these Terms or your violation of any rights of any third-party.
-                    Your indemnification obligation will survive the termination of these Terms and your use of the Six Acts
-                    platform and service.
-                </p>
                 <p class="u-mtop-10">
                     <strong>Binding Agreement:</strong> By using the Six Acts platform you agree to abide by these Terms
                     and our 9 Rules for the 6 Acts document and you consent to Six Acts collecting, using and sometimes
@@ -355,21 +332,60 @@
                     policies and using the Six Acts services on behalf of a company, organisation, government, or other
                     legal entity, you represent and warrant that you are authorised to do so.
                 </p>
+                <h2 class="title is-4">8. Dispute resolution</h2>
+                <p>
+                    One of the principles behind Six Acts is that people can interact with decision makers directly and come
+                    to solutions together. If you have a serious disagreement with a decision we make, let’s agree to sort it
+                    out with each other before we make claims in court.
+                    Six Acts is a Uk-based initiative and these Terms are governed by laws of the United Kingdom without
+                    regard to their conflict of law principles. If a court having proper authority decides that any portion of
+                    these terms, policies and guidelines is invalid, only the part that is invalid will not apply and the rest will
+                    still be in effect. The official language of these Terms is English. If there is a conflict between the English
+                    language version and any translation, the English language version will prevail.
+                    In the event of any dispute, claim, question, or disagreement arising from or relating to these Terms or
+                    an alleged breach thereof, whether arising in contract, tort or otherwise, between you and us, we shall
+                    use our respective best efforts to settle the dispute. If a dispute arises, the complaining party shall
+                    provide written notice to the other party in a document specifically entitled “Notice of Dispute,”
+                    specifically setting forth the precise nature of the dispute. Please mail any Notice of Dispute to our head
+                    office at:
+                </p>
+                <p>
+                    The Six Acts<br/>
+                    Unit 1, Work for Change,<br/>
+                    41 Old Birley Street<br/>
+                    Manchester M15 5RE<br/>
+                    United Kingdom<br/>
+                </p>
+                <p>
+                    You can also contact us at <a href="mailto: thesixacts@gmail.com">thesixacts@gmail.com</a>
+                    to let us know you have mailed your Notice of Dispute.
+                </p>
+                <p>
+                    Following Six Act’s receipt of the Notice of Dispute, the parties shall consult and negotiate with each
+                    other in good faith and, recognising their mutual interest, attempt to reach a just and equitable solution
+                    of the dispute that is satisfactory to both parties. If the parties are unable to reach a resolution of the
+                    dispute through this dispute resolution mechanism within 90 days of the receipt of the Initial Notice of
+                    Dispute, then any subsequent claim, legal proceedings or litigation arising in connection with the Six
+                    Acts services will be brought solely through courts of the United Kingdom.
+                </p>
                 <h2 class="title is-4">9. How to contact us</h2>
-                <p>The best way to get in touch with us is to email us at
+                <p>
+                    The best way to get in touch with us is to email us at
                     <a href="mailto: thesixacts@gmail.com">thesixacts@gmail.com</a>
                 </p>
                 <p>
                     We’d love to hear your questions, concerns, and feedback about this policy. If you have any suggestions
-                    for us, feel free to let us know by contacting us at thesixacts@gmail.com or writing to
-                    the following address:
+                    for us, feel free to let us know by contacting us at
+                    <a href="mailto: thesixacts@gmail.com">thesixacts@gmail.com</a> or writing to the following
+                    address:
                 </p>
                 <p>
-                    Flat 408, 41 Old Birley Street<br/>
+                    The Six Acts<br/>
+                    Unit 1, Work for Change,<br/>
+                    41 Old Birley Street<br/>
                     Manchester M15 5RE<br/>
                     United Kingdom<br/>
                 </p>
-
             </div>
         </div>
     </div>
