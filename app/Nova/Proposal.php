@@ -24,7 +24,7 @@ class Proposal extends Resource
      * @var string
      */
     public static $title = 'id';
-    
+
     /**
      * The columns that should be searched.
      *
@@ -34,7 +34,7 @@ class Proposal extends Resource
         'id',
         'title',
     ];
-    
+
     /**
      * Default ordering for index query.
      *
@@ -43,19 +43,19 @@ class Proposal extends Resource
     public static $indexDefaultOrder = [
         'id' => 'asc'
     ];
-    
+
     /**
      * The logical group associated with the resource.
      *
      * @var string
      */
     public static $group = 'Core';
-    
+
     /**
      * Build an "index" query for the given resource.
      *
      * @param \Laravel\Nova\Http\Requests\NovaRequest $request request
-     * @param \Illuminate\Database\Eloquent\Builder   $query   query
+     * @param \Illuminate\Database\Eloquent\Builder $query query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -67,32 +67,32 @@ class Proposal extends Resource
         }
         return $query;
     }
-    
+
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
     {
         return [
             ID::make()->sortable(),
-            
+
             Text::make(__('Title'), 'title')->rules('required')->sortable(),
-            
+
             Text::make(__('Category'), function () {
                 return $this->category->title ?? '';
             })->onlyOnIndex()
                 ->sortable(),
-            
+
             BelongsTo::make('Category', 'category', 'App\Nova\Category')
                 ->nullable()
                 ->onlyOnForms(),
-            
+
             Textarea::make(__('Body'), 'body')
-            ->hideFromIndex(),
-            
+                ->hideFromIndex(),
+
             Text::make(__('Proposed by'), function () {
                 return $this->user->name ?? '';
             })->onlyOnIndex()->sortable(),
@@ -102,7 +102,7 @@ class Proposal extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -113,7 +113,7 @@ class Proposal extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -124,7 +124,7 @@ class Proposal extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -135,7 +135,7 @@ class Proposal extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)
