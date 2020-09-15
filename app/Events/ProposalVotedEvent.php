@@ -13,15 +13,17 @@ class ProposalVotedEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $data;
-    
+
     public $channel;
-    
+
     public $user;
-    
+
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param $data
+     * @param  string  $channel
+     * @param  User  $user
      */
     public function __construct($data, string $channel, User $user)
     {
@@ -33,7 +35,7 @@ class ProposalVotedEvent
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|array
      */
     public function broadcastOn()
     {

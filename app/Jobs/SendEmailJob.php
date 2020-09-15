@@ -24,13 +24,14 @@ class SendEmailJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private $mailShot;
-    
+
     private $destination;
-    
+
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param $mailShot
+     * @param  string  $destination
      */
     public function __construct($mailShot, $destination = '')
     {
