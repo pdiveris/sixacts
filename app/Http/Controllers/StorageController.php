@@ -1,7 +1,16 @@
 <?php
 namespace App\Http\Controllers;
 
+use Exception;
+use Generator;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Redis as Redis;
 
 /**
@@ -15,23 +24,23 @@ use Illuminate\Support\Facades\Redis as Redis;
  */
 class StorageController extends Controller
 {
-    protected static $redisCommands = [
+    protected static array $redisCommands = [
       'flushdb',
       'addrandom',
     ];
-    
+
     /**
      * Get Avatar
      *
      * @param string $email email
      * @param int    $size  Size
      *
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|string
+     * @return ResponseFactory|Response|string
      */
-    public static function getAvatar(string $email, int $size = 64)
+    public static function getAvatar(string $email, int $size = 64): Response|string|ResponseFactory
     {
         $email = str_replace('@', '-at-', $email);
-      
+
         try {
             $blob = self::getObject($email);
             if (null !== $blob) {
@@ -42,7 +51,7 @@ class StorageController extends Controller
                         ]
                     );
             }
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return \Gravatar::src($email, $size);
         }
     }
@@ -57,18 +66,18 @@ class StorageController extends Controller
      * @param string $type   type
      *
      * @return string
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
     public static function getObject(
         string $id,
         string $bucket = '',
         string $type = ''
-    ) {
+    ): string
+    {
         if (null !== $bucket && null !== $type) {
             //
         }
-        $fileFromId = \Storage::disk('s3')->get($id);
-        return $fileFromId;
+        return \Storage::disk('s3')->get($id);
     }
 
     /**
@@ -76,33 +85,34 @@ class StorageController extends Controller
      *
      * @param string $pattern    pattern
      * @param null   $cursor     cursor
-     * @param array  $allResults all
+     * @param array $allResults all
      * @param null   $redis      redis
      *
-     * @return array|\Generator
+     * @return array|Generator
      */
     public static function scanAllForMatchWas(
-        $pattern,
-        $cursor = null,
-        $allResults = array(),
-        $redis = null
-    ) {
+        string $pattern,
+               $cursor = null,
+        array  $allResults = array(),
+               $redis = null
+    ): array|Generator
+    {
         // Zero means full iteration
         if ($cursor === "0") {
             return $allResults;
         }
-      
+
         // No $cursor means init
         if ($cursor === null) {
             $cursor = "0";
         }
-  
+
         // The call
         $result = $redis->scan($cursor, 'match', $pattern);
-      
+
         // Append results to array
         $allResults = array_merge($allResults, $result[1]);
-      
+
         // Recursive call until cursor is 0
         return self::scanAllForMatch($pattern, $result[0], $allResults, $redis);
     }
@@ -113,9 +123,9 @@ class StorageController extends Controller
      * @param string $pattern pattern
      * @param string $redis   redis
      *
-     * @return \Generator
+     * @return Generator
      */
-    protected static function scanAllForMatch($pattern, $redis)
+    protected static function scanAllForMatch(string $pattern, string $redis): Generator
     {
         $cursor = 0;
         do {
@@ -133,12 +143,12 @@ class StorageController extends Controller
      * @param int    $number number
      *
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
-    protected static function addRandom(string $db, int $number)
+    protected static function addRandom(string $db, int $number): string
     {
         $redis = Redis::connection($db);
-      
+
         for ($i = 0; $i < $number; $i++) {
             $redis->set("petes_randomizer:$i", md5(random_bytes(30)));
         }
@@ -148,54 +158,58 @@ class StorageController extends Controller
     /**
      * Post to Redis
      *
-     * @param \Illuminate\Http\Request $request request
-     * @param string                   $store   store
-     * @param string                   $key     key
+     * @param Request $request request
+     * @param string $store   store
+     * @param string $key     key
      *
-     * @return \Illuminate\Contracts\View\View
-     * @throws \Exception
+     * @return Application|RedirectResponse|Redirector
+     * @throws Exception
      */
-    public function postRedis(Request $request, $store = '', $key = '')
+    public function postRedis(
+        Request $request,
+        string $store = '',
+        string $key = ''
+    ): Application|RedirectResponse|Redirector
     {
         $dbId = $request->input('dbId');
         $needle = $request->input('needle', '');
-      
+
         if (-1 == $needle) { // add
             $key = $request->get('key');
             $ttl = $request->get('ttl', 3600);
             $value = $request->get('value');
-            
+
             $dbId = $dbId == -1 ? 0 : $dbId;
-            
+
             $tag = self::getDbTagById($dbId);
-            
+
             $redis = Redis::connection($tag);
             $ret = $redis->set($key, $value, 'ex', $ttl);
-            
+
             $msg = "Added kosher salt to db #$dbId ($ret)";
-            
+
             if (isset($error) && '' !== $error) {
                 return redirect($request->getUri())->with('error', $error);
             } else {
                 return redirect($request->getUri())->with('message', $msg);
             }
         }
-        
+
         if ($dbId == -1) {
             $dbId = self::findDatabaseKeyBelongsTo($needle);
-            if (false == $dbId) {
+            if (!$dbId) {
                 $error = "Problem: can't find this key ($needle)";
             }
         }
-      
+
         $tag = self::getDbTagById($dbId);
-  
+
         if ($tag) {
             $redis = Redis::connection($tag);
             $ret = $redis->del([$needle]);
             $msg = "Deleted $ret: $needle from #$dbId";
         }
-  
+
         if (isset($error) && '' !== $error) {
             return redirect($request->getUri())->with('error', $error);
         } else {
@@ -210,7 +224,7 @@ class StorageController extends Controller
      *
      * @return bool|int|string
      */
-    protected static function getDbTagById(string $dbId)
+    protected static function getDbTagById(string $dbId): bool|int|string
     {
         foreach (self::getRedisDatabases() as $label => $id) {
             if ($dbId == $id) {
@@ -227,13 +241,13 @@ class StorageController extends Controller
      *
      * @return bool|mixed
      */
-    public static function findDatabaseKeyBelongsTo($needle)
+    public static function findDatabaseKeyBelongsTo(string $needle): mixed
     {
         $databases = self::getRedisDatabases();
         foreach ($databases as $tag => $db) {
             $redis = Redis::connection($tag);
             $keys = self::scanAllForMatch('*', $redis, []);
-            
+
             foreach ($keys as $key) {
                 if ($key == $needle) {
                     return $db;
@@ -248,7 +262,7 @@ class StorageController extends Controller
      *
      * @return array
      */
-    public static function getRedisDatabases()
+    public static function getRedisDatabases(): array
     {
         $databases = [];
         foreach (\Config::get('database.redis') as $key => $stanza) {
@@ -264,28 +278,28 @@ class StorageController extends Controller
     /**
      * Return the REDIS View
      *
-     * @param \Illuminate\Http\Request $request request
-     * @param string                   $store   store
-     * @param string                   $key     the key
+     * @param Request $request request
+     * @param string $store   store
+     * @param string $key     the key
      *
-     * @return \Illuminate\Contracts\View\View
-     * @throws \Exception
+     * @return View
+     * @throws Exception
      */
-    public function redis(Request $request, $store = '', $key = '')
+    public function redis(Request $request, string $store = '', string $key = '')
     {
         $command = $request->get('command', '');
-        
+
         $databases = self::getRedisDatabases();
-        
+
         $stuff = [];
-        
+
         $dbId = ('' === $store) ? -1 : intval($store);
         $outputs = [];
-      
+
         foreach ($databases as $tag => $db) {
             if (-1 == $dbId || $dbId == $db) {
                 $redis = Redis::connection($tag);
-              
+
                 if (in_array($command, self::$redisCommands)) {
                     if ($command == 'addrandom') {
                         $outputs[] = self::addRandom($tag, rand(1, 7));
@@ -294,7 +308,7 @@ class StorageController extends Controller
                         $outputs[] = $ret->getPayload();
                     }
                 }
-          
+
                 $keys = self::scanAllForMatch('*', $redis, $stuff);
                 foreach ($keys as $key) {
                     $stuff[$key] = [
@@ -304,7 +318,7 @@ class StorageController extends Controller
                 }
             }
         }
-      
+
         if (isset($outputs) && count($outputs)>0) {
             $flash = implode(',', $outputs);
             \Session::flash('message', "Operation(s) returned: ".$flash);

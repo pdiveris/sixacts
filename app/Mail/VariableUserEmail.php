@@ -2,11 +2,10 @@
 
 namespace App\Mail;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * Class VariableUserEmail
@@ -17,21 +16,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class VariableUserEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    
+
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     private $user;
-    
+
     private $template;
-    
+
     private $extraData = [];
-    
+
     /**
      * VariableUserEmail constructor.
      * Create a new message instance.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @param string $template
      * @param array $extraData
      * @return void
@@ -53,7 +52,7 @@ class VariableUserEmail extends Mailable
         $data = $this->extraData;
         $data['email'] = $this->user->email;
         $data['name'] = $this->user->name;
-        
+
         return $this->to($this->user->email)
             ->text('emails.users.'.$this->template.'_plain')
             ->subject($data['subject'] ?? 'Welcome to Six Acts')

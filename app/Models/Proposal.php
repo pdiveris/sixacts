@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder as Builder;
 use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Database\Eloquent\Builder as Builder;
 
 /**
- * App\Proposal
+ * App\Models\Proposal
  *
  * @category Model
  * @package App
@@ -33,14 +33,14 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static Builder|Proposal whereUpdatedAt($value)
  * @method static Builder|Proposal whereUserId($value)
  * @mixin \Eloquent
- * @property-read \App\User $user
- * @property-read \App\Category $category
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\VoteAgg[] $aggs
+ * @property-read Models\User $user
+ * @property-read Models\Category $category
+ * @property-read \Illuminate\Database\Eloquent\Collection|Models\VoteAgg[] $aggs
  */
 class Proposal extends Model
 {
     protected $fillable = ['title', 'body', 'user_id', 'category'];
-    
+
     /**
      * Return the user associated with the Proposal
      *
@@ -48,9 +48,9 @@ class Proposal extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
-    
+
     /**
      * Get category it belongs to
      *
@@ -58,9 +58,9 @@ class Proposal extends Model
      */
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Models\Category');
     }
-    
+
     /**
      * Get the aggregations attached to the proposal
      * (number of votes etc)
@@ -69,9 +69,9 @@ class Proposal extends Model
      */
     public function aggs()
     {
-        return $this->hasMany('App\VoteAgg');
+        return $this->hasMany('App\Models\VoteAgg');
     }
-    
+
     /**
      * Populate use for inserts
      *
@@ -79,7 +79,7 @@ class Proposal extends Model
     public static function boot()
     {
         parent::boot();
-        
+
         static::creating(function ($post) {
             $user = auth()->user();
             if ($user !== null && $user) {

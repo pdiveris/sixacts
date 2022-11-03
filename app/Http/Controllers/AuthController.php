@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\AuthData;
-use App\User;
+use App\Models\AuthData;
+use App\Models\User;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Class AuthController
@@ -19,7 +23,7 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     use AuthenticatesUsers;
-    
+
     /**
      * Create a new AuthController instance.
      *
@@ -29,15 +33,15 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login']]);
     }
-    
+
     /**
      * Register method
      *
-     * @param \Illuminate\Http\Request $request request
+     * @param Request $request request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function register(Request $request)
+    public function register(Request $request): JsonResponse
     {
         $user = User::create(
             [
@@ -49,17 +53,17 @@ class AuthController extends Controller
         $token = auth()->login($user);
         return $this->respondWithToken($token);
     }
-    
+
     /**
      * This is the login
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function login()
+    public function login(): JsonResponse
     {
         $credentials = request(['email', 'password']);
         $user = auth()->attempt($credentials);
-        if (null !== $user && $user) {
+        if ($user) {
             if (auth()->user()->verified) {
                 $token = auth('api')->attempt($credentials);
                 if ($token) {
@@ -71,9 +75,9 @@ class AuthController extends Controller
         } else {
             $oAuth = AuthData::where('email', '=', request(['email']))
                 ->first();
-            
+
             if (null!==$oAuth) {
-                $user = \App\User::where('email', '=', $oAuth->email)->first();
+                $user = User::where('email', '=', $oAuth->email)->first();
                 \Auth::login($user);
                 if (auth()->user()->verified) {
                     return $this->respondWithToken($oAuth->token);
@@ -84,67 +88,66 @@ class AuthController extends Controller
         }
         return response()->json(['error' => 'Unauthorized'], 401);
     }
-    
+
     /**
      * Get the authenticated User.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function me()
+    public function me(): JsonResponse
     {
         return response()->json(auth()->user());
     }
-    
+
     /**
      * Get an API token for the user currently logged in
      */
-    public function getUserToken()
+    public function getUserToken(): Factory|View|Application
     {
         $user = \Auth::user();
         $token = auth('api')->login($user);
         return view('auth.token', ['token'=>$token]);
     }
-    
-    public static function getToken()
+
+    public static function getToken(): ?string
     {
         $user = \Auth::user();
         if ($user) {
-            $token = auth('api')->login($user);
-            return $token;
+            return auth('api')->login($user);
         } else {
             return '';
         }
     }
-    
+
     /**
      * Logout method
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function logout()
+    public function logout(): JsonResponse
     {
         auth()->logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
-    
+
     /**
      * Refresh a token.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function refresh()
+    public function refresh(): JsonResponse
     {
         return $this->respondWithToken(auth()->refresh());
     }
-    
+
     /**
      * The respondWithToken method
      *
      * @param string $token token
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    protected function respondWithToken($token)
+    protected function respondWithToken(string $token): JsonResponse
     {
         return response()->json(
             [

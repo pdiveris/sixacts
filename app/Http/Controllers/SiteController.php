@@ -22,10 +22,16 @@
      */
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Proposal;
-use http\Client\Curl\User;
+use App\Models\Category;
+use App\Models\Proposal;
+use App\Models\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request as Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
+use Psr\SimpleCache\InvalidArgumentException;
 
 /**
  * Class SiteController
@@ -42,55 +48,54 @@ class SiteController extends Controller
     /**
      * @var \Request request
      */
-    private $request;
-    
+    private \Request $request;
+
     /**
      * Create a new controller instance.
      *
      * @param \Request $request
      *
-     * @return void
      */
-    public function __construct(Request $request)
+    public function __construct(\Request $request)
     {
         $this->request = $request;
-    
+
         $earl = $request->getUri();
         $host = $request->getHost();
         // dump($host);
-        
+
         $path = str_replace('https://'.$host.'/', '', $earl);
 
-        if (strpos($path, 'become')!== false) {
+        if (str_contains($path, 'become')) {
             //
         } else {
             $this->middleware('auth');
         }
-        
+
     }
-    
+
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         return view('home');
     }
-    
+
     /**
      * Show the User's profile page/form
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function userProfile()
+    public function userProfile(): Factory|View
     {
         $oAuthUser = \Auth::user();
         if (!$oAuthUser) {
             abort(419, 'Page has expired');
         }
-        $user = \App\User::find((int)$oAuthUser->id);
+        $user = User::find((int)$oAuthUser->id);
         return view('user_profile',
             [
                 'user'=>$user,
@@ -100,20 +105,20 @@ class SiteController extends Controller
             ]
         );
     }
-    
+
     /**
      * Process the updated user profile
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @return RedirectResponse|Redirector
      */
-    public function postUserProfile(Request $request)
+    public function postUserProfile(Request $request): Redirector|RedirectResponse
     {
         $rules = array(
             'name'    => 'required|string',
             'email' => 'email:rfc,dns',
         );
-        
+
         if ($request->get('password') !== '' &&
             $request->get('password') !== null &&
             $request->get('password_confirmation') !== '' &&
@@ -122,20 +127,20 @@ class SiteController extends Controller
             $rules['password'] = 'string|confirmed';
             $rules['password_confirmation'] = 'string';
         }
-        
+
         $validator = \Validator::make($this->request->all(), $rules);
-       
+
         if ($validator->fails()) {
             return redirect('/user/profile')
                 ->withErrors($validator)
                 ->withInput($this->request->all());
         } else {
-            $oauthuser = \Auth::user();
-            if (null === $oauthuser) {
+            $oauthUser = \Auth::user();
+            if (null === $oauthUser) {
                 abort(501, 'System error retrieving your details. We are working on it..');
             }
-            
-            $user = \App\User::find($oauthuser->id);
+
+            $user = User::find($oauthUser->id);
             $user->email = $request->get('email');
             $user->name = $request->get('name');
             $user->display_name = $request->get('display_name');
@@ -148,16 +153,16 @@ class SiteController extends Controller
                 ->withInput($this->request->all());
         }
     }
-    
+
     /**
      * Display a form to collect the proposed action
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function getProposal()
+    public function getProposal(): Factory|View
     {
         $pause = \Cache::get('pause', 'off');
-        
+
         $categories = Category::all();
         foreach ($categories as $category) {
             $category->selected = false;
@@ -172,15 +177,15 @@ class SiteController extends Controller
             ]
         );
     }
-    
+
     /**
      * Handle the form/
      * Validate to save, that's our mission.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @return RedirectResponse|Redirector
      */
-    public function postProposal(Request $request)
+    public function postProposal(Request $request): Redirector|RedirectResponse
     {
         // validate the info, create rules for the inputs
         $rules = array(
@@ -205,7 +210,7 @@ class SiteController extends Controller
         }
         abort(520);
     }
-    
+
     /**
      * Method to overcome the ludicrous splash screen when working internally
      * Do not show the splash if
@@ -232,13 +237,13 @@ class SiteController extends Controller
             return env('SPLASH_SCREEN', false);
         }
     }
-    
+
     /**
      * Scheduled task
      *
      * @return mixed
      */
-    public static function getTwitts()
+    public static function getTwitts(): mixed
     {
         $twits =  json_decode(\Cache::get('twitter', '[]'));
         foreach ($twits as $twit) {
@@ -248,21 +253,21 @@ class SiteController extends Controller
         }
         return $twits;
     }
-    
+
     /**
      * If voting is ON, turn it off
      * If voting is OFF turn it on
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @return RedirectResponse|Redirector
+     * @throws InvalidArgumentException
      */
-    public function pause()
+    public function pause(): Redirector|RedirectResponse
     {
         $user = \Auth::user();
         if ($user && in_array($user->id, [1 ,2 ,3])) {
             $status = \Cache::get('pause', 'off');
             echo 'Found the cache $status<br />';
-    
+
             if ($status === 'off') {
                 echo 'Setting pause to on';
                 \Cache::set('pause', 'on', 1800);
@@ -272,17 +277,16 @@ class SiteController extends Controller
                 \Cache::set('pause', 'off');
             }
             echo '<br/>';
-        } else {
-            return redirect('/');
         }
-        
+        return redirect('/');
     }
-    
+
     /**
      * Become someone else
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse|Redirector
      */
     public function become(Request $request, $id) {
         if (!in_array($request->ip(), ['10.17.1.254', '88.97.78.236', '127.0.0.1'])) {

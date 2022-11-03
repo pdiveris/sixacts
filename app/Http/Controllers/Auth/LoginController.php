@@ -22,14 +22,14 @@
  */
 namespace App\Http\Controllers\Auth;
 
-use App\AuthData;
 use App\Helpers\Utils;
 use App\Http\Controllers\Controller;
-use App\User;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 use App\Jobs\SendEmailJob;
 use App\Mail\VariableUserEmail as UserEmail;
+use App\Models\AuthData;
+use App\Models\User;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 /**
  * Class LoginController
@@ -73,7 +73,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
+
     /**
      * Do the login
      *
@@ -108,7 +108,7 @@ class LoginController extends Controller
             }
         }
     }
-    
+
     /**
      * Redirect the user to the GitHub authentication page.
      *
@@ -121,7 +121,7 @@ class LoginController extends Controller
         $provider = str_replace('login/', '', $request->path());
         return \Socialite::driver($provider)->redirect();
     }
-    
+
     /**
      * Obtain the user information from Auth provider e.g. GitHub.
      * Redirect to home page with some pop up, possibly Bulma
@@ -139,45 +139,45 @@ class LoginController extends Controller
     {
         $provider = str_replace('login/', '', $request->path());
         $provider = str_replace('/callback', '', $provider);
-        
+
         $user = \Socialite::driver($provider)->user();
-        
+
         $store = new AuthData();
         $store->scheme = 'NOAuth';
-        
+
         $store->token = $user->token;
         $store->their_id = $user->getId();
         $store->nickname = $user->getNickname();
         $store->name = $user->getName();
         $store->email = $user->getEmail();
         $store->avatar = $user->getAvatar();
-        
+
         if (property_exists($user, 'tokenSecret')) {
             $store->scheme = 'OAuth 1';
             $store->token_secret = $user->tokenSecret;
         }
-    
+
         if (property_exists($user, 'refreshToken')) {
             $store->refresh_token = $user->refreshToken;
         }
-    
+
         if (property_exists($user, 'expiresIn')) {
             $store->expires_in = $user->expiresIn;
             $store->scheme = 'OAuth2';
         }
-    
+
         if (method_exists($user, 'getUser') && null!== $user->getUser()) {
             $store->user = json_encode($user->getUser());
         }
-        
+
         $store->provider = $provider;
-        
+
         // Exception handler to be added..
         $store->save();
-        
+
         // sync OAuth user with local repository
         $this->syncUser($store);
-        
+
         return redirect('/');
     }
 
@@ -185,7 +185,7 @@ class LoginController extends Controller
      * Sync local user with the OAuth user they are authenticating as
      * If user doesn't exist create them
      *
-     * @param \App\AuthData $authData Authentication data
+     * @param \App\Models\AuthData $authData Authentication data
      *
      * @return bool
      *
@@ -197,7 +197,7 @@ class LoginController extends Controller
     {
         $ret = false;
         $recs = User::where('email', '=', $authData->email)->get();
-        
+
         // check if the user exists
         // if not, create user with random password
         if (count($recs) < 1) {
@@ -213,7 +213,7 @@ class LoginController extends Controller
                 ]
             );
             $ourUser->save();
-            
+
             $profileUrl = url('user/profile');
             $email = new UserEmail(
                 $ourUser,
@@ -230,7 +230,7 @@ class LoginController extends Controller
         \Auth::login($ourUser);
         return $ret;
     }
-    
+
     /**
      * Delete scheme (initiated at the provider end)
      *
@@ -242,7 +242,7 @@ class LoginController extends Controller
     {
         $provider = str_replace('login/', '', $request->path());
         $provider = str_replace('/deauthorize', '', $provider);
-        
+
         $user = \Socialite::driver($provider)->user();
         return redirect('/');
     }
@@ -258,13 +258,13 @@ class LoginController extends Controller
     {
         $provider = str_replace('login/', '', $request->path());
         $provider = str_replace('/deauthorize', '', $provider);
-        
+
         $user = \Socialite::driver($provider)->user();
         // Do something with the user
         // return..
         return redirect('/');
     }
-    
+
     /**
      * The user has been authenticated.
      * Part of the custom verification email infrastructure as per:

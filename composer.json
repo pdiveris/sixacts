@@ -20,7 +20,7 @@
         "itsgoingd/clockwork": "^4.0",
         "kktsvetkov/krumo": "^0.4.0",
         "laravel-frontend-presets/bulma": "^2.0",
-        "laravel/framework": "5.8.*",
+        "laravel/framework": "6.*",
         "laravel/nova": "*",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",

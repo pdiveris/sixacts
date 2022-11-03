@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\MessagePosted;
-use App\Category;
+use App\Models\Category;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -17,16 +17,17 @@ use Illuminate\Http\Request;
  */
 class CategoryController extends Controller
 {
-    
+
     /**
      * Get all categories and return in JSON
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         $cats = Category::all();
-        
+
         $addSelected = $request->get('addSelected', 0);
         if ((int)$addSelected === 1) {
             foreach ($cats as $cat) {
@@ -36,15 +37,15 @@ class CategoryController extends Controller
 
         return response()->json($cats);
     }
-    
+
     /**
      * Find category by ID, return in JSON
      *
      * @param int $categoryId
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function show($categoryId = 0)
+    public function show(int $categoryId = 0): JsonResponse
     {
         $cat = Category::find((int)($categoryId));
         if (null===$cat) {

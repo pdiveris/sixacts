@@ -27,56 +27,56 @@
         '/user/profile',
         'SiteController@userProfile'
     )->name('profile')->middleware('verified');
-    
+
     Route::post(
         '/user/profile',
         'SiteController@postUserProfile'
     )->name('post_profile')->middleware('verified');
-    
+
     Route::get('user/token', 'AuthController@getUserToken')->name('user_token');
-    
+
     Route::get('message', 'MessageController@showMessageForm');
     Route::post('message', 'MessageController@post')->name('postmessage');
-    
+
     Route::get('categories', 'StaticController@content')->name('categories_explained');
     Route::get('nine_rules', 'StaticController@content')->name('nine_rules');
-    
+
     Route::get('forum', 'StaticController@forum')->name('forum');
     Route::get('terms', 'StaticController@content')->name('terms');
     Route::get('privacy', 'StaticController@content')->name('privacy');
     Route::get('gdpr', 'StaticController@content')->name('gdpr');
     Route::get('about', 'StaticController@content')->name('about');
     Route::get('intro', 'StaticController@content')->name('splash');
-    
-    
+
+
     Route::get('signin', 'StaticController@signin')->name('signin');
     Route::get('login/twitter', 'Auth\LoginController@redirectToProvider')->name('signin_twitter');
     Route::get('login/twitter/callback', 'Auth\LoginController@handleProviderCallback');
-    
+
     Route::get('login/google', 'Auth\LoginController@redirectToProvider')->name('signin_google');
     Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
-    
+
     Route::get('login/facebook', 'Auth\LoginController@redirectToProvider')->name('signin_facebook');
     Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
-    
+
     Route::get('login/deauthorize/facebook', 'Auth\LoginController@handleProviderDeauthorize')
         ->name('defacebook');
-    
+
     Route::get('login/delete/faceboook', 'Auth\LoginController@handleProviderDelete')
         ->name('deletefacebook');
 
     Route::get('/home', 'SiteController@index')->name('home');
-    
+
     Auth::routes();
     Route::get('user/verify/{token}', 'Auth\RegisterController@verifyUser');
-    
+
     Route::get(
         'login/verify',
         function () {
             return view('static.registration_thanks');
         }
     );
-    
+
     Route::get(
         '/campaigner',
         function () {
@@ -84,7 +84,7 @@
             return redirect('/');
         }
     );
-    
+
     Route::get(
         '/stop',
         function () {
@@ -92,7 +92,7 @@
             return redirect('/');
         }
     );
-    
+
     Route::get('/twitter', function() {
         $twits =  Twitter::getUserTimeline(['screen_name' => 'ActsSix', 'count' => 3, 'format' => 'json']);
         $ttl = env('TWITTER_TTL', 'undefined');
@@ -103,9 +103,9 @@
         }
         return '';
     });
-    
+
     Route::get('/sse', function () {
-        $user = \App\User::find(1);
+        $user = \App\Models\User::find(1);
         event(new \App\Events\ProposalVotedEvent(
             [
                 'message'=>'refresh', 'user'=>'Petros Diveris'
@@ -114,11 +114,11 @@
         );
         return '';
     });
-    
+
     Route::get('/become/{id}', 'SiteController@become')->middleware('guest');
-    
+
     Route::get('email', 'EmailController@sendEmail');
-    
+
     Route::get('sse/test', 'ServerSideEventsController@test');
     Route::get('sse/server/{token?}', 'ServerSideEventsController@server');
     Route::get('sse/semaphore/{token?}', 'ServerSideEventsController@semaphore');

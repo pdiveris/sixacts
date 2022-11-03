@@ -1,16 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Builder as Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
-use \Illuminate\Database\Eloquent\Builder as Builder;
-use \Illuminate\Notifications\DatabaseNotificationCollection as DatabaseNotificationCollection;
+use Illuminate\Notifications\DatabaseNotificationCollection as DatabaseNotificationCollection;
+use Illuminate\Notifications\Notifiable;
 use QCod\ImageUp\HasImageUploads;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
- * App\User
+ * App\Models\User
  *
  * @category Model
  * @package App
@@ -30,37 +30,37 @@ use QCod\ImageUp\HasImageUploads;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $verified
- * @method static Builder|\App\User newModelQuery()
- * @method static Builder|\App\User newQuery()
- * @method static Builder|\App\User query()
- * @method static Builder|\App\User whereCreatedAt($value)
- * @method static Builder|\App\User whereEmail($value)
- * @method static Builder|\App\User whereEmailVerifiedAt($value)
- * @method static Builder|\App\User whereId($value)
- * @method static Builder|\App\User whereName($value)
- * @method static Builder|\App\User wherePassword($value)
- * @method static Builder|\App\User whereRememberToken($value)
- * @method static Builder|\App\User whereUpdatedAt($value)
- * @method static Builder|\App\User whereAvatar($value)
- * @method static Builder|\App\User whereDisplayName($value)
- * @method static Builder|\App\User whereSocialAvatar($value)
- * @method static Builder|\App\User whereSocialAvatarLarge($value)
+ * @method static Builder|User newModelQuery()
+ * @method static Builder|User newQuery()
+ * @method static Builder|User query()
+ * @method static Builder|User whereCreatedAt($value)
+ * @method static Builder|User whereEmail($value)
+ * @method static Builder|User whereEmailVerifiedAt($value)
+ * @method static Builder|User whereId($value)
+ * @method static Builder|User whereName($value)
+ * @method static Builder|User wherePassword($value)
+ * @method static Builder|User whereRememberToken($value)
+ * @method static Builder|User whereUpdatedAt($value)
+ * @method static Builder|User whereAvatar($value)
+ * @method static Builder|User whereDisplayName($value)
+ * @method static Builder|User whereSocialAvatar($value)
+ * @method static Builder|User whereSocialAvatarLarge($value)
  * @method static \Illuminate\Database\Eloquent\Builder|
- * \App\User whereVerified($value)
+ * Models\User whereVerified($value)
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|
  * \Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|
- * \App\Proposal[] $proposals
- * @property-read \App\VerifyUser $verifyUser
+ * Models\Proposal[] $proposals
+ * @property-read Models\VerifyUser $verifyUser
  * @mixin \Eloquent
  * @property-read DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Proposal[] $proposals
- * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereVerified($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|Models\Proposal[] $proposals
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereVerified($value)
  */
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -69,7 +69,7 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name', 'email', 'password', 'verified', 'avatar', 'social_avatar', 'social_avatar_large'
     ];
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -78,7 +78,7 @@ class User extends Authenticatable implements JWTSubject
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -87,11 +87,11 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     protected $dispatchesEvents = [
         'created' => Events\UserCreatedEvent::class,
     ];
-    
+
     /**
      * Return proposals
      *
@@ -99,9 +99,9 @@ class User extends Authenticatable implements JWTSubject
      */
     public function proposals()
     {
-        return $this->hasMany('App\Proposal');
+        return $this->hasMany('App\Models\Proposal');
     }
-    
+
     /**
      * Return user's verify "record"
      *
@@ -109,9 +109,9 @@ class User extends Authenticatable implements JWTSubject
      */
     public function verifyUser()
     {
-        return $this->hasOne('App\VerifyUser');
+        return $this->hasOne('App\Models\VerifyUser');
     }
-    
+
     /**
      * Get the JWT identifier for user
      *
@@ -121,7 +121,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->getKey();
     }
-    
+
     /**
      * Get the JWT custom claims as per spec
      *
@@ -131,7 +131,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-    
+
     /**
      * Set the password attribute
      *

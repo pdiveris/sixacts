@@ -10,15 +10,15 @@
                  * You can also pass an argument to that method:
                  * ['App\Model@getAllFeedItems', 'argument']
                  */
-                'items' => 'App\ProposalView@getFeedItems',
-                
+                'items' => 'App\Models\ProposalView@getFeedItems',
+
                 /*
                  * The feed will be available on this url.
                  */
                 'url' => '/feed',
-                
+
                 'title' => 'All proposed actions on sixacts.org',
-                
+
                 /*
                  * The view that will render the feed.
                  */

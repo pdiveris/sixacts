@@ -17,11 +17,11 @@ class EmailController extends Controller
      * Queue an Email job
      *
      * @link http://tiny.cc/o89l9y
-     * @see  QUEUE_CONNECTION=database in dotEnv
+     * @see  QUEUE_CONNECTION = database in dotEnv
      *
      * @return void
      */
-    public function sendEmail()
+    public function sendEmail(): void
     {
         echo 'email sent';
     }

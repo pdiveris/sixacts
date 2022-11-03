@@ -20,9 +20,11 @@
      * @link      https://github.com/pdiveris/sixproposals/blob/master/app/Http/Controllers/Auth/LoginController.php
      * @see       Six Acts
      */
-    
+
     namespace App\Invokable;
-    
+
+    use App\Models\Vote;
+
     /**
      * Class KillOrphanVotes
      * Scheduled jon to kill database entries with 0 values
@@ -33,9 +35,9 @@
     {
         public function __invoke()
         {
-            \App\Vote::where('vote','=',0)
+            Vote::where('vote','=',0)
                 ->where('dislike','=',0)
                 ->delete();
         }
-    
+
     }

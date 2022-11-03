@@ -2,45 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\ProposalView;
+use App\Models\Category;
+use App\Models\Proposal;
+use App\Models\ProposalView;
+use App\Models\User;
+use App\Models\Vote;
+use GuzzleHttp\Client;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use \GuzzleHttp\Client;
+use Psr\SimpleCache\InvalidArgumentException;
 
 class StaticController extends Controller
 {
-    /*
+    /**
      * Temporary main proposal content result set
      *
-     * @param \Illuminate\Http\Request $request Request
+     * @param Request $request Request
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
     private $withErrors;
-    
+
     public static $filterLabels = [
         'most'=>'Most Votes',
         'recent' => 'Most Recent',
         'current' => 'Current Document'
     ];
-    
-    public function content(Request $request)
+
+    public function content(Request $request): View
     {
-        $proposals = \App\Proposal::all();
-        $categories = \App\Category::all();
-        
+        $proposals = Proposal::all();
+        $categories = Category::all();
+
         $view = $request->path();
         return \View::make('static.'.$view, ['proposals'=>$proposals, 'categories'=>$categories]);
     }
-    
+
     /**
      * Get a user's votes for a proposal, if any and add them to the recordset
      * @param $proposals
      * @param $userId
      * @return mixed
      */
-    public static function mergeProposalsWithVotes($proposals, $userId)
+    public static function mergeProposalsWithVotes($proposals, $userId): mixed
     {
-        $votes = \App\Vote::where('user_id', '=', (int)$userId)->get();
+        $votes = Vote::where('user_id', '=', (int)$userId)->get();
         foreach ($votes as $vote) {
             foreach ($proposals as $i => $prop) {
                 if ((int)$prop->id === (int)$vote->proposal_id) {
@@ -53,10 +60,11 @@ class StaticController extends Controller
         }
         return $proposals;
     }
-    
+
     /**
      * Render the home view
      *
+     * @param Request $request
      * @return \Illuminate\View\View
      */
     public function homeRendered(Request $request): \Illuminate\View\View
@@ -65,16 +73,16 @@ class StaticController extends Controller
         $catsQuery = $request->get('cats', '');
         $q = $request->get('q', '');
         $filter = $request->get('filter', '');
-        
-        
+
+
         $proposals = ProposalView::getFiltered($catsQuery, $q, $userId, $filter);
         $label = '';
-        
+
         if (array_key_exists($filter, self::$filterLabels)) {
             $label = self::$filterLabels[$filter];
         }
-        
-        $categories = \App\Category::all();
+
+        $categories = Category::all();
         $proposals = self::mergeProposalsWithVotes($proposals, $userId);
         return view(
             'static.ssr.welcome',
@@ -86,22 +94,22 @@ class StaticController extends Controller
             ]
         );
     }
-    
+
     /**
      * Render the home view
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
-    public function home(Request $request)
+    public function home(Request $request): View
     {
         $userId = $request->get('user_id');
         $catsQuery = $request->get('cats', '');
         $q = $request->get('q', '');
         $filter = $request->get('filter', '');
         $proposals = ProposalView::getFiltered($catsQuery, $q, $userId, $filter);
-        
-        $categories = \App\Category::all();
-    
+
+        $categories = Category::all();
+
         if (\Auth::user()) {
             $id = \Auth::user()->id;
         } else {
@@ -115,23 +123,23 @@ class StaticController extends Controller
                 ['proposals'=>$proposals, 'categories'=>$categories]
             );
         }
-    
+
         return view(
             'static.welcome',
             ['proposals'=>$proposals, 'categories'=>$categories]
         );
     }
-    
+
     /**
      * Render the home view
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
-    public function nchan(): \Illuminate\Contracts\View\View
+    public function nchan(): View
     {
-        $proposals = \App\ProposalView::all();
-        $categories = \App\Category::all();
-        
+        $proposals = ProposalView::all();
+        $categories = Category::all();
+
         if (\Auth::user()) {
             $id = \Auth::user()->id;
         } else {
@@ -145,37 +153,38 @@ class StaticController extends Controller
         );
 
     }
-    
+
     /**
-     * Switch to SSR version and go to
-     * home view
+     * Switch to SSR version and return
+     * Home View
      *
-     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function homePlain(Request $request): \Illuminate\View\View
     {
         \Cache::set('ssr', true);
         return $this->homeRendered($request);
     }
-    
+
     /**
      * Handle non API proposal vote requests
      */
-    public function plainVote(Request $request) {
+    public function plainVote(Request $request): RedirectResponse
+    {
         if (!\Auth::user() || null == \Auth::user()) {
             return back()->withErrors(['error'=>'You must be logged in to vote']);
         }
         $user = \Auth::user();
         $scheme = $request->getScheme();
         $host = $request->getHost();
-        
+
         $client = new Client(
             [
                 "base_uri" => $scheme . '://' . $host,
                 'verify' => false
             ]
         );
-        
+
         $token = AuthController::getToken();
 
         $options = [
@@ -190,20 +199,22 @@ class StaticController extends Controller
             ]
         ];
         $response = $client->post('/api/vote/', $options);
+
         // {"type":"success","message":"You've removed your vote","action":"persist"}
         // "type":"success","message":"Your vote has been added VOTE0DIS0","action":"persist"}
         $status = json_decode($response->getBody()->getContents());
+
         return back()->with(['type'=>$status->type, 'message' => $status->message]);
     }
-    
+
     /**
      * Render the React view
      * It's the same as the home view usually but it serves as a testbed
      * for new features/fixes before they make their way to their actual place
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
-    public function react()
+    public function react(): View
     {
         $listData = json_encode(['Koko', 'Taylor', 'Tash', 'Μιχαλάκης', 'Lucia']);
         return view(
@@ -213,15 +224,15 @@ class StaticController extends Controller
             ]
         );
     }
-    
+
     /**
      * Compose the link to the author
      *
-     * @param \App\Proposal $proposal proposal
+     * @param ProposalView $proposal proposal
      *
      * @return string
      */
-    public static function authorLink(\App\ProposalView $proposal)
+    public static function authorLink(ProposalView $proposal)
     {
         $displayName = $proposal->user->display_name;
         if (null !== $displayName && '' !== $displayName) {
@@ -236,15 +247,15 @@ class StaticController extends Controller
             return '@'.strtolower($proposal->user->name);
         }
     }
-    
+
     /**
      * Try local avatar, social avatar, gravatar
      *
-     * @param \App\User $user user
+     * @param User $user user
      *
      * @return string
      */
-    public static function makeAvatar(\App\User $user): string
+    public static function makeAvatar(User $user): string
     {
         if (null !== $user->avatar && '' !== $user->avatar) {
             return url($user->avatar);
@@ -254,16 +265,16 @@ class StaticController extends Controller
             return self::makeGravatar($user->email);
         }
     }
-    
+
     /**
      * Get either a Gravatar URL or complete image tag for a specified email address.
      *
      * @param string $email The email address
-     * @param int    $s     Size in pixels, defaults to 80px [ 1 - 2048 ]
+     * @param int $s     Size in pixels, defaults to 80px [ 1 - 2048 ]
      * @param string $d     Default imageset to use
      * @param string $r     Maximum rating (inclusive) [ g | pg | r | x ]
-     * @param bool   $img   True to return a complete IMG tag False for just the URL
-     * @param array  $atts  Optional, additional key/value attrs to include
+     * @param bool $img   True to return a complete IMG tag False for just the URL
+     * @param array $atts  Optional, additional key/value attrs to include
      *
      * @return string String containing either just a URL or a complete image tag
      *
@@ -271,11 +282,11 @@ class StaticController extends Controller
      */
     public static function makeGravatar(
         string $email,
-        $s = 80,
-        $d = 'mp',
-        $r = 'g',
-        $img = false,
-        $atts = []
+        int    $s = 80,
+        string $d = 'mp',
+        string $r = 'g',
+        bool   $img = false,
+        array $atts = []
     ): string {
         $url = 'https://www.gravatar.com/avatar/';
         $url .= md5(strtolower(trim($email)));
@@ -289,38 +300,38 @@ class StaticController extends Controller
         }
         return $url;
     }
-    
+
     /**
      * Return forum view
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
-    public function forum()
+    public function forum(): View
     {
-        $proposals = \App\Proposal::all();
-        $categories = \App\Category::all();
+        $proposals = Proposal::all();
+        $categories = Category::all();
         return view(
             'forum.home',
             ['proposals'=>$proposals, 'categories'=>$categories]
         );
     }
-    
+
     /**
      * Return siginin view
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
-    public function signIn()
+    public function signIn(): View
     {
         return \View::make('auth.signin', []);
     }
-    
+
     /**
      * Return view User registration
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return View
      */
-    public function userRegistration()
+    public function userRegistration(): View
     {
         return \View::make('static.registration', []);
     }

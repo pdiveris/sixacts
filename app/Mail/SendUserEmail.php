@@ -2,11 +2,10 @@
 
 namespace App\Mail;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * Class SendUserEmail
@@ -19,14 +18,14 @@ class SendUserEmail extends Mailable
     use Queueable, SerializesModels;
 
     private $user;
-    
+
     private $template;
-    
+
     /**
      * SendUserEmail constructor.
      * Create a new message instance.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @param string $template
      * @return void
      */

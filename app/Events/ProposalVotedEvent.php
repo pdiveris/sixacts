@@ -2,22 +2,22 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use App\User;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class ProposalVotedEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $data;
-    
+
     public $channel;
-    
+
     public $user;
-    
+
     /**
      * Create a new event instance.
      *
