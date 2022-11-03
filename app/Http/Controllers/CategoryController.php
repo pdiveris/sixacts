@@ -47,8 +47,8 @@ class CategoryController extends Controller
      */
     public function show(int $categoryId = 0): JsonResponse
     {
-        $cat = Category::find((int)($categoryId));
-        if (null===$cat) {
+        $cat = Category::find($categoryId);
+        if (null === $cat) {
             return response()->json(['type'=>'error', 'message' => 'Not Found.'], 404);
         }
         return response()->json($cat);

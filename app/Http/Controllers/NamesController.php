@@ -56,13 +56,13 @@ class NamesController extends Controller
     public function show(int $proposalId = 0): JsonResponse
     {
         $prop = Name::find($proposalId);
-        if (null===$prop) {
+        if (null === $prop) {
             return response()->json(['message' => 'Not Found.'], 404);
         }
         if ($prop->category) {
             $prop->hasCategory = true;
         }
-        if (count($prop->aggs)>0) {
+        if (count($prop->aggs) > 0) {
             $prop->hasAggs = true;
         }
         if ($prop->user) {

@@ -51,6 +51,7 @@ class VoteController extends Controller
         if (null===$vote) {
             return response()->json(['message' => 'Not Found.'], 404);
         }
+
         return response()->json($vote);
     }
 }
