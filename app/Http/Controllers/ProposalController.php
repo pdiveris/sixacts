@@ -182,7 +182,7 @@ class ProposalController extends Controller
             }
             return response()->json($response);
         }
-        return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
+        return response()->json(['type'=>'error', 'message'  => "Can't persist vote"]);
     }
 
     /**
@@ -252,6 +252,6 @@ class ProposalController extends Controller
         if (! $proposal) {
             abort(521);
         }
-        return view('static.proposal', ['proposal'=>$proposal]);
+        return view('static.proposal', ['proposal' => $proposal]);
     }
 }

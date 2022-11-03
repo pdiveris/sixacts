@@ -41,6 +41,7 @@ class StaticController extends Controller
 
     /**
      * Get a user's votes for a proposal, if any and add them to the recordset
+     *
      * @param $proposals
      * @param $userId
      * @return mixed
@@ -98,6 +99,7 @@ class StaticController extends Controller
     /**
      * Render the home view
      *
+     * @param Request $request
      * @return View
      */
     public function home(Request $request): View
@@ -110,12 +112,8 @@ class StaticController extends Controller
 
         $categories = Category::all();
 
-        if (\Auth::user()) {
-            $id = \Auth::user()->id;
-        } else {
-            $id = 0;
-        }
         $id = \Auth::user() ? \Auth::user()->id : 0;
+
         $proposals = self::mergeProposalsWithVotes($proposals, $id);
         if (\Cache::get('ssr', false)) {
             return view(
@@ -140,11 +138,6 @@ class StaticController extends Controller
         $proposals = ProposalView::all();
         $categories = Category::all();
 
-        if (\Auth::user()) {
-            $id = \Auth::user()->id;
-        } else {
-            $id = 0;
-        }
         $id = \Auth::user() ? \Auth::user()->id : 0;
         $proposals = self::mergeProposalsWithVotes($proposals, $id);
         return view(
@@ -232,7 +225,7 @@ class StaticController extends Controller
      *
      * @return string
      */
-    public static function authorLink(ProposalView $proposal)
+    public static function authorLink(ProposalView $proposal): string
     {
         $displayName = $proposal->user->display_name;
         if (null !== $displayName && '' !== $displayName) {

@@ -144,9 +144,11 @@ class SiteController extends Controller
             $user->email = $request->get('email');
             $user->name = $request->get('name');
             $user->display_name = $request->get('display_name');
+
             if ($request->get('password') !== null && $request->get('password') !== '') {
                 $user->password = bcrypt($request->get('password'));
             }
+
             $user->save();
             return redirect('/user/profile')
                 ->with('success', 'Your details have been updated')
@@ -167,7 +169,9 @@ class SiteController extends Controller
         foreach ($categories as $category) {
             $category->selected = false;
         }
+
         $this->request->session()->flash('warning', 'Record successfully added!');
+
         return view(
             'proposal_form',
             [
@@ -188,22 +192,26 @@ class SiteController extends Controller
     public function postProposal(Request $request): Redirector|RedirectResponse
     {
         // validate the info, create rules for the inputs
-        $rules = array(
+        $rules = [
             'title'    => 'required|string',
             'body' => 'required|min:3',
             'category_id' => 'required|integer|between:1,65535',
-        );
+        ];
+
         $validator = \Validator::make($request->all(), $rules);
+
         if ($validator->fails()) {
             return redirect('propose')
                 ->withErrors($validator)
                 ->withInput($this->request->all());
         }
+
         $proposal = new Proposal();
         $proposal->user_id = auth()->user()->id;
         $proposal->title = $request->get('title');
         $proposal->category_id = $request->get('category_id');
         $proposal->body = $request->get('body');
+
         if ($proposal->save()) {
             return redirect('propose')
                 ->with(['type' => 'success', 'message' => 'Your proposal has been added to the Six Acts']);
@@ -293,7 +301,7 @@ class SiteController extends Controller
             abort(404, 'Not found');
         }
         \Auth::loginUsingId($id);
-        return redirect('/');
 
+        return redirect('/');
     }
 }
