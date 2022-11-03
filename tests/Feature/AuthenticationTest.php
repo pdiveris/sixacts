@@ -23,8 +23,7 @@
 
 namespace Tests\Feature;
 
-use App\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
@@ -32,7 +31,7 @@ class AuthenticationTest extends TestCase
 {
     // use DatabaseMigrations;
     use DatabaseTransactions;
-    
+
     /**
      * @return void
      */
@@ -54,7 +53,7 @@ class AuthenticationTest extends TestCase
         ]);
         $user->save();
     }
-    
+
     public function testItWillRegisterAUser()
     {
         $response = $this->post('api/register', [
@@ -68,33 +67,33 @@ class AuthenticationTest extends TestCase
             'expires_in'
         ]);
     }
-    
+
     public function testDenyAccessToUnverifiedUser()
     {
         $response = $this->post('api/login', [
             'email'    => 'unverified@supermail.com',
             'password' => '123456'
         ]);
-        
+
         $response->assertJsonStructure([
             'error',
         ]);
     }
-    
+
     public function testAllowAccessToVerifiedUser()
     {
         $response = $this->post('api/login', [
             'email'    => 'verified@supermail.com',
             'password' => '123456'
         ]);
-    
+
         $response->assertJsonStructure([
             'access_token',
             'token_type',
             'expires_in'
         ]);
     }
-    
+
     public function testItWillNotLogAnInvalidUserIn()
     {
         $response = $this->post('api/login', [
@@ -105,5 +104,5 @@ class AuthenticationTest extends TestCase
             'error',
         ]);
     }
-    
+
 }

@@ -2,26 +2,24 @@
 
 namespace App\Events;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class PublicMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    
-    protected $user;
-    
+
+    protected User $user;
+
     protected $message;
-    
+
     /**
      * Create a new event instance.
-     * @param \App\User $user
+     * @param User $user
      * @param $message
      *
      * @return void
@@ -31,7 +29,7 @@ class PublicMessage implements ShouldBroadcast
         $this->user = $user;
         $this->message = $message;
     }
-    
+
     /**
      * Broadcast with data
      * This must always be an array.
@@ -39,7 +37,7 @@ class PublicMessage implements ShouldBroadcast
      *
      * @return array
      */
-    public function broadcastWith()
+    public function broadcastWith(): array
     {
         // This must always be an array. Since it will be parsed with json_encode()
         return [
@@ -47,7 +45,7 @@ class PublicMessage implements ShouldBroadcast
             'message' => $this->message,
         ];
     }
-    
+
     /**
      * The event name.
      * Prefix with a dot on the client
@@ -59,7 +57,7 @@ class PublicMessage implements ShouldBroadcast
     {
         return 'NewMessage';
     }
-    
+
     /**
      * Get the channels the event should broadcast on.
      *

@@ -22,10 +22,16 @@
      */
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Proposal;
+use App\Models\Category;
+use App\Models\Proposal;
+use App\Models\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request as Request;
-use phpDocumentor\Reflection\Types\Object_;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
+use Psr\SimpleCache\InvalidArgumentException;
 
 /**
  * Class SiteController
@@ -42,67 +48,144 @@ class SiteController extends Controller
     /**
      * @var \Request request
      */
-    private $request;
-    
+    private \Request $request;
+
     /**
      * Create a new controller instance.
      *
      * @param \Request $request
      *
-     * @return void
      */
-    public function __construct(Request $request)
+    public function __construct(\Request $request)
     {
-        $this->middleware('auth');
         $this->request = $request;
+
+        $earl = $request->getUri();
+        $host = $request->getHost();
+        // dump($host);
+
+        $path = str_replace('https://'.$host.'/', '', $earl);
+
+        if (str_contains($path, 'become')) {
+            //
+        } else {
+            $this->middleware('auth');
+        }
+
     }
-    
+
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function index()
+    public function index(): Response
     {
         return view('home');
     }
-    
+
     /**
      * Show the User's profile page/form
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function userProfile()
+    public function userProfile(): Factory|View
     {
-        $user = \Auth::user();
-        return view('user_profile', ['user'=>$user]);
+        $oAuthUser = \Auth::user();
+        if (!$oAuthUser) {
+            abort(419, 'Page has expired');
+        }
+        $user = User::find((int)$oAuthUser->id);
+        return view('user_profile',
+            [
+                'user'=>$user,
+                'sixjs'=>'1',
+                'croppie' => '1',
+                /*'avatar' => '1',*/
+            ]
+        );
     }
-    
+
     /**
-     * Display a form to colect the proposed action
+     * Process the updated user profile
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param Request $request
+     * @return RedirectResponse|Redirector
      */
-    public function getProposal()
+    public function postUserProfile(Request $request): Redirector|RedirectResponse
     {
+        $rules = array(
+            'name'    => 'required|string',
+            'email' => 'email:rfc,dns',
+        );
+
+        if ($request->get('password') !== '' &&
+            $request->get('password') !== null &&
+            $request->get('password_confirmation') !== '' &&
+            $request->get('password_confirmation') !== null
+        ) {
+            $rules['password'] = 'string|confirmed';
+            $rules['password_confirmation'] = 'string';
+        }
+
+        $validator = \Validator::make($this->request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect('/user/profile')
+                ->withErrors($validator)
+                ->withInput($this->request->all());
+        } else {
+            $oauthUser = \Auth::user();
+            if (null === $oauthUser) {
+                abort(501, 'System error retrieving your details. We are working on it..');
+            }
+
+            $user = User::find($oauthUser->id);
+            $user->email = $request->get('email');
+            $user->name = $request->get('name');
+            $user->display_name = $request->get('display_name');
+            if ($request->get('password') !== null && $request->get('password') !== '') {
+                $user->password = bcrypt($request->get('password'));
+            }
+            $user->save();
+            return redirect('/user/profile')
+                ->with('success', 'Your details have been updated')
+                ->withInput($this->request->all());
+        }
+    }
+
+    /**
+     * Display a form to collect the proposed action
+     *
+     * @return Factory|View
+     */
+    public function getProposal(): Factory|View
+    {
+        $pause = \Cache::get('pause', 'off');
+
         $categories = Category::all();
         foreach ($categories as $category) {
             $category->selected = false;
         }
+        $this->request->session()->flash('warning', 'Record successfully added!');
         return view(
             'proposal_form',
-            ['categories'=>$categories, 'sixjs'=>'1']
+            [
+                'categories'=>$categories,
+                'sixjs'=>'1',
+                'pause' => $pause
+            ]
         );
     }
-    
+
     /**
-     * Handld the form/
+     * Handle the form/
      * Validate to save, that's our mission.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @return RedirectResponse|Redirector
      */
-    public function postProposal(Request $request)
+    public function postProposal(Request $request): Redirector|RedirectResponse
     {
         // validate the info, create rules for the inputs
         $rules = array(
@@ -127,7 +210,7 @@ class SiteController extends Controller
         }
         abort(520);
     }
-    
+
     /**
      * Method to overcome the ludicrous splash screen when working internally
      * Do not show the splash if
@@ -148,10 +231,19 @@ class SiteController extends Controller
         ) {
             return false;
         }
-        return env('SPLASH_SCREEN', false);
+        if (\Session::get('campaigner', false)===true) {
+            return false;
+        } else {
+            return env('SPLASH_SCREEN', false);
+        }
     }
-    
-    public static function getTwitts()
+
+    /**
+     * Scheduled task
+     *
+     * @return mixed
+     */
+    public static function getTwitts(): mixed
     {
         $twits =  json_decode(\Cache::get('twitter', '[]'));
         foreach ($twits as $twit) {
@@ -160,5 +252,48 @@ class SiteController extends Controller
             }
         }
         return $twits;
+    }
+
+    /**
+     * If voting is ON, turn it off
+     * If voting is OFF turn it on
+     *
+     * @return RedirectResponse|Redirector
+     * @throws InvalidArgumentException
+     */
+    public function pause(): Redirector|RedirectResponse
+    {
+        $user = \Auth::user();
+        if ($user && in_array($user->id, [1 ,2 ,3])) {
+            $status = \Cache::get('pause', 'off');
+            echo 'Found the cache $status<br />';
+
+            if ($status === 'off') {
+                echo 'Setting pause to on';
+                \Cache::set('pause', 'on', 1800);
+            }
+            else {
+                echo 'Setting pause to off, forever';
+                \Cache::set('pause', 'off');
+            }
+            echo '<br/>';
+        }
+        return redirect('/');
+    }
+
+    /**
+     * Become someone else
+     *
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse|Redirector
+     */
+    public function become(Request $request, $id) {
+        if (!in_array($request->ip(), ['10.17.1.254', '88.97.78.236', '127.0.0.1'])) {
+            abort(404, 'Not found');
+        }
+        \Auth::loginUsingId($id);
+        return redirect('/');
+
     }
 }

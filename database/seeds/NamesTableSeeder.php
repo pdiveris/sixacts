@@ -1,8 +1,8 @@
 <?php
-    
-    use Illuminate\Database\Seeder;
 
-    class NamesTableSeeder extends Seeder
+use Illuminate\Database\Seeder;
+
+class NamesTableSeeder extends Seeder
     {
         /**
          * Run the database seeds.
@@ -12,9 +12,9 @@
         public function run()
         {
             $faker = Faker\Factory::create();
-            
+
             for ($i = 0; $i < 1000; $i++) {
-                App\Name::create([
+                \App\Models\Name::create([
                     'name' => $faker->sentence(),
                 ]);
             }

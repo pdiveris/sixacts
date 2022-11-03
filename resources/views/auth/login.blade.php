@@ -31,7 +31,10 @@
                                 <div class="field">
                                     <p class="control">
                                         <input class="input" id="email" type="email" name="email"
-                                               value="{{ old('email') }}" required autofocus>
+                                               value="{{ old('email') }}"
+                                               autocomplete="new-email"
+                                               required
+                                               autofocus>
                                     </p>
 
                                     @if ($errors->has('email'))
@@ -51,7 +54,14 @@
                             <div class="field-body">
                                 <div class="field">
                                     <p class="control">
-                                        <input class="input" id="password" type="password" name="password" required>
+                                        <input
+                                            class="input"
+                                            id="password"
+                                            type="password"
+                                            name="password"
+                                            autocomplete="new-password"
+                                            required
+                                        >
                                     </p>
 
                                     @if ($errors->has('password'))

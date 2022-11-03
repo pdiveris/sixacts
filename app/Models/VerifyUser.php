@@ -19,10 +19,10 @@
  * @link      https://github.com/pdiveris/sixproposals/blob/master/app/Http/Controllers/Auth/LoginController.php
  * @see       Six Acts
  */
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder as Builder;
 use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Database\Eloquent\Builder as Builder;
 
 /**
  * Class VerifyUser
@@ -36,7 +36,7 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @property string $token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\User $user
+ * @property-read \App\Models\User $user
  * @method static Builder|VerifyUser newModelQuery()
  * @method static Builder|VerifyUser newQuery()
  * @method static Builder|VerifyUser query()
@@ -49,12 +49,12 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
 class VerifyUser extends Model
 {
     protected $fillable = ['user_id', 'token'];
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

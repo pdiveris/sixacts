@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Events\MessagePosted;
-use App\Proposal;
-use App\ProposalView;
-use App\User;
-use App\Vote;
+use App\Models\Proposal;
+use App\Models\ProposalView;
+use App\Models\User;
+use App\Models\Vote;
+use Exception;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Class ProposalController
@@ -26,15 +31,23 @@ class ProposalController extends Controller
      *
      * @link https://github.com/pdiveris/sixacts/wiki/Voting,-the-ruleset
      *
-     * @param \Illuminate\Http\Request $request
-     * @return void
-     * @throws \Exception
+     * @param Request $request
+     * @return JsonResponse
+     * @throws Exception
      */
-    public function vote(Request $request)
+    public function vote(Request $request): JsonResponse
     {
+        $pause = \Cache::get('pause', 'off');
+
+        if ($pause === 'on') {
+            return response()->json([
+                'type' => 'warning',
+                'message' => 'Voting is paused for 30 minutes!'
+            ]);
+        }
         $params = $request->all();
         $response = ['action'=>'unspecified'];
-    
+
         if (!array_key_exists('proposal_id', $params) ||
             !array_key_exists('direction', $params) ||
             !array_key_exists('user', $params)
@@ -45,14 +58,13 @@ class ProposalController extends Controller
         if (!($params['direction'] === 'vote') && !($params['direction'] === 'dislike')) {
             return response()->json(['type' => 'error', 'message' => 'Bad request (vote)']);
         }
-    
+
         $vote = Vote::where('user_id', '=', $params['user']['user'])
             ->where('proposal_id', '=', $params['proposal_id'])
             ->first()
         ;
-        
-        // this needs changing to be set from the session or from token
-        $user = User::find((int)$params['user']['user']);
+
+        $user = User::find((int)\Auth::user()->id);
 
         // if not user etc..
         if (!$user) {
@@ -60,10 +72,10 @@ class ProposalController extends Controller
         }
 
         if (!$vote) {
-            $vote = new \App\Vote();
+            $vote = new \App\Models\Vote();
             $vote->user_id = $params['user']['user'];
             $vote->proposal_id = $params['proposal_id'];
-            
+
             if ($params['direction'] === 'dislike') {
                 $vote->dislike = 1;
                 $response = [
@@ -154,7 +166,7 @@ class ProposalController extends Controller
         } else { // Horror!
             return response()->json(['type' => 'error', 'message' => 'HORROR!']);
         }
-        
+
         if ($ret) {
             if (env('SOCKET_PROVIDER', 'echo') === 'nchan') {
                 event(
@@ -172,68 +184,45 @@ class ProposalController extends Controller
         }
         return response()->json(['type'=>'error', 'message'=>"Can't persist vote"]);
     }
-    
-    
+
     /**
      * Get all proposals with their aggregations (if they have any..)
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * endpoint: /api/proposals?cats=&user_id=1&filter=current&q=
+     *
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         $userId = $request->get('user_id');
         $catsQuery = $request->get('cats', '');
-        if (null !== $catsQuery && '' !== $catsQuery) {
-            $cats = explode(':', $catsQuery);
-            $props = ProposalView::whereIn('category_id', $cats)->get();
-        } else {
-            $filter = $request->get('filter', '');
-            switch ($filter) {
-                case 'most':
-                    $props = \App\ProposalView::orderBy('num_votes','desc')
-                        ->get();
-                    break;
-                case 'recent':
-                    $props = \App\ProposalView::orderBy('created_at','desc')->get();
-                    break;
-                case 'current':
-                    $props = \App\ProposalView::orderBy('num_votes','desc')
-                        ->limit(6)
-                        ->get();
-                    break;
-                default:
-                    $props = \App\ProposalView::all();
-            }
-            $props = ProposalView::getFiltered($filter);
-            // $props = ProposalView::all();
+
+        $q = $request->get('q', '');
+        $filter = $request->get('filter', '');
+        $props = ProposalView::getFiltered($catsQuery, $q, $userId, $filter);
+
+        foreach ($props as $prop) {
+            $prop->display = 'collapsed';
         }
+
         if ($userId > 0) {
             $props = StaticController::mergeProposalsWithVotes($props, $userId);
         }
         foreach ($props as $prop) {
             $prop->display = 'collapsed';
-            if ($prop->category) {
-                $prop->hasCategory = true;
-            }
-            if (count($prop->aggs)>0) {
-                $prop->hasAggs = true;
-            }
-            if ($prop->user) {
-                $prop->hasUser = true;
-            }
         }
         return response()->json($props);
     }
-    
+
     /**
      * Find by ID and show a proposal and qhiq it
      *
      * @param int $proposalId
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function show($proposalId = 0)
+    public function show(int $proposalId = 0): JsonResponse
     {
         $prop = Proposal::find((int)($proposalId));
         if (null===$prop) {
@@ -242,7 +231,7 @@ class ProposalController extends Controller
         if ($prop->category) {
             $prop->hasCategory = true;
         }
-        if (count($prop->aggs)>0) {
+        if (count($prop->aggs) > 0) {
             $prop->hasAggs = true;
         }
         if ($prop->user) {
@@ -250,17 +239,17 @@ class ProposalController extends Controller
         }
         return response()->json($prop);
     }
-    
-    public function view($id)
+
+    public function view($id): Factory|View|Application
     {
         if (is_numeric($id)) {
             $proposal = ProposalView::find($id);
         } else {
             $proposal = ProposalView::where('slug', '=', $id)
-                                        ->first();
+                ->first();
         }
-        
-        if (null === $proposal || ! $proposal) {
+
+        if (! $proposal) {
             abort(521);
         }
         return view('static.proposal', ['proposal'=>$proposal]);

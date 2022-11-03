@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Vote;
+use App\Models\Vote;
+use Illuminate\Http\JsonResponse;
 
 /**
  * Class VoteController
@@ -22,29 +23,29 @@ class VoteController extends Controller
      *
      * @return void
      */
-    public function vote($direction = 1)
+    public function vote(int $direction = 1): void
     {
         //
     }
-    
+
     /**
      * Get all Votes with their aggregations (if they have any..)
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function index(): \Illuminate\Http\JsonResponse
+    public function index(): JsonResponse
     {
         $votes = Vote::all();
         return response()->json($votes);
     }
-    
+
     /**
      * API return single vote by ID
      *
      * @param int $VoteId
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function show($VoteId = 0)
+    public function show(int $VoteId = 0): JsonResponse
     {
         $vote = Vote::find((int)$VoteId);
         if (null===$vote) {

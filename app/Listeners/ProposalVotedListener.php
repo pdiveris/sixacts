@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\ProposalVotedEvent;
+use App\Jobs\SendServerEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
@@ -26,8 +27,8 @@ class ProposalVotedListener
      */
     public function handle(ProposalVotedEvent $event)
     {
-        $dispatchJob = new \App\Jobs\SendServerEvent($event->data, $event->channel, $event->user);
+        $dispatchJob = new SendServerEvent($event->data, $event->channel, $event->user);
         dispatch($dispatchJob);
-        
+
     }
 }

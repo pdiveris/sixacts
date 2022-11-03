@@ -10,6 +10,10 @@ $positions: ('top','left','bottom','right');
     }
 }
 
+.kanga {
+    border: 1px dotted red;
+}
+
 @each $pos in $positions {
     @each $size in $sizes {
         .u-m#{$pos}-#{$size} {

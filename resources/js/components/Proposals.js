@@ -54,9 +54,11 @@ export default class Proposals extends Component {
         this.state = {
             'items': [],
             'categories': [],
-            'filter': ''
+            'filter': '',
+            'query': ''
         }
         this.echo = null;
+        this.handleChange = this.handleChange.bind(this);
         this.getCategoriesUpdateFromChild = this.getCategoriesUpdateFromChild.bind(this);
         this.getFiltersUpdateFromChild = this.getFiltersUpdateFromChild.bind(this);
     }
@@ -87,10 +89,17 @@ export default class Proposals extends Component {
     }
 
     handleFacebook(item) {
-      const url = 'https://'+window.location.hostname+'/proposal/'+item.slug;
-        window.open('https://www.facebook.com/sharer/sharer.php?u='+url,
+      const extras = '&caption=caption&description=DESCRIPTION';
+      // const url = 'https://'+window.location.hostname+'/proposal/'+item.slug;
+      // https://beta.sixacts.org/plain/vote?pid=17&action=vote
+      const url = 'https://'+window.location.hostname+'/plain/vote?pid='+item.id;
+        window.open('https://www.facebook.com/sharer/sharer.php?u='+url+extras,
             'facebook-share-dialog',"width=626, height=436"
         );
+    }
+
+    createMarkup(txt) {
+        return {__html: txt};
     }
 
     handleTwitter(item) {
@@ -133,6 +142,7 @@ export default class Proposals extends Component {
 
     handleResponse(results) {
         if (results[0] === 'unauthorized') {
+            this.notify('You need to be logged in to vote!', 'error', 3000);
             console.log('401 unauthorized');
             return;
         }
@@ -195,23 +205,29 @@ export default class Proposals extends Component {
             shared: false
         };
 
-        var sub = new NchanSubscriber(url, opt);
+        let sub = new NchanSubscriber(url, opt);
         console.log('Joined channel: "messages"');
-        console.log(sub);
+        if (window.d === true) {
+            console.log(sub);
+        }
         sub.on("message", (message, message_metadata) =>  {
             // message is a string
             // message_metadata is a hash that may contain 'id' and 'content-type'
-
-            console.log(message_metadata);
+            if (window.d===true) {
+                console.log(message_metadata);
+            }
             window.localStorage.setItem('lastEventId', message_metadata.id);
             let msg = JSON.parse(message);
-            console.log(msg);
-
+            if (window.d === true) {
+                console.log(msg);
+            }
             if (msg.hasOwnProperty("politburo")) {
                 this.notify(msg.message, msg.type, 3000);
             }
             if (msg.message === 'refresh') {
-                console.log('Refreshing...');
+                if (window.d===true) {
+                    console.log('Refreshing...');
+                }
                 this.getProposals();
             } else {
                 console.log("Other msg: " + msg.message)
@@ -221,8 +237,10 @@ export default class Proposals extends Component {
 
         sub.on('connect', function(evt) {
             //fired when first connected.
-            console.log('connected');
-            console.log(evt);
+            if (window.d === true) {
+                console.log('connected');
+                console.log(evt);
+            }
         });
 
         sub.start();
@@ -244,28 +262,39 @@ export default class Proposals extends Component {
         }).map(function(cat) {
            return cat.id;
         });
+
         let catsQuery = cats.join(':');
         let proto = window.location.protocol + '//';
         let hostName = window.location.hostname;
         let uid = '&user_id='+window.Laravel.user;
         let filter = this.state.filter;
-        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid+'&filter='+filter,
+        let q = this.state.query;
+
+        fetch(proto + hostName + '/api/proposals?cats='+catsQuery+uid+'&filter='+filter+'&q='+q,
             {
                 crossDomain: true,
             }
         )
             .then(results => results.json())
-            .then(results => this.setState( {'items': results}))
+            .then(results => this.setState( {'items': results})  )
     }
 
     getCategoriesUpdateFromChild(cats) {
+        console.log(cats);
         this.state.categories = cats;
         this.getProposals();
+        if (window.d) {
+            console.log('Got proposals');
+            console.log(this.state.items);
+        }
     }
 
     getFiltersUpdateFromChild(filter) {
         this.state.filter = filter;
         this.getProposals();
+
+        console.log('Have apparently updated my list...');
+        console.log(this.state.items);
     }
 
     juggler(display) {
@@ -274,6 +303,12 @@ export default class Proposals extends Component {
         } else {
             return 'expanded';
         }
+    }
+
+    handleChange(event) {
+        this.state.query = event.target.value;
+        this.getProposals();
+        console.log(event.target.value);
     }
 
     render() {
@@ -286,17 +321,34 @@ export default class Proposals extends Component {
                     <Portal>
                         <Filters getFiltersUpdateFromChild={this.getFiltersUpdateFromChild}/>
                     </Portal>
+                    <form autoComplete="off" method="post" action="">
+                        <div className="field is-horizontal ">
+                            <div className="field-body u-mbottom-20">
+                                <div className="field">
+                                    <div className="control">
+                                        <input className="input"
+                                               type="text"
+                                               placeholder="Search"
+                                               onChange={this.handleChange}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                     <ul>
                         {this.state.items.map((item, index) => {
                                 return (
                                     <div key={index} className="u-mtop-2">
-                                        <span className="subtitle has-text-weight-bold">{item.title}</span>
+                                        <span className="subtitle has-text-weight-bold">
+                                            {item.title}
+                                        </span>
                                         <span
                                             className={
-                                                `tag is-small u-mleft-15 ${item.category.class} ${item.category.sub_class}`
+                                                `tag is-small u-mleft-15 ${item.category_class} ${item.category_sub_class}`
                                             }
                                             >
-                                            {item.category.short_title.substr(0, 1)}
+                                            {item.category_short_title.substr(0, 1)}
                                         </span>
                                         <div className={`expander ${this.juggler(item.display)} '}`}
                                              id={'expander_1_'+index}
@@ -310,8 +362,9 @@ export default class Proposals extends Component {
                                                 </a>
                                             </span>
                                         </div>
-                                        <div className={`expandable ${item.display}`} id={'expander_2_'+index}>
-                                            {item.body}&nbsp;
+                                        <div className={`expandable ${item.display}`} id={'expander_2_'+index}
+                                        >
+                                            <span dangerouslySetInnerHTML={{ __html: item.body }}></span>
                                             <span className="icon">
                                                 <a onClick={() =>
                                                     this.handleExpand(index, 'collapsed', 'expander_2_'+index)}
@@ -323,15 +376,15 @@ export default class Proposals extends Component {
                                         <div className="author controls u-mtop-10 u-mright-10 u-mbottom-10">
                                             <i>Posted by</i>:&nbsp;
                                             <b>
-                                                {item.user.display_name != ''
-                                                    ? item.user.display_name
-                                                    : item.user.name
+                                                {item.user_display_name != '' && item.user_display_name != null
+                                                    ? item.user_display_name
+                                                    : item.user_name
                                                 }</b>
                                             &nbsp;
                                         </div>
                                         <div className="aggs controls u-mbottom-20">
                                             <span className="numVotes">
-                                            {item.aggs.length > 0 ? item.aggs[0].total_votes : ' 0'}</span> votes
+                                            {item.aggs_total_votes ? item.aggs_total_votes : ' 0'}</span> votes
                                                 <span className="icon u-mleft-20">
                                                 {!item.hasOwnProperty('myvote') || item.myvote.vote == 0 ?
                                                     (
@@ -368,7 +421,7 @@ export default class Proposals extends Component {
 
                                                     }
                                                 </span>
-                                                {item.aggs.length > 0 ? item.aggs[0].total_dislikes : ' 0'}
+                                                {item.aggs_total_dislikes ? item.aggs_total_dislikes : ' 0'}
                                             </span> dislikes
 
                                             <div className={'icon theworks'}>

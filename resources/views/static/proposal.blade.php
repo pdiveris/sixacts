@@ -2,7 +2,6 @@
 @section('content')
     <div class="columns">
         <div class="column">
-            <div class="column is-12">
                 <div class="box content" >
                     <h1 class="title is-4">
                         {{$proposal->title}}

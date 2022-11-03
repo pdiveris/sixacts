@@ -33,9 +33,9 @@ class UserCreatedEvent
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|PrivateChannel|array
      */
-    public function broadcastOn()
+    public function broadcastOn(): Channel|PrivateChannel|array
     {
         return new PrivateChannel('channel-name');
     }

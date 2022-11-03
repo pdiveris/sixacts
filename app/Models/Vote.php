@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder as Builder;
 use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Database\Eloquent\Builder as Builder;
 
 /**
- * App\Vote
+ * App\Models\Vote
  *
  * @category Model
  * @package App
@@ -30,11 +30,11 @@ use \Illuminate\Database\Eloquent\Builder as Builder;
  * @method static Builder|Vote whereProposalId($value)
  * @method static Builder|Vote whereUpdatedAt($value)
  * @method static Builder|Vote whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereDown($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereUp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vote whereDown($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vote whereUp($value)
  * @mixin \Eloquent
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereDislike($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Vote whereVote($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vote whereDislike($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Vote whereVote($value)
  */
 class Vote extends Model
 {

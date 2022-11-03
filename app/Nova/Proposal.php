@@ -2,9 +2,10 @@
 
 namespace App\Nova;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -16,7 +17,7 @@ class Proposal extends Resource
      *
      * @var string
      */
-    public static $model = 'App\Proposal';
+    public static string $model = 'App\Models\Proposal';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -24,7 +25,7 @@ class Proposal extends Resource
      * @var string
      */
     public static $title = 'id';
-    
+
     /**
      * The columns that should be searched.
      *
@@ -34,32 +35,32 @@ class Proposal extends Resource
         'id',
         'title',
     ];
-    
+
     /**
      * Default ordering for index query.
      *
      * @var array
      */
-    public static $indexDefaultOrder = [
+    public static array $indexDefaultOrder = [
         'id' => 'asc'
     ];
-    
+
     /**
      * The logical group associated with the resource.
      *
      * @var string
      */
     public static $group = 'Core';
-    
+
     /**
      * Build an "index" query for the given resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request request
-     * @param \Illuminate\Database\Eloquent\Builder   $query   query
+     * @param NovaRequest $request request
+     * @param Builder $query query
      *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
-    public static function indexQuery(\Laravel\Nova\Http\Requests\NovaRequest $request, $query)
+    public static function indexQuery(NovaRequest $request, $query): Builder
     {
         if (empty($request->get('orderBy'))) {
             $query->getQuery()->orders = [];
@@ -67,45 +68,46 @@ class Proposal extends Resource
         }
         return $query;
     }
-    
+
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function fields(Request $request)
+    public function fields(Request $request): array
     {
         return [
             ID::make()->sortable(),
-            
+
             Text::make(__('Title'), 'title')->rules('required')->sortable(),
-            
+
             Text::make(__('Category'), function () {
                 return $this->category->title ?? '';
             })->onlyOnIndex()
                 ->sortable(),
-            
+
             BelongsTo::make('Category', 'category', 'App\Nova\Category')
                 ->nullable()
                 ->onlyOnForms(),
-            
+
             Textarea::make(__('Body'), 'body')
-            ->hideFromIndex(),
-            
+                ->hideFromIndex(),
+
             Text::make(__('Proposed by'), function () {
                 return $this->user->name ?? '';
-            })->onlyOnIndex()->sortable(),
+            })->onlyOnIndex()
+                ->sortable(),
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function cards(Request $request)
+    public function cards(Request $request): array
     {
         return [];
     }
@@ -113,10 +115,10 @@ class Proposal extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function filters(Request $request)
+    public function filters(Request $request): array
     {
         return [];
     }
@@ -124,10 +126,10 @@ class Proposal extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function lenses(Request $request)
+    public function lenses(Request $request): array
     {
         return [];
     }
@@ -135,10 +137,10 @@ class Proposal extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function actions(Request $request)
+    public function actions(Request $request): array
     {
         return [];
     }

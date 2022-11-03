@@ -1,6 +1,6 @@
 <?php
     /**
-     * Test  Controller$
+     * Kill votes with 0 values
      *
      * Handles aspects of the login process,
      * including syncing with OAuth data from external providers
@@ -13,17 +13,31 @@
      *
      * @category
      * @package
-     * @author    pedro
+     * @author    Petros Diveris <petros@diveris.org>
      * @copyright 2019 Bentleyworks
      * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
      * @version   GIT:
      * @link      https://github.com/pdiveris/sixproposals/blob/master/app/Http/Controllers/Auth/LoginController.php
-     * @see       sixactions
+     * @see       Six Acts
      */
-    
-    namespace App;
 
-class Test
-{
-    
-}
+    namespace App\Invokable;
+
+    use App\Models\Vote;
+
+    /**
+     * Class KillOrphanVotes
+     * Scheduled jon to kill database entries with 0 values
+     *
+     * @package App\Invokable
+     */
+    class KillOrphanVotes
+    {
+        public function __invoke()
+        {
+            Vote::where('vote','=',0)
+                ->where('dislike','=',0)
+                ->delete();
+        }
+
+    }

@@ -26,7 +26,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
-        $schedule->call(new \App\Invokable\FetchTwitter)->everyFiveMinutes();
+        $schedule->call(new \App\Invokable\FetchTwitter)->everyFifteenMinutes();
+        $schedule->call(new \App\Invokable\KillOrphanVotes)->everyThirtyMinutes();
     }
 
     /**

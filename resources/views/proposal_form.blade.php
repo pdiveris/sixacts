@@ -7,15 +7,39 @@
                     <p class="card-header-title">Propose action</p>
                 </header>
                 <div class="u-m-15">
-                    @if (session('type')==='success')
-                        <div class="is-info alert-success">
-                            {{ session('message') }}
-                        </div>
+                    @if ($pause === 'on')
+                        <article class="message is-warning killable" id="successbox">
+                            <div class="message-header is-warning">
+                                <p>
+                                    Back in 30 minutes... fag break... just counting the votes... between puffs
+                                </p>
+                                <button class="delete" aria-label="delete"  onclick="$('#successbox').hide();"
+                                >
+                                </button>
+                            </div>
+                        </article>
                     @endif
                     @if (session('errors'))
-                        <div class="is-error alert-warning">
-                            {{ session('errors') }}
-                        </div>
+                        <article class="message is-danger killable" id="errorbox">
+                            <div class="message-header ubuntu-green">
+                                @foreach(session('errors')->getMessageBag() as $fld=>$error)
+                                <p>{{ session('errors') }}</p>
+                                @endforeach
+                                <button class="delete" aria-label="delete"  onclick="$('#errorbox').hide();"
+                                >
+                                </button>
+                            </div>
+                        </article>
+                    @endif
+                    @if (session('type')==='success')
+                        <article class="message is-danger killable" id="success">
+                            <div class="message-header ubuntu-green">
+                                <p>{{ session('message') }}</p>
+                                <button class="delete" aria-label="delete"  onclick="$('#success').hide();"
+                                >
+                                </button>
+                            </div>
+                        </article>
                     @endif
                 </div>
                 <div class="card-content">
@@ -25,7 +49,6 @@
                             <div class="field-label">
                                 <label class="label">Category</label>
                             </div>
-
                             <div class="field-body">
                                 <div class="field">
                                     <div class="buttons" id="propose_buttons">
@@ -94,7 +117,10 @@
                             <div class="field-body">
                                 <div class="field is-grouped">
                                     <div class="control">
-                                        <button type="submit" class="button is-primary">Apply</button>
+                                        <button type="submit"
+                                           {{$pause === 'on' ? 'disabled="on"' : '' }}
+                                           class="button is-primary"
+                                        >Apply</button>
                                     </div>
                                 </div>
                             </div>

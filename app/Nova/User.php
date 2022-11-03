@@ -3,13 +3,14 @@
 namespace App\Nova;
 
 use App\Http\Controllers\StaticController;
+use Illuminate\Database\Schema\Builder;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Avatar;
-use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
@@ -18,48 +19,50 @@ class User extends Resource
      *
      * @var string
      */
-    public static $model = 'App\\User';
-    
+    public static string $model = 'App\\Models\\User';
+
     /**
      * The logical group associated with the resource.
      *
      * @var string
      */
     public static $group = 'System';
-    
+
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
     public static $title = 'name';
-    
+
     /**
      * Default ordering for index query.
      *
      * @var array
      */
-    public static $indexDefaultOrder = [
+    public static array $indexDefaultOrder = [
         'id' => 'asc'
     ];
-    
+
     /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
+        'name',
+        'email',
     ];
-    
+
     /**
      * Build an "index" query for the given resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
+     * @param NovaRequest $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function indexQuery(\Laravel\Nova\Http\Requests\NovaRequest $request, $query)
+    public static function indexQuery(NovaRequest $request, $query): \Illuminate\Database\Eloquent\Builder
     {
         if (empty($request->get('orderBy'))) {
             $query->getQuery()->orders = [];
@@ -67,11 +70,11 @@ class User extends Resource
         }
         return $query;
     }
-    
+
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -93,7 +96,11 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:6')
                 ->updateRules('nullable', 'string', 'min:6'),
-    
+
+            Text::make('Display name')
+                ->sortable()
+                ->rules('max:255'),
+
             Image::make('avatar')
                 ->disk('public')
                 ->path('avatars')
@@ -102,22 +109,22 @@ class User extends Resource
                         ? \Storage::disk('public')->url($value)
                         : StaticController::makeGravatar($this->email);
                 })->onlyOnIndex(),
-    
+
             Avatar::make('Avatar')
                 ->hideFromIndex()
                 ->disk('public')
                 ->path('avatars'),
-            
+
         ];
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function cards(Request $request)
+    public function cards(Request $request): array
     {
         return [];
     }
@@ -125,10 +132,10 @@ class User extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function filters(Request $request)
+    public function filters(Request $request): array
     {
         return [];
     }
@@ -136,10 +143,10 @@ class User extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function lenses(Request $request)
+    public function lenses(Request $request): array
     {
         return [];
     }
@@ -147,7 +154,7 @@ class User extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function actions(Request $request)

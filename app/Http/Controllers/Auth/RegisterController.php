@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Jobs\SendEmailJob;
 use App\Mail\VariableUserEmail as UserEmail;
-use App\User;
-use App\Http\Controllers\Controller;
-use App\VerifyUser;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\VerifyMail;
+use App\Models\User;
+use App\Models\VerifyUser;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request as Request;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class RegisterController
@@ -79,7 +79,7 @@ class RegisterController extends Controller
      *
      * @param array $data data
      *
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
@@ -91,21 +91,22 @@ class RegisterController extends Controller
             'password' => \Hash::make($data['password']),
             ]
         );
-        
+
         $verifyUser = VerifyUser::create(
             [
             'user_id' => $user->id,
             'token' => $token
             ]
         );
-        
+
+
         $email = new VerifyMail($user, $token);
-        $dispatcher = new SendEmailJob($email);
+        $dispatcher = new SendEmailJob($email, $data['email']);
         dispatch($dispatcher);
-        
+
         return $user;
     }
-    
+
     /**
      * Show the application registration form.
      *
@@ -115,17 +116,17 @@ class RegisterController extends Controller
     {
         return view('auth.register');
     }
-    
+
     /**
      * Should be called upon registration completion
      * Part of custom verification email infrastructure
      *
      * @param \Illuminate\Http\Request $request request
-     * @param \App\User                $user    user
-     *
-     * @see https://codebriefly.com/custom-user-email-verification-activation-laravel/
+     * @param \App\Models\User                $user    user
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     *@see https://codebriefly.com/custom-user-email-verification-activation-laravel/
+     *
      */
     protected function registered(Request $request, $user)
     {
@@ -137,7 +138,7 @@ class RegisterController extends Controller
                 'Check your email and click on the link to verify.'
             );
     }
-    
+
     /**
      * Verify the user.
      *
@@ -155,9 +156,9 @@ class RegisterController extends Controller
             if (!$user->verified) {
                 $user->verified = 1;
                 $user->save();
-                
+
                 $status = "Your e-mail is verified. You can now login.";
-    
+
                 $profileUrl = url('user/profile');
                 $email = new UserEmail(
                     $user,
@@ -166,7 +167,7 @@ class RegisterController extends Controller
                         'profileUrl'=>$profileUrl
                     ]
                 );
-    
+
                 $dispatchJob = new SendEmailJob($email);
                 dispatch($dispatchJob);
             } else {

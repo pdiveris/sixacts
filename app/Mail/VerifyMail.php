@@ -24,7 +24,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 /**
  * Class VerifyMail
@@ -33,23 +32,23 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class VerifyMail extends Mailable
 {
     use Queueable, SerializesModels;
-    
+
     /**
-     * @var \App\User user
+     * @var \App\Models\User user
      */
     public $user;
-    
+
     /**
      * @var string token
      */
     public $token;
-    
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(\App\User $user, string $token)
+    public function __construct(\App\Models\User $user, string $token)
     {
         $this->user = $user;
         $this->token = $token;

@@ -2,8 +2,9 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -14,7 +15,7 @@ class AuthData extends Resource
      *
      * @var string
      */
-    public static $model = 'App\AuthData';
+    public static string $model = 'App\Models\AuthData';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -22,14 +23,14 @@ class AuthData extends Resource
      * @var string
      */
     public static $title = 'id';
-    
+
     /**
      * The logical group associated with the resource.
      *
      * @var string
      */
     public static $group = 'System';
-    
+
     /**
      * The columns that should be searched.
      *
@@ -47,40 +48,40 @@ class AuthData extends Resource
         'name',
         'email',
     ];
-    
+
     /**
      * Default ordering for index query.
      *
      * @var array
      */
-    public static $indexDefaultOrder = [
+    public static array $indexDefaultOrder = [
         'id' => 'asc'
     ];
-    
+
     /**
      * @return array|string|null
      */
-    public static function singularLabel()
+    public static function singularLabel(): array|string|null
     {
         return __('Auth Data');
     }
-    
+
     /**
      * @return array|string|null
      */
-    public static function label()
+    public static function label(): array|string|null
     {
         return __('Auth Data');
     }
-    
+
     /**
      * Build an "index" query for the given resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param NovaRequest $request
+     * @param Builder $query
+     * @return Builder
      */
-    public static function indexQuery(\Laravel\Nova\Http\Requests\NovaRequest $request, $query)
+    public static function indexQuery(NovaRequest $request, $query): Builder
     {
         if (empty($request->get('orderBy'))) {
             $query->getQuery()->orders = [];
@@ -88,11 +89,11 @@ class AuthData extends Resource
         }
         return $query;
     }
-    
+
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -114,7 +115,7 @@ class AuthData extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -125,10 +126,10 @@ class AuthData extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function filters(Request $request)
+    public function filters(Request $request): array
     {
         return [];
     }
@@ -136,7 +137,7 @@ class AuthData extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -147,10 +148,10 @@ class AuthData extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
-    public function actions(Request $request)
+    public function actions(Request $request): array
     {
         return [];
     }
