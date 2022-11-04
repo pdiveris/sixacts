@@ -10,15 +10,15 @@ DevOps
 
 ##### PROVIDERS
 * Petros Diveris
-  * Free. Limitations apply.
+    * Free. Limitations apply.
 * Amazon
-  * Eva to ask about pricing
+    * Eva to ask about pricing
 * Digital Ocean
-  * Eva to ask about pricing
+    * Eva to ask about pricing
 * Traditional ISPs e.g. Hetzner
-  * Again, Eva to ask about pricing
+    * Again, Eva to ask about pricing
 
-##### PREREQUISITIES
+##### PREREQUISITES
 * Debian
 * Docker
 * Min 8GB RAM
@@ -30,12 +30,13 @@ DevOps
 
 ##### Look at
 * Ubuntu MicroK8s
-* 
+*
 
 ## POST DEPLOYMENT
-Until I find how to instruct Laravel mix to produce sane JS output for/from my React components, after deployment it might be worth manually uglifying the main output
+Until I find how to instruct Laravel mix to produce sane JS output for/from my React components, after deployment it
+might be worth manually uglifying the main output
 * `uglifyjs  public/js/app.js --compress -o apismall.js` and
-* replace site's api.js with newly creayed file
+* replace site's api.js with newly created file
 
 
 

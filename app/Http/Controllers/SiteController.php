@@ -1,25 +1,25 @@
 <?php
 /**
-     * Home Controller
-     *
-     * Handles aspects of the login process,
-     * including syncing with OAuth data from external providers
-     *
-     * PHP version 7.2
-     *
-     * LICENSE: This source file is subject to version 2.0 of the Apache License
-     * that is available through the world-wide-web at the following URI:
-     * https://www.apache.org/licenses/LICENSE-2.0.
-     *
-     * @category  Controller
-     * @package   App
-     * @author    Petros Diveris <petros@diveris.org>
-     * @copyright 2019 Bentleyworks
-     * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
-     * @version   GIT: $Id$
-     * @link      https://github.com/pdiveris/sixproposals/blob/master/app/Http/Controllers/Auth/LoginController.php
-     * @see       Six Acts
-     */
+ * Home Controller
+ *
+ * Handles aspects of the login process,
+ * including syncing with OAuth data from external providers
+ *
+ * PHP version 7.2
+ *
+ * LICENSE: This source file is subject to version 2.0 of the Apache License
+ * that is available through the world-wide-web at the following URI:
+ * https://www.apache.org/licenses/LICENSE-2.0.
+ *
+ * @category  Controller
+ * @package   App
+ * @author    Petros Diveris <petros@diveris.org>
+ * @copyright 2019 Bentleyworks
+ * @license   http://www.php.net/license/3_01.txt  PHP License 3.01
+ * @version   GIT: $Id$
+ * @link      https://github.com/pdiveris/sixproposals/blob/master/app/Http/Controllers/Auth/LoginController.php
+ * @see       Six Acts
+ */
 namespace App\Http\Controllers;
 
 use App\Models\Category;
@@ -96,12 +96,12 @@ class SiteController extends Controller
             abort(419, 'Page has expired');
         }
         $user = User::find((int)$oAuthUser->id);
+
         return view('user_profile',
             [
-                'user'=>$user,
-                'sixjs'=>'1',
+                'user' => $user,
+                'sixjs' => '1',
                 'croppie' => '1',
-                /*'avatar' => '1',*/
             ]
         );
     }
@@ -229,17 +229,20 @@ class SiteController extends Controller
     public static function showModal(): bool
     {
         $request = \Request();
+
         if ($request->get('splash', '') === 'please') {
             return true;
         }
-        if ($request->getHost()==='sixacts.div'
-            || $request->ip()==='127.0.0.1'
-            || $request->ip()==='10.17.1.254'
+
+        if ($request->getHost() ==='sixacts.div'
+            || $request->ip() === '127.0.0.1'
+            || $request->ip() === '10.17.1.254'
             || $request->get('nosplash', '') === 'please'
         ) {
             return false;
         }
-        if (\Session::get('campaigner', false)===true) {
+
+        if (\Session::get('campaigner', false) === true) {
             return false;
         } else {
             return env('SPLASH_SCREEN', false);
@@ -256,7 +259,7 @@ class SiteController extends Controller
         $twits =  json_decode(\Cache::get('twitter', '[]'));
         foreach ($twits as $twit) {
             foreach ($twit->entities->urls as $i=>$url) {
-               $twit->real_url = $url->url;
+                $twit->real_url = $url->url;
             }
         }
         return $twits;
