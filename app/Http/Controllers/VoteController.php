@@ -48,7 +48,7 @@ class VoteController extends Controller
     public function show(int $VoteId = 0): JsonResponse
     {
         $vote = Vote::find((int)$VoteId);
-        if (null===$vote) {
+        if (!$vote) {
             return response()->json(['message' => 'Not Found.'], 404);
         }
 

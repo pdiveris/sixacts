@@ -17,15 +17,15 @@ class SendUserEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $user;
+    private User $user;
 
-    private $template;
+    private string $template;
 
     /**
      * SendUserEmail constructor.
      * Create a new message instance.
      *
-     * @param \App\Models\User $user
+     * @param User $user
      * @param string $template
      * @return void
      */
@@ -43,8 +43,8 @@ class SendUserEmail extends Mailable
     public function build()
     {
         return $this->to($this->user->email)
-            ->text('emails.users.'.$this->template.'_plain')
-            ->view('emails.users.'.$this->template)
+            ->text('emails.users.' . $this->template . '_plain')
+            ->view('emails.users.' . $this->template)
 //            ->view('emails.users.user_welcome')
             ->with([
                 'name' => $this->user->name,

@@ -7,6 +7,7 @@ use App\Models\Proposal;
 use App\Models\ProposalView;
 use App\Models\User;
 use App\Models\Vote;
+use Cache;
 use GuzzleHttp\Client;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -115,7 +116,7 @@ class StaticController extends Controller
         $id = \Auth::user() ? \Auth::user()->id : 0;
 
         $proposals = self::mergeProposalsWithVotes($proposals, $id);
-        if (\Cache::get('ssr', false)) {
+        if (Cache::get('ssr', false)) {
             return view(
                 'static.ssr.welcome',
                 ['proposals'=>$proposals, 'categories'=>$categories]
@@ -155,7 +156,7 @@ class StaticController extends Controller
      */
     public function homePlain(Request $request): \Illuminate\View\View
     {
-        \Cache::set('ssr', true);
+        Cache::set('ssr', true);
         return $this->homeRendered($request);
     }
 
@@ -229,15 +230,16 @@ class StaticController extends Controller
     {
         $displayName = $proposal->user->display_name;
         if (null !== $displayName && '' !== $displayName) {
-            return '@'.$proposal->user->display_name;
+            return '@' . $proposal->user->display_name;
         }
+
         $names = explode(' ', $proposal->user->name);
         if (count($names) >= 2) {
             return '@'.
                 strtolower(substr($names[0], 0, 1)).
                 strtolower(substr($names[1], 0));
         } else {
-            return '@'.strtolower($proposal->user->name);
+            return '@' . strtolower($proposal->user->name);
         }
     }
 

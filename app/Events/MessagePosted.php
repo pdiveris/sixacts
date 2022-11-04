@@ -64,9 +64,9 @@ class MessagePosted implements ShouldBroadcast
      *
      * @see (https://stackoverflow.com/questions/43066633/laravel-echo-does-not-listen-to-channel-and-events
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|array
      */
-    public function broadcastOn()
+    public function broadcastOn(): Channel|array
     {
         return new Channel('messages');
     }

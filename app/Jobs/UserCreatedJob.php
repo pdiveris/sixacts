@@ -14,7 +14,7 @@ class UserCreatedJob extends SendMailable implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $user;
+    protected User $user;
 
     /**
      * Create a new message instance.

@@ -25,7 +25,7 @@ class ProposalVotedListener
      * @param  ProposalVotedEvent  $event
      * @return void
      */
-    public function handle(ProposalVotedEvent $event)
+    public function handle(ProposalVotedEvent $event): void
     {
         $dispatchJob = new SendServerEvent($event->data, $event->channel, $event->user);
         dispatch($dispatchJob);

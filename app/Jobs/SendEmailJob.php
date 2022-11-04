@@ -31,9 +31,9 @@ class SendEmailJob implements ShouldQueue
      * Create a new job instance.
      *
      * @param $mailShot
-     * @param  string  $destination
+     * @param string $destination
      */
-    public function __construct($mailShot, $destination = '')
+    public function __construct($mailShot, string $destination = '')
     {
         //
         $this->mailShot = $mailShot;
@@ -45,7 +45,7 @@ class SendEmailJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         if ($this->destination !== '') {
             Mail::to($this->destination)

@@ -14,9 +14,9 @@ class ProposalVotedEvent
 
     public $data;
 
-    public $channel;
+    public string $channel;
 
-    public $user;
+    public User $user;
 
     /**
      * Create a new event instance.
@@ -37,7 +37,7 @@ class ProposalVotedEvent
      *
      * @return Channel|array
      */
-    public function broadcastOn()
+    public function broadcastOn(): Channel|array
     {
         // return new PrivateChannel('channel-name');
         return new Channel('messages');

@@ -18,19 +18,19 @@ class VariableUserEmail extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * @var \App\Models\User
+     * @var User
      */
-    private $user;
+    private User $user;
 
-    private $template;
+    private string $template;
 
-    private $extraData = [];
+    private array $extraData = [];
 
     /**
      * VariableUserEmail constructor.
      * Create a new message instance.
      *
-     * @param \App\Models\User $user
+     * @param User $user
      * @param string $template
      * @param array $extraData
      * @return void
@@ -38,8 +38,11 @@ class VariableUserEmail extends Mailable
     public function __construct(User $user, string $template, array $extraData = [])
     {
         $this->user = $user;
+
         $this->extraData = $extraData;
-        $this->template = $template;    // e.g. user_welcome
+
+        // e.g. user_welcome
+        $this->template = $template;
     }
 
     /**
@@ -47,16 +50,16 @@ class VariableUserEmail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): static
     {
         $data = $this->extraData;
         $data['email'] = $this->user->email;
         $data['name'] = $this->user->name;
 
         return $this->to($this->user->email)
-            ->text('emails.users.'.$this->template.'_plain')
+            ->text('emails.users.'. $this->template . '_plain')
             ->subject($data['subject'] ?? 'Welcome to Six Acts')
-            ->view('emails.users.'.$this->template)
+            ->view('emails.users.'.  $this->template)
             ->with($data);
     }
 }
