@@ -225,8 +225,12 @@ class ProposalController extends Controller
     public function show(int $proposalId = 0): JsonResponse
     {
         $prop = Proposal::find((int)($proposalId));
-        if (null===$prop) {
-            return response()->json(['type'=>'error', 'error' => 'Not Found.'], 404);
+        if (null === $prop) {
+            return response()->json([
+                'type' => 'error',
+                'error' => 'Not Found.'
+            ],
+                404);
         }
         if ($prop->category) {
             $prop->hasCategory = true;

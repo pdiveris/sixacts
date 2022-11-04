@@ -25,6 +25,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Proposal;
 use App\Models\User;
+use Auth;
+use Cache;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request as Request;
@@ -32,6 +34,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 use Psr\SimpleCache\InvalidArgumentException;
+use Validator;
 
 /**
  * Class SiteController
@@ -62,9 +65,8 @@ class SiteController extends Controller
 
         $earl = $request->getUri();
         $host = $request->getHost();
-        // dump($host);
 
-        $path = str_replace('https://'.$host.'/', '', $earl);
+        $path = str_replace('https://' . $host . '/', '', $earl);
 
         if (str_contains($path, 'become')) {
             //
@@ -91,7 +93,7 @@ class SiteController extends Controller
      */
     public function userProfile(): Factory|View
     {
-        $oAuthUser = \Auth::user();
+        $oAuthUser = Auth::user();
         if (!$oAuthUser) {
             abort(419, 'Page has expired');
         }
@@ -128,14 +130,14 @@ class SiteController extends Controller
             $rules['password_confirmation'] = 'string';
         }
 
-        $validator = \Validator::make($this->request->all(), $rules);
+        $validator = Validator::make($this->request->all(), $rules);
 
         if ($validator->fails()) {
             return redirect('/user/profile')
                 ->withErrors($validator)
                 ->withInput($this->request->all());
         } else {
-            $oauthUser = \Auth::user();
+            $oauthUser = Auth::user();
             if (null === $oauthUser) {
                 abort(501, 'System error retrieving your details. We are working on it..');
             }
@@ -163,7 +165,7 @@ class SiteController extends Controller
      */
     public function getProposal(): Factory|View
     {
-        $pause = \Cache::get('pause', 'off');
+        $pause = Cache::get('pause', 'off');
 
         $categories = Category::all();
         foreach ($categories as $category) {
@@ -175,8 +177,8 @@ class SiteController extends Controller
         return view(
             'proposal_form',
             [
-                'categories'=>$categories,
-                'sixjs'=>'1',
+                'categories' => $categories,
+                'sixjs' => '1',
                 'pause' => $pause
             ]
         );
@@ -193,12 +195,12 @@ class SiteController extends Controller
     {
         // validate the info, create rules for the inputs
         $rules = [
-            'title'    => 'required|string',
+            'title' => 'required|string',
             'body' => 'required|min:3',
             'category_id' => 'required|integer|between:1,65535',
         ];
 
-        $validator = \Validator::make($request->all(), $rules);
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
             return redirect('propose')
@@ -228,7 +230,7 @@ class SiteController extends Controller
      */
     public static function showModal(): bool
     {
-        $request = \Request();
+        $request = Request();
 
         if ($request->get('splash', '') === 'please') {
             return true;
@@ -256,7 +258,7 @@ class SiteController extends Controller
      */
     public static function getTwitts(): mixed
     {
-        $twits =  json_decode(\Cache::get('twitter', '[]'));
+        $twits =  json_decode(Cache::get('twitter', '[]'));
         foreach ($twits as $twit) {
             foreach ($twit->entities->urls as $i=>$url) {
                 $twit->real_url = $url->url;
@@ -274,18 +276,18 @@ class SiteController extends Controller
      */
     public function pause(): Redirector|RedirectResponse
     {
-        $user = \Auth::user();
+        $user = Auth::user();
         if ($user && in_array($user->id, [1 ,2 ,3])) {
-            $status = \Cache::get('pause', 'off');
+            $status = Cache::get('pause', 'off');
             echo 'Found the cache $status<br />';
 
             if ($status === 'off') {
                 echo 'Setting pause to on';
-                \Cache::set('pause', 'on', 1800);
+                Cache::set('pause', 'on', 1800);
             }
             else {
                 echo 'Setting pause to off, forever';
-                \Cache::set('pause', 'off');
+                Cache::set('pause', 'off');
             }
             echo '<br/>';
         }
@@ -299,11 +301,12 @@ class SiteController extends Controller
      * @param $id
      * @return RedirectResponse|Redirector
      */
-    public function become(Request $request, $id) {
+    public function become(Request $request, $id): Redirector|RedirectResponse
+    {
         if (!in_array($request->ip(), ['10.17.1.254', '88.97.78.236', '127.0.0.1'])) {
             abort(404, 'Not found');
         }
-        \Auth::loginUsingId($id);
+        Auth::loginUsingId($id);
 
         return redirect('/');
     }

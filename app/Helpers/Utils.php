@@ -14,7 +14,11 @@
 
 namespace App\Helpers;
 
+use Exception;
+use Gravatar;
 use Hackzilla\PasswordGenerator\Generator\ComputerPasswordGenerator;
+use Route;
+use Storage;
 
 /**
  * Class Utils
@@ -50,7 +54,7 @@ class Utils
      */
     public static function getRouteControllerAction(string $uri = ''): array
     {
-        foreach (\Route::getRoutes() as $route) {
+        foreach (Route::getRoutes() as $route) {
             if ($route->uri == str_replace('/', '', $uri)) {
                 $action = $route->getAction();
                 $controller = substr(
@@ -99,14 +103,14 @@ class Utils
     public static function gravata(string $email = '', int $size = 64): string
     {
         try {
-            $fileFromId = \Storage::disk('s3')
+            $fileFromId = Storage::disk('s3')
                 ->get(str_replace('@', '-at-', $email) . '.jpg');
 
             if (null !== $fileFromId) {
                 return route('avatars/get') . "/$email.jpg";
             }
-        } catch (\Exception $exception) {
-            return \Gravatar::src($email, $size);
+        } catch (Exception $exception) {
+            return Gravatar::src($email, $size);
         }
         return '';
     }

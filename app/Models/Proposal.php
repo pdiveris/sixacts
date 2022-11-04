@@ -3,7 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder as Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 
 /**
  * App\Models\Proposal
@@ -17,8 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property string $body
  * @property int $user_id
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * @property int $category_id
  * @property string $colour
  * @method static Builder|Proposal newModelQuery()
@@ -35,7 +39,7 @@ use Illuminate\Database\Eloquent\Model;
  * @mixin \Eloquent
  * @property-read Models\User $user
  * @property-read Models\Category $category
- * @property-read \Illuminate\Database\Eloquent\Collection|Models\VoteAgg[] $aggs
+ * @property-read Collection|Models\VoteAgg[] $aggs
  */
 class Proposal extends Model
 {
@@ -44,7 +48,7 @@ class Proposal extends Model
     /**
      * Return the user associated with the Proposal
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user()
     {
@@ -54,7 +58,7 @@ class Proposal extends Model
     /**
      * Get category it belongs to
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function category()
     {
@@ -63,9 +67,9 @@ class Proposal extends Model
 
     /**
      * Get the aggregations attached to the proposal
-     * (number of votes etc)
+     * (number of votes etc.)
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function aggs()
     {
@@ -82,7 +86,7 @@ class Proposal extends Model
 
         static::creating(function ($post) {
             $user = auth()->user();
-            if ($user !== null && $user) {
+            if ($user) {
                 $post->user_id = auth()->user()->id;
             }
         });
